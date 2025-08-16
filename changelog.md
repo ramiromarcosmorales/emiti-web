@@ -7,5 +7,4 @@
 - **Cambios realizados (resumen):**
   - Se creó la estructura base: `index.html`, `docs/01-mockup` y `docs/02-prompts` 
   - Se creó `.github/PULL_REQUEST_TEMPLATE.md`
-  - <punto 2>
 - **Revisor/es que aprobaron:** @ramire-uces
