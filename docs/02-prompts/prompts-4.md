@@ -6,18 +6,20 @@
 
 ## 📝 Prompt Exacto
 
-Actuá como un desarrollador web y explicame cómo debería estructurar una página HTML5 para la app "Emití" usando buenas prácticas. Quiero que me digas qué etiquetas semánticas usar, qué elementos básicos incluir No quiero código, solo indicaciones y sugerencias paso a paso.
+```bash
+Actua como un desarrollador web y explicame cómo debería estructurar una página HTML5 para la app "Emití" usando buenas practicas. Quiero que me digas qué etiquetas semánticas usar, qué elementos básicos incluir No quiero código, solo indicaciones y sugerencias paso a paso.
+```
 
 ## 📸 Captura de pantalla del prompt solicitado:
 
 ![Imagen](https://drive.google.com/uc?export=view&id=1_vzJDTqzAON4UI9mppOjUNK_UuUynEsu)
 
 
-## ⌛ Resultado esperado: 
+## ⏳ Resultado esperado: 
 * Obtener una guía clara y organizada de cómo estructurar la página HTML5.
 * Indicaciones de qué etiquetas semánticas usar y cómo organizar el contenido
 
-## ⏳ Resultado obtenido:
+## ⌛ Resultado obtenido:
 * La IA entregó un resumen paso a paso indicando la estructura de header, nav, main, section, article y footer.
 * Explicó que elementos incluir: títulos, párrafos, imágenes con alt, enlaces, listas, formularios y tablas.
 
