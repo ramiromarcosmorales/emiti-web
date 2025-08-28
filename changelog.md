@@ -21,3 +21,5 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
   PR: [#7](https://github.com/ramiromarcosmorales/emiti-web/pull/7) - @ramiromarcosmorales (Coordinador / DevOps)
 
 ### Fixed
+- [feature/coordinador-setup-repo-and-pages] Restauración de `index.html` eliminado por error en PR prevía.
+  PR: [#9](https://github.com/ramiromarcosmorales/emiti-web/pull/9) - @ramiromarcosmorales (Coordinador / DevOps)
