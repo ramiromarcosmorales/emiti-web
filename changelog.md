@@ -10,6 +10,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 - [feature/estructura-base] Estructura inicial del proyecto.  
   PR: [#1](https://github.com/ramiromarcosmorales/emiti-web/pull/1) - @ramiromarcosmorales (Coordinador / DevOps)
 
+- [feature/ia-prompts-1-to-5] Documentación de prompts 1 a 5. 
+  PR: [#4](https://github.com/ramiromarcosmorales/emiti-web/pull/4) - @victoriaimo (Especialista en IA y Prompt Engineering)
+
 ### Changed
 - [feature/plantillas-pr] Se eliminaron plantillas viejas y se crearon nuevas (`feature-template.md` y `release-template.md`).  
   PR: [#6](https://github.com/ramiromarcosmorales/emiti-web/pull/6) - @ramiromarcosmorales (Coordinador / DevOps)
