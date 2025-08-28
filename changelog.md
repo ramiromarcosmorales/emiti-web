@@ -13,6 +13,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 - [feature/ia-prompts-1-to-5] Documentación de prompts 1 a 5. 
   PR: [#4](https://github.com/ramiromarcosmorales/emiti-web/pull/4) - @victoriaimo (Especialista en IA y Prompt Engineering)
 
+- [feature/frontend-add-html-structure] Implementación de index.html.  
+  PR: [#8](https://github.com/ramiromarcosmorales/emiti-web/pull/8) - @ramireuces (Desarrollador Frontend)
+
 ### Changed
 - [feature/plantillas-pr] Se eliminaron plantillas viejas y se crearon nuevas (`feature-template.md` y `release-template.md`).  
   PR: [#6](https://github.com/ramiromarcosmorales/emiti-web/pull/6) - @ramiromarcosmorales (Coordinador / DevOps)
