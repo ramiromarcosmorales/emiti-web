@@ -14,4 +14,7 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 - [feature/plantillas-pr] Se eliminaron plantillas viejas y se crearon nuevas (`feature-template.md` y `release-template.md`).  
   PR: [#6](https://github.com/ramiromarcosmorales/emiti-web/pull/6) - @ramiromarcosmorales (Coordinador / DevOps)
 
+- [feature/coordinador-setup-repo-and-pages] Adaptación de `changelog.md` al formato oficial.  
+  PR: [#7](https://github.com/ramiromarcosmorales/emiti-web/pull/7) - @ramiromarcosmorales (Coordinador / DevOps)
+
 ### Fixed
