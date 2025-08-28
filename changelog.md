@@ -1,19 +1,20 @@
 # Changelog
 
-## [2025-08-15] – PR #6 – Plantilla de PR
-- **Autor/es:** Ramiro Marcos Morales (@ramiromarcosmorales) — **Rol:** Coordinador/DevOps
-- **Rama:** `feature/coordinador-setup-repo-and-pages` → base: `develop`
-- **Enlace a la PR:** https://github.com/ramiromarcosmorales/emiti-web/pull/6
-- **Cambios realizados (resumen):**
-  - Se eliminó `PULL_REQUEST_TEMPLATE.md`
-  - Se crearon las plantillas `feature-template.md` y `release-template.md`
-- **Revisor/es que aprobaron:** @ramire-uces
+Este archivo se actualiza con cada Pull Request para registrar avances y correcciones.
 
-## [2025-08-15] – PR #1 – Estructura base
-- **Autor/es:** Ramiro Marcos Morales (@ramiromarcosmorales) — **Rol:** Coordinador/DevOps
-- **Rama:** `feature/coordinador-setup-repo-and-pages` → base: `develop`
-- **Enlace a la PR:** https://github.com/ramiromarcosmorales/emiti-web/pull/1
-- **Cambios realizados (resumen):**
-  - Se creó la estructura base: `index.html`, `docs/01-mockup` y `docs/02-prompts` 
-  - Se creó `.github/PULL_REQUEST_TEMPLATE.md`
-- **Revisor/es que aprobaron:** @ramire-uces
+---
+
+## [Unreleased]
+
+### Added
+- [feature/estructura-base] Estructura inicial del proyecto.  
+  PR: [#1](https://github.com/ramiromarcosmorales/emiti-web/pull/1) - @ramiromarcosmorales (Coordinador / DevOps)
+
+### Changed
+- [feature/plantillas-pr] Se eliminaron plantillas viejas y se crearon nuevas (`feature-template.md` y `release-template.md`).  
+  PR: [#6](https://github.com/ramiromarcosmorales/emiti-web/pull/6) - @ramiromarcosmorales (Coordinador / DevOps)
+
+- [feature/coordinador-setup-repo-and-pages] Adaptación de `changelog.md` al formato oficial.  
+  PR: [#7](https://github.com/ramiromarcosmorales/emiti-web/pull/7) - @ramiromarcosmorales (Coordinador / DevOps)
+
+### Fixed
