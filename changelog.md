@@ -10,11 +10,11 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 - [feature/estructura-base] Estructura inicial del proyecto.  
   PR: [#1](https://github.com/ramiromarcosmorales/emiti-web/pull/1) - @ramiromarcosmorales (Coordinador / DevOps)
 
-- [feature/doc-ux-readme-mockup] Actualización del archivo `README.md`.
-  PR: [#5](https://github.com/ramiromarcosmorales/emiti-web/pull/5) - @Harika-sebastian (Documentador / Diseñador UX)
-
 - [feature/ia-prompts-1-to-5] Documentación de prompts 1 a 5. 
   PR: [#4](https://github.com/ramiromarcosmorales/emiti-web/pull/4) - @victoriaimo (Especialista en IA y Prompt Engineering)
+  
+- [feature/doc-ux-readme-mockup] Actualización del archivo `README.md`.
+  PR: [#5](https://github.com/ramiromarcosmorales/emiti-web/pull/5) - @Harika-sebastian (Documentador / Diseñador UX)
 
 ### Changed
 - [feature/plantillas-pr] Se eliminaron plantillas viejas y se crearon nuevas (`feature-template.md` y `release-template.md`).  
