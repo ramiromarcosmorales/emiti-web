@@ -12,6 +12,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 - [feature/ia-prompts-1-to-5] Documentación de prompts 1 a 5. 
   PR: [#4](https://github.com/ramiromarcosmorales/emiti-web/pull/4) - @victoriaimo (Especialista en IA y Prompt Engineering)
+  
+- [feature/doc-ux-readme-mockup] Actualización del archivo `README.md`.
+  PR: [#5](https://github.com/ramiromarcosmorales/emiti-web/pull/5) - @Harika-sebastian (Documentador / Diseñador UX)
 
 ### Changed
 - [feature/plantillas-pr] Se eliminaron plantillas viejas y se crearon nuevas (`feature-template.md` y `release-template.md`).  
@@ -23,3 +26,5 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 ### Fixed
 - [feature/coordinador-setup-repo-and-pages] Restauración de `index.html` eliminado por error en PR prevía.
   PR: [#9](https://github.com/ramiromarcosmorales/emiti-web/pull/9) - @ramiromarcosmorales (Coordinador / DevOps)
+
+ 
