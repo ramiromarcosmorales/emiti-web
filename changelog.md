@@ -51,4 +51,7 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
   ("docs: actualizar plantilla de PR") dado que no se actualizó `changelog.md`.  
   PR: [#17](https://github.com/ramiromarcosmorales/emiti-web/pull/17) - @ramiromarcosmorales (Coordinador / DevOps)
 
- 
+## [Release]
+
+- [release/actividad-obligatoria-1] Integración final desde `develop` y entrega final.
+  PR: [#21](https://github.com/ramiromarcosmorales/emiti-web/pull/21) - Coordinador/DevOps: @ramiromarcosmorales
