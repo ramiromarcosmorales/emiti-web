@@ -19,6 +19,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 - [feature/frontend-add-html-structure] Implementación de index.html.  
   PR: [#8](https://github.com/ramiromarcosmorales/emiti-web/pull/8) - @ramireuces (Desarrollador Frontend)
 
+- [feature/coordinador-setup-repo-and-pages] Actualización del archivo `feature-template.md` y creación de plantillas para issues por rol.  
+  PR: [#18](https://github.com/ramiromarcosmorales/emiti-web/pull/18) - @ramiromarcosmorales (Coordinador / DevOps)
+
 ### Changed
 - [feature/plantillas-pr] Se eliminaron plantillas viejas y se crearon nuevas (`feature-template.md` y `release-template.md`).  
   PR: [#6](https://github.com/ramiromarcosmorales/emiti-web/pull/6) - @ramiromarcosmorales (Coordinador / DevOps)
