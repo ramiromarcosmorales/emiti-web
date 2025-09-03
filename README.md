@@ -35,7 +35,7 @@ y control de documentación fiscal en proyectos personales o profesionales.
 
 ## 📑 Documentación
 
-- 🎨 [Mockup](https://github.com/ramiromarcosmorales/emiti-web/tree/develop/docs/01-mockup)
+- 🎨 [Mockup](docs/01-mockup/)
 - 🔗 [Mockup online en Figma](https://www.figma.com/proto/h9mE1D1OyWJGGGXtMpGQ6E/Emit%C3%AD-Web?node-id=18-133&p=f&t=fH3ojOpydZFQDtel-0&scaling=min-zoom&content-scaling=fixed&page-id=18%3A132)
 - 📁[índice de prompts](docs/02-prompts/prompts.md)
 - ♼ [Changelog](https://github.com/ramiromarcosmorales/emiti-web/blob/develop/changelog.md)
