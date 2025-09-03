@@ -27,12 +27,6 @@ _Describir brevemente qué tareas se llevaron a cabo en esta rama, qué archivos
 
 ---
 
-## 🔗 Issue vinculada
-
-_Closes: relacionarlo con la # de la issue_
-
----
-
 ## 📄 Archivos modificados / agregados
 
 - `README.md`  
