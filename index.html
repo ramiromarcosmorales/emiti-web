@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Emití - Dashboard de Facturación</title>
+    <title>EMITÍ</title>
     <!-- Acá se aplicarían los estilos CSS en futuras entregas -->
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <!-- Acá se incluirían los archivos JavaScript en futuras entregas -->
@@ -16,9 +16,9 @@
         <div>
             <!-- Logo de la aplicación, reemplazar 'logo.png' por el archivo real en futuras entregas -->
             <img src="logo.png" alt="Logo Emití" width="48" height="48">
-            <h1 style="display:inline-block; vertical-align:middle;">Emití</h1>
+            <h1 style="display:inline-block; vertical-align:middle;">EMITÍ</h1>
         </div>
-        <p>Bienvenido a tu app de gestión de facturación electrónica.</p>
+        <p>Gestión Profesional de Facturas</p>
         <!-- Acá se podría mejorar la disposición con CSS en futuras entregas -->
         <!-- Acá se agregaría JS para mostrar información del usuario logueado en futuras entregas -->
     </header>
@@ -27,7 +27,7 @@
     <nav>
         <ul>
             <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Nueva Factura</a></li>
+            <li><a href="#">+ Nueva Factura</a></li>
             <li><a href="#">Facturas</a></li>
             <li><a href="#">Configuración</a></li>
         </ul>
@@ -39,29 +39,31 @@
         <!-- Sección de métricas principales -->
         <section aria-label="Métricas principales">
             <h2>Métricas</h2>
-            <div>
+            <table border="1" cellpadding="10" cellspacing="5">
                 <!-- Tarjetas de métricas, se estilizarían como tarjetas en futuras entregas -->
-                <article>
-                    <h3>Total Facturas</h3>
-                    <p>120</p>
-                    <!-- Acá se agregaría JS para actualizar métricas en tiempo real en futuras entregas -->
-                </article>
-                <article>
-                    <h3>Importe Total</h3>
-                    <p>$1.200.000</p>
-                    <!-- Acá se agregaría JS para formateo de moneda dinámico en futuras entregas -->
-                </article>
-                <article>
-                    <h3>Promedio</h3>
-                    <p>$10.000</p>
-                    <!-- Acá se agregaría JS para cálculo automático de promedios en futuras entregas -->
-                </article>
-                <article>
-                    <h3>Facturas Pagadas</h3>
-                    <p>95</p>
-                    <!-- Acá se agregaría JS para mostrar porcentaje de facturas pagadas en futuras entregas -->
-                </article>
-            </div>
+                <tbody>
+                    <tr>
+                        <td>Total Facturas</td>
+                        <td>120</td>
+                        <!-- Acá se agregaría JS para actualizar métricas en tiempo real en futuras entregas -->
+                    </tr>
+                    <tr>
+                        <td>Importe Total</td>
+                        <td>$1.200.000</td>
+                        <!-- Acá se agregaría JS para formateo de moneda dinámico en futuras entregas -->
+                    </tr>
+                    <tr>
+                        <td>Promedio</td>
+                        <td>$10.000</td>
+                        <!-- Acá se agregaría JS para cálculo automático de promedios en futuras entregas -->
+                    </tr>
+                    <tr>
+                        <td>Pagadas</td>
+                        <td>95</td>
+                        <!-- Acá se agregaría JS para mostrar porcentaje de facturas pagadas en futuras entregas -->
+                    </tr>
+                </tbody>
+            </table>
             <!-- Acá se aplicarían estilos de tarjetas en futuras entregas -->
             <!-- Acá se agregaría JS para animaciones de carga de métricas en futuras entregas -->
         </section>
@@ -69,54 +71,14 @@
         <!-- Sección de acciones rápidas -->
         <section aria-label="Acciones rápidas">
             <h2>Acciones rápidas</h2>
+            <p>Gestioná tus facturas de forma eficiente.</p>
             <div>
                 <!-- Botones de acción rápida, se estilizarían en futuras entregas -->
-                <button type="button">Nueva Factura</button>
+                <button type="button">+ Nueva Factura</button>
                 <button type="button">Ver Todas las Facturas</button>
                 <!-- Acá se integraría funcionalidad JS para los botones en futuras entregas -->
                 <!-- Acá se agregaría JS para abrir modales o redirigir a formularios en futuras entregas -->
             </div>
-        </section>
-
-        <!-- Sección de facturas recientes -->
-        <section aria-label="Facturas recientes">
-            <h2>Facturas recientes</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Fecha</th>
-                        <th>Cliente</th>
-                        <th>Total</th>
-                        <th>Estado</th>
-                        <!-- Acá se agregaría JS para ordenamiento por columnas en futuras entregas -->
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>20/08/2025</td>
-                        <td>Empresa ABC</td>
-                        <td>$15.000</td>
-                        <td>Paga</td>
-                        <!-- Acá se agregaría JS para cambiar estado de factura con click en futuras entregas -->
-                    </tr>
-                    <tr>
-                        <td>19/08/2025</td>
-                        <td>Juan Pérez</td>
-                        <td>$8.500</td>
-                        <td>Pendiente</td>
-                    </tr>
-                    <tr>
-                        <td>18/08/2025</td>
-                        <td>Comercial XYZ</td>
-                        <td>$12.000</td>
-                        <td>Paga</td>
-                    </tr>
-                </tbody>
-            </table>
-            <!-- Acá se aplicarían estilos a la tabla en futuras entregas -->
-            <!-- Acá se integrarían funcionalidades JS para filtrar/ordenar en futuras entregas -->
-            <!-- Acá se agregaría JS para paginación de facturas en futuras entregas -->
-            <!-- Acá se agregaría JS para búsqueda en tiempo real en futuras entregas -->
         </section>
 
         <!-- Sección informativa sobre la app -->
@@ -165,7 +127,7 @@
         <!-- Acá se aplicarían estilos al footer en futuras entregas -->
         <!-- Acá se agregaría JS para mostrar año actual dinámicamente en futuras entregas -->
     </footer>
-
+    
     <!-- Acá se agregarían los scripts JavaScript al final del body en futuras entregas -->
     <!-- <script src="js/utils.js"></script> -->
     <!-- <script src="js/api.js"></script> -->
