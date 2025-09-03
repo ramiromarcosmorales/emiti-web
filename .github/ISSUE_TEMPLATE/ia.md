@@ -1,5 +1,5 @@
 ---
-name: "Issue Frontend"
+name: "Issue IA"
 about: "Template para tareas relacionadas al rol de Especialista en IA"
 title: "[IA] -  "
 labels: [ia]
