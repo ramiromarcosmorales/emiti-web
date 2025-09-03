@@ -6,8 +6,10 @@
 
 ## 📝 Prompt Exacto
 
-```bash
-Actúa como Diseñador UX y sugerime qué datos e imágenes debo incluir en la primera página de una presentación para una primera reunión con un cliente, a los fines de ofrecer un proyecto de una página de facturación online llamada Emití.
+```
+Actúa como Diseñador UX y sugerime qué datos e imágenes debo incluir en la primera página de una presentación
+para una primera reunión con un cliente, a los fines de ofrecer un proyecto de una página de facturación online 
+llamada Emití.
 ```
 
 ## 📸 Captura de pantalla del prompt solicitado:
