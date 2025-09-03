@@ -6,13 +6,19 @@
 
 ## 📝 Prompt Exacto
 
-```bash
-Actúa como desarrollador web y desarrollador frontend. En el diseño de la app Emití, estamos evaluando dos alternativas: 1. Crear 4 pantallas separadas (Dashboard, Nueva Factura, Facturas, Configuración). 2. Crear una sola pantalla scrolleable que contenga estas secciones. Desde el punto de vista del código (estructura, mantenibilidad y complejidad) y desde la experiencia visual del usuario (claridad, facilidad de navegación y usabilidad), ¿cuál de las dos opciones sería más recomendable? Explica ventajas y desventajas de cada enfoque y sugiere la opción más equilibrada.
+```
+Actúa como desarrollador web y desarrollador frontend. En el diseño de la app Emití, estamos evaluando dos alternativas: 
+1. Crear 4 pantallas separadas (Dashboard, Nueva Factura, Facturas, Configuración). 
+2. Crear una sola pantalla scrolleable que contenga estas secciones. 
+Desde el punto de vista del código (estructura, mantenibilidad y complejidad) y desde la experiencia visual del usuario 
+(claridad, facilidad de navegación y usabilidad), 
+¿Cuál de las dos opciones sería más recomendable? 
+Explica ventajas y desventajas de cada enfoque y sugiere la opción más equilibrada.
 ```
 
 ## 📸 Captura de pantalla del prompt solicitado:
 
-![Imagen](https://drive.google.com/uc?export=view&id=1iY2CJc7IzTexlfOLHymck8Mmmz5wCXeb)
+![Imagen](https://drive.google.com/uc?export=view&id=1D5bAn8BsMZ6CRDMrWE5JMzwM5alt7936)
 
 ## ⏳ Resultado esperado: 
 * Obtener una comparación clara entre usar varias pantallas o una opantalla scrolleable, considerando tanto la implementación técnica (código) como la experiencia visual del usuario.

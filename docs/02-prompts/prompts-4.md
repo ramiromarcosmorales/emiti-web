@@ -6,8 +6,11 @@
 
 ## 📝 Prompt Exacto
 
-```bash
-Actua como un desarrollador web y explicame cómo debería estructurar una página HTML5 para la app "Emití" usando buenas practicas. Quiero que me digas qué etiquetas semánticas usar, qué elementos básicos incluir No quiero código, solo indicaciones y sugerencias paso a paso.
+```
+Actua como un desarrollador web y explicame cómo debería estructurar una página HTML5 para la app "Emití"
+usando buenas practicas. 
+Quiero que me digas qué etiquetas semánticas usar, qué elementos básicos incluir. 
+No quiero código, solo indicaciones y sugerencias paso a paso.
 ```
 
 ## 📸 Captura de pantalla del prompt solicitado:
