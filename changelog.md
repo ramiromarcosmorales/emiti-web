@@ -43,6 +43,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 - [feature/coordinador-setup-repo-and-pages] Restauración de `index.html` eliminado por error en PR prevía.
   PR: [#9](https://github.com/ramiromarcosmorales/emiti-web/pull/9) - @ramiromarcosmorales (Coordinador / DevOps)
 
+- [feature/coordinador-setup-repo-and-pages] Corrección de duplicado de nombres en archivos `ia.md` y `frontend.md`
+  PR: [#20](https://github.com/ramiromarcosmorales/emiti-web/pull/20) - @ramiromarcosmorales (Coordinador / DevOps)
+
 ### Revert
 - [revert-15-feature/coordinador-setup-repo-and-pages] Reversión de la PR #15 
   ("docs: actualizar plantilla de PR") dado que no se actualizó `changelog.md`.  
