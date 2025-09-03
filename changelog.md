@@ -16,13 +16,12 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 - [feature/doc-ux-readme-mockup] Actualización del archivo `README.md`.
   PR: [#5](https://github.com/ramiromarcosmorales/emiti-web/pull/5) - @Harika-sebastian (Documentador / Diseñador UX)
 
-<<<<<<< HEAD
 - [feature/frontend-add-html-structure] Implementación de index.html.  
   PR: [#8](https://github.com/ramiromarcosmorales/emiti-web/pull/8) - @ramireuces (Desarrollador Frontend)
-=======
+
 - [feature/doc-ux-readme-mockup] Actualización final del archivo `README.md` con los enlaces correspondientes y se subieron los archivos finales en la carpeta mockup .
   PR: [#14](https://github.com/ramiromarcosmorales/emiti-web/pull/14) - @Harika-sebastian (Documentador / Diseñador UX)
->>>>>>> a381ef6 (Actualización del changelog con los cambios realizados)
+
 
 ### Changed
 - [feature/plantillas-pr] Se eliminaron plantillas viejas y se crearon nuevas (`feature-template.md` y `release-template.md`).  
