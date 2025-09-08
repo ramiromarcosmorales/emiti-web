@@ -1,8 +1,8 @@
 # 🔹 Prompt 1 - Plantillas de Pull Request en GitHub
 
-📍**Modelo utilizado:** gpt - 4o
+📍**Modelo utilizado:** Gemini 2.5 Flash
 
-📍**Método de Prompt:** Role prompting (rol: "Asistente de desarrollo de software")
+📍**Método de Prompt:** Zero-shot prompting 
 
 ## 📝 Prompt Exacto
 
@@ -15,7 +15,7 @@ En las consignas de la actividad, pide usar dos plantillas distintas de pull req
 
 ## 📸 Captura de pantalla del prompt solicitado:
 
-![Imagen](https://drive.google.com/uc?export=view&id=1NemjQTB8EpUrFENhC1JjAuh1tK25koj5)
+![Imagen](https://drive.google.com/uc?export=view&id=1W_7CTou91OdTiXfzMVki5FGzy7WWkZ5K)
 
 ## ⏳ Resultado esperado: 
 * Obtener una explicación paso a paso de cómo configurar varias plantillas de Pull Request en GitHub para cumplir con la consigna
@@ -25,7 +25,7 @@ En las consignas de la actividad, pide usar dos plantillas distintas de pull req
 
 ## 📸 Captura de pantalla del resultado obtenido:
 
-![Imagen](https://drive.google.com/uc?export=view&id=1iypOKvnNU_6-mjSi3bo23jOkWmfUlL2Q)
+![Imagen](https://drive.google.com/uc?export=view&id=19ecCwohy23VrpoozDeNrwo-SUd_TySoP)
 
 ## ✍🏼️ Correcciones manuales realizadas: 
 * Se ajustó el contenido de las plantillas para adaptarlas al proyecto
