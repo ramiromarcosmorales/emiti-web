@@ -1,15 +1,17 @@
 ---
-name: "Issue Documentador/Diseñador-UX"
-about: "Template para tareas relacionadas al rol de Documentador/Diseñador UX"
-title: "[Doc/Diseñador-UX] -  "
-labels: [doc-ux]
-assignees: [Harika-sebasthian]
+name: "Issue Frontend / CSS"
+about: "Template para tareas relacionadas al rol de Desarrollador Frontend / CSS"
+title: "[Frontend/CSS] - "
+labels: [frontend]
+assignees: [victoriaimo]
 ---
 
 ### Descripción
-Describir brevemente la tarea a realizar.
+Crear styles.css y components.css, aplicar box model, tipografías, estilos coherentes.
 
 ### Criterios de aceptación
-- [ ] Criterio 1
-- [ ] Criterio 2
-- [ ] Criterio 3
+- [ ] Creado `css/styles.css` con variables, tipografías y layout base
+- [ ] Creado `css/components.css` con botones, cards, formularios, navegación
+- [ ] Diferencia clara entre elementos en línea y en bloque
+- [ ] Coordinación con Responsive Design validada en GitHub Pages
+- [ ] PR creada y registrada en changelog.md

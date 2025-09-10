@@ -1,15 +1,17 @@
 ---
-name: "Issue IA"
-about: "Template para tareas relacionadas al rol de Especialista en IA"
-title: "[IA] -  "
-labels: [ia]
-assignees: [victoriaimo]
+name: "Issue Responsive Design"
+about: "Template para tareas relacionadas al rol de Especialista en Responsive Design"
+title: "[Responsive] - "
+labels: [responsive]
+assignees: [ramire-uces]
 ---
 
 ### Descripción
-Describir brevemente la tarea a realizar.
+Crear responsive.css, aplicar media queries y optimizar experiencia mobile/tablet.
 
 ### Criterios de aceptación
-- [ ] Criterio 1
-- [ ] Criterio 2
-- [ ] Criterio 3
+- [ ] Creado `css/responsive.css` con media queries documentadas
+- [ ] Implementación de Flexbox/Grid aplicada correctamente
+- [ ] Breakpoints definidos y documentados
+- [ ] Integración validada con los estilos base (Frontend/CSS)
+- [ ] PR creada y registrada en changelog.md
