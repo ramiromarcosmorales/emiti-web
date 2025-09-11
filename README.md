@@ -31,7 +31,7 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 - Git y GitHub
 - Visual Studio Code
 - Herramientas de Testing:
-  - BrowserStack, PageSpeed Insights, WAVE, GTMetrix, entre otras.
+- BrowserStack, PageSpeed Insights, WAVE, GTMetrix, entre otras.
 
 ---
 
