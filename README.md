@@ -48,7 +48,7 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 
 - 🎨 [Mockup actualizado](docs/01-mockup/disenio-con-css.png)
 - 🔗 [Versión online en Figma](https://www.figma.com/proto/h9mE1D1OyWJGGGXtMpGQ6E/Emit%C3%AD-Web?node-id=18-133&p=f&t=fH3ojOpydZFQDtel-0&scaling=min-zoom&content-scaling=fixed&page-id=18%3A132)
-- 🧪 [Índice de testing (test-case)](docs/03-testing/testing-doc.md)
+- 🧪 [Índice de testing (test-case)](https://github.com/ramiromarcosmorales/emiti-web/tree/feature/coord-dev-ops-repo-update-readme-md/docs/03-testing)
 - ♼ [Changelog.md](https://github.com/ramiromarcosmorales/emiti-web/blob/develop/changelog.md)
 
 ---
@@ -56,7 +56,7 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 ## 👥 Carátula del Proyecto
 
 | Nombre completo           | Usuario GitHub              | Matrícula | Rol                            |
-|---------------------------|-----------------------------|-----------|---------------------------------|
+|---------------------------|-----------------------------|-----------|--------------------------------|
 | Sebasthian Harika         | @Harika-sebasthian          | 149386    | Coordinador / DevOps           | 
 | Ramiro Nicolás Renterías  | @ramire-uces                | 143709    | Desarrollador Frontend / CSS   |
 | Victoria Imoberdorff      | @victoriaimo                | 119707    | Especialista en Responsive     |
