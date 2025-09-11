@@ -18,12 +18,12 @@ Incluye la integración de todos los aportes realizados por los integrantes del 
 
 ## 👥 Integrantes del Grupo
 
-| Nombre completo | Rol asignado en esta entrega | Usuario GitHub |
-|-----------------|------------------------------|----------------|
-| Nombre 1        | Coordinador/DevOps           | @usuario1      |
-| Nombre 2        | Desarrollador Frontend       | @usuario2      |
-| Nombre 3        | Documentador/UX              | @usuario3      |
-| Nombre 4        | Especialista en IA           | @usuario4      |
+| Nombre completo          | Rol asignado en esta entrega | Usuario GitHub      |
+|--------------------------|------------------------------|---------------------|
+| Ramiro Marcos Morales    | Coordinador/DevOps           |@ramiromarcosmorales |
+| Ramiro Nicolas Renterías | Desarrollador Frontend       |@ramire-uces         |
+| Sebasthian Harika        | Documentador/UX              |@Harika-sebasthian   |
+| Victoria Imoberdorff     | Especialista en IA           |@victoriaimo         |
 
 ---
 
