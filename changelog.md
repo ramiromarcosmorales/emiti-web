@@ -1,6 +1,7 @@
 ## [Unreleased]
 
 ### Added
+<<<<<<< HEAD
 ### Changed
 ### Fixed
 
@@ -28,6 +29,10 @@
 
 - [release/actividad-obligatoria-1] Integración final desde `develop` y entrega final.
   PR: [#21](https://github.com/ramiromarcosmorales/emiti-web/pull/21) - @ramiromarcosmorales (Coordinador / DevOps)
+=======
+- [feature/estructura-base] Estructura inicial del proyecto.  
+  PR: [#26](https://github.com/ramiromarcosmorales/emiti-web/pull/26) - @Harika-sebasthian (Coordinador / DevOps)
+>>>>>>> aaf0b80 (Creacion y merge con rama  backport)
 
 ### Changed
 - [feature/plantillas-pr] Se eliminaron plantillas viejas y se crearon nuevas (`feature-template.md` y `release-template.md`).  
