@@ -46,6 +46,7 @@
   PR: [#23](https://github.com/ramiromarcosmorales/emiti-web/pull/23) - @victoriaimo (Especialista en IA y Prompt Engineering)
 
 ### Fixed
+<<<<<<< HEAD
 - [feature/coordinador-setup-repo-and-pages] Restauración de `index.html` eliminado por error en PR previa.
   PR: [#9](https://github.com/ramiromarcosmorales/emiti-web/pull/9) - @ramiromarcosmorales (Coordinador / DevOps)
 
@@ -62,3 +63,5 @@
 - [revert-15-feature/coordinador-setup-repo-and-pages] Reversión de la PR #15 
   ("docs: actualizar plantilla de PR") dado que no se actualizó `changelog.md`.  
   PR: [#17](https://github.com/ramiromarcosmorales/emiti-web/pull/17) - @ramiromarcosmorales (Coordinador / DevOps)
+=======
+>>>>>>> d59414b (Correción de sintaxis)
