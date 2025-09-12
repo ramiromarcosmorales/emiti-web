@@ -49,7 +49,7 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 - 🎨 [Mockup actualizado](docs/01-mockup/disenio-con-css.png)
 - 🔗 [Versión online en Figma](https://www.figma.com/proto/h9mE1D1OyWJGGGXtMpGQ6E/Emit%C3%AD-Web?node-id=18-133&p=f&t=fH3ojOpydZFQDtel-0&scaling=min-zoom&content-scaling=fixed&page-id=18%3A132)
 - 🧪 [Índice de testing (test-case)](https://github.com/ramiromarcosmorales/emiti-web/tree/feature/coord-dev-ops-repo-update-readme-md/docs/03-testing)
-- ♼ [Changelog.md](https://github.com/ramiromarcosmorales/emiti-web/blob/develop/changelog.md)
+- ♼ [Changelog](https://github.com/ramiromarcosmorales/emiti-web/blob/develop/changelog.md)
 
 ---
 
@@ -57,10 +57,10 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 
 | Nombre completo           | Usuario GitHub              | Matrícula | Rol                            |
 |---------------------------|-----------------------------|-----------|--------------------------------|
-| Sebasthian Harika         | @Harika-sebasthian          | 149386    | Coordinador / DevOps           | 
-| Ramiro Nicolás Renterías  | @ramire-uces                | 143709    | Desarrollador Frontend / CSS   |
-| Victoria Imoberdorff      | @victoriaimo                | 119707    | Especialista en Responsive     |
-| Ramiro Marcos Morales     | @ramiromarcosmorales        | 148722    | Documentador / QA Tester       |
+| Sebasthian Harika         | @Harika-sebasthian          | 148722    | Coordinador / DevOps           | 
+| Victoria Imoberdorff      | @victoriaimo                | 119707    | Desarrollador Frontend / CSS   |
+|Ramiro Nicolás Renterías   | @ramire-uces                | 143709    | Especialista en Responsive     |
+| Ramiro Marcos Morales     | @ramiromarcosmorales        | 149386    | Documentador / QA Tester       |
 
 ---
 
@@ -70,32 +70,7 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 
 ---
 
-## 🔧 Convenciones de ramas
 
-- Formato: `feature/<rol>-<descripción>`
-  - Ejemplos:
-    - `feature/dev-frontend-css-add-styles`
-    - `feature/responsive-design-layout`
-    - `feature/doc-qa-tester-test-cases`
 
-- PRs dirigidas a: `develop`.
-- Revisión previa a merge obligatoria.
-- La rama `master` solo se actualiza desde `release/*` con aprobación del docente.
-
----
-
-## 🛠️ Estado actual del repositorio
-
-| Tarea                          |  Estado         |
-|--------------------------------|-----------------|
-| Correcciones de Actividad 1    | ✅ Completadas |
-| Backport a develop             | ✅ Realizado |
-| Implementación de estilos CSS  | 🔄 En curso |
-| Diseño responsive              | 🔄 En curso |
-| Testing documentado            | 🔄 En curso |
-| Mockup actualizado             | ✅ Subido |
-| Changelog actualizado          | ✅ En uso en cada PR|
-
----
 
 
