@@ -1,4 +1,4 @@
-# 🟣 PULL REQUEST – Actividad Obligatoria N.º 1 – Programación Web I
+# 🟣 PULL REQUEST – Actividad Obligatoria N.º2  – Programación Web I
 
 ---
 
@@ -10,7 +10,12 @@
 - **Materia:** Programación Web I  
 - **Profesor:** Lic. Matías Velasquez  
 - **Cuatrimestre/Año:** 2º Cuatrimestre / 2025  
-- **Rol asignado para esta entrega:** _(Ej.: Coordinador/DevOps, Desarrollador Frontend, Documentador/UX, Especialista en IA)_
+- **Rol asignado para esta entrega:** _(Ej.:
+ ■ Desarrollador Frontend/CSS
+ ■ Especialista en Responsive Design
+ ■ Documentador / QA Tester
+ ■ Coordinador/DevOps)
+ (Borrar los roles que no te correspondan)
 
 ---
 
@@ -35,10 +40,12 @@ _Closes: relacionarlo con la # de la issue_
 
 ## 📄 Archivos modificados / agregados
 
-- `README.md`  
-- `index.html`  
-- `docs/01-mockup/mockup.png`  
-- `docs/02-prompts/prompt-01.md`  
+- `README.md`
+- `changelog.md`
+- `index.html`
+- `css/` 
+- `docs/testing` 
+
 _(Agregar o eliminar según corresponda)_
 
 ---
@@ -62,6 +69,6 @@ _(Opcional – Aclaraciones, dificultades encontradas, sugerencias, etc.)_
 
 ## 🧾 Enlace a la consigna
 
-[📄 Consigna Actividad Obligatoria N.º 1 - GitHub](https://github.com/TuUsuario/TuRepositorio/blob/main/README.md)
+[📄 Consigna Actividad Obligatoria N.º 2 - GitHub](https://github.com/TuUsuario/TuRepositorio/blob/main/README.md)
 
 ---
