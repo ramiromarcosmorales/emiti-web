@@ -1,11 +1,14 @@
 ## [Unreleased]
 
 ### Added
+
+- [feature/feature/coord-dev-ops-repo-update-readme-md] Correción de sintaxis en PR.  
+  PR: [#26](https://github.com/ramiromarcosmorales/emiti-web/pull/26) - @Harika-sebasthian (Coordinador / DevOps)
+
 - [feature/feature/coord-dev-ops-repo-update-readme-md] Actualización 'README.md', enlaces y plantillas PR.  
   PR: [#27](https://github.com/ramiromarcosmorales/emiti-web/pull/27) - @Harika-sebasthian (Coordinador / DevOps)
   
-- [feature/feature/coord-dev-ops-repo-update-readme-md] Correción de sintaxis en PR.  
-  PR: [#26](https://github.com/ramiromarcosmorales/emiti-web/pull/26) - @Harika-sebasthian (Coordinador / DevOps)
+
 
 ### Changed
 
@@ -15,6 +18,7 @@
 ## [Release Actividad Obligatoria N°1] - 2025-09-03
 
 ### Added
+
 - [feature/estructura-base] Estructura inicial del proyecto.  
   PR: [#1](https://github.com/ramiromarcosmorales/emiti-web/pull/1) - @ramiromarcosmorales (Coordinador / DevOps)
 
@@ -37,6 +41,7 @@
   PR: [#21](https://github.com/ramiromarcosmorales/emiti-web/pull/21) - @ramiromarcosmorales (Coordinador / DevOps)
 
 ### Changed
+
 - [feature/plantillas-pr] Se eliminaron plantillas viejas y se crearon nuevas (`feature-template.md` y `release-template.md`).  
   PR: [#6](https://github.com/ramiromarcosmorales/emiti-web/pull/6) - @ramiromarcosmorales (Coordinador / DevOps)
 
@@ -53,6 +58,7 @@
   PR: [#23](https://github.com/ramiromarcosmorales/emiti-web/pull/23) - @victoriaimo (Especialista en IA y Prompt Engineering)
 
 ### Fixed
+
 - [feature/coordinador-setup-repo-and-pages] Restauración de `index.html` eliminado por error en PR previa.
   PR: [#9](https://github.com/ramiromarcosmorales/emiti-web/pull/9) - @ramiromarcosmorales (Coordinador / DevOps)
 
@@ -66,6 +72,7 @@
   PR: [#24](https://github.com/ramiromarcosmorales/emiti-web/pull/24) - @Harika-sebastian (Coordinador / DevOps)
 
 ### Revert
+
 - [revert-15-feature/coordinador-setup-repo-and-pages] Reversión de la PR #15 
   ("docs: actualizar plantilla de PR") dado que no se actualizó `changelog.md`.  
   PR: [#17](https://github.com/ramiromarcosmorales/emiti-web/pull/17) - @ramiromarcosmorales (Coordinador / DevOps)
