@@ -69,6 +69,6 @@ _(Opcional – Aclaraciones, dificultades encontradas, sugerencias, etc.)_
 
 ## 🧾 Enlace a la consigna
 
-[📄 Consigna Actividad Obligatoria N.º 2 - GitHub](https://github.com/TuUsuario/TuRepositorio/blob/main/README.md)
+[📄 Consigna Actividad Obligatoria N.º 2 - GitHub](https://drive.google.com/file/d/1iJ3t7Tg9jjU1wMRer3_eDnq5j-n_Ael-/view?usp=sharing)
 
 ---
