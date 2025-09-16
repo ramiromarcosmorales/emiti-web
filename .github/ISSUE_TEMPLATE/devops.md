@@ -1,15 +1,17 @@
 ---
 name: "Issue DevOps"
-about: "Template para tareas relacionadas al rol de DevOps"
-title: "[DevOps] -  "
+about: "Template para tareas relacionadas al rol de Coordinador / DevOps"
+title: "[DevOps] - "
 labels: [devops]
-assignees: [ramiromarcosmorales]
+assignees: [Harika-sebasthian]
 ---
 
 ### Descripción
-Describir brevemente la tarea a realizar.
+Aplicar correcciones de la Act. 1, configurar release, backport, actualizar README.md.
 
 ### Criterios de aceptación
-- [ ] Criterio 1
-- [ ] Criterio 2
-- [ ] Criterio 3
+- [ ] Correcciones de la release anterior aplicadas y mergeadas a master
+- [ ] Backport hacia develop realizado
+- [ ] README.md actualizado con objetivos de la Act. 2
+- [ ] GitHub Pages habilitado/actualizado
+- [ ] PR creada y registrada en changelog.md
