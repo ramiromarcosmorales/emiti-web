@@ -1,0 +1,179 @@
+/* Nav */
+
+nav.menu{
+    width: 100%;
+    padding-left: var(--page-gutter);
+    padding-right: var(--page-gutter);
+    margin: 0 auto 20px;
+    box-sizing: border-box;
+
+    --nav-font: 16px;
+}
+
+nav.menu ul{
+    list-style: none;
+    padding: 0;
+    margin: 14px 0;
+    text-align: left;
+
+    font-size: 0;
+}
+
+/* Restauracion del font-size en los ítems del menú*/
+
+nav.menu li{
+    font-size: var(--nav-font);
+}
+
+nav.menu a{
+    font-size: var(--nav-font);
+}
+
+nav.menu li{
+    display: inline-block;
+    vertical-align: top;
+    width: 24%;
+    min-width: 220px;
+    margin: 0 1% 0 0;
+    box-sizing: border-box;
+}
+
+nav.menu li:nth-child(4n){
+    margin-right:0;
+}
+
+nav.menu a{
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    background: #efeff1;
+    color: #222;
+    text-decoration: none;
+    font-weight: 700;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04), inset 0 -1px 0 rgba(0,0,0,0.05);
+}
+
+nav.menu a:hover{
+    filter: brightness(0.97);
+}
+
+nav.menu li:first-child a{
+    background: var(--color-surface);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    border-color: #d9d9d9;
+}
+
+/* Iconos del nav */
+
+nav.menu a::before{
+    font-family: "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+    font-size: 1rem;
+    line-height: 1;
+    margin-right: 0.5rem;
+}
+
+nav.menu li:nth-child(1) a::before{ content:"📊"; }
+nav.menu li:nth-child(2) a::before{ content:"➕"; }
+nav.menu li:nth-child(3) a::before{ content:"🧾"; }
+nav.menu li:nth-child(4) a::before{ content:"⚙️"; }
+
+/* Metricas */
+
+.metricas{
+    width: 100%;
+    padding-left: var(--page-gutter);
+    padding-right: var(--page-gutter);
+    margin: 0 auto 20px;
+    box-sizing: border-box;
+    
+    font-size: 0;
+}
+
+/* Cuatro columnas com inline-block*/
+
+.metricas .card{
+    display: inline-block;
+    vertical-align: top;
+    width: 24%; min-width: 220px;
+    margin: 0 1% 16px 0;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    padding: 1rem;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+    box-sizing: border-box;
+
+    font-size: 16px;
+}
+
+.metricas .card:nth-child(4n){
+    margin-right: 0;
+}
+
+.metricas .card h3{
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.05rem;
+    color: var(--color-text);
+}
+
+.metricas .card p{
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.metricas .card:hover{
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    transform: translateY(-1px);
+    transition: 0.15s ease;
+}
+
+/* Acciones rapidas */
+
+.acciones{
+    width: 100%;
+    padding: 16px var(--page-gutter);
+    margin: 0 auto 20px;
+    box-sizing: border-box;
+
+    background: #f0f0f0;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.7);
+    min-height: 140px;
+    text-align: left;
+}
+
+.acciones h2{ margin-bottom: 0.25rem; }
+.acciones p{ margin-bottom: 0.75rem; color: var(--color-text);}
+
+/* Botones en linea */
+
+.acciones .acciones-botones button,
+.acciones .acciones-botones .button{
+    display: inline-block;
+    margin-right: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Variantes de botom */
+
+.button-secondary{
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+}
+.button-sm{ padding: 6px 10px; font-size: 0.9rem;}
+.button-lg{ padding: 12px 18px; font-size: 1rem;}
+
+.button:hover,
+.button:focus-visible{
+    background-color: #218838;
+    transform: translateY(-1px);
+    transition: 0.15s ease;
+    outline: none;
+}
+
