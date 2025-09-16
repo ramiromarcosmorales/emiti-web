@@ -1,0 +1,212 @@
+/* Responsive Layouts y Media Queries */
+    /* NAV ICONO Y TEXTO */
+    nav.menu a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: .5rem;
+    }
+
+    /* NAV MENU */
+    nav.menu ul {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(180px, 1fr));
+        gap: 1rem;
+    }
+
+    nav.menu li {
+        display: block;
+        width: auto;
+        min-width: 0;
+        margin: 0;
+    }
+
+    /* MÉTRICAS */
+    .metricas {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(180px, 1fr));
+        gap: 1rem;
+    }
+    .metricas .card {
+        display: block;
+        width: auto;
+        min-width: 0;
+        margin: 0;
+    }
+
+    /* ACCIONES RÁPIDAS */
+    .acciones .acciones-botones {
+        display: flex;
+        gap: .75rem;
+        flex-wrap: wrap;
+    }
+
+    /* STICKY FOOTER LAYOUT */
+    body {
+        min-height: 100vh;
+        position: relative;
+        padding-bottom: var(--footer-space);
+    }
+
+    /* HEADER */
+    header > div {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    header img {
+        margin-right: .75rem;
+    }
+    
+    footer {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+/* BREAKPOINTS */
+:root {
+    --mobile: 600px; /* límite máximo para mobile */
+    --tablet: 900px; /* límite máximo para tablet  */
+}
+
+/* MOBILE FIRST - < 600px */
+/* Mobile: una columna, botones en columna, header y footer centrados */
+@media (max-width: 600px) {
+    nav.menu ul {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    nav.menu a {
+        justify-content: flex-start;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .metricas {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .acciones .acciones-botones {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    header > div {
+        flex-direction: column;
+        text-align: center;
+    }
+    header img {
+        margin: 0 auto 0.5rem;
+    }
+    header p {
+        text-align: center;
+    }
+
+    footer {
+        position: relative;
+        text-align: center;
+    }
+}
+
+/* TABLET - 601px a 900px */
+/* Tablet: dos columnas para menú y métricas, botones envueltos, header alineado a la izquierda */
+@media (min-width: 601px) and (max-width: 900px) {
+    nav.menu ul {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    .metricas {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .acciones .acciones-botones {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    header > div {
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+    header p {
+        text-align: left;
+    }
+
+    footer {
+        position: relative;
+    }
+}
+
+/* DESKTOP - > 900px */
+/* Desktop: cuatro columnas, layout completo, botones en fila */
+@media (min-width: 901px) {
+    nav.menu ul {
+        grid-template-columns: repeat(4, minmax(180px, 1fr));
+        gap: 1rem;
+    }
+
+    .metricas {
+        grid-template-columns: repeat(4, minmax(180px, 1fr));
+        gap: 1rem;
+    }
+
+    .acciones .acciones-botones {
+        flex-direction: row;
+        gap: 0.75rem;
+    }
+
+    header > div {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    footer {
+        position: absolute;
+    }
+}
+
+/* ORIENTACIONES */
+/* Ajustes para landscape y portrait según tamaño */
+@media (max-width: 932px) and (orientation: landscape) {
+    body {
+        padding-bottom: 160px; /* espacio extra para footer en landscape */
+    }
+    footer {
+        position: relative;
+    }
+}
+
+@media (max-width: 900px) and (orientation: portrait) {
+    body {
+        padding-bottom: var(--footer-space);
+    }
+}
+
+/* Ajuste para dispositivos portrait de alta resolución */
+@media (min-width: 801px) and (max-width: 1024px) and (orientation: portrait) {
+    .metricas {
+        grid-template-columns: 1fr; /* columnas más compactas */
+        gap: 0.5rem;               /* reduce el espacio entre cards */
+    }
+
+    nav.menu ul {
+        grid-template-columns: 1fr; /* menú también más compacto */
+        gap: 0.5rem;
+    }
+
+    body {
+        padding-left: 1rem;
+        padding-right: 1rem; /* evita que se vea alejado */
+    }
+}
+
+/* Transiciones */
+.metricas .card,
+nav.menu a {
+    transition: all 0.15s ease;
+}
