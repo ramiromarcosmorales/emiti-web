@@ -12,6 +12,8 @@
 
 ### Changed
 
+- [feature/feature/coord-dev-ops-repo-update-readme-md] Actualización link ACTIVIDAD OBLIGATORIA N°2 plantillas PR.  
+  PR: [#32](https://github.com/ramiromarcosmorales/emiti-web/pull/32) - @Harika-sebasthian (Coordinador / DevOps)
 ### Fixed
 
 
