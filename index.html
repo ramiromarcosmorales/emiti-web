@@ -2,9 +2,11 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EMITÍ</title>
-    <!-- Acá se aplicarían los estilos CSS en futuras entregas -->
-    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <!-- Acá se incluirían los archivos JavaScript en futuras entregas -->
     <!-- <script src="js/dashboard.js" defer></script> -->
     <!-- <script src="js/forms.js" defer></script> -->
@@ -12,120 +14,70 @@
 </head>
 <body>
     <!-- Encabezado principal de la aplicación -->
-    <header>
-        <div>
+    <header class="header">
+        <div class="logo-container">
             <!-- Logo de la aplicación, reemplazar 'logo.png' por el archivo real en futuras entregas -->
             <img src="logo.png" alt="Logo Emití" width="48" height="48">
-            <h1 style="display:inline-block; vertical-align:middle;">EMITÍ</h1>
+            
         </div>
         <p>Gestión Profesional de Facturas</p>
-        <!-- Acá se podría mejorar la disposición con CSS en futuras entregas -->
         <!-- Acá se agregaría JS para mostrar información del usuario logueado en futuras entregas -->
+
     </header>
 
     <!-- Menú de navegación principal -->
-    <nav>
+    <nav class="menu">
         <ul>
             <li><a href="#">Dashboard</a></li>
-            <li><a href="#">+ Nueva Factura</a></li>
+            <li><a href="#">Nueva Factura</a></li>
             <li><a href="#">Facturas</a></li>
             <li><a href="#">Configuración</a></li>
         </ul>
-        <!-- Acá se aplicarían estilos para el menú en futuras entregas -->
         <!-- Acá se agregaría JS para navegación SPA y resaltado de sección activa en futuras entregas -->
     </nav>
 
     <main>
         <!-- Sección de métricas principales -->
-        <section aria-label="Métricas principales">
-            <h2>Métricas</h2>
-            <table border="1" cellpadding="10" cellspacing="5">
-                <!-- Tarjetas de métricas, se estilizarían como tarjetas en futuras entregas -->
-                <tbody>
-                    <tr>
-                        <td>Total Facturas</td>
-                        <td>120</td>
-                        <!-- Acá se agregaría JS para actualizar métricas en tiempo real en futuras entregas -->
-                    </tr>
-                    <tr>
-                        <td>Importe Total</td>
-                        <td>$1.200.000</td>
-                        <!-- Acá se agregaría JS para formateo de moneda dinámico en futuras entregas -->
-                    </tr>
-                    <tr>
-                        <td>Promedio</td>
-                        <td>$10.000</td>
-                        <!-- Acá se agregaría JS para cálculo automático de promedios en futuras entregas -->
-                    </tr>
-                    <tr>
-                        <td>Pagadas</td>
-                        <td>95</td>
-                        <!-- Acá se agregaría JS para mostrar porcentaje de facturas pagadas en futuras entregas -->
-                    </tr>
-                </tbody>
-            </table>
-            <!-- Acá se aplicarían estilos de tarjetas en futuras entregas -->
-            <!-- Acá se agregaría JS para animaciones de carga de métricas en futuras entregas -->
+        <section aria-label="Métricas principales" class="metricas">
+            <div class="card">
+                <h3>Total Facturas</h3>
+                <p>120</p>
+            </div>
+            <div class="card">
+                <h3>Importe Total</h3>
+                <p>$1.200.000</p>
+            </div>
+            <div class="card">
+                <h3>Promedio</h3>
+                <p>$10.000</p>
+            </div>
+            <div class="card">
+                <h3>Pagadas</h3>
+                <p>95</p>
+            </div>
         </section>
 
         <!-- Sección de acciones rápidas -->
-        <section aria-label="Acciones rápidas">
+        <section aria-label="Acciones rápidas" class="acciones">
             <h2>Acciones rápidas</h2>
             <p>Gestioná tus facturas de forma eficiente.</p>
-            <div>
-                <!-- Botones de acción rápida, se estilizarían en futuras entregas -->
+            <div class="acciones-botones">
                 <button type="button">+ Nueva Factura</button>
                 <button type="button">Ver Todas las Facturas</button>
                 <!-- Acá se integraría funcionalidad JS para los botones en futuras entregas -->
                 <!-- Acá se agregaría JS para abrir modales o redirigir a formularios en futuras entregas -->
             </div>
-        </section>
-
-        <!-- Sección informativa sobre la app -->
-        <section aria-label="Información sobre Emití">
-            <h2>¿Qué es Emití?</h2>
-            <p>
-                Emití es una aplicación web diseñada para facilitar la gestión y emisión de facturas electrónicas para pequeñas y medianas empresas. Permite llevar un control eficiente de tus ventas, clientes y pagos.
-            </p>
-            <ul>
-                <li>Emisión rápida de facturas</li>
-                <li>Gestión de clientes</li>
-                <li>Seguimiento de pagos</li>
-                <li>Reportes y métricas</li>
-            </ul>
-            <!-- Acá se va a agregar una imagen descriptiva en futuras entregas -->
-            <!-- <img src="dashboard-imagen.png" alt="Dashboard"> -->
-            <!-- Acá se agregaría JS para animaciones de aparición de elementos en futuras entregas -->
-        </section>
-
-        <!-- Formulario de contacto -->
-        <section aria-label="Contacto">
-            <h2>Contacto</h2>
-            <form>
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre">
-                <!-- Acá se agregaría JS para validación en tiempo real en futuras entregas -->
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
-                <!-- Acá se agregaría JS para validación de formato de email en futuras entregas -->
-
-                <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje" name="mensaje"></textarea>
-                <!-- Acá se agregaría JS para contador de caracteres en futuras entregas -->
-
-                <button type="submit">Enviar</button>
-                <!-- Acá se integraría la validación y envío con JS en futuras entregas -->
-            </form>
-            <!-- Acá se agregaría JS para mostrar mensajes de éxito/error después del envío en futuras entregas -->
-        </section>
-    </main>
+        </section>        
 
     <!-- Pie de página -->
     <footer>
-        <p>&copy; 2025 Emití. Todos los derechos reservados.</p>
-        <!-- Acá se aplicarían estilos al footer en futuras entregas -->
-        <!-- Acá se agregaría JS para mostrar año actual dinámicamente en futuras entregas -->
+    <p>
+        <a href="#">¿Quiénes Somos?</a> - 
+        <a href="#">Contacto</a> - 
+        <a href="#">Política de Privacidad</a> - 
+        <a href="#">Cookies</a>
+    </p>
+    <p>&copy; 2025 Emití. Todos los derechos reservados.</p>
     </footer>
     
     <!-- Acá se agregarían los scripts JavaScript al final del body en futuras entregas -->
