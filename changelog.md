@@ -11,6 +11,9 @@
 - [feature/feature/dev-frontend-css-add-styles] Ajuste index.html, creación y desarrollo de styles.css y components.css. 
   PR: [#33](https://github.com/ramiromarcosmorales/emiti-web/pull/33) - @victoriaimo (Desarrollador Frontend/CSS)
 
+- [feature/responsive-design-add-responsive-styles] Ajuste index.html, desarrollo de responsive.css y agregado de logo.png. 
+  PR: [#34](https://github.com/ramiromarcosmorales/emiti-web/pull/34) - @ramire-uces (Especialista en Responsive Design)
+
 ### Changed
 
 - [feature/feature/coord-dev-ops-repo-update-readme-md] Actualización link ACTIVIDAD OBLIGATORIA N°2 plantillas PR.  
