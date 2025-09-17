@@ -32,17 +32,14 @@ body{
     color:var(--color-text);
     line-height: 1.6;
     padding: var(--page-gutter);
-
-/* Sticky footer */
-
-    min-height:100vh;
-    position:relative;
-    padding-bottom:var(--footer-space);
+    padding-bottom:calc(var(--page-gutter) + var(--footer-space));
+    min-height: 100vh;
+    position: relative;
 }
 
 h1, h2, h3{
     font-family: var(--font-heading);
-    margin: bottom 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 p{
