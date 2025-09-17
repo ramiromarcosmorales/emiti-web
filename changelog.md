@@ -8,10 +8,13 @@
 - [feature/feature/coord-dev-ops-repo-update-readme-md] Actualización 'README.md', enlaces y plantillas PR.  
   PR: [#27](https://github.com/ramiromarcosmorales/emiti-web/pull/27) - @Harika-sebasthian (Coordinador / DevOps)
   
-
+- [feature/feature/dev-frontend-css-add-styles] Ajuste index.html, creación y desarrollo de styles.css y components.css. 
+  PR: [#33](https://github.com/ramiromarcosmorales/emiti-web/pull/33) - @victoriaimo (Desarrollador Frontend/CSS)
 
 ### Changed
 
+- [feature/feature/coord-dev-ops-repo-update-readme-md] Actualización link ACTIVIDAD OBLIGATORIA N°2 plantillas PR.  
+  PR: [#32](https://github.com/ramiromarcosmorales/emiti-web/pull/32) - @Harika-sebasthian (Coordinador / DevOps)
 ### Fixed
 
 
