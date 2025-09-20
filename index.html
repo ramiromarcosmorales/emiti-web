@@ -16,11 +16,11 @@
     <!-- Encabezado principal de la aplicación -->
     <header class="header">
         <div class="logo-container">
-            <!-- Logo de la aplicación, reemplazar 'logo.png' por el archivo real en futuras entregas -->
+            <!-- Logo de la aplicación -->
             <img src="css/logo.png" alt="Logo Emití" width="48" height="48">
             
         </div>
-        <p>Gestión Profesional de Facturas</p>
+        <h1>Gestión Profesional de Facturas</h1>
         <!-- Acá se agregaría JS para mostrar información del usuario logueado en futuras entregas -->
 
     </header>
@@ -38,7 +38,9 @@
 
     <main>
         <!-- Sección de métricas principales -->
-        <section aria-label="Métricas principales" class="metricas">
+        <section class="metricas" aria-labelledby="metrics-title">
+            <h2 id="metrics-title">Metricas principales</h2>
+            <div class="metricas grid">
             <div class="card">
                 <h3>Total Facturas</h3>
                 <p>120</p>
@@ -55,6 +57,7 @@
                 <h3>Pagadas</h3>
                 <p>95</p>
             </div>
+            </div>
         </section>
 
         <!-- Sección de acciones rápidas -->
@@ -67,7 +70,8 @@
                 <!-- Acá se integraría funcionalidad JS para los botones en futuras entregas -->
                 <!-- Acá se agregaría JS para abrir modales o redirigir a formularios en futuras entregas -->
             </div>
-        </section>        
+        </section> 
+    </main>       
 
     <!-- Pie de página -->
     <footer>

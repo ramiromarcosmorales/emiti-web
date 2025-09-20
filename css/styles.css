@@ -1,14 +1,14 @@
 /*Variables Generales*/
 
 :root{
-    --color-primary: #28a745;
+    --color-primary: #2E7D32;
     --color-bg: #f9f9f9;
      --color-surface: #ffffff;
      --color-text: #222222;
     --color-muted: #666666;
     --color-border: #dddddd;
-    --color-primary-rgb: 40,167,69;
-    --color-primary-soft: rgba(var(--color-primary-rgb), 0.12);
+    --color-primary-rgb: 46,125,50;
+    --color-primary-soft: rgba(46,125,50, 0.12);
 
     --font-base: "Arial", sans-serif;
     --font-heading: "Segoe UI", sans-serif;
@@ -103,7 +103,7 @@ header img{
 
 /* "Gestion Profesional de Facturas" */
 
-header p{
+header h1{
     font-size: 1.3rem;
     font-weight: 400;
     color: var(--color-muted);
