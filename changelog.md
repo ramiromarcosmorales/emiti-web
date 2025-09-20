@@ -14,6 +14,10 @@
 - [feature/responsive-design-add-responsive-styles] Ajuste index.html, desarrollo de responsive.css y agregado de logo.png. 
   PR: [#34](https://github.com/ramiromarcosmorales/emiti-web/pull/34) - @ramire-uces (Especialista en Responsive Design)
 
+- [feature/doc-qa-tester-add-test-case-1] Documentación de casos de prueba. 
+  PR: [#35](https://github.com/ramiromarcosmorales/emiti-web/pull/35)
+
+
 ### Changed
 
 - [feature/feature/coord-dev-ops-repo-update-readme-md] Actualización link ACTIVIDAD OBLIGATORIA N°2 plantillas PR.  
