@@ -1,79 +1,148 @@
-/* Responsive Layouts y Media Queries */
-    /* NAV ICONO Y TEXTO */
-    nav.menu a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: .5rem;
-    }
+/* ===========================================================
+   Responsive Layouts y Media Queries
+   -----------------------------------------------------------
+   - Breakpoints definidos en :root para facilitar mantenimiento.
+   - Uso combinado de Flexbox y Grid según la necesidad del layout.
+   =========================================================== */
 
-    /* NAV MENU */
-    nav.menu ul {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(180px, 1fr));
-        gap: 1rem;
-    }
-
-    nav.menu li {
-        display: block;
-        width: auto;
-        min-width: 0;
-        margin: 0;
-    }
-
-    /* MÉTRICAS */
-    .metricas {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(180px, 1fr));
-        gap: 1rem;
-    }
-    .metricas .card {
-        display: block;
-        width: auto;
-        min-width: 0;
-        margin: 0;
-    }
-
-    /* ACCIONES RÁPIDAS */
-    .acciones .acciones-botones {
-        display: flex;
-        gap: .75rem;
-        flex-wrap: wrap;
-    }
-
-    /* STICKY FOOTER LAYOUT */
-    body {
-        min-height: 100vh;
-        position: relative;
-        padding-bottom: var(--footer-space);
-    }
-
-    /* HEADER */
-    header > div {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-    }
-
-    header img {
-        margin-right: .75rem;
-    }
-    
-    footer {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-    }
-
-/* BREAKPOINTS */
+/* ===== VARIABLES DE BREAKPOINTS =====
+   --mobile : máximo 600px -> smartphones en portrait/landscape.
+   --tablet : máximo 900px -> tablets pequeñas y medianas.
+*/
 :root {
-    --mobile: 600px; /* límite máximo para mobile */
-    --tablet: 900px; /* límite máximo para tablet  */
+    --mobile: 600px;
+    --tablet: 900px;
 }
 
-/* MOBILE FIRST - < 600px */
-/* Mobile: una columna, botones en columna, header y footer centrados */
+/* ===== LAYOUT GLOBAL =====
+   Se define un layout flexible con footer pegado al fondo.
+   min-height y padding-bottom aseguran que el footer no se superponga.
+*/
+body {
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: var(--footer-space);
+}
+
+/* =================== NAV ===========================
+   Menú principal en grid. En desktop se muestran 4 columnas.
+   En mobile y tablet se reduce según media queries.
+*/
+nav.menu a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
+
+nav.menu ul {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+nav.menu li {
+    display: block;
+    width: auto;
+    min-width: 0;
+    margin: 0;
+}
+
+/* =================== MÉTRICAS =============================
+   Cards mostradas en grilla. Número de columnas varía con el ancho.
+*/
+.metricas {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(180px, 1fr));
+    gap: 1rem;
+}
+.metricas .card {
+    display: block;
+    width: auto;
+    min-width: 0;
+    margin: 0;
+}
+
+/* =================== ACCIONES RÁPIDAS =====================
+   Flex con wrap para adaptar botones.
+*/
+.acciones .acciones-botones {
+    display: flex;
+    gap: .75rem;
+    flex-wrap: wrap;
+}
+
+/* =================== HEADER & FOOTER ======================
+   Header flexible y footer pegado o relativo según breakpoint.
+*/
+header > div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+header img {
+    margin-right: .75rem;
+}
+footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* =================== SECCIONES ESPECÍFICAS ================ */
+.nueva-factura .estado-factura {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+}
+.gestion-facturas {
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+.gestion-facturas .buscador {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: -0.1rem;
+}
+.gestion-facturas .estado-facturas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+}
+.configuracion {
+    display: grid;
+    grid-template-rows: auto;
+    gap: 1.25rem;
+}
+.configuracion .impuesto-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 1rem;
+}
+.configuracion .impuesto-item {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+/* ===========================================================
+   MEDIA QUERIES
+   -----------------------------------------------------------
+   MOBILE FIRST: estilos base para <600px.
+   Tablet y Desktop sobrescriben en orden creciente.
+   =========================================================== */
+
+/* ====== MOBILE: < 600px ======
+   - Una sola columna para menú y métricas.
+   - Botones en columna.
+   - Header y footer centrados.
+*/
 @media (max-width: 600px) {
     nav.menu ul {
         grid-template-columns: 1fr;
@@ -83,17 +152,14 @@
         justify-content: flex-start;
         padding: 0.5rem 0.75rem;
     }
-
     .metricas {
         grid-template-columns: 1fr;
         gap: 0.75rem;
     }
-
     .acciones .acciones-botones {
         flex-direction: column;
         gap: 0.5rem;
     }
-
     header > div {
         flex-direction: column;
         text-align: center;
@@ -104,31 +170,49 @@
     header p {
         text-align: center;
     }
-
     footer {
         position: relative;
         text-align: center;
     }
+    .nueva-factura .estado-factura {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    .gestion-facturas {
+        grid-template-rows: auto 1fr;
+        gap: 1rem;
+    }
+    .gestion-facturas .buscador {
+        justify-content: center;
+    }
+    .gestion-facturas .estado-facturas {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    .configuracion .impuesto-card {
+        grid-template-columns: 1fr;
+        justify-items: start;
+    }
 }
 
-/* TABLET - 601px a 900px */
-/* Tablet: dos columnas para menú y métricas, botones envueltos, header alineado a la izquierda */
+/* ====== TABLET: 601px–900px ======
+   - Dos columnas para menú y métricas.
+   - Botones envueltos en flex-wrap.
+   - Header alineado a la izquierda.
+*/
 @media (min-width: 601px) and (max-width: 900px) {
     nav.menu ul {
         grid-template-columns: repeat(2, 1fr);
         gap: 0.75rem;
     }
-
     .metricas {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
-
     .acciones .acciones-botones {
         flex-wrap: wrap;
         justify-content: flex-start;
     }
-
     header > div {
         flex-direction: row;
         justify-content: flex-start;
@@ -136,43 +220,60 @@
     header p {
         text-align: left;
     }
-
     footer {
         position: relative;
     }
+    .nueva-factura .estado-factura {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+    }
+    .gestion-facturas .estado-facturas {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    .configuracion .impuesto-card {
+        grid-template-columns: 1fr auto;
+    }
 }
 
-/* DESKTOP - > 900px */
-/* Desktop: cuatro columnas, layout completo, botones en fila */
+/* ====== DESKTOP: > 900px ======
+   - Cuatro columnas para menú y métricas.
+   - Botones en fila.
+*/
 @media (min-width: 901px) {
     nav.menu ul {
         grid-template-columns: repeat(4, minmax(180px, 1fr));
         gap: 1rem;
     }
-
     .metricas {
         grid-template-columns: repeat(4, minmax(180px, 1fr));
         gap: 1rem;
     }
-
     .acciones .acciones-botones {
         flex-direction: row;
         gap: 0.75rem;
     }
-
     header > div {
         flex-direction: row;
         align-items: center;
     }
-
     footer {
         position: absolute;
     }
 }
 
-/* ORIENTACIONES */
-/* Ajustes para landscape y portrait según tamaño */
+/* ===== ORIENTACIÓN =====
+   Ajustes específicos para landscape/portrait en tablets.
+*/
 @media (max-width: 932px) and (orientation: landscape) {
+    header {
+        padding-top: 0.1rem;
+        padding-bottom: 0.1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
     body {
         padding-bottom: 160px; /* espacio extra para footer en landscape */
     }
@@ -180,32 +281,36 @@
         position: relative;
     }
 }
-
 @media (max-width: 900px) and (orientation: portrait) {
     body {
         padding-bottom: var(--footer-space);
     }
 }
-
-/* Ajuste para dispositivos portrait de alta resolución */
 @media (min-width: 801px) and (max-width: 1024px) and (orientation: portrait) {
     .metricas {
-        grid-template-columns: 1fr; /* columnas más compactas */
-        gap: 0.5rem;               /* reduce el espacio entre cards */
-    }
-
-    nav.menu ul {
-        grid-template-columns: 1fr; /* menú también más compacto */
+        grid-template-columns: 1fr;
         gap: 0.5rem;
     }
-
+    nav.menu ul {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    .gestion-facturas .estado-facturas {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    .nueva-factura .estado-factura {
+        flex-direction: column;
+    }
     body {
         padding-left: 1rem;
         padding-right: 1rem; /* evita que se vea alejado */
     }
 }
 
-/* Transiciones */
+/* ===== TRANSICIONES =====
+   Suaviza hover/focus en tarjetas y links.
+*/
 .metricas .card,
 nav.menu a {
     transition: all 0.15s ease;
