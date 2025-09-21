@@ -20,6 +20,8 @@
 - [feature/dev-frontend-css-add-styles] Agregacion de pantallas restantes y ajuste de index.html y components.css. 
   PR: [#40](https://github.com/ramiromarcosmorales/emiti-web/pull/40) - @victoriaimo (Desarrollador Frontend/CSS)
 
+- [feature/responsive-design-add-responsive-styles] Ajuste responsive.css para 4 pantallas y solución de errores (headers).
+  PR: [#41](https://github.com/ramiromarcosmorales/emiti-web/pull/41) - @ramire-uces (Especialista en Responsive Design)
 
 ### Changed
 
