@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración - EMITÍ</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="logo-container">
+            <img src="css/logo.png" alt="Logo Emití" width="48" height="48">
+        </div>
+        <h1>Gestión Profesional de Facturas</h1>
+    </header>
+
+    <!-- Menú -->
+    <nav class="menu">
+        <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="nueva-factura.html">Nueva Factura</a></li>
+            <li><a href="facturas.html">Facturas</a></li>
+            <li><a href="configuracion.html" class="activo" aria-current="page">Configuración</a></li>
+        </ul>
+    </nav>
+
+   <main class="configuracion">
+  <!-- Contenido principal de Configuración -->
+  <section aria-label="Configuración de impuestos">
+    <h2>Configuración de impuestos</h2>
+    <p>Gestiona los impuestos que se aplicarán a tus facturas</p>
+
+    <h3>Impuestos Configurados</h3>
+    <div class="impuesto-card">
+      <div class="impuesto-item">
+        <input type="checkbox" id="iva21" checked>
+        <label for="iva21" class="nombre">IVA</label>
+        <span class="porcentaje">21%</span>
+        <span class="estado activo">Activo</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+    <!-- Pie -->
+    <footer>
+        <p>
+            <a href="#">¿Quiénes Somos?</a> -
+            <a href="#">Contacto</a> -
+            <a href="#">Política de Privacidad</a> -
+            <a href="#">Cookies</a>
+        </p>
+        <p>&copy; 2025 Emití. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

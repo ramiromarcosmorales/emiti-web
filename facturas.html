@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facturas - EMITÍ</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="logo-container">
+            <img src="css/logo.png" alt="Logo Emití" width="48" height="48">
+        </div>
+        <h1>Gestión Profesional de Facturas</h1>
+    </header>
+
+    <!-- Menú -->
+    <nav class="menu">
+        <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="nueva-factura.html">Nueva Factura</a></li>
+            <li><a href="facturas.html" class="activo" aria-current="page">Facturas</a></li>
+            <li><a href="configuracion.html">Configuración</a></li>
+        </ul>
+    </nav>
+
+    <main class="facturas">
+        <!-- Contenido principal de la sección Facturas -->
+        <section aria-label="Gestión de Facturas" class="gestion-facturas">
+            <h2>Gestión de Facturas</h2>
+            <p>Administrá todas tus facturas emitidas</p>
+
+            <!-- Buscador -->
+            <div class="buscador" role="search">
+                <label for="buscar" class="sr-only">Buscar por cliente o numero de factura</label>
+                <input type="search" id="buscar" 
+                placeholder="Buscar por cliente o número de factura..." 
+                aria-label="Buscar por cliente o número de factura">
+            </div>
+
+            <!-- Estado inicial: sin facturas -->
+            <div class="estado-facturas">
+                <img src="css/icono-factura.png" alt="" width="64" height="64">
+                <h3>No hay facturas</h3>
+                <p>Creá tu primera factura para comenzar</p>
+                <button type="button" class="button">Nueva Factura</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie -->
+    <footer>
+        <p>
+            <a href="#">¿Quiénes Somos?</a> -
+            <a href="#">Contacto</a> -
+            <a href="#">Política de Privacidad</a> -
+            <a href="#">Cookies</a>
+        </p>
+        <p>&copy; 2025 Emití. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
