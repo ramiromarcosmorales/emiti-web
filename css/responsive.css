@@ -51,12 +51,11 @@ nav.menu li {
 /* =================== MÉTRICAS =============================
    Cards mostradas en grilla. Número de columnas varía con el ancho.
 */
-.metricas {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(180px, 1fr));
-    gap: 1rem;
+.metrics-title {
+    font-size: 1.30rem; 
+    margin-bottom: 1rem;
 }
-.metricas .card {
+.cards {
     display: block;
     width: auto;
     min-width: 0;
@@ -152,10 +151,19 @@ footer {
         justify-content: flex-start;
         padding: 0.5rem 0.75rem;
     }
-    .metricas {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
+    .metrics-title {
+        text-align: center;
+        margin-bottom: 1rem;
     }
+    .cards {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .cards .card {
+        width: 95%;
+    }
+     
     .acciones .acciones-botones {
         flex-direction: column;
         gap: 0.5rem;
@@ -205,9 +213,18 @@ footer {
         grid-template-columns: repeat(2, 1fr);
         gap: 0.75rem;
     }
-    .metricas {
+    .metrics-title {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .cards {
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+        justify-items: center;
+    }
+    .cards .card {
+        width: 95%;
+        max-width: 350px;
     }
     .acciones .acciones-botones {
         flex-wrap: wrap;
@@ -247,10 +264,6 @@ footer {
         grid-template-columns: repeat(4, minmax(180px, 1fr));
         gap: 1rem;
     }
-    .metricas {
-        grid-template-columns: repeat(4, minmax(180px, 1fr));
-        gap: 1rem;
-    }
     .acciones .acciones-botones {
         flex-direction: row;
         gap: 0.75rem;
@@ -283,14 +296,14 @@ footer {
 }
 @media (max-width: 900px) and (orientation: portrait) {
     body {
-        padding-bottom: var(--footer-space);
+        padding-bottom: var(--footer-space); /* espacio extra para footer en portrait */
     }
 }
 @media (min-width: 801px) and (max-width: 1024px) and (orientation: portrait) {
     .metricas {
         grid-template-columns: 1fr;
         gap: 0.5rem;
-    }
+    } 
     nav.menu ul {
         grid-template-columns: 1fr;
         gap: 0.5rem;
@@ -305,6 +318,26 @@ footer {
     body {
         padding-left: 1rem;
         padding-right: 1rem; /* evita que se vea alejado */
+    }
+}
+/* Ajuste específico para landscape en iPhone 14 y Samsung S20+ */
+@media (max-width: 932px) and (orientation: landscape) {
+    .metrics-title {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        justify-items: stretch;
+        align-items: stretch;
+        margin: 0 auto;
+    }
+
+    .cards .card {
+        width: 100%;
+        height: auto;
     }
 }
 
