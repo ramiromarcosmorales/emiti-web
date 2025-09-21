@@ -17,6 +17,9 @@
 - [feature/doc-qa-tester-add-test-case-1] Documentación de casos de prueba. 
   PR: [#35](https://github.com/ramiromarcosmorales/emiti-web/pull/35)
 
+- [feature/dev-frontend-css-add-styles] Agregacion de pantallas restantes y ajuste de index.html y components.css. 
+  PR: [#40](https://github.com/ramiromarcosmorales/emiti-web/pull/40) - @victoriaimo (Desarrollador Frontend/CSS)
+
 
 ### Changed
 
