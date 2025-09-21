@@ -17,13 +17,19 @@
 - [feature/doc-qa-tester-add-test-case-1] Documentación de casos de prueba. 
   PR: [#35](https://github.com/ramiromarcosmorales/emiti-web/pull/35)
 
+- [feature/dev-frontend-css-add-styles] Agregacion de pantallas restantes y ajuste de index.html y components.css. 
+  PR: [#40](https://github.com/ramiromarcosmorales/emiti-web/pull/40) - @victoriaimo (Desarrollador Frontend/CSS)
+
 
 ### Changed
 
 - [feature/feature/coord-dev-ops-repo-update-readme-md] Actualización link ACTIVIDAD OBLIGATORIA N°2 plantillas PR.  
   PR: [#32](https://github.com/ramiromarcosmorales/emiti-web/pull/32) - @Harika-sebasthian (Coordinador / DevOps)
+
 ### Fixed
 
+- [feature/dev-frontend-css-add-styles] Accesibilidad (h1, contraste) y errores HTML Validator. 
+  PR: [#38](https://github.com/ramiromarcosmorales/emiti-web/pull/38) - @victoriaimo (Desarrollador Frontend/CSS)
 
 ## [Release Actividad Obligatoria N°1] - 2025-09-03
 
