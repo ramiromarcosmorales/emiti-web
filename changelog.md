@@ -33,6 +33,9 @@
 - [feature/dev-frontend-css-add-styles] Accesibilidad (h1, contraste) y errores HTML Validator. 
   PR: [#38](https://github.com/ramiromarcosmorales/emiti-web/pull/38) - @victoriaimo (Desarrollador Frontend/CSS)
 
+- [feature/dev-frontend-css-add-styles] Correccion estructura semantica en nueva-factura.html. 
+  PR: [#47](https://github.com/ramiromarcosmorales/emiti-web/pull/47) - @victoriaimo (Desarrollador Frontend/CSS)
+
 ## [Release Actividad Obligatoria N°1] - 2025-09-03
 
 ### Added
