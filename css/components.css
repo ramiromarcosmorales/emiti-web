@@ -246,6 +246,7 @@ nav.menu li:nth-child(4) a::before{ content:"⚙️"; }
 .facturas .buscador{
     position: relative;
     margin:1rem 0;
+    max-width: 400px;
 }
 
 .facturas .buscador input::placeholder{
@@ -262,14 +263,25 @@ nav.menu li:nth-child(4) a::before{ content:"⚙️"; }
 }
 
 .facturas .buscador input {
-  width: 100%;              
-  max-width: 400px;         
-  padding: 10px 14px 10px 36px; 
+  width: 100%;                      
+  padding: 10px 42px 10px 36px; 
+  box-sizing: border-box;
   border: 1px solid var(--color-border);
   border-radius: 16px;
-  font-size: 1rem;
-  line-height: 1.2;
 }
+
+.facturas .buscador button{
+    all: unset;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--color-muted);
+}
+
+.facturas .buscador input:placeholder-shown + button {visibility: hidden;}
+.facturas .buscador input:not(:placeholder-shown) + button {visibility: visible;}
 
 /* Estado inicial */
 
