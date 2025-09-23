@@ -34,12 +34,13 @@
             <p>Administrá todas tus facturas emitidas</p>
 
             <!-- Buscador -->
-            <div class="buscador" role="search">
+            <form class="buscador" role="search">
                 <label for="buscar" class="sr-only">Buscar por cliente o numero de factura</label>
-                <input type="search" id="buscar" 
-                placeholder="Buscar por cliente o número de factura..." 
-                aria-label="Buscar por cliente o número de factura">
-            </div>
+                <input type="text" id="buscar" 
+                    placeholder="Buscar por cliente o número de factura..." 
+                    aria-label="Buscar por cliente o número de factura">
+                    <button type="reset" aria-label="Borrar busqueda">x</button>
+            </form>
 
             <!-- Estado inicial: sin facturas -->
             <div class="estado-facturas">
