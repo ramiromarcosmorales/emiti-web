@@ -278,7 +278,7 @@ footer {
 }
 
 /* ===== ORIENTACIÓN =====
-   Ajustes específicos para landscape/portrait en tablets.
+   Ajustes específicos para landscape/portrait en celulares de alta resolución.
 */
 @media (max-width: 932px) and (orientation: landscape) {
     header {
@@ -334,6 +334,16 @@ footer {
     body {
         padding-left: 1rem;
         padding-right: 1rem; /* evita que se vea alejado */
+    }
+}
+/* Ajuste específico para landscape en dispositivos de 601px a 900px 
+para solucionar errores en nueva-factura y facturas
+*/ 
+@media (min-width: 601px) and (max-width: 900px) {
+    .gestion-facturas .estado-facturas,
+    .nueva-factura .estado-factura {
+        flex-direction: column;   /* vuelve a columna */
+        gap: 0.75rem;
     }
 }
 
