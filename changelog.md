@@ -36,6 +36,9 @@
 - [feature/dev-frontend-css-add-styles] Correccion estructura semantica en nueva-factura.html. 
   PR: [#47](https://github.com/ramiromarcosmorales/emiti-web/pull/47) - @victoriaimo (Desarrollador Frontend/CSS)
 
+- [feature/dev-frontend-css-add-styles] Correccion accesibilidad boton 'X' en facturas.html. 
+  PR: [#48](https://github.com/ramiromarcosmorales/emiti-web/pull/48) - @victoriaimo (Desarrollador Frontend/CSS)
+
 ## [Release Actividad Obligatoria N°1] - 2025-09-03
 
 ### Added
