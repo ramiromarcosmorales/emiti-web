@@ -122,8 +122,9 @@ button{
     margin-right: 8px;
 }
 
-button:hover{
-    background: #218838;
+button:hover,
+button:focus{
+    background: #43a047;
 }
 
 /* Acciones rapidas */

@@ -42,6 +42,9 @@
 - [feature/responsive-design-add-responsive-styles] Corrección de layout inconsistente en nueva-factura.html y facturas.html.
   PR: [#52](https://github.com/ramiromarcosmorales/emiti-web/pull/52) - @ramire-uces (Especialista en Responsive Design)
 
+- [feature/dev-frontend-css-add-styles] Correccion foco visible en controles. 
+  PR: [#53](https://github.com/ramiromarcosmorales/emiti-web/pull/53) - @victoriaimo (Desarrollador Frontend/CSS)
+
 ## [Release Actividad Obligatoria N°1] - 2025-09-03
 
 ### Added
