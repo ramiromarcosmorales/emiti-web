@@ -10,8 +10,8 @@
     --color-primary-rgb: 46,125,50;
     --color-primary-soft: rgba(46,125,50, 0.12);
 
-    --font-base: "Arial", sans-serif;
-    --font-heading: "Segoe UI", sans-serif;
+    --font-base: "Inter", sans-serif;
+    --font-heading: "Inter", sans-serif;
 
     --page-gutter: 16px;     
     --footer-space: 60px; 

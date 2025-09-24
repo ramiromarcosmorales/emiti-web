@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Facturas - EMITÍ</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
 </head>
 <body>
     <!-- Encabezado -->
     <header class="header">
         <div class="logo-container">
-            <img src="css/logo.png" alt="Logo Emití" width="48" height="48">
+            <img src="assets/logo.png">
         </div>
         <h1>Gestión Profesional de Facturas</h1>
     </header>
@@ -20,10 +24,10 @@
     <!-- Menú -->
     <nav class="menu">
         <ul>
-            <li><a href="index.html">Dashboard</a></li>
-            <li><a href="nueva-factura.html">Nueva Factura</a></li>
-            <li><a href="facturas.html" class="activo" aria-current="page">Facturas</a></li>
-            <li><a href="configuracion.html">Configuración</a></li>
+            <li><a href="index.html"><i class="fa-solid fa-chart-column"></i>Dashboard</a></li>
+            <li><a href="nueva-factura.html"><i class="fa-solid fa-file-invoice"></i>Nueva Factura</a></li>
+            <li><a href="facturas.html" class="activo" aria-current="page"><i class="fa-solid fa-file-invoice-dollar"></i>Facturas</a></li>
+            <li><a href="configuracion.html"><i class="fa-solid fa-gear"></i>Configuración</a></li>
         </ul>
     </nav>
 
@@ -36,6 +40,7 @@
             <!-- Buscador -->
             <form class="buscador" role="search">
                 <label for="buscar" class="sr-only">Buscar por cliente o numero de factura</label>
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
                 <input type="text" id="buscar" 
                     placeholder="Buscar por cliente o número de factura..." 
                     aria-label="Buscar por cliente o número de factura">
@@ -44,7 +49,7 @@
 
             <!-- Estado inicial: sin facturas -->
             <div class="estado-facturas">
-                <img src="css/icono-factura.png" alt="" width="64" height="64">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
                 <h3>No hay facturas</h3>
                 <p>Creá tu primera factura para comenzar</p>
                 <button type="button" class="button">Nueva Factura</button>
