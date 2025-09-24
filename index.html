@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EMITÍ</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        as="style" onload="this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </noscript>    
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" 
+        as="style" onload="this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+    </noscript>
     <!-- Acá se incluirían los archivos JavaScript en futuras entregas -->
     <!-- <script src="js/dashboard.js" defer></script> -->
     <!-- <script src="js/forms.js" defer></script> -->
@@ -17,8 +28,8 @@
     <header class="header">
         <div class="logo-container">
             <!-- Logo de la aplicación -->
-            <img src="css/logo.png" alt="Logo Emití" width="48" height="48">
-            
+            <img src="assets/logo.png" alt="Logo Emití" width="120" height="120"
+            decoding="async" fetchpriority="high">    
         </div>
         <h1>Gestión Profesional de Facturas</h1>
         <!-- Acá se agregaría JS para mostrar información del usuario logueado en futuras entregas -->
@@ -28,10 +39,10 @@
     <!-- Menú de navegación principal -->
     <nav class="menu">
         <ul>
-            <li><a href="index.html" class="activo" aria-current="page"> Dashboard</a></li>
-            <li><a href="nueva-factura.html">Nueva Factura</a></li>
-            <li><a href="facturas.html">Facturas</a></li>
-            <li><a href="configuracion.html">Configuración</a></li>
+            <li><a href="index.html" class="activo" aria-current="page"> <i class="fa-solid fa-chart-column"></i>Dashboard</a></li>
+            <li><a href="nueva-factura.html"><i class="fa-solid fa-file-invoice"></i>Nueva Factura</a></li>
+            <li><a href="facturas.html"><i class="fa-solid fa-file-invoice-dollar"></i>Facturas</a></li>
+            <li><a href="configuracion.html"><i class="fa-solid fa-gear"></i>Configuración</a></li>
         </ul>
         <!-- Acá se agregaría JS para navegación SPA y resaltado de sección activa en futuras entregas -->
     </nav>
@@ -42,19 +53,19 @@
             <h2 class="metrics-title" id="metrics-title">Metricas principales</h2>
             <div class="cards">
                 <div class="card">
-                   <h3>Total Facturas</h3>
+                   <h3>Total Facturas <i class="fa-solid fa-file-invoice-dollar"></i></h3>
                    <p>120</p>
                 </div>
                 <div class="card">
-                   <h3>Importe Total</h3>
+                   <h3>Importe Total <i class="fa-solid fa-calculator"></i></h3>
                    <p>$1.200.000</p>
                 </div>
                 <div class="card">
-                   <h3>Promedio</h3>
+                   <h3>Promedio <i class="fa-solid fa-chart-line"></i></h3>
                    <p>$10.000</p>
                 </div>
                 <div class="card">
-                   <h3>Pagadas</h3>
+                   <h3>Pagadas <i class="fa-solid fa-dollar-sign"></i></h3>
                    <p>95</p>
                 </div>
             </div>

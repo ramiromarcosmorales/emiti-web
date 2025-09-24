@@ -64,9 +64,7 @@ color: #222;
 
 /* Click (estado activo al presionar) */
 
-nav.menu a:active,
-.button:active,
-button:active{
+nav.menu a:active{
     transform: translateY(1px);
 }
 
@@ -79,19 +77,14 @@ nav.menu a.activo{
     color: #222;
 }
 
-/* Iconos del nav */
+/* Estilos para iconos dentro del menu */
 
-nav.menu a::before{
-    font-family: "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+nav.menu i{
+    margin-right: 0.7rem;
     font-size: 1rem;
-    line-height: 1;
-    margin-right: 0.5rem;
+    vertical-align: middle;
+    color: #000000;
 }
-
-nav.menu li:nth-child(1) a::before{ content:"📊"; }
-nav.menu li:nth-child(2) a::before{ content:"➕"; }
-nav.menu li:nth-child(3) a::before{ content:"🧾"; }
-nav.menu li:nth-child(4) a::before{ content:"⚙️"; }
 
 /* Metricas */
 
@@ -128,8 +121,16 @@ nav.menu li:nth-child(4) a::before{ content:"⚙️"; }
 .metricas .card h3{
     font-size: 1rem;
     font-weight: 700;
-    margin-bottom: 0.05rem;
+    margin-bottom: 0.25rem;
     color: var(--color-text);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.metricas .card h3 i{
+    font-size: 1.2rem;
+    color: #000;
 }
 
 .metricas .card p{
@@ -252,17 +253,18 @@ nav.menu li:nth-child(4) a::before{ content:"⚙️"; }
     position: relative;
     margin:1rem 0;
     max-width: 400px;
+    display: flex;
+    align-items: center;
 }
 
 .facturas .buscador input::placeholder{
     font-style: italic;
 }
 
-.facturas .buscador::before { 
-    content:"🔍"; 
+.facturas .buscador i.fa-magnifying-glass { 
     position:absolute; 
-    left:10px; top:50%; 
-    transform:translateY(-50%); 
+    left: 12px;
+    color: var(--color-muted); 
     font-size:1rem;
     pointer-events:none;
 }
@@ -287,11 +289,20 @@ nav.menu li:nth-child(4) a::before{ content:"⚙️"; }
     text-align: center;
     cursor: pointer;
     color: var(--color-muted);
-    font: inherit;
-    line-height: 1.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.facturas .buscador button i {
+    font-size: 1.2rem;
+}
+
+.estado-facturas i,
+.estado-factura i {
+    font-size: 4rem;
+    color: #000000;
+    margin-bottom: 1rem;
 }
 
 /* Foco visible en input y boton */
