@@ -28,6 +28,9 @@
 - [feature/feature/coord-dev-ops-repo-update-readme-md] Actualización link ACTIVIDAD OBLIGATORIA N°2 plantillas PR.  
   PR: [#32](https://github.com/ramiromarcosmorales/emiti-web/pull/32) - @Harika-sebasthian (Coordinador / DevOps)
 
+- [feature/dev-frontend-css-add-styles] Correccion de logos, iconos y estructura del proyecto. 
+  PR: [#54](https://github.com/ramiromarcosmorales/emiti-web/pull/54) - @victoriaimo (Desarrollador Frontend/CSS)
+
 ### Fixed
 
 - [feature/dev-frontend-css-add-styles] Accesibilidad (h1, contraste) y errores HTML Validator. 
