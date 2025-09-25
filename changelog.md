@@ -51,6 +51,9 @@
 - [feature/dev-frontend-css-add-styles] Correccion foco visible en controles. 
   PR: [#53](https://github.com/ramiromarcosmorales/emiti-web/pull/53) - @victoriaimo (Desarrollador Frontend/CSS)
 
+- [feature/responsive-design-add-responsive-styles] Corrección de footer con espacio vacío.
+  PR: [#58](https://github.com/ramiromarcosmorales/emiti-web/pull/58) - @ramire-uces (Especialista en Responsive Design)
+
 ## [Release Actividad Obligatoria N°1] - 2025-09-03
 
 ### Added
