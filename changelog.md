@@ -54,6 +54,9 @@
 - [feature/responsive-design-add-responsive-styles] Corrección de footer con espacio vacío.
   PR: [#58](https://github.com/ramiromarcosmorales/emiti-web/pull/58) - @ramire-uces (Especialista en Responsive Design)
 
+- [feature/responsive-design-add-responsive-styles] Corrección de footer superpuesto en desktop.
+  PR: [#61](https://github.com/ramiromarcosmorales/emiti-web/pull/61) - @ramire-uces (Especialista en Responsive Design)
+
 ## [Release Actividad Obligatoria N°1] - 2025-09-03
 
 ### Added
