@@ -29,7 +29,7 @@ Verificar compatibilidad cross-platform y validar código CSS/HTML
 | Navegador | Versión | Resultado | Observaciones |
 |-----------|---------|-----------|---------------|
 | Firefox | 143 | ✅ | Renderizado correcto |
-| Chrome | 140 | ❌ | Renderizado incorrecto | Emojis no se renderizan en Chrome, fue resuelto. PR #54
+| Chrome | 140 | ❌ | Renderizado incorrecto: emojis no se renderizan en Chrome. Fue resuelto. PR #54 |
 
 ## Validación W3C
 
