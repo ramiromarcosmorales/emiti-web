@@ -282,7 +282,7 @@ footer {
         align-items: center;
     }
     footer {
-        position: absolute;
+        position: relative;
     }
 }
 
