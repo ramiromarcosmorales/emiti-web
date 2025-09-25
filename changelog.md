@@ -31,6 +31,9 @@
 - [feature/dev-frontend-css-add-styles] Correccion de logos, iconos y estructura del proyecto. 
   PR: [#54](https://github.com/ramiromarcosmorales/emiti-web/pull/54) - @victoriaimo (Desarrollador Frontend/CSS)
 
+- [feature/dev-frontend-css-add-styles] Incorporacion de meta description en pantallas HTML. 
+  PR: [#55](https://github.com/ramiromarcosmorales/emiti-web/pull/55) - @victoriaimo (Desarrollador Frontend/CSS)
+
 ### Fixed
 
 - [feature/dev-frontend-css-add-styles] Accesibilidad (h1, contraste) y errores HTML Validator. 
