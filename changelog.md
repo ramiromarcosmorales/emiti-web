@@ -34,6 +34,9 @@
 - [feature/dev-frontend-css-add-styles] Incorporacion de meta description en pantallas HTML. 
   PR: [#55](https://github.com/ramiromarcosmorales/emiti-web/pull/55) - @victoriaimo (Desarrollador Frontend/CSS)
 
+- [feature/doc-qa-tester-add-test-case-1] Mockups con CSS y subida de casos de pruebas finalizados.
+  PR: [#57](https://github.com/ramiromarcosmorales/emiti-web/pull/57)
+
 ### Fixed
 
 - [feature/dev-frontend-css-add-styles] Accesibilidad (h1, contraste) y errores HTML Validator. 

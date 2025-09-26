@@ -7,6 +7,7 @@ Verificar compatibilidad cross-platform y validar código CSS/HTML
 - LambdaTest Real Time Testing
 - W3C CSS Validator
 - W3C HTML Validator
+- SauceLabs
 
 ## Testing Cross-Platform
 
@@ -27,8 +28,8 @@ Verificar compatibilidad cross-platform y validar código CSS/HTML
 ### Linux (Ubuntu)
 | Navegador | Versión | Resultado | Observaciones |
 |-----------|---------|-----------|---------------|
-| Firefox | [versión] | ✅/❌ | [notas] |
-| Chrome | [versión] | ✅/❌ | [notas] |
+| Firefox | 143 | ✅ | Renderizado correcto |
+| Chrome | 140 | ❌ | Renderizado incorrecto: emojis no se renderizan en Chrome. Fue resuelto. PR #54 |
 
 ## Validación W3C
 
@@ -39,7 +40,7 @@ Verificar compatibilidad cross-platform y validar código CSS/HTML
 
 ### HTML Validation Results
 - **HTML Validator:** ❌ 2 errores
-- **Warnings:** [número]
+- **Warnings:** 0
 ![HTML Validation](../screenshots/html-validation.png)
 
 ## Compatibilidad CSS Features

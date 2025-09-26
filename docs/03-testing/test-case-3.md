@@ -51,14 +51,15 @@ Evaluar el rendimiento de la página en términos de velocidad de carga y métri
 ![Lighthouse Report](../screenshots/lighthouse-report.png)
 
 ## Optimizaciones Implementadas
-Pendiente de aplicar
+- Logo optimizado: se redimensionó y optimizó el logo, logrando reducir el tamaño de 183KB a 7KB
+- Font/CSS no bloquantes: mediante el uso de `rel="preload" as="style" onload="this.rel='stylesheet'"` + `<noscript>` en las etiquetas de importación de css se evita que el renderizado se bloquee.
 
 ## Comparativas Antes/Después
 | Métrica         | Antes  | Después |
 |-----------------|--------|---------|
-| Performance     | 100/100| [n] |
-| FCP             | 0.4s   | [n] |
-| LCP             | 0.6s   | [n] |
-| CLS             | 0      | [n] |
-| Page Size       | 178KB  | [n] |
-| Fully Loaded    | 434ms  | [n] |
+| Performance     | 100/100| 100/100 |
+| FCP             | 0.4s   | 0.5s |
+| LCP             | 0.6s   | 0.5s |
+| CLS             | 0      | 0.001 |
+| Page Size       | 178KB  | 237KB |
+| Fully Loaded    | 434ms  | 322ms |
