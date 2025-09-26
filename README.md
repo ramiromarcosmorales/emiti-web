@@ -30,8 +30,7 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 - Figma
 - Git y GitHub
 - Visual Studio Code
-- Herramientas de Testing:
-- BrowserStack, PageSpeed Insights, WAVE, GTMetrix, entre otras.
+- Herramientas Principales Testing: BrowserStack, PageSpeed Insights, WAVE, GTMetrix, ResponsivelyApp, SauceLabs.
 
 ---
 

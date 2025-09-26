@@ -23,6 +23,10 @@
 - [feature/responsive-design-add-responsive-styles] Ajuste responsive.css para 4 pantallas y solución de errores (headers).
   PR: [#41](https://github.com/ramiromarcosmorales/emiti-web/pull/41) - @ramire-uces (Especialista en Responsive Design)
 
+- [feature/feature/coord-dev-ops-repo-update-readme-md] Actualización 'README.md'.  
+  PR: [#62](https://github.com/ramiromarcosmorales/emiti-web/pull/62) - @Harika-sebasthian (Coordinador / DevOps)
+  
+
 ### Changed
 
 - [feature/feature/coord-dev-ops-repo-update-readme-md] Actualización link ACTIVIDAD OBLIGATORIA N°2 plantillas PR.  
