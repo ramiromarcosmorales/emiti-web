@@ -20,10 +20,10 @@ Incluye la integración de todos los aportes realizados por los integrantes del 
 
 | Nombre completo          | Rol asignado en esta entrega | Usuario GitHub      |
 |--------------------------|------------------------------|---------------------|
-| Ramiro Marcos Morales    | Coordinador/DevOps           |@ramiromarcosmorales |
-| Ramiro Nicolas Renterías | Desarrollador Frontend       |@ramire-uces         |
-| Sebasthian Harika        | Documentador/UX              |@Harika-sebasthian   |
-| Victoria Imoberdorff     | Especialista en IA           |@victoriaimo         |
+| Sebasthian Harika    | Coordinador/DevOps | @Harika-sebasthian |
+| Victoria Imoberdorff | Desarrollador Frontend / CSS | @victoriaimo |
+| Ramiro Nicolas Renterías | Especialista en Responsive | @ramire-uces  |
+| Ramiro Marcos Morales | Documentador / QA Tester | @ramiromarcosm |
 
 ---
 
