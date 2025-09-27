@@ -23,7 +23,7 @@ Incluye la integración de todos los aportes realizados por los integrantes del 
 | Sebasthian Harika    | Coordinador/DevOps | @Harika-sebasthian |
 | Victoria Imoberdorff | Desarrollador Frontend / CSS | @victoriaimo |
 | Ramiro Nicolas Renterías | Especialista en Responsive | @ramire-uces  |
-| Ramiro Marcos Morales | Documentador / QA Tester | @ramiromarcosm |
+| Ramiro Marcos Morales | Documentador / QA Tester | @ramiromarcosmorales |
 
 ---
 
