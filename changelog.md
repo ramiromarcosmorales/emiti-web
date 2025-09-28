@@ -62,7 +62,7 @@
   ("docs: actualizar plantilla de PR") dado que no se actualizó `changelog.md`.  
   PR: [#17](https://github.com/ramiromarcosmorales/emiti-web/pull/17) - @ramiromarcosmorales (Coordinador / DevOps)
 
-  ## [Release Actividad Obligatoria N°2] - 2025-09-26
+## [Release Actividad Obligatoria N°2] - 2025-09-26
 
 ### Added
 
