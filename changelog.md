@@ -79,7 +79,7 @@
   PR: [#34](https://github.com/ramiromarcosmorales/emiti-web/pull/34) - @ramire-uces (Especialista en Responsive Design)
 
 - [feature/doc-qa-tester-add-test-case-1] Documentación de casos de prueba. 
-  PR: [#35](https://github.com/ramiromarcosmorales/emiti-web/pull/35)
+  PR: [#35](https://github.com/ramiromarcosmorales/emiti-web/pull/35) - @ramiromarcosmorales (Documentador/QA Tester)
 
 - [feature/dev-frontend-css-add-styles] Agregacion de pantallas restantes y ajuste de index.html y components.css. 
   PR: [#40](https://github.com/ramiromarcosmorales/emiti-web/pull/40) - @victoriaimo (Desarrollador Frontend/CSS)
@@ -102,8 +102,8 @@
 - [feature/dev-frontend-css-add-styles] Incorporacion de meta description en pantallas HTML. 
   PR: [#55](https://github.com/ramiromarcosmorales/emiti-web/pull/55) - @victoriaimo (Desarrollador Frontend/CSS)
 
-- [feature/doc-qa-tester-add-test-case-1] Mockups con CSS y subida de casos de pruebas finalizados.
-  PR: [#57](https://github.com/ramiromarcosmorales/emiti-web/pull/57)
+- [feature/doc-qa-tester-add-test-case-1] Mockups con CSS y subida de casos de pruebas finalizados.  
+  PR: [#57](https://github.com/ramiromarcosmorales/emiti-web/pull/57) - @ramiromarcosmorales (Documentador/QA Tester)
 
 ### Fixed
 
