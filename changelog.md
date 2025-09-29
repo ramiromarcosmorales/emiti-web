@@ -97,10 +97,6 @@
 - [feature/feature/coord-dev-ops-repo-update-readme-md] Actualización 'README.md'.  
   PR: [#62](https://github.com/ramiromarcosmorales/emiti-web/pull/62) - @Harika-sebasthian (Coordinador / DevOps)
   
-- [feature/feature/coord-dev-ops-repo-update-readme-md] Release Actividad Obligatoria N°2 .  
-  PR: [#63](https://github.com/ramiromarcosmorales/emiti-web/pull/63) - @Harika-sebasthian (Coordinador / DevOps)
-  
-
 ### Changed
 
 - [feature/feature/coord-dev-ops-repo-update-readme-md] Actualización link ACTIVIDAD OBLIGATORIA N°2 plantillas PR.  
@@ -137,3 +133,9 @@
 
 - [feature/responsive-design-add-responsive-styles] Corrección de footer superpuesto en desktop.
   PR: [#61](https://github.com/ramiromarcosmorales/emiti-web/pull/61) - @ramire-uces (Especialista en Responsive Design)
+
+### Release
+
+- [feature/feature/coord-dev-ops-repo-update-readme-md] Entrega Release Actividad Obligatoria N°2 .  
+  PR: [#63](https://github.com/ramiromarcosmorales/emiti-web/pull/63) - @Harika-sebasthian (Coordinador / DevOps)
+  
