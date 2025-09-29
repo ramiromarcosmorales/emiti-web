@@ -1,5 +1,12 @@
 ## [Unreleased]
 
+### Added  
+
+### Changed  
+
+### Fixed  
+
+
 ## [Release Actividad Obligatoria N°1] - 2025-09-03
 
 ### Added
@@ -62,7 +69,7 @@
   ("docs: actualizar plantilla de PR") dado que no se actualizó `changelog.md`.  
   PR: [#17](https://github.com/ramiromarcosmorales/emiti-web/pull/17) - @ramiromarcosmorales (Coordinador / DevOps)
 
-  ## [Release Actividad Obligatoria N°2] - 2025-09-26
+## [Release Actividad Obligatoria N°2] - 2025-09-26
 
 ### Added
 
@@ -79,7 +86,7 @@
   PR: [#34](https://github.com/ramiromarcosmorales/emiti-web/pull/34) - @ramire-uces (Especialista en Responsive Design)
 
 - [feature/doc-qa-tester-add-test-case-1] Documentación de casos de prueba. 
-  PR: [#35](https://github.com/ramiromarcosmorales/emiti-web/pull/35) - @ramiromarcosmorales (Documentador/QA Tester)
+  PR: [#35](https://github.com/ramiromarcosmorales/emiti-web/pull/35)
 
 - [feature/dev-frontend-css-add-styles] Agregacion de pantallas restantes y ajuste de index.html y components.css. 
   PR: [#40](https://github.com/ramiromarcosmorales/emiti-web/pull/40) - @victoriaimo (Desarrollador Frontend/CSS)
@@ -89,6 +96,9 @@
 
 - [feature/feature/coord-dev-ops-repo-update-readme-md] Actualización 'README.md'.  
   PR: [#62](https://github.com/ramiromarcosmorales/emiti-web/pull/62) - @Harika-sebasthian (Coordinador / DevOps)
+  
+- [feature/feature/coord-dev-ops-repo-update-readme-md] Release Actividad Obligatoria N°2 .  
+  PR: [#63](https://github.com/ramiromarcosmorales/emiti-web/pull/63) - @Harika-sebasthian (Coordinador / DevOps)
   
 
 ### Changed
@@ -102,8 +112,8 @@
 - [feature/dev-frontend-css-add-styles] Incorporacion de meta description en pantallas HTML. 
   PR: [#55](https://github.com/ramiromarcosmorales/emiti-web/pull/55) - @victoriaimo (Desarrollador Frontend/CSS)
 
-- [feature/doc-qa-tester-add-test-case-1] Mockups con CSS y subida de casos de pruebas finalizados.  
-  PR: [#57](https://github.com/ramiromarcosmorales/emiti-web/pull/57) - @ramiromarcosmorales (Documentador/QA Tester)
+- [feature/doc-qa-tester-add-test-case-1] Mockups con CSS y subida de casos de pruebas finalizados.
+  PR: [#57](https://github.com/ramiromarcosmorales/emiti-web/pull/57)
 
 ### Fixed
 
