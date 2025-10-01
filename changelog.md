@@ -1,13 +1,86 @@
 ## [Unreleased]
 
+### Added  
+
+### Changed  
+
+### Fixed  
+
+## [Release Actividad Obligatoria N°2] - 2025-09-26
+
 ### Added
+
+- [feature/feature/coord-dev-ops-repo-update-readme-md] Correción de sintaxis en PR.  
+  PR: [#26](https://github.com/ramiromarcosmorales/emiti-web/pull/26) - @Harika-sebasthian (Coordinador / DevOps)
+
+- [feature/feature/coord-dev-ops-repo-update-readme-md] Actualización 'README.md', enlaces y plantillas PR.  
+  PR: [#27](https://github.com/ramiromarcosmorales/emiti-web/pull/27) - @Harika-sebasthian (Coordinador / DevOps)
+  
+- [feature/feature/dev-frontend-css-add-styles] Ajuste index.html, creación y desarrollo de styles.css y components.css. 
+  PR: [#33](https://github.com/ramiromarcosmorales/emiti-web/pull/33) - @victoriaimo (Desarrollador Frontend/CSS)
+
+- [feature/responsive-design-add-responsive-styles] Ajuste index.html, desarrollo de responsive.css y agregado de logo.png. 
+  PR: [#34](https://github.com/ramiromarcosmorales/emiti-web/pull/34) - @ramire-uces (Especialista en Responsive Design)
+
+- [feature/doc-qa-tester-add-test-case-1] Documentación de casos de prueba. 
+  PR: [#35](https://github.com/ramiromarcosmorales/emiti-web/pull/35) - @ramiromarcosmorales (Documentador/QA Tester)
+
+- [feature/dev-frontend-css-add-styles] Agregacion de pantallas restantes y ajuste de index.html y components.css. 
+  PR: [#40](https://github.com/ramiromarcosmorales/emiti-web/pull/40) - @victoriaimo (Desarrollador Frontend/CSS)
+
+- [feature/responsive-design-add-responsive-styles] Ajuste responsive.css para 4 pantallas y solución de errores (headers).
+  PR: [#41](https://github.com/ramiromarcosmorales/emiti-web/pull/41) - @ramire-uces (Especialista en Responsive Design)
+
+- [feature/feature/coord-dev-ops-repo-update-readme-md] Actualización 'README.md'.  
+  PR: [#62](https://github.com/ramiromarcosmorales/emiti-web/pull/62) - @Harika-sebasthian (Coordinador / DevOps)
+  
 ### Changed
+
+- [feature/feature/coord-dev-ops-repo-update-readme-md] Actualización link ACTIVIDAD OBLIGATORIA N°2 plantillas PR.  
+  PR: [#32](https://github.com/ramiromarcosmorales/emiti-web/pull/32) - @Harika-sebasthian (Coordinador / DevOps)
+
+- [feature/dev-frontend-css-add-styles] Correccion de logos, iconos y estructura del proyecto. 
+  PR: [#54](https://github.com/ramiromarcosmorales/emiti-web/pull/54) - @victoriaimo (Desarrollador Frontend/CSS)
+
+- [feature/dev-frontend-css-add-styles] Incorporacion de meta description en pantallas HTML. 
+  PR: [#55](https://github.com/ramiromarcosmorales/emiti-web/pull/55) - @victoriaimo (Desarrollador Frontend/CSS)
+
+- [feature/doc-qa-tester-add-test-case-1] Mockups con CSS y subida de casos de pruebas finalizados.
+  PR: [#57](https://github.com/ramiromarcosmorales/emiti-web/pull/57) - @ramiromarcosmorales (Documentador/QA Tester)
+
 ### Fixed
+
+- [feature/dev-frontend-css-add-styles] Accesibilidad (h1, contraste) y errores HTML Validator. 
+  PR: [#38](https://github.com/ramiromarcosmorales/emiti-web/pull/38) - @victoriaimo (Desarrollador Frontend/CSS)
+
+- [feature/dev-frontend-css-add-styles] Correccion estructura semantica en nueva-factura.html. 
+  PR: [#47](https://github.com/ramiromarcosmorales/emiti-web/pull/47) - @victoriaimo (Desarrollador Frontend/CSS)
+
+- [feature/dev-frontend-css-add-styles] Correccion accesibilidad boton 'X' en facturas.html. 
+  PR: [#48](https://github.com/ramiromarcosmorales/emiti-web/pull/48) - @victoriaimo (Desarrollador Frontend/CSS)
+  
+- [feature/responsive-design-add-responsive-styles] Corrección de layout inconsistente en nueva-factura.html y facturas.html.
+  PR: [#52](https://github.com/ramiromarcosmorales/emiti-web/pull/52) - @ramire-uces (Especialista en Responsive Design)
+
+- [feature/dev-frontend-css-add-styles] Correccion foco visible en controles. 
+  PR: [#53](https://github.com/ramiromarcosmorales/emiti-web/pull/53) - @victoriaimo (Desarrollador Frontend/CSS)
+
+- [feature/responsive-design-add-responsive-styles] Corrección de footer con espacio vacío.
+  PR: [#58](https://github.com/ramiromarcosmorales/emiti-web/pull/58) - @ramire-uces (Especialista en Responsive Design)
+
+- [feature/responsive-design-add-responsive-styles] Corrección de footer superpuesto en desktop.
+  PR: [#61](https://github.com/ramiromarcosmorales/emiti-web/pull/61) - @ramire-uces (Especialista en Responsive Design)
+
+### Release
+
+- [feature/feature/coord-dev-ops-repo-update-readme-md] Entrega Release Actividad Obligatoria N°2 .  
+  PR: [#63](https://github.com/ramiromarcosmorales/emiti-web/pull/63) - @Harika-sebasthian (Coordinador / DevOps)
 
 
 ## [Release Actividad Obligatoria N°1] - 2025-09-03
 
 ### Added
+
 - [feature/estructura-base] Estructura inicial del proyecto.  
   PR: [#1](https://github.com/ramiromarcosmorales/emiti-web/pull/1) - @ramiromarcosmorales (Coordinador / DevOps)
 
@@ -30,6 +103,7 @@
   PR: [#21](https://github.com/ramiromarcosmorales/emiti-web/pull/21) - @ramiromarcosmorales (Coordinador / DevOps)
 
 ### Changed
+
 - [feature/plantillas-pr] Se eliminaron plantillas viejas y se crearon nuevas (`feature-template.md` y `release-template.md`).  
   PR: [#6](https://github.com/ramiromarcosmorales/emiti-web/pull/6) - @ramiromarcosmorales (Coordinador / DevOps)
 
@@ -46,6 +120,7 @@
   PR: [#23](https://github.com/ramiromarcosmorales/emiti-web/pull/23) - @victoriaimo (Especialista en IA y Prompt Engineering)
 
 ### Fixed
+
 - [feature/coordinador-setup-repo-and-pages] Restauración de `index.html` eliminado por error en PR previa.
   PR: [#9](https://github.com/ramiromarcosmorales/emiti-web/pull/9) - @ramiromarcosmorales (Coordinador / DevOps)
 
@@ -59,6 +134,8 @@
   PR: [#24](https://github.com/ramiromarcosmorales/emiti-web/pull/24) - @Harika-sebastian (Coordinador / DevOps)
 
 ### Revert
+
 - [revert-15-feature/coordinador-setup-repo-and-pages] Reversión de la PR #15 
   ("docs: actualizar plantilla de PR") dado que no se actualizó `changelog.md`.  
   PR: [#17](https://github.com/ramiromarcosmorales/emiti-web/pull/17) - @ramiromarcosmorales (Coordinador / DevOps)
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facturas - EMITÍ</title>
+     <meta name="description" content="Consultá y gestioná tus facturas emitidas en Emití Web. Filtrá por cliente o numero de factura facilmente.">
+    <link rel="icon" href="assets/favicon.png" type="image/png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        as="style" onload="this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </noscript>    
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" 
+        as="style" onload="this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+    </noscript>
+    
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="logo-container">
+            <img src="assets/logo.png" alt="Logo Emití" width="120" height="120"
+            decoding="async" fetchpriority="high"> 
+        </div>
+        <h1>Gestión Profesional de Facturas</h1>
+    </header>
+
+    <!-- Menú -->
+    <nav class="menu">
+        <ul>
+            <li><a href="index.html"><i class="fa-solid fa-chart-column"></i>Dashboard</a></li>
+            <li><a href="nueva-factura.html"><i class="fa-solid fa-file-invoice"></i>Nueva Factura</a></li>
+            <li><a href="facturas.html" class="activo" aria-current="page"><i class="fa-solid fa-file-invoice-dollar"></i>Facturas</a></li>
+            <li><a href="configuracion.html"><i class="fa-solid fa-gear"></i>Configuración</a></li>
+        </ul>
+    </nav>
+
+    <main class="facturas">
+        <!-- Contenido principal de la sección Facturas -->
+        <section aria-label="Gestión de Facturas" class="gestion-facturas">
+            <h2>Gestión de Facturas</h2>
+            <p>Administrá todas tus facturas emitidas</p>
+
+            <!-- Buscador -->
+            <form class="buscador" role="search">
+                <label for="buscar" class="sr-only">Buscar por cliente o numero de factura</label>
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <input type="text" id="buscar" 
+                    placeholder="Buscar por cliente o número de factura..." 
+                    aria-label="Buscar por cliente o número de factura">
+                    <button type="reset" aria-label="Borrar busqueda">x</button>
+            </form>
+
+            <!-- Estado inicial: sin facturas -->
+            <div class="estado-facturas">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                <h3>No hay facturas</h3>
+                <p>Creá tu primera factura para comenzar</p>
+                <button type="button" class="button">Nueva Factura</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie -->
+    <footer>
+        <p>
+            <a href="#">¿Quiénes Somos?</a> -
+            <a href="#">Contacto</a> -
+            <a href="#">Política de Privacidad</a> -
+            <a href="#">Cookies</a>
+        </p>
+        <p>&copy; 2025 Emití. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
