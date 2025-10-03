@@ -1,35 +1,13 @@
 /* Nav */
 
-nav.menu{
-    width: 100%;
-    padding-left: var(--page-gutter, 16px);
-    padding-right: var(--page-gutter, 16px);
-    margin: 0 auto 20px;
-    box-sizing: border-box;
+/* Menú: Bootstrap maneja layout; mantenemos tipografía y pill visuals */
+nav.menu{ width: 100%; margin: 0 auto 20px; box-sizing: border-box; --nav-font: 16px; }
 
-    --nav-font: 16px;
-}
-
-nav.menu ul{
-    list-style: none;
-    padding: 0;
-    margin: 14px 0;
-    text-align: left;
-
-    font-size: 0;
-}
+nav.menu ul{ list-style: none; padding: 0; margin: 14px 0; font-size: 0; }
 
 /* Restauracion del font-size en los ítems del menú*/
 
-nav.menu li{
-    font-size: var(--nav-font);
-    display: inline-block;
-    vertical-align: top;
-    width: 24%;
-    min-width: 220px;
-    margin: 0 1% 0 0;
-    box-sizing: border-box;
-}
+nav.menu li{ font-size: var(--nav-font); display: inline-block; vertical-align: top; box-sizing: border-box; }
 
 /* Cada 4 item sin margen derecho para cuadrar*/
 
@@ -88,31 +66,11 @@ nav.menu i{
 
 /* Metricas */
 
-.metricas{
-    width: 100%;
-    padding-left: var(--page-gutter, 16px);
-    padding-right: var(--page-gutter, 16px);
-    margin: 0 auto 20px;
-    box-sizing: border-box;
-    font-size: 0;
-}
+.metricas{ width: 100%; margin: 0 auto 20px; box-sizing: border-box; font-size: 0; }
 
 /* Cuatro columnas con inline-block*/
 
-.metricas .card{
-    display: inline-block;
-    vertical-align: top;
-    width: 24%; min-width: 220px;
-    margin: 0 1% 16px 0;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 14px;
-    padding: 1rem;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.06);
-    box-sizing: border-box;
-    font-size: 16px;
-    transition: box-shadow 0.15s ease, transform 0.15s ease;
-}
+.metricas .card{ background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 14px; box-shadow: 0 3px 8px rgba(0,0,0,0.06); font-size: 16px; transition: box-shadow 0.15s ease, transform 0.15s ease; }
 
 .metricas .card:nth-child(4n){
     margin-right: 0;
@@ -152,11 +110,11 @@ nav.menu i{
     padding: 16px var(--page-gutter, 16px);
     margin: 0 auto 20px;
     box-sizing: border-box;
-    background: #f0f0f0;
-    border: 1px solid var(--color-border);
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.7);
-    min-height: 140px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 0;
     text-align: left;
 }
 
@@ -176,30 +134,15 @@ nav.menu i{
 
 /* Caja gris*/
 
-.configuracion{
-    background:#f3f3f3; 
-    border:1px solid var(--color-border);
-    border-radius:18px; 
-    padding:1.25rem; 
-    box-shadow:0 1px 0 rgba(0,0,0,.05);
-}
+.configuracion{ background: transparent; border: none; border-radius: 0; padding: 0; box-shadow: none; }
 
 /* Caja blanca única */
 
-.configuracion .impuesto-card{
-    background:#fff; 
-    border:1px solid var(--color-border);
-    border-radius:16px; 
-    padding:14px 16px; 
-    box-shadow:0 2px 0 rgba(0,0,0,.06);
-}
+/* impuesto-card migra a .card Bootstrap en configuracion.html */
 
 /* Fila plana */
 
-.configuracion .impuesto-item{ 
-    display:flex; 
-    align-items:center; gap:0.5rem; 
-}
+.configuracion .impuesto-item{ display:flex; align-items:center; gap:0.5rem; }
 
 /* Texto y pill */
 
@@ -220,102 +163,30 @@ nav.menu i{
 
 /* PAGINA NUEVA FACTURA */
 
-.nueva-factura .estado-factura{
-    text-align: center;
-    background: #fff;
-    border: 1px solid var(--color-border);
-    border-radius: 16px;
-    padding: 24px;
-    margin: 1rem 0;
-    width: 100%;
-    box-sizing: border-box;
-    box-shadow: 0 2px 0 rgba(0,0,0,.06);
-}
-
-.nueva-factura .estado-factura img{
-    display:block;
-    margin: 0 auto 8px;
-}
+/* Sección "Nueva Factura" migra a Bootstrap card en nueva-factura.html.
+   Conservamos estas reglas por compatibilidad, pero ya no se usan allí. */
 
 /* PANTALLA FACTURAS */
 
 .facturas{
-    padding: 1.25rem;
-    background: #f3f3f3;
-    border: 1px solid var(--color-border);
-    border-radius: 18px;
-    box-shadow: 0 1px 0 rgba(0,0,0,.05);
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 /* Buscador */
 
-.facturas .buscador{
-    position: relative;
-    margin:1rem 0;
-    max-width: 400px;
-    display: flex;
-    align-items: center;
-}
-
-.facturas .buscador input::placeholder{
-    font-style: italic;
-}
-
-.facturas .buscador i.fa-magnifying-glass { 
-    position:absolute; 
-    left: 12px;
-    color: var(--color-muted); 
-    font-size:1rem;
-    pointer-events:none;
-}
-
-.facturas .buscador input {
-  width: 100%;                      
-  padding: 10px 42px 10px 36px; 
-  box-sizing: border-box;
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-}
-
-.facturas .buscador button{
-    background: transparent;
-    border: none;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 2rem;
-    height: 2rem;
-    text-align: center;
-    cursor: pointer;
-    color: var(--color-muted);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.facturas .buscador button i {
-    font-size: 1.2rem;
-}
-
+/* Buscador de Facturas migra a input-group Bootstrap. Conservamos estilos genéricos */
+.facturas .buscador{ margin:1rem 0; }
 .estado-facturas i,
-.estado-factura i {
-    font-size: 4rem;
-    color: #000000;
-    margin-bottom: 1rem;
-}
+.estado-factura i { font-size: 4rem; color: #000000; margin-bottom: 1rem; }
 
 /* Foco visible en input y boton */
 
-.facturas .buscador input:focus-visible{
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-}
-
-.facturas .buscador button:focus-visible{
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-}
+.facturas .buscador input:focus-visible{ outline: none; }
+.facturas .buscador button:focus-visible{ outline: none; }
 
 .facturas .buscador input:placeholder-shown + button {visibility: hidden;}
 .facturas .buscador input:not(:placeholder-shown) + button {visibility: visible;}

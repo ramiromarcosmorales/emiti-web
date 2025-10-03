@@ -2,6 +2,9 @@
 
 ### Added  
 
+- [feature/dev-frontend-bootstrap-update-migration] Migración a Bootstrap + Documentación de Caso de Prueba.  
+  PR: [#69](https://github.com/ramiromarcosmorales/emiti-web/pull/69) - @ramiromarcosmorales (Desarrollador Frontend/Bootstrap)
+
 ### Changed  
 
 - [feature/coord-devops-update-doc-project] Actualización de template de issues.
