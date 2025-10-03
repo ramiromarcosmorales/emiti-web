@@ -7,13 +7,14 @@ Verificar la adaptabilidad responsive en dispositivos móviles, tablets y deskto
 - BrowserStack Real Device Testing
 - Chrome DevTools Device Simulation
 - Lighthouse / PageSpeed Insights
+- ResponsivelyApp
 
 ## Dispositivos Probados
 | Dispositivo   | Resolución | Navegador | Orientación         | Resultado |
 |---------------|------------|-----------|---------------------|-----------|
-| iPhone 14 Pro | 393x852    | Safari    | Portrait/Landscape  | ✅/❌ |
-| Galaxy S23    | 360x780    | Chrome    | Portrait/Landscape  | ✅/❌ |
-| iPad Air      | 820x1180   | Safari    | Portrait/Landscape  | ✅/❌ |
+| iPhone 14 Pro | 393x852    | Safari    | Portrait/Landscape  | ✅ |
+| Galaxy S23    | 360x780    | Chrome    | Portrait/Landscape  | ✅ |
+| iPad Air      | 820x1180   | Safari    | Portrait/Landscape  | ❌ |
 
 ## Breakpoints Verificados
 - **Mobile:** 320px – 768px  
@@ -21,7 +22,23 @@ Verificar la adaptabilidad responsive en dispositivos móviles, tablets y deskto
 - **Desktop:** 1024px+  
 
 ## Capturas por Dispositivo
-- Incluir capturas en **portrait y landscape** para cada dispositivo probado.  
+- Portrait:  
+![Portrait](../screenshots/iphone_14_pro_portrait_2.jpeg)
+- Landscape:  
+![Landscape](../screenshots/iphone_14_pro_landscape_2.jpeg)
+
+### Galaxy S23
+- Portrait:  
+![Portrait](../screenshots/s23_portrait_2.jpg)
+- Landscape:
+![Landscape](../screenshots/s23_landscape_2.jpg)
+
+### iPad Air
+- Portrait:
+![Portrait](../screenshots/ipad_air_portrait_2.jpeg)
+- Landscape:
+![Landscape](../screenshots/ipad_air_landscape_2.jpeg)
+
 - Marcar en cada captura si la visualización coincide con el mockup `disenio-bootstrap.png`.  
 
 ## Media Queries Validadas
@@ -39,14 +56,13 @@ Verificar la adaptabilidad responsive en dispositivos móviles, tablets y deskto
 
 ### Capturas esperadas
 1. **Mobile (iPhone 14 Pro, ~393px ancho)**  
-   - Captura de una sección con distribución en **una sola columna (`col-12`)**.  
-   - Confirmar ausencia de scroll horizontal.  
+    ![Menu Mobile](../screenshots/menu_mobile.jpeg)
 
 2. **Tablet (iPad Air, ~820px ancho)**  
-   - Captura mostrando la **redistribución en 2 o 3 columnas (`col-md-*`)**.  
+   ![Menu Tablet](../screenshots/menu_tablet.jpeg)  
 
 3. **Desktop (>1024px)**  
-   - Captura mostrando la distribución completa en múltiples columnas (`col-lg-*` o `col-xl-*`).  
+    ![Menu Desktop](../screenshots/menu_desktop.png)
 
 ---
 
@@ -57,12 +73,21 @@ Verificar la adaptabilidad responsive en dispositivos móviles, tablets y deskto
 
 ### Capturas esperadas
 1. **Reporte de Lighthouse / PageSpeed**  
-   - Captura del resultado global (Performance, Accessibility, Best Practices, SEO).  
-   - Comparar resultados *antes y después* de la migración a Bootstrap.  
+
+![Results](../screenshots/results_lighthouse.png)  
+
+## Comparativas Antes/Después
+| Métrica         | Antes  | Después |
+|-----------------|--------|---------|
+| Performance     | 100/100| 100/100 |
+| FCP             | 0.5s   | 0.6s |
+| LCP             | 0.5s   | 0.6s |
+| CLS             | 0.001  | 0 |
+| Page Size       | 237KB  | 294KB |
+| Fully Loaded    | 322ms  | 692ms |
 
 2. **Detalle de recursos en Network (Chrome DevTools)**  
-   - Captura mostrando el tamaño del archivo `bootstrap.min.css` cargado desde el CDN.  
-   - Confirmar que no aparezca como recurso bloqueante en la columna "Blocking".  
+![Results](../screenshots/size_bootstrap.png)
 
 ---
 
@@ -77,4 +102,4 @@ Durante la ejecución de este test se detectaron los siguientes problemas, docum
 
 | IssueID | Descripción 
 |----|-------------|
-| [#101](https://github.com/tu-org/tu-repo/issues/101) | Ejemplo: Scroll horizontal en versión mobile (iPhone 14 Pro) 
+| [#68](https://github.com/ramiromarcosmorales/emiti-web/issues/68) | Header y Footer no ocupan todo el ancho disponible
