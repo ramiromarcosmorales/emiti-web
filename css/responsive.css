@@ -210,6 +210,10 @@ footer {
         grid-template-columns: 1fr;
         justify-items: start;
     }
+    /* Configuración: evitar desbordes en filas de impuesto y acciones */
+    .configuracion .card-body .d-flex { flex-wrap: wrap; }
+    .configuracion .ms-auto { margin-left: 0 !important; width: 100%; display: flex; justify-content: flex-end; gap: .5rem; }
+    .configuracion .porcentaje { margin-left: 0; }
 }
 
 /* ====== TABLET: 601px–900px ======
