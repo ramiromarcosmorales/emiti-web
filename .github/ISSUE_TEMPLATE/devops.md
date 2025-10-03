@@ -3,15 +3,17 @@ name: "Issue DevOps"
 about: "Template para tareas relacionadas al rol de Coordinador / DevOps"
 title: "[DevOps] - "
 labels: [devops]
-assignees: [Harika-sebasthian]
+assignees: [ramire-uces]
 ---
 
 ### Descripción
-Aplicar correcciones de la Act. 1, configurar release, backport, actualizar README.md.
+Aplicar correcciones de la release anterior, coordinar integración de ramas, configurar GitHub Pages, gestionar backport y versionado, actualizar documentación y mockups.
 
 ### Criterios de aceptación
-- [ ] Correcciones de la release anterior aplicadas y mergeadas a master
-- [ ] Backport hacia develop realizado
-- [ ] README.md actualizado con objetivos de la Act. 2
-- [ ] GitHub Pages habilitado/actualizado
-- [ ] PR creada y registrada en changelog.md
+- [ ] Correcciones aplicadas en `release/actividad-obligatoria-2` y mergeadas a `master`
+- [ ] Backport realizado hacia `develop` para base del parcial
+- [ ] GitHub Pages configurado/actualizado en `release/primer-parcial`
+- [ ] `README.md` y `changelog.md` actualizados con enlaces y contribuciones
+- [ ] Mockup actualizado en `docs/01-mockup/disenio-bootstrap.png`
+- [ ] Ramas e issues gestionadas (limpieza, tablero Kanban)
+- [ ] Release con tag creado en GitHub, con changelog y enlaces relevantes
