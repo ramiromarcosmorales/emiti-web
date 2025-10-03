@@ -4,6 +4,12 @@
 
 ### Changed  
 
+- [feature/coord-devops-update-doc-project] Actualización de template de issues.
+  PR: [#65](https://github.com/ramiromarcosmorales/emiti-web/pull/65) - @ramire-uces (Coordinador / DevOps)
+
+- [feature/coord-devops-update-doc-project] Actualización de template de Pull Request.
+  PR: [#66](https://github.com/ramiromarcosmorales/emiti-web/pull/66) - @ramire-uces (Coordinador / DevOps)
+
 ### Fixed  
 
 ## [Release Actividad Obligatoria N°2] - 2025-09-26
