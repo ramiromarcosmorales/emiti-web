@@ -1,4 +1,4 @@
-# 🟣 PULL REQUEST – Actividad Obligatoria N.º2  – Programación Web I
+# 🟣 PULL REQUEST – Primer Parcial – Programación Web I
 
 ---
 
@@ -11,9 +11,9 @@
 - **Profesor:** Lic. Matías Velasquez  
 - **Cuatrimestre/Año:** 2º Cuatrimestre / 2025  
 - **Rol asignado para esta entrega:** _(Ej.:
- ■ Desarrollador Frontend/CSS
- ■ Especialista en Responsive Design
- ■ Documentador / QA Tester
+ ■ Desarrollador Frontend/Bootstrap
+ ■ Especialista en Componentes Bootstrap
+ ■ Desarrollador de Componentes HTML Avanzados
  ■ Coordinador/DevOps)
  (Borrar los roles que no te correspondan)
 
@@ -69,6 +69,6 @@ _(Opcional – Aclaraciones, dificultades encontradas, sugerencias, etc.)_
 
 ## 🧾 Enlace a la consigna
 
-[📄 Consigna Actividad Obligatoria N.º 2 - GitHub](https://drive.google.com/file/d/1iJ3t7Tg9jjU1wMRer3_eDnq5j-n_Ael-/view?usp=sharing)
+[📄 Consigna Primer Parcial - GitHub](https://drive.google.com/file/d/1S71mqK000qHV2__x_A_VtKd-MszVAc7c/view?usp=sharing)
 
 ---
