@@ -6,6 +6,8 @@
     <title>Configuración - EMITÍ</title>
     <meta name="description" content="Configurá los impuestos en Emití Web. Gestioná el IVA que se aplicará automáticamente a tus facturas.">
     <link rel="icon" href="assets/favicon.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap-overrides.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
@@ -22,52 +24,127 @@
     
 </head>
 <body>
-    <!-- Encabezado -->
-    <header class="header">
-        <div class="logo-container">
-            <img src="assets/logo.png" alt="Logo Emití" width="120" height="120"
-            decoding="async" fetchpriority="high"> 
+    <!-- Encabezado principal (bootstrap utilities) -->
+    <header class="bg-white border-bottom py-3">
+        <div class="container d-flex flex-column flex-sm-row align-items-center gap-3 text-center text-sm-start">
+            <img src="assets/logo.png" alt="Logo Emití" width="120" height="120" class="img-fluid" decoding="async" fetchpriority="high">
+            <h1 class="h5 text-muted mb-0">Gestión Profesional de Facturas</h1>
         </div>
-        <h1>Gestión Profesional de Facturas</h1>
     </header>
 
-    <!-- Menú -->
+    <!-- Menú principal (bootstrap grid) -->
     <nav class="menu">
-        <ul>
-            <li><a href="index.html"><i class="fa-solid fa-chart-column"></i>Dashboard</a></li>
-            <li><a href="nueva-factura.html"><i class="fa-solid fa-file-invoice"></i>Nueva Factura</a></li>
-            <li><a href="facturas.html"><i class="fa-solid fa-file-invoice-dollar"></i>Facturas</a></li>
-            <li><a href="configuracion.html" class="activo" aria-current="page"><i class="fa-solid fa-gear"></i>Configuración</a></li>
-        </ul>
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
+                <div class="col d-grid">
+                    <a href="index.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
+                        <i class="fa-solid fa-chart-column"></i>
+                        Dashboard
+                    </a>
+                </div>
+                <div class="col d-grid">
+                    <a href="nueva-factura.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
+                        <i class="fa-solid fa-file-invoice"></i>
+                        Nueva Factura
+                    </a>
+                </div>
+                <div class="col d-grid">
+                    <a href="facturas.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                        Facturas
+                    </a>
+                </div>
+                <div class="col d-grid">
+                    <a href="configuracion.html" aria-current="page" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2 active">
+                        <i class="fa-solid fa-gear"></i>
+                        Configuración
+                    </a>
+                </div>
+            </div>
+        </div>
     </nav>
 
    <main class="configuracion">
-  <!-- Contenido principal de Configuración -->
-  <section aria-label="Configuración de impuestos">
-    <h2>Configuración de impuestos</h2>
-    <p>Gestiona los impuestos que se aplicarán a tus facturas</p>
+    <section aria-label="Configuración de impuestos">
+      <div class="container py-3">
+        <div class="row">
+          <div class="col-12">
+            <div class="bg-white border rounded-3 p-4">
+              <h2 class="mb-1">Configuración de impuestos</h2>
+              <p class="text-muted mb-3">Gestiona los impuestos que se aplicarán a tus facturas</p>
 
-    <h3>Impuestos Configurados</h3>
-    <div class="impuesto-card">
-      <div class="impuesto-item">
-        <input type="checkbox" id="iva21" checked>
-        <label for="iva21" class="nombre">IVA</label>
-        <span class="porcentaje">21%</span>
-        <span class="estado activo">Activo</span>
+              <h3 class="h6 text-uppercase text-muted mb-2">Impuestos Configurados</h3>
+              <div class="card border rounded-3 mb-2">
+                <div class="card-body py-2">
+                  <div class="d-flex align-items-center gap-2">
+                    <input type="checkbox" id="iva21" checked>
+                    <label for="iva21" class="nombre mb-0">IVA</label>
+                    <span class="porcentaje">21%</span>
+                    <span class="estado activo rounded-pill px-2 py-1">Activo</span>
+                    <div class="ms-auto d-inline-flex align-items-center gap-2">
+                      <button type="button" class="btn btn-light border rounded-pill btn-sm" aria-label="Editar impuesto" title="Editar">
+                        <i class="fa-solid fa-pen"></i>
+                      </button>
+                      <button type="button" class="btn btn-light border rounded-pill btn-sm" aria-label="Eliminar impuesto" title="Eliminar">
+                        <i class="fa-solid fa-trash"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="my-4">
+              <h3 class="h6 text-uppercase text-muted mb-2">Agregar nuevo impuesto</h3>
+              <div class="card border rounded-3">
+                <div class="card-body">
+                  <div class="row g-2 align-items-end">
+                    <div class="col-12 col-md-6">
+                      <label for="nuevoNombre" class="form-label mb-1">Nombre</label>
+                      <input type="text" id="nuevoNombre" class="form-control" placeholder="Ej: Percepción IIBB" aria-label="Nombre del impuesto">
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <label for="nuevoPorcentaje" class="form-label mb-1">Porcentaje</label>
+                      <div class="input-group">
+                        <input type="number" id="nuevoPorcentaje" class="form-control" placeholder="0" min="0" max="100" step="0.1" aria-label="Porcentaje">
+                        <span class="input-group-text">%</span>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <label class="form-label mb-1">Estado</label>
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="nuevoActivo" checked>
+                        <label class="form-check-label" for="nuevoActivo">Activo</label>
+                      </div>
+                    </div>
+                    <div class="col-12 mt-2">
+                      <button type="button" class="button">Agregar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
+  </main>
 
-    <!-- Pie -->
-    <footer>
-        <p>
-            <a href="#">¿Quiénes Somos?</a> -
-            <a href="#">Contacto</a> -
-            <a href="#">Política de Privacidad</a> -
-            <a href="#">Cookies</a>
-        </p>
-        <p>&copy; 2025 Emití. Todos los derechos reservados.</p>
+    <!-- Pie de página -->
+    <footer class="bg-white border-top py-3">
+        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+            <ul class="list-inline mb-0 small text-muted">
+                <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">¿Quiénes Somos?</a></li>
+                <li class="list-inline-item">•</li>
+                <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Contacto</a></li>
+                <li class="list-inline-item">•</li>
+                <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Política de Privacidad</a></li>
+                <li class="list-inline-item">•</li>
+                <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Cookies</a></li>
+            </ul>
+            <p class="mb-0 small text-muted">&copy; 2025 Emití. Todos los derechos reservados.</p>
+        </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
 </html>
