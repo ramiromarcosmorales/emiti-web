@@ -1,34 +1,162 @@
-/* Bootstrap overrides para mantener identidad visual*/
-:root{
+/* ==========================================
+   Bootstrap overrides para mantener identidad visual
+   Proyecto: Emití Web
+   ========================================== */
+
+/* Variables base */
+:root {
   --bs-body-bg: var(--color-bg);
   --bs-body-color: var(--color-text);
   --bs-border-color: var(--color-border);
   --bs-primary: rgba(var(--color-primary-rgb), 1);
 }
 
-/* Botones similares a los del menú original */
-.btn.btn-light{
+/* ==========================================
+   Botones del menú (similares a diseño original)
+   ========================================== */
+.btn.btn-light {
   background-color: #efeff1;
   color: #222222;
   border-color: var(--color-border);
 }
+
 .btn.btn-light:hover,
-.btn.btn-light:focus{
+.btn.btn-light:focus {
   filter: brightness(0.96);
   color: #222222;
 }
 
-/* Sombra suave como en cards y botones */
-.shadow-sm{ box-shadow: 0 1px 0 rgba(0,0,0,0.04), inset 0 -1px 0 rgba(0,0,0,0.05) !important; }
+/* ==========================================
+   Navbar y menú
+   ========================================== */
+.bg-body-tertiary { 
+  background-color: var(--color-surface) !important; 
+}
 
-/* Navbar fondo acorde a superficie */
-.bg-body-tertiary{ background-color: var(--color-surface) !important; }
-
-/* Estado activo del menú */
-.menu a.active{
+.menu a.active {
   background-color: var(--color-surface);
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   border-color: var(--color-border);
   color: #222222;
 }
 
+/* ==========================================
+   Sombras suaves para cards y botones
+   ========================================== */
+.shadow-sm { 
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04), inset 0 -1px 0 rgba(0,0,0,0.05) !important; 
+}
+
+/* ==========================================
+   Botones principales
+   ========================================== */
+.btn {
+  border-radius: .65rem;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0,0,0,.1);
+}
+
+.btn-primary {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004a99;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #218838;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.btn-outline-secondary {
+  border-radius: 2rem;
+  font-weight: 500;
+}
+
+/* ==========================================
+   Modals
+   ========================================== */
+.modal-content {
+  border-radius: 1rem;
+  border: none;
+  box-shadow: 0 8px 30px rgba(0,0,0,.15);
+}
+
+.modal-header {
+  border-bottom: 1px solid #e9ecef;
+}
+
+.modal-footer {
+  border-top: 1px solid #e9ecef;
+}
+
+/* ==========================================
+   Floating Labels
+   ========================================== */
+.form-floating > label {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.form-control {
+  border-radius: .5rem;
+  border-color: #dee2e6;
+}
+
+.form-control:focus {
+  border-color: #0069d9;
+  box-shadow: 0 0 0 0.2rem rgba(0,105,217,.25);
+}
+
+/* ==========================================
+   Toasts
+   ========================================== */
+.toast {
+  border-radius: .75rem;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+}
+
+.toast-body {
+  font-size: .95rem;
+}
+
+/* ==========================================
+   Cards (Métricas principales)
+   ========================================== */
+.card {
+  border: none;
+  border-radius: .75rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,.05);
+  transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+
+.card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #495057;
+}
+
+.card p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #212529;
+}
