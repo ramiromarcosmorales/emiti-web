@@ -1,5 +1,13 @@
 ## [Unreleased]
 
+### Added  
+
+### Changed  
+
+### Fixed  
+
+## [Release Actividad Obligatoria N°2] - 2025-09-26
+
 ### Added
 
 - [feature/feature/coord-dev-ops-repo-update-readme-md] Correción de sintaxis en PR.  
@@ -15,7 +23,7 @@
   PR: [#34](https://github.com/ramiromarcosmorales/emiti-web/pull/34) - @ramire-uces (Especialista en Responsive Design)
 
 - [feature/doc-qa-tester-add-test-case-1] Documentación de casos de prueba. 
-  PR: [#35](https://github.com/ramiromarcosmorales/emiti-web/pull/35)
+  PR: [#35](https://github.com/ramiromarcosmorales/emiti-web/pull/35) - @ramiromarcosmorales (Documentador/QA Tester)
 
 - [feature/dev-frontend-css-add-styles] Agregacion de pantallas restantes y ajuste de index.html y components.css. 
   PR: [#40](https://github.com/ramiromarcosmorales/emiti-web/pull/40) - @victoriaimo (Desarrollador Frontend/CSS)
@@ -26,7 +34,6 @@
 - [feature/feature/coord-dev-ops-repo-update-readme-md] Actualización 'README.md'.  
   PR: [#62](https://github.com/ramiromarcosmorales/emiti-web/pull/62) - @Harika-sebasthian (Coordinador / DevOps)
   
-
 ### Changed
 
 - [feature/feature/coord-dev-ops-repo-update-readme-md] Actualización link ACTIVIDAD OBLIGATORIA N°2 plantillas PR.  
@@ -39,7 +46,7 @@
   PR: [#55](https://github.com/ramiromarcosmorales/emiti-web/pull/55) - @victoriaimo (Desarrollador Frontend/CSS)
 
 - [feature/doc-qa-tester-add-test-case-1] Mockups con CSS y subida de casos de pruebas finalizados.
-  PR: [#57](https://github.com/ramiromarcosmorales/emiti-web/pull/57)
+  PR: [#57](https://github.com/ramiromarcosmorales/emiti-web/pull/57) - @ramiromarcosmorales (Documentador/QA Tester)
 
 ### Fixed
 
@@ -63,6 +70,12 @@
 
 - [feature/responsive-design-add-responsive-styles] Corrección de footer superpuesto en desktop.
   PR: [#61](https://github.com/ramiromarcosmorales/emiti-web/pull/61) - @ramire-uces (Especialista en Responsive Design)
+
+### Release
+
+- [feature/feature/coord-dev-ops-repo-update-readme-md] Entrega Release Actividad Obligatoria N°2 .  
+  PR: [#63](https://github.com/ramiromarcosmorales/emiti-web/pull/63) - @Harika-sebasthian (Coordinador / DevOps)
+
 
 ## [Release Actividad Obligatoria N°1] - 2025-09-03
 
@@ -125,3 +138,4 @@
 - [revert-15-feature/coordinador-setup-repo-and-pages] Reversión de la PR #15 
   ("docs: actualizar plantilla de PR") dado que no se actualizó `changelog.md`.  
   PR: [#17](https://github.com/ramiromarcosmorales/emiti-web/pull/17) - @ramiromarcosmorales (Coordinador / DevOps)
+

@@ -47,6 +47,7 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 
 - 🎨 [Mockup actualizado](docs/01-mockup/disenio-con-css.png)
 - 🔗 [Versión online en Figma](https://www.figma.com/proto/h9mE1D1OyWJGGGXtMpGQ6E/Emit%C3%AD-Web?node-id=18-133&p=f&t=fH3ojOpydZFQDtel-0&scaling=min-zoom&content-scaling=fixed&page-id=18%3A132)
+- 📁[índice de prompts](docs/02-prompts/prompts.md)
 - 🧪 [Índice de testing (test-case)](docs/03-testing/testing-doc.md)
 - ♼ [Changelog](/changelog.md)
 
