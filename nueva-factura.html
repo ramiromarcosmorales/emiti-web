@@ -99,105 +99,130 @@
   </footer>
 
   <!-- Modal Nueva Factura -->
-  <div class="modal fade" id="modalFactura" tabindex="-1" aria-labelledby="modalFacturaLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content rounded-4 shadow">
-        
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalFacturaLabel">Nueva Factura</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </div>
-        
-        <div class="modal-body">
-          <form class="row g-3">
-            <!-- Cliente -->
-            <div class="col-md-6 form-floating">
-              <input type="text" class="form-control" id="clienteFactura" placeholder="Nombre del cliente">
-              <label for="clienteFactura">Cliente</label>
-            </div>
+<div class="modal fade" id="modalFactura" tabindex="-1" aria-labelledby="modalFacturaLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalFacturaLabel">Nueva Factura</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form class="row g-3 p-3">
+          <div class="col-md-6 form-floating">
+            <input type="text" class="form-control" id="clienteFactura" placeholder="Nombre del cliente">
+            <label for="clienteFactura">Cliente</label>
+          </div>
+          <div class="col-md-6 form-floating">
+            <input type="text" class="form-control" id="cuitFactura" placeholder="CUIT / CUIL">
+            <label for="cuitFactura">CUIT / CUIL</label>
+          </div>
+          <div class="col-md-6 form-floating">
+            <input type="text" class="form-control" id="direccionFactura" placeholder="Dirección">
+            <label for="direccionFactura">Dirección</label>
+          </div>
+          <div class="col-md-6 form-floating">
+            <input type="email" class="form-control" id="emailFactura" placeholder="Correo electrónico">
+            <label for="emailFactura">Correo electrónico</label>
+          </div>
+          <div class="col-md-6 form-floating">
+            <input type="tel" class="form-control" id="telefonoFactura" placeholder="Teléfono">
+            <label for="telefonoFactura">Teléfono</label>
+          </div>
+          <div class="col-md-6 form-floating">
+            <select class="form-select" id="tipoFactura">
+              <option>A</option>
+              <option>B</option>
+              <option>C</option>
+            </select>
+            <label for="tipoFactura">Tipo de Factura</label>
+          </div>
+          <div class="col-md-6 form-floating">
+            <input type="date" class="form-control" id="fechaFactura">
+            <label for="fechaFactura">Fecha</label>
+          </div>
+          <div class="col-md-12 form-floating">
+            <textarea class="form-control" id="descripcionFactura" placeholder="Descripción" style="height: 100px"></textarea>
+            <label for="descripcionFactura">Descripción</label>
+          </div>
 
-            <!-- CUIT / CUIL -->
-            <div class="col-md-6 form-floating">
-              <input type="text" class="form-control" id="cuitFactura" placeholder="20-12345678-9">
-              <label for="cuitFactura">CUIT / CUIL</label>
-            </div>
-
-            <!-- Dirección -->
-            <div class="col-md-6 form-floating">
-              <input type="text" class="form-control" id="direccionFactura" placeholder="Calle 123">
-              <label for="direccionFactura">Dirección</label>
-            </div>
-
-            <!-- Correo electrónico -->
-            <div class="col-md-6 form-floating">
-              <input type="email" class="form-control" id="emailFactura" placeholder="correo@ejemplo.com">
-              <label for="emailFactura">Correo electrónico</label>
-            </div>
-
-            <!-- Teléfono -->
-            <div class="col-md-6 form-floating">
-              <input type="tel" class="form-control" id="telefonoFactura" placeholder="+54 11 1234 5678">
-              <label for="telefonoFactura">Teléfono</label>
-            </div>
-
-            <!-- Tipo de Factura -->
-            <div class="col-md-6 form-floating">
-              <select class="form-select" id="tipoFactura" aria-label="Tipo de Factura">
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-              </select>
-              <label for="tipoFactura">Tipo de Factura</label>
-            </div>
-
-            <!-- Razón de la factura -->
-            <div class="col-md-12 form-floating">
-              <input type="text" class="form-control" id="razonFactura" placeholder="Motivo de la factura">
-              <label for="razonFactura">Razón de la factura</label>
-            </div>
-
-            <!-- Fecha -->
-            <div class="col-md-6 form-floating">
-              <input type="date" class="form-control" id="fechaFactura">
-              <label for="fechaFactura">Fecha</label>
-            </div>
-
-            <!-- Descripción -->
-            <div class="col-md-12 form-floating">
-              <textarea class="form-control" placeholder="Descripción" id="descripcionFactura" style="height: 100px"></textarea>
-              <label for="descripcionFactura">Descripción</label>
-            </div>
-
-            <!-- Ítems / Productos -->
-            <div class="col-12">
-              <h6 class="fw-bold">Productos / Ítems</h6>
-              
-              <div class="row g-2 align-items-center mb-2">
-                <div class="col-md-8 form-floating">
-                  <input type="text" class="form-control" id="item1" placeholder="Producto o ítem">
-                  <label for="item1">Producto / Ítem</label>
-                </div>
-                <div class="col-md-4 form-floating">
-                  <input type="number" class="form-control" id="precio1" placeholder="Precio">
-                  <label for="precio1">Precio</label>
-                </div>
+          <!-- Productos / Ítems -->
+          <div class="col-12">
+            <h6>Productos / Ítems</h6>
+            <div class="row g-2 align-items-center mb-2">
+              <div class="col-md-8">
+                <input type="text" class="form-control" placeholder="Producto / Ítem">
               </div>
-
-              <!-- Botón agregar ítems -->
-              <button type="button" class="btn btn-sm btn-success">+ Agregar ítem</button>
+              <div class="col-md-4">
+                <input type="number" class="form-control" placeholder="Precio">
+              </div>
             </div>
-          </form>
-        </div>
-        
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-success">Crear Factura</button>
-        </div>
+            <button type="button" class="btn btn-sm btn-outline-success">+ Agregar item</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" id="crearFacturaBtn" class="btn btn-success">Crear Factura</button>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+ <!-- Toasts centrados -->
+<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
+  <!-- Toast factura -->
+  <div id="toastFactura" class="toast align-items-center text-bg-success border-0 shadow" 
+       role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        ✅ Factura creada con éxito
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" 
+              data-bs-dismiss="toast" aria-label="Cerrar"></button>
+    </div>
+  </div>
+
+  <!-- Toast impuesto -->
+  <div id="toastImpuesto" class="toast align-items-center text-bg-primary border-0 shadow" 
+       role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        💰 Impuesto añadido correctamente
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" 
+              data-bs-dismiss="toast" aria-label="Cerrar"></button>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Botón Crear Factura
+    const crearFacturaBtn = document.getElementById("crearFacturaBtn");
+    const toastFactura = document.getElementById("toastFactura");
+
+    if (crearFacturaBtn && toastFactura) {
+      crearFacturaBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        const toast = new bootstrap.Toast(toastFactura);
+        toast.show();
+      });
+    }
+
+    // Botón Guardar (Impuesto)
+    const guardarImpuestoBtn = document.getElementById("guardarImpuestoBtn");
+    const toastImpuesto = document.getElementById("toastImpuesto");
+
+    if (guardarImpuestoBtn && toastImpuesto) {
+      guardarImpuestoBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        const toast = new bootstrap.Toast(toastImpuesto);
+        toast.show();
+      });
+    }
+  });
+</script>
 </body>
 </html>
