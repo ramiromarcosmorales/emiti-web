@@ -155,55 +155,64 @@
       </div>
 
       <div class="modal-body">
-        <form class="row g-3 p-3">
-          <div class="col-md-6 form-floating">
-            <input type="text" class="form-control" id="clienteFactura" placeholder=" ">
-            <label for="clienteFactura">Cliente</label>
+        <form class="row g-3">
+          
+          <div class="col-md-6">
+            <label for="clienteFactura" class="form-label fw-semibold">Cliente</label>
+            <input type="text" class="form-control" id="clienteFactura" placeholder="Nombre del cliente">
           </div>
-          <div class="col-md-6 form-floating">
-            <input type="text" class="form-control" id="cuitFactura" placeholder=" ">
-            <label for="cuitFactura">CUIT / CUIL</label>
+
+          <div class="col-md-6">
+            <label for="cuitFactura" class="form-label fw-semibold">CUIT / CUIL</label>
+            <input type="text" class="form-control" id="cuitFactura" placeholder="CUIT / CUIL">
           </div>
-          <div class="col-md-6 form-floating">
-            <input type="text" class="form-control" id="direccionFactura" placeholder=" ">
-            <label for="direccionFactura">Dirección</label>
+
+          <div class="col-md-6">
+            <label for="direccionFactura" class="form-label fw-semibold">Dirección</label>
+            <input type="text" class="form-control" id="direccionFactura" placeholder="Dirección del cliente">
           </div>
-          <div class="col-md-6 form-floating">
-            <input type="email" class="form-control" id="emailFactura" placeholder=" ">
-            <label for="emailFactura">Correo electrónico</label>
+
+          <div class="col-md-6">
+            <label for="emailFactura" class="form-label fw-semibold">Correo electrónico</label>
+            <input type="email" class="form-control" id="emailFactura" placeholder="correo@ejemplo.com">
           </div>
-          <div class="col-md-6 form-floating">
-            <input type="tel" class="form-control" id="telefonoFactura" placeholder=" ">
-            <label for="telefonoFactura">Teléfono</label>
+
+          <div class="col-md-6">
+            <label for="telefonoFactura" class="form-label fw-semibold">Teléfono</label>
+            <input type="tel" class="form-control" id="telefonoFactura" placeholder="Teléfono de contacto">
           </div>
-          <div class="col-md-6 form-floating">
-            <select class="form-select" id="tipoFactura" aria-label="Tipo de Factura">
+
+          <div class="col-md-6">
+            <label for="tipoFactura" class="form-label fw-semibold">Tipo de Factura</label>
+            <select class="form-select" id="tipoFactura">
               <option>A</option>
               <option>B</option>
               <option>C</option>
             </select>
-            <label for="tipoFactura">Tipo de Factura</label>
-          </div>
-          <div class="col-md-6 form-floating">
-            <input type="date" class="form-control" id="fechaFactura" placeholder=" ">
-            <label for="fechaFactura">Fecha</label>
-          </div>
-          <div class="col-md-12 form-floating">
-            <textarea class="form-control" id="descripcionFactura" placeholder=" " style="height: 100px"></textarea>
-            <label for="descripcionFactura">Descripción</label>
           </div>
 
+          <div class="col-md-6">
+            <label for="fechaFactura" class="form-label fw-semibold">Fecha</label>
+            <input type="date" class="form-control" id="fechaFactura">
+          </div>
+
+          <div class="col-md-12">
+            <label for="descripcionFactura" class="form-label fw-semibold">Descripción</label>
+            <textarea class="form-control" id="descripcionFactura" placeholder="Detalle de la factura" style="height: 90px"></textarea>
+          </div>
+
+          <!-- Productos / Ítems -->
           <div class="col-12">
-            <h6>Productos / Ítems</h6>
+            <h6 class="fw-semibold mb-2">Productos / Ítems</h6>
             <div class="row g-2 align-items-center mb-2">
               <div class="col-md-8">
-                <input type="text" class="form-control" id="productoItem" placeholder="Producto / Ítem">
+                <input type="text" class="form-control" placeholder="Producto / Ítem">
               </div>
               <div class="col-md-4">
-                <input type="number" class="form-control" id="precioItem" placeholder="Precio">
+                <input type="number" class="form-control" placeholder="Precio">
               </div>
             </div>
-            <button type="button" class="btn btn-sm btn-success">+ Agregar item</button>
+            <button type="button" class="btn btn-sm btn-success">+ Agregar ítem</button>
           </div>
         </form>
       </div>

@@ -267,37 +267,22 @@ input, select, textarea {
 }
 
 /* AJUSTES MODAL NUEVA FACTURA */
-
 #modalFactura .form-control,
 #modalFactura .form-select,
 #modalFactura textarea {
   font-size: 0.9rem;
-  padding: 0.4rem 0.75rem;
+  padding: 0.45rem 0.75rem 0.45rem 1rem; /* Espacio a la izquierda */
   border-radius: 0.45rem;
 }
 
-#modalFactura .form-floating > label {
-  padding-left: 0.5rem;
-  font-size: 0.9rem;
+#modalFactura .form-label {
   color: #495057;
-}
-
-#modalFactura .form-floating > .form-control::placeholder {
-  color: #adb5bd;
-  opacity: 1;
-  padding-left: 0.5rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
 }
 
 #modalFactura .modal-body {
-  padding: 1.25rem 1.5rem;
-}
-
-#modalFactura .btn-success {
-  font-weight: 600;
-  transition: all 0.2s ease;
-}
-
-#modalFactura .btn-success:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.25);
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 0.75rem;
 }
