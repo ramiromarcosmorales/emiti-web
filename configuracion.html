@@ -5,11 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Configuración - EMITÍ</title>
   <meta name="description" content="Configurá impuestos y preferencias de cuenta en Emití Web."/>
-
   <link rel="icon" href="assets/favicon.png" type="image/png"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous"/>
-
-  <!-- Fuentes y estilos del proyecto -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" as="style" onload="this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="css/bootstrap-overrides.css"/>
@@ -18,45 +15,42 @@
   <link rel="stylesheet" href="css/responsive.css"/>
 
   <style>
-    /* Asegura Inter en toda la página */
     body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
 
-    /* Arreglo global para la X de cierre de modales si algún estilo la pisa */
-    .btn-close{
-      background: var(--bs-btn-close-bg) center/1em auto no-repeat !important;
-      background-color: transparent !important;
-      width: 1em; height: 1em;
-      opacity: .65;
-      border: 0 !important;
-      box-shadow: none !important;
+    /* Botón Activo/Inactivo estilo píldora */
+    .btn-estado {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.35rem 1.2rem;
+      border: none;
+      border-radius: 50px;
+      transition: all 0.25s ease-in-out;
+      cursor: pointer;
+      min-width: 90px;
     }
-    .btn-close:hover{ opacity: .85; }
-    .btn-close:focus{ box-shadow: 0 0 0 .25rem rgba(13,110,253,.25) !important; }
-
-    /* Alineación y respiración de la caja "Agregar nuevo impuesto" */
-    .card-add-tax .form-floating > label { padding-left:.75rem; }
-    .card-add-tax .form-floating > .form-control{ padding-left:.75rem; }
-    .card-add-tax .row{ align-items:center; }
-
-    /* Pastilla “estado” (por si la usás en otros lados) */
-    .estado-pill{
-      font-weight:600;
-      border-radius: 999px;
-      padding: .25rem .75rem;
+    .btn-estado.activo {
+      background-color: #28a745;
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(40,167,69,0.4);
+    }
+    .btn-estado.activo:hover {
+      background-color: #218838;
+      box-shadow: 0 3px 8px rgba(33,136,56,0.5);
+    }
+    .btn-estado.inactivo {
+      background-color: #fd7e14;
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(253,126,20,0.4);
+    }
+    .btn-estado.inactivo:hover {
+      background-color: #e56e0f;
+      box-shadow: 0 3px 8px rgba(229,110,15,0.5);
     }
 
-    /* Arreglo visual del switch para que quede alineado en grillas */
-    .form-switch .form-check-input{
-      width: 2.5rem; height: 1.25rem;
-    }
-    .form-switch .form-check-input:focus{ box-shadow: 0 0 0 .2rem rgba(25,135,84,.25); }
-    .form-switch .form-check-label{ user-select:none; }
-
-    /* Headings y secciones */
-    .section-card{
-      background: #fff; border: 1px solid var(--color-border, #e9ecef);
-      border-radius: .75rem;
-    }
+    .form-floating > label { padding-left: .75rem; }
   </style>
 </head>
 <body>
@@ -103,7 +97,6 @@
         <h2 class="mb-1">Configuración de impuestos</h2>
         <p class="text-muted mb-3">Gestioná los impuestos que se aplicarán a tus facturas</p>
 
-        <!-- Impuestos configurados (ejemplo IVA) -->
         <div class="list-group rounded-3 mb-3">
           <div class="list-group-item d-flex align-items-center gap-3">
             <div class="form-check m-0">
@@ -112,11 +105,8 @@
             </div>
             <span class="text-muted">21%</span>
 
-            <!-- Switch Activo a la par de IVA -->
-            <div class="form-check form-switch ms-3">
-              <input class="form-check-input" type="checkbox" id="ivaActivo" checked>
-              <label class="form-check-label" for="ivaActivo" id="ivaActivoLabel">Activo</label>
-            </div>
+            <!-- Botón Activo/Inactivo -->
+            <button type="button" id="btnEstadoIVA" class="btn-estado activo ms-3">Activo</button>
 
             <div class="ms-auto d-inline-flex align-items-center gap-2">
               <button type="button" class="btn btn-light border rounded-pill btn-sm" title="Editar">
@@ -129,9 +119,8 @@
           </div>
         </div>
 
-        <!-- Agregar nuevo impuesto (alineado) -->
         <h3 class="h6 text-uppercase text-muted mb-2">Agregar nuevo impuesto</h3>
-        <div class="card card-add-tax border rounded-3">
+        <div class="card border rounded-3">
           <div class="card-body">
             <div class="row g-3 align-items-center">
               <div class="col-12 col-lg-6">
@@ -140,21 +129,15 @@
                   <label for="nuevoNombre">Nombre del impuesto</label>
                 </div>
               </div>
-
               <div class="col-8 col-lg-4">
                 <div class="form-floating">
                   <input type="number" id="nuevoPorcentaje" class="form-control" placeholder="0" min="0" max="100" step="0.1"/>
                   <label for="nuevoPorcentaje">Porcentaje (%)</label>
                 </div>
               </div>
-
               <div class="col-4 col-lg-2">
-                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" id="nuevoActivo" checked>
-                  <label class="form-check-label" for="nuevoActivo" id="nuevoActivoLabel">Activo</label>
-                </div>
+                <button type="button" id="btnEstadoNuevo" class="btn-estado activo">Activo</button>
               </div>
-
               <div class="col-12">
                 <button type="button" id="agregarImpuestoBtn" class="btn btn-success">Agregar</button>
               </div>
@@ -163,20 +146,21 @@
         </div>
       </section>
 
-      <!-- Configuración de cuenta (acordeón) -->
+      <!-- Configuración de cuenta -->
       <section class="section-card p-4">
         <h2 class="mb-1">Configuración de cuenta</h2>
         <p class="text-muted mb-3">Ajustá tu información personal, seguridad y preferencias.</p>
 
         <div class="accordion" id="cuentaAccordion">
-          <!-- Datos de la cuenta -->
+
+          <!-- Datos -->
           <div class="accordion-item">
             <h2 class="accordion-header" id="accDatosHeading">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accDatos" aria-expanded="true" aria-controls="accDatos">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accDatos">
                 <i class="fa-solid fa-circle-user me-2"></i> Datos de la cuenta
               </button>
             </h2>
-            <div id="accDatos" class="accordion-collapse collapse show" aria-labelledby="accDatosHeading" data-bs-parent="#cuentaAccordion">
+            <div id="accDatos" class="accordion-collapse collapse show">
               <div class="accordion-body">
                 <form class="row g-3 p-2">
                   <div class="col-12 col-md-6 form-floating">
@@ -198,22 +182,22 @@
           <!-- Seguridad -->
           <div class="accordion-item">
             <h2 class="accordion-header" id="accSeguridadHeading">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accSeguridad" aria-expanded="false" aria-controls="accSeguridad">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accSeguridad">
                 <i class="fa-solid fa-lock me-2"></i> Seguridad
               </button>
             </h2>
-            <div id="accSeguridad" class="accordion-collapse collapse" aria-labelledby="accSeguridadHeading" data-bs-parent="#cuentaAccordion">
+            <div id="accSeguridad" class="accordion-collapse collapse">
               <div class="accordion-body">
-                <form class="row g-3 p-2">
-                  <div class="col-12 col-md-6 form-floating">
+                <form class="row g-3 p-2 flex-column">
+                  <div class="col-12 form-floating">
                     <input type="password" id="passActual" class="form-control" placeholder="••••••••">
                     <label for="passActual">Contraseña actual</label>
                   </div>
-                  <div class="col-12 col-md-6 form-floating">
+                  <div class="col-12 form-floating">
                     <input type="password" id="passNueva" class="form-control" placeholder="••••••••">
                     <label for="passNueva">Nueva contraseña</label>
                   </div>
-                  <div class="col-12 col-md-6 form-floating">
+                  <div class="col-12 form-floating">
                     <input type="password" id="passRep" class="form-control" placeholder="••••••••">
                     <label for="passRep">Confirmar nueva contraseña</label>
                   </div>
@@ -228,11 +212,11 @@
           <!-- Notificaciones -->
           <div class="accordion-item">
             <h2 class="accordion-header" id="accNotifHeading">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accNotif" aria-expanded="false" aria-controls="accNotif">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accNotif">
                 <i class="fa-solid fa-bell me-2"></i> Notificaciones
               </button>
             </h2>
-            <div id="accNotif" class="accordion-collapse collapse" aria-labelledby="accNotifHeading" data-bs-parent="#cuentaAccordion">
+            <div id="accNotif" class="accordion-collapse collapse">
               <div class="accordion-body">
                 <form class="row g-3 p-2">
                   <div class="col-12">
@@ -256,80 +240,45 @@
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-white border-top py-3">
-    <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
-      <ul class="list-inline mb-0 small text-muted">
-        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">¿Quiénes Somos?</a></li>
-        <li class="list-inline-item">•</li>
-        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Contacto</a></li>
-        <li class="list-inline-item">•</li>
-        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Política de Privacidad</a></li>
-        <li class="list-inline-item">•</li>
-        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Cookies</a></li>
-      </ul>
-      <p class="mb-0 small text-muted">&copy; 2025 Emití. Todos los derechos reservados.</p>
-    </div>
-  </footer>
-
-  <!-- Toasts centrados -->
+  <!-- TOASTS -->
   <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
-    <div id="toastImpuestoOk" class="toast align-items-center text-bg-success border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
+    <div id="toastCuentaOk" class="toast align-items-center text-bg-success border-0 shadow" role="alert">
       <div class="d-flex">
-        <div class="toast-body">✅ Tu impuesto se agregó correctamente</div>
-        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
-      </div>
-    </div>
-
-    <div id="toastCuentaOk" class="toast align-items-center text-bg-success border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="d-flex">
-        <div class="toast-body">✅ Cambios guardados</div>
-        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+        <div class="toast-body" id="toastMsg">✅ Cambios guardados</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
       </div>
     </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Toggle etiquetas Activo/Inactivo (IVA + nuevo)
-      const ivaActivo = document.getElementById('ivaActivo');
-      const ivaActivoLabel = document.getElementById('ivaActivoLabel');
-      if (ivaActivo) {
-        ivaActivo.addEventListener('change', () => {
-          ivaActivoLabel.textContent = ivaActivo.checked ? 'Activo' : 'Inactivo';
-        });
-      }
+      const toastCuentaOk = new bootstrap.Toast(document.getElementById('toastCuentaOk'));
+      const toastMsg = document.getElementById('toastMsg');
 
-      const nuevoActivo = document.getElementById('nuevoActivo');
-      const nuevoActivoLabel = document.getElementById('nuevoActivoLabel');
-      if (nuevoActivo) {
-        nuevoActivo.addEventListener('change', () => {
-          nuevoActivoLabel.textContent = nuevoActivo.checked ? 'Activo' : 'Inactivo';
-        });
-      }
+      // Botones estado
+      const toggleEstado = (btn) => {
+        btn.classList.toggle('activo');
+        btn.classList.toggle('inactivo');
+        btn.textContent = btn.classList.contains('activo') ? 'Activo' : 'Inactivo';
+      };
+      document.getElementById('btnEstadoIVA')?.addEventListener('click', e => toggleEstado(e.target));
+      document.getElementById('btnEstadoNuevo')?.addEventListener('click', e => toggleEstado(e.target));
 
-      // Toasts
-      const toastImpuestoOk = new bootstrap.Toast(document.getElementById('toastImpuestoOk'));
-      const toastCuentaOk   = new bootstrap.Toast(document.getElementById('toastCuentaOk'));
-
-      // Botón Agregar impuesto
-      const agregarImpuestoBtn = document.getElementById('agregarImpuestoBtn');
-      agregarImpuestoBtn?.addEventListener('click', (e) => {
-        e.preventDefault();
-        toastImpuestoOk.show();
+      // Guardar botones
+      document.getElementById('guardarCuentaBtn')?.addEventListener('click', () => {
+        toastMsg.textContent = '✅ Se guardaron los cambios';
+        toastCuentaOk.show();
       });
-
-      // Botones de guardar (acordeón)
-      document.getElementById('guardarCuentaBtn')?.addEventListener('click', (e) => {
-        e.preventDefault(); toastCuentaOk.show();
+      document.getElementById('guardarSeguridadBtn')?.addEventListener('click', () => {
+        toastMsg.textContent = '✅ Se cambió la contraseña correctamente';
+        toastCuentaOk.show();
       });
-      document.getElementById('guardarSeguridadBtn')?.addEventListener('click', (e) => {
-        e.preventDefault(); toastCuentaOk.show();
-      });
-      document.getElementById('guardarNotifBtn')?.addEventListener('click', (e) => {
-        e.preventDefault(); toastCuentaOk.show();
+      document.getElementById('guardarNotifBtn')?.addEventListener('click', () => {
+        toastMsg.textContent = '✅ Se guardaron las preferencias';
+        toastCuentaOk.show();
       });
     });
   </script>
