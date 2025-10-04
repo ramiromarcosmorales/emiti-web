@@ -23,46 +23,43 @@
   </noscript>
 </head>
 <body>
-  <!-- Encabezado principal -->
+  <!-- Encabezado -->
   <header class="bg-white border-bottom py-3">
     <div class="container d-flex align-items-center gap-3">
-      <img src="assets/logo.png" alt="Logo Emití" width="120" height="120" class="img-fluid" decoding="async" fetchpriority="high">
+      <img src="assets/logo.png" alt="Logo Emití" width="120" height="120" class="img-fluid">
       <h1 class="h5 text-muted mb-0">Gestión Profesional de Facturas</h1>
     </div>
   </header>
 
-  <!-- Menú principal -->
+  <!-- Menú -->
   <nav class="menu">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
         <div class="col d-grid">
           <a href="index.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
-            <i class="fa-solid fa-chart-column"></i>
-            Dashboard
+            <i class="fa-solid fa-chart-column"></i> Dashboard
           </a>
         </div>
         <div class="col d-grid">
           <a href="nueva-factura.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
-            <i class="fa-solid fa-file-invoice"></i>
-            Nueva Factura
+            <i class="fa-solid fa-file-invoice"></i> Nueva Factura
           </a>
         </div>
         <div class="col d-grid">
           <a href="facturas.html" aria-current="page" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2 active">
-            <i class="fa-solid fa-file-invoice-dollar"></i>
-            Facturas
+            <i class="fa-solid fa-file-invoice-dollar"></i> Facturas
           </a>
         </div>
         <div class="col d-grid">
           <a href="configuracion.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
-            <i class="fa-solid fa-gear"></i>
-            Configuración
+            <i class="fa-solid fa-gear"></i> Configuración
           </a>
         </div>
       </div>
     </div>
   </nav>
 
+  <!-- Contenido -->
   <main class="facturas">
     <section aria-label="Gestión de Facturas" class="gestion-facturas">
       <div class="container py-3">
@@ -74,64 +71,61 @@
           </div>
           <div class="col-12 col-md-8 col-lg-6">
             <form class="buscador" role="search">
-              <label for="buscar" class="sr-only">Buscar por cliente o número de factura</label>
               <div class="input-group">
-                <span class="input-group-text" id="buscar-addon">
-                  <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                </span>
-                <input type="text" id="buscar" class="form-control" placeholder="Buscar por cliente o número de factura..." aria-label="Buscar por cliente o número de factura" aria-describedby="buscar-addon">
-                <button class="btn btn-outline-secondary" type="reset" aria-label="Borrar búsqueda">×</button>
+                <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input type="text" class="form-control" placeholder="Buscar por cliente o número de factura...">
+                <button class="btn btn-outline-secondary" type="reset">×</button>
               </div>
             </form>
           </div>
         </div>
 
-        <!-- Facturas cargadas de ejemplo -->
+        <!-- Facturas de ejemplo -->
         <div class="row mt-4 g-3">
           <div class="col-md-4">
             <div class="card h-100 shadow-sm">
               <div class="card-body">
                 <h5 class="card-title">Factura #001</h5>
-                <p class="card-text"><strong>Cliente:</strong> Juan Pérez</p>
-                <p class="card-text"><strong>Monto:</strong> $15.000</p>
-                <p class="card-text"><strong>Fecha:</strong> 01/10/2025</p>
+                <p><strong>Cliente:</strong> Juan Pérez</p>
+                <p><strong>Monto:</strong> $15.000</p>
+                <p><strong>Fecha:</strong> 01/10/2025</p>
               </div>
               <div class="card-footer text-end">
-                <button class="btn btn-sm btn-outline-success">Ver Detalle</button>
-             </div>
+                <button class="btn btn-sm btn-outline-success" aria-label="Ver detalle de Factura #001">Ver Detalle</button>
+              </div>
             </div>
           </div>
-          
+
           <div class="col-md-4">
             <div class="card h-100 shadow-sm">
               <div class="card-body">
                 <h5 class="card-title">Factura #002</h5>
-                <p class="card-text"><strong>Cliente:</strong> María López</p>
-                <p class="card-text"><strong>Monto:</strong> $22.500</p>
-                <p class="card-text"><strong>Fecha:</strong> 02/10/2025</p>
+                <p><strong>Cliente:</strong> María López</p>
+                <p><strong>Monto:</strong> $22.500</p>
+                <p><strong>Fecha:</strong> 02/10/2025</p>
               </div>
               <div class="card-footer text-end">
-                <button class="btn btn-sm btn-outline-success">Ver Detalle</button>
-             </div>
+                <button class="btn btn-sm btn-outline-success" aria-label="Ver detalle de Factura #002">Ver Detalle</button>
+              </div>
             </div>
           </div>
-          
+
           <div class="col-md-4">
             <div class="card h-100 shadow-sm">
               <div class="card-body">
                 <h5 class="card-title">Factura #003</h5>
-                <p class="card-text"><strong>Cliente:</strong> Estudio Contable SRL</p>
-                <p class="card-text"><strong>Monto:</strong> $35.000</p>
-                <p class="card-text"><strong>Fecha:</strong> 03/10/2025</p>
+                <p><strong>Cliente:</strong> Estudio Contable SRL</p>
+                <p><strong>Monto:</strong> $35.000</p>
+                <p><strong>Fecha:</strong> 03/10/2025</p>
               </div>
               <div class="card-footer text-end">
-               <button class="btn btn-sm btn-outline-success">Ver Detalle</button>
+                <button class="btn btn-sm btn-outline-success" aria-label="Ver detalle de Factura #003">Ver Detalle</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Botón para crear una nueva factura -->
+        <!-- Botón Nueva Factura -->
         <div class="text-center mt-4">
           <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalFactura">
             + Nueva Factura
@@ -141,148 +135,111 @@
     </section>
   </main>
 
-<!-- Modal Nueva Factura -->
-<div class="modal fade" id="modalFactura" tabindex="-1" aria-labelledby="modalFacturaLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content rounded-4 shadow">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalFacturaLabel">Nueva Factura</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body">
-        <form class="row g-3 p-3">
-          <div class="col-md-6 form-floating">
-            <input type="text" class="form-control" id="clienteFactura" placeholder="Nombre del cliente">
-            <label for="clienteFactura">Cliente</label>
-          </div>
-          <div class="col-md-6 form-floating">
-            <input type="text" class="form-control" id="cuitFactura" placeholder="CUIT / CUIL">
-            <label for="cuitFactura">CUIT / CUIL</label>
-          </div>
-          <div class="col-md-6 form-floating">
-            <input type="text" class="form-control" id="direccionFactura" placeholder="Dirección">
-            <label for="direccionFactura">Dirección</label>
-          </div>
-          <div class="col-md-6 form-floating">
-            <input type="email" class="form-control" id="emailFactura" placeholder="Correo electrónico">
-            <label for="emailFactura">Correo electrónico</label>
-          </div>
-          <div class="col-md-6 form-floating">
-            <input type="tel" class="form-control" id="telefonoFactura" placeholder="Teléfono">
-            <label for="telefonoFactura">Teléfono</label>
-          </div>
-          <div class="col-md-6 form-floating">
-            <select class="form-select" id="tipoFactura">
-              <option>A</option>
-              <option>B</option>
-              <option>C</option>
-            </select>
-            <label for="tipoFactura">Tipo de Factura</label>
-          </div>
-          <div class="col-md-6 form-floating">
-            <input type="date" class="form-control" id="fechaFactura">
-            <label for="fechaFactura">Fecha</label>
-          </div>
-          <div class="col-md-12 form-floating">
-            <textarea class="form-control" id="descripcionFactura" placeholder="Descripción" style="height: 100px"></textarea>
-            <label for="descripcionFactura">Descripción</label>
-          </div>
-
-          <!-- Productos / Ítems -->
-          <div class="col-12">
-            <h6>Productos / Ítems</h6>
-            <div class="row g-2 align-items-center mb-2">
-              <div class="col-md-8">
-                <input type="text" class="form-control" placeholder="Producto / Ítem">
-              </div>
-              <div class="col-md-4">
-                <input type="number" class="form-control" placeholder="Precio">
-              </div>
+  <!-- Modal Nueva Factura -->
+  <div class="modal fade" id="modalFactura" tabindex="-1" aria-labelledby="modalFacturaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalFacturaLabel">Nueva Factura</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form class="row g-3 p-3">
+            <div class="col-md-6 form-floating">
+              <input type="text" class="form-control" placeholder="Cliente">
+              <label>Cliente</label>
             </div>
-            <button type="button" class="btn btn-sm btn-outline-success">+ Agregar item</button>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="submit" id="crearFacturaBtn" class="btn btn-success">Crear Factura</button>
+            <div class="col-md-6 form-floating">
+              <input type="text" class="form-control" placeholder="CUIT / CUIL">
+              <label>CUIT / CUIL</label>
+            </div>
+            <div class="col-md-6 form-floating">
+              <input type="text" class="form-control" placeholder="Dirección">
+              <label>Dirección</label>
+            </div>
+            <div class="col-md-6 form-floating">
+              <input type="email" class="form-control" placeholder="Correo">
+              <label>Correo electrónico</label>
+            </div>
+            <div class="col-md-6 form-floating">
+              <input type="tel" class="form-control" placeholder="Teléfono">
+              <label>Teléfono</label>
+            </div>
+            <div class="col-md-6 form-floating">
+              <select class="form-select">
+                <option>A</option><option>B</option><option>C</option>
+              </select>
+              <label>Tipo de Factura</label>
+            </div>
+            <div class="col-md-6 form-floating">
+              <input type="date" class="form-control">
+              <label>Fecha</label>
+            </div>
+            <div class="col-md-12 form-floating">
+              <textarea class="form-control" placeholder="Descripción" style="height:100px"></textarea>
+              <label>Descripción</label>
+            </div>
+
+            <!-- Ítems -->
+            <div class="col-12">
+              <h6>Productos / Ítems</h6>
+              <div class="row g-2 mb-2">
+                <div class="col-md-8"><input type="text" class="form-control" placeholder="Producto / Ítem"></div>
+                <div class="col-md-4"><input type="number" class="form-control" placeholder="Precio"></div>
+              </div>
+              <button type="button" class="btn btn-sm btn-success">+ Agregar ítem</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" id="crearFacturaBtn" class="btn btn-success">Crear Factura</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-
-  <!-- Pie de página -->
+  <!-- Footer -->
   <footer class="bg-white border-top py-3">
-    <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
       <ul class="list-inline mb-0 small text-muted">
-        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">¿Quiénes Somos?</a></li>
+        <li class="list-inline-item"><a href="#" class="text-reset text-decoration-none">¿Quiénes Somos?</a></li>
         <li class="list-inline-item">•</li>
-        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Contacto</a></li>
+        <li class="list-inline-item"><a href="#" class="text-reset text-decoration-none">Contacto</a></li>
         <li class="list-inline-item">•</li>
-        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Política de Privacidad</a></li>
+        <li class="list-inline-item"><a href="#" class="text-reset text-decoration-none">Política de Privacidad</a></li>
         <li class="list-inline-item">•</li>
-        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Cookies</a></li>
+        <li class="list-inline-item"><a href="#" class="text-reset text-decoration-none">Cookies</a></li>
       </ul>
       <p class="mb-0 small text-muted">&copy; 2025 Emití. Todos los derechos reservados.</p>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<!-- Toasts centrados -->
-<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
-  <!-- Toast factura -->
-  <div id="toastFactura" class="toast align-items-center text-bg-success border-0 shadow" 
-       role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="d-flex">
-      <div class="toast-body">
-        ✅ Factura creada con éxito
+  <!-- Toast -->
+  <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
+    <div id="toastFactura" class="toast align-items-center text-bg-success border-0 shadow" role="alert">
+      <div class="d-flex">
+        <div class="toast-body">✅ Factura creada con éxito</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
       </div>
-      <button type="button" class="btn-close btn-close-white me-2 m-auto" 
-              data-bs-dismiss="toast" aria-label="Cerrar"></button>
     </div>
   </div>
 
-  <!-- Toast impuesto -->
-  <div id="toastImpuesto" class="toast align-items-center text-bg-primary border-0 shadow" 
-       role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="d-flex">
-      <div class="toast-body">
-        💰 Impuesto añadido correctamente
-      </div>
-      <button type="button" class="btn-close btn-close-white me-2 m-auto" 
-              data-bs-dismiss="toast" aria-label="Cerrar"></button>
-    </div>
-  </div>
-</div>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const crearFacturaBtn = document.getElementById("crearFacturaBtn");
+      const toastFactura = document.getElementById("toastFactura");
 
-<!-- Scripts -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Botón Crear Factura
-    const crearFacturaBtn = document.getElementById("crearFacturaBtn");
-    const toastFactura = document.getElementById("toastFactura");
-
-    if (crearFacturaBtn && toastFactura) {
-      crearFacturaBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        const toast = new bootstrap.Toast(toastFactura);
-        toast.show();
-      });
-    }
-
-    // Botón Guardar (Impuesto)
-    const guardarImpuestoBtn = document.getElementById("guardarImpuestoBtn");
-    const toastImpuesto = document.getElementById("toastImpuesto");
-
-    if (guardarImpuestoBtn && toastImpuesto) {
-      guardarImpuestoBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        const toast = new bootstrap.Toast(toastImpuesto);
-        toast.show();
-      });
-    }
-  });
-</script>
+      if (crearFacturaBtn && toastFactura) {
+        crearFacturaBtn.addEventListener("click", e => {
+          e.preventDefault();
+          new bootstrap.Toast(toastFactura).show();
+        });
+      }
+    });
+  </script>
 </body>
 </html>
+

@@ -23,56 +23,51 @@
   </noscript>
 </head>
 <body>
-  <!-- Encabezado principal -->
+  <!-- Encabezado -->
   <header class="bg-white border-bottom py-3">
     <div class="container d-flex align-items-center gap-3">
-      <img src="assets/logo.png" alt="Logo Emití" width="120" height="120" class="img-fluid" decoding="async" fetchpriority="high">
+      <img src="assets/logo.png" alt="Logo Emití" width="120" height="120" class="img-fluid">
       <h1 class="h5 text-muted mb-0">Gestión Profesional de Facturas</h1>
     </div>
   </header>
 
-  <!-- Menú principal -->
+  <!-- Menú -->
   <nav class="menu">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
         <div class="col d-grid">
           <a href="index.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
-            <i class="fa-solid fa-chart-column"></i>
-            Dashboard
+            <i class="fa-solid fa-chart-column"></i> Dashboard
           </a>
         </div>
         <div class="col d-grid">
           <a href="nueva-factura.html" aria-current="page" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2 active">
-            <i class="fa-solid fa-file-invoice"></i>
-            Nueva Factura
+            <i class="fa-solid fa-file-invoice"></i> Nueva Factura
           </a>
         </div>
         <div class="col d-grid">
           <a href="facturas.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
-            <i class="fa-solid fa-file-invoice-dollar"></i>
-            Facturas
+            <i class="fa-solid fa-file-invoice-dollar"></i> Facturas
           </a>
         </div>
         <div class="col d-grid">
           <a href="configuracion.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
-            <i class="fa-solid fa-gear"></i>
-            Configuración
+            <i class="fa-solid fa-gear"></i> Configuración
           </a>
         </div>
       </div>
     </div>
   </nav>
 
-  <!-- Contenido principal -->
+  <!-- Contenido -->
   <main class="nueva-factura">
     <div class="container py-3">
       <div class="row">
         <div class="col-12">
           <div class="bg-white border rounded-3 p-4 text-center">
-            <i class="fa-solid fa-file-invoice display-3 mb-3" aria-hidden="true"></i>
+            <i class="fa-solid fa-file-invoice display-3 mb-3"></i>
             <h2 class="h4">No hay factura en edición</h2>
             <p class="text-muted mb-3">Creá una nueva factura para comenzar</p>
-            <!-- Botón que abre el modal -->
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalFactura">
               Nueva Factura
             </button>
@@ -82,7 +77,7 @@
     </div>
   </main>
 
-  <!-- Pie de página -->
+  <!-- Footer -->
   <footer class="bg-white border-top py-3">
     <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
       <ul class="list-inline mb-0 small text-muted">
@@ -99,130 +94,94 @@
   </footer>
 
   <!-- Modal Nueva Factura -->
-<div class="modal fade" id="modalFactura" tabindex="-1" aria-labelledby="modalFacturaLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content rounded-4 shadow">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalFacturaLabel">Nueva Factura</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body">
-        <form class="row g-3 p-3">
-          <div class="col-md-6 form-floating">
-            <input type="text" class="form-control" id="clienteFactura" placeholder="Nombre del cliente">
-            <label for="clienteFactura">Cliente</label>
-          </div>
-          <div class="col-md-6 form-floating">
-            <input type="text" class="form-control" id="cuitFactura" placeholder="CUIT / CUIL">
-            <label for="cuitFactura">CUIT / CUIL</label>
-          </div>
-          <div class="col-md-6 form-floating">
-            <input type="text" class="form-control" id="direccionFactura" placeholder="Dirección">
-            <label for="direccionFactura">Dirección</label>
-          </div>
-          <div class="col-md-6 form-floating">
-            <input type="email" class="form-control" id="emailFactura" placeholder="Correo electrónico">
-            <label for="emailFactura">Correo electrónico</label>
-          </div>
-          <div class="col-md-6 form-floating">
-            <input type="tel" class="form-control" id="telefonoFactura" placeholder="Teléfono">
-            <label for="telefonoFactura">Teléfono</label>
-          </div>
-          <div class="col-md-6 form-floating">
-            <select class="form-select" id="tipoFactura">
-              <option>A</option>
-              <option>B</option>
-              <option>C</option>
-            </select>
-            <label for="tipoFactura">Tipo de Factura</label>
-          </div>
-          <div class="col-md-6 form-floating">
-            <input type="date" class="form-control" id="fechaFactura">
-            <label for="fechaFactura">Fecha</label>
-          </div>
-          <div class="col-md-12 form-floating">
-            <textarea class="form-control" id="descripcionFactura" placeholder="Descripción" style="height: 100px"></textarea>
-            <label for="descripcionFactura">Descripción</label>
-          </div>
-
-          <!-- Productos / Ítems -->
-          <div class="col-12">
-            <h6>Productos / Ítems</h6>
-            <div class="row g-2 align-items-center mb-2">
-              <div class="col-md-8">
-                <input type="text" class="form-control" placeholder="Producto / Ítem">
-              </div>
-              <div class="col-md-4">
-                <input type="number" class="form-control" placeholder="Precio">
-              </div>
+  <div class="modal fade" id="modalFactura" tabindex="-1" aria-labelledby="modalFacturaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalFacturaLabel">Nueva Factura</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <form class="row g-3 p-3">
+            <div class="col-md-6 form-floating">
+              <input type="text" class="form-control" id="clienteFactura" placeholder="Nombre del cliente">
+              <label for="clienteFactura">Cliente</label>
             </div>
-            <button type="button" class="btn btn-sm btn-outline-success">+ Agregar item</button>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="submit" id="crearFacturaBtn" class="btn btn-success">Crear Factura</button>
+            <div class="col-md-6 form-floating">
+              <input type="text" class="form-control" id="cuitFactura" placeholder="CUIT / CUIL">
+              <label for="cuitFactura">CUIT / CUIL</label>
+            </div>
+            <div class="col-md-6 form-floating">
+              <input type="text" class="form-control" id="direccionFactura" placeholder="Dirección">
+              <label for="direccionFactura">Dirección</label>
+            </div>
+            <div class="col-md-6 form-floating">
+              <input type="email" class="form-control" id="emailFactura" placeholder="Correo electrónico">
+              <label for="emailFactura">Correo electrónico</label>
+            </div>
+            <div class="col-md-6 form-floating">
+              <input type="tel" class="form-control" id="telefonoFactura" placeholder="Teléfono">
+              <label for="telefonoFactura">Teléfono</label>
+            </div>
+            <div class="col-md-6 form-floating">
+              <select class="form-select" id="tipoFactura">
+                <option>A</option><option>B</option><option>C</option>
+              </select>
+              <label for="tipoFactura">Tipo de Factura</label>
+            </div>
+            <div class="col-md-6 form-floating">
+              <input type="date" class="form-control" id="fechaFactura">
+              <label for="fechaFactura">Fecha</label>
+            </div>
+            <div class="col-md-12 form-floating">
+              <textarea class="form-control" id="descripcionFactura" placeholder="Descripción" style="height: 100px"></textarea>
+              <label for="descripcionFactura">Descripción</label>
+            </div>
+
+            <!-- Productos / Ítems -->
+            <div class="col-12">
+              <h6>Productos / Ítems</h6>
+              <div class="row g-2 align-items-center mb-2">
+                <div class="col-md-8"><input type="text" class="form-control" placeholder="Producto / Ítem"></div>
+                <div class="col-md-4"><input type="number" class="form-control" placeholder="Precio"></div>
+              </div>
+              <button type="button" class="btn btn-sm btn-success">+ Agregar item</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" id="crearFacturaBtn" class="btn btn-success">Crear Factura</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-
- <!-- Toasts centrados -->
-<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
-  <!-- Toast factura -->
-  <div id="toastFactura" class="toast align-items-center text-bg-success border-0 shadow" 
-       role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="d-flex">
-      <div class="toast-body">
-        ✅ Factura creada con éxito
+  <!-- Toasts -->
+  <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
+    <div id="toastFactura" class="toast align-items-center text-bg-success border-0 shadow" role="alert">
+      <div class="d-flex">
+        <div class="toast-body">✅ Factura creada con éxito</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
       </div>
-      <button type="button" class="btn-close btn-close-white me-2 m-auto" 
-              data-bs-dismiss="toast" aria-label="Cerrar"></button>
     </div>
   </div>
 
-  <!-- Toast impuesto -->
-  <div id="toastImpuesto" class="toast align-items-center text-bg-primary border-0 shadow" 
-       role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="d-flex">
-      <div class="toast-body">
-        💰 Impuesto añadido correctamente
-      </div>
-      <button type="button" class="btn-close btn-close-white me-2 m-auto" 
-              data-bs-dismiss="toast" aria-label="Cerrar"></button>
-    </div>
-  </div>
-</div>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const crearFacturaBtn = document.getElementById("crearFacturaBtn");
+      const toastFactura = document.getElementById("toastFactura");
 
-<!-- Scripts -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Botón Crear Factura
-    const crearFacturaBtn = document.getElementById("crearFacturaBtn");
-    const toastFactura = document.getElementById("toastFactura");
-
-    if (crearFacturaBtn && toastFactura) {
-      crearFacturaBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        const toast = new bootstrap.Toast(toastFactura);
-        toast.show();
-      });
-    }
-
-    // Botón Guardar (Impuesto)
-    const guardarImpuestoBtn = document.getElementById("guardarImpuestoBtn");
-    const toastImpuesto = document.getElementById("toastImpuesto");
-
-    if (guardarImpuestoBtn && toastImpuesto) {
-      guardarImpuestoBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        const toast = new bootstrap.Toast(toastImpuesto);
-        toast.show();
-      });
-    }
-  });
-</script>
+      if (crearFacturaBtn && toastFactura) {
+        crearFacturaBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          const toast = new bootstrap.Toast(toastFactura);
+          toast.show();
+        });
+      }
+    });
+  </script>
 </body>
 </html>
