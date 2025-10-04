@@ -121,33 +121,48 @@
     </footer>
 
     <!-- Modals -->
-    <!-- Modal Añadir Impuesto -->
-    <div class="modal fade" id="modalImpuesto" tabindex="-1" aria-labelledby="modalImpuestoLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content rounded-4 shadow">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalImpuestoLabel">Añadir impuesto</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+<!-- Modal Añadir Impuesto -->
+<div class="modal fade" id="modalImpuesto" tabindex="-1" aria-labelledby="modalImpuestoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md modal-dialog-centered">
+    <div class="modal-content rounded-4 shadow">
+      
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalImpuestoLabel">Añadir Impuesto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      
+      <div class="modal-body">
+        <form class="row g-3">
+
+          <!-- Nombre del impuesto -->
+          <div class="col-12 form-floating">
+            <input type="text" class="form-control" id="nombreImpuesto" placeholder="IVA">
+            <label for="nombreImpuesto">Nombre del impuesto</label>
           </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="nombreImpuesto" placeholder="IVA 21%">
-                <label for="nombreImpuesto">Nombre del impuesto</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="porcentajeImpuesto" placeholder="21">
-                <label for="porcentajeImpuesto">Porcentaje (%)</label>
-              </div>
-            </form>
+
+          <!-- Porcentaje -->
+          <div class="col-12 form-floating">
+            <input type="number" class="form-control" id="porcentajeImpuesto" placeholder="21" min="0" max="100">
+            <label for="porcentajeImpuesto">Porcentaje (%)</label>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-primary" id="guardarImpuestoBtn">Guardar</button>
+
+          <!-- Descripción -->
+          <div class="col-12 form-floating">
+            <textarea class="form-control" id="descripcionImpuesto" placeholder="Descripción breve" style="height: 80px"></textarea>
+            <label for="descripcionImpuesto">Descripción</label>
           </div>
-        </div>
+
+        </form>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-success" id="guardarImpuestoBtn">Guardar</button>
       </div>
     </div>
+  </div>
+</div>
+
 
 <!-- Modal Nueva Factura -->
 <div class="modal fade" id="modalFactura" tabindex="-1" aria-labelledby="modalFacturaLabel" aria-hidden="true">
@@ -164,31 +179,31 @@
           
           <!-- Cliente -->
           <div class="col-md-6 form-floating">
-            <input type="text" class="form-control" id="clienteFactura" placeholder="Juan Pérez" value="Juan Pérez">
+            <input type="text" class="form-control" id="clienteFactura" placeholder="Juan Pérez">
             <label for="clienteFactura">Cliente</label>
           </div>
 
           <!-- CUIT / CUIL -->
           <div class="col-md-6 form-floating">
-            <input type="text" class="form-control" id="cuitFactura" placeholder="20-12345678-9" value="20-12345678-9">
+            <input type="text" class="form-control" id="cuitFactura" placeholder="20-12345678-9">
             <label for="cuitFactura">CUIT / CUIL</label>
           </div>
 
           <!-- Dirección -->
           <div class="col-md-6 form-floating">
-            <input type="text" class="form-control" id="direccionFactura" placeholder="Calle Falsa 123" value="Av. Corrientes 2500">
+            <input type="text" class="form-control" id="direccionFactura" placeholder="Calle Falsa 123">
             <label for="direccionFactura">Dirección</label>
           </div>
 
           <!-- Correo electrónico -->
           <div class="col-md-6 form-floating">
-            <input type="email" class="form-control" id="emailFactura" placeholder="correo@ejemplo.com" value="cliente@ejemplo.com">
+            <input type="email" class="form-control" id="emailFactura" placeholder="correo@ejemplo.com">
             <label for="emailFactura">Correo electrónico</label>
           </div>
 
           <!-- Teléfono -->
           <div class="col-md-6 form-floating">
-            <input type="tel" class="form-control" id="telefonoFactura" placeholder="+54 11 1234 5678" value="+54 11 4567 8901">
+            <input type="tel" class="form-control" id="telefonoFactura" placeholder="+54 11 1234 5678">
             <label for="telefonoFactura">Teléfono</label>
           </div>
 
@@ -196,7 +211,7 @@
           <div class="col-md-6 form-floating">
             <select class="form-select" id="tipoFactura" aria-label="Tipo de Factura">
               <option value="A">A</option>
-              <option value="B" selected>B</option>
+              <option value="B">B</option>
               <option value="C">C</option>
             </select>
             <label for="tipoFactura">Tipo de Factura</label>
@@ -204,19 +219,19 @@
 
           <!-- Razón de la factura -->
           <div class="col-md-12 form-floating">
-            <input type="text" class="form-control" id="razonFactura" placeholder="Motivo de la factura" value="Servicios Web Mensuales">
+            <input type="text" class="form-control" id="razonFactura" placeholder="Motivo de la factura">
             <label for="razonFactura">Razón de la factura</label>
           </div>
 
           <!-- Fecha -->
           <div class="col-md-6 form-floating">
-            <input type="date" class="form-control" id="fechaFactura" value="2025-10-03">
+            <input type="date" class="form-control" id="fechaFactura">
             <label for="fechaFactura">Fecha</label>
           </div>
 
           <!-- Descripción -->
           <div class="col-md-12 form-floating">
-            <textarea class="form-control" placeholder="Descripción" id="descripcionFactura" style="height: 100px">Factura correspondiente a servicios web y mantenimiento mensual</textarea>
+            <textarea class="form-control" placeholder="Descripción" id="descripcionFactura" style="height: 100px"></textarea>
             <label for="descripcionFactura">Descripción</label>
           </div>
 
@@ -227,36 +242,12 @@
             <!-- Producto 1 -->
             <div class="row g-2 align-items-center mb-2">
               <div class="col-md-8 form-floating">
-                <input type="text" class="form-control" id="item1" placeholder="Producto o ítem" value="Hosting Mensual">
+                <input type="text" class="form-control" id="item1" placeholder="Producto o ítem">
                 <label for="item1">Producto / Ítem</label>
               </div>
               <div class="col-md-4 form-floating">
-                <input type="number" class="form-control" id="precio1" placeholder="Precio" value="3500">
+                <input type="number" class="form-control" id="precio1" placeholder="Precio">
                 <label for="precio1">Precio</label>
-              </div>
-            </div>
-
-            <!-- Producto 2 -->
-            <div class="row g-2 align-items-center mb-2">
-              <div class="col-md-8 form-floating">
-                <input type="text" class="form-control" id="item2" placeholder="Producto o ítem" value="Mantenimiento Web">
-                <label for="item2">Producto / Ítem</label>
-              </div>
-              <div class="col-md-4 form-floating">
-                <input type="number" class="form-control" id="precio2" placeholder="Precio" value="15000">
-                <label for="precio2">Precio</label>
-              </div>
-            </div>
-
-            <!-- Producto 3 -->
-            <div class="row g-2 align-items-center mb-2">
-              <div class="col-md-8 form-floating">
-                <input type="text" class="form-control" id="item3" placeholder="Producto o ítem" value="Certificado SSL">
-                <label for="item3">Producto / Ítem</label>
-              </div>
-              <div class="col-md-4 form-floating">
-                <input type="number" class="form-control" id="precio3" placeholder="Precio" value="2000">
-                <label for="precio3">Precio</label>
               </div>
             </div>
             
@@ -274,6 +265,7 @@
     </div>
   </div>
 </div>
+
 
 
     <!-- Toast -->

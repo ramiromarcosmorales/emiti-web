@@ -1,7 +1,5 @@
-/* ==========================================
-   Bootstrap overrides para mantener identidad visual
-   Proyecto: Emití Web
-   ========================================== */
+/* Bootstrap overrides para mantener identidad visual
+   Proyecto: Emití Web*/
 
 /* Variables base */
 :root {
@@ -11,24 +9,22 @@
   --bs-primary: rgba(var(--color-primary-rgb), 1);
 }
 
-/* ==========================================
-   Botones del menú (similares a diseño original)
-   ========================================== */
+/* Botones del menú (similares a diseño original) */
 .btn.btn-light {
   background-color: #efeff1;
   color: #222222;
   border-color: var(--color-border);
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn.btn-light:hover,
 .btn.btn-light:focus {
-  filter: brightness(0.96);
-  color: #222222;
+  background-color: #e0e0e0; /* gris más oscuro al hover */
+  color: #000000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-/* ==========================================
-   Navbar y menú
-   ========================================== */
+/* Navbar y menú */
 .bg-body-tertiary { 
   background-color: var(--color-surface) !important; 
 }
@@ -40,16 +36,12 @@
   color: #222222;
 }
 
-/* ==========================================
-   Sombras suaves para cards y botones
-   ========================================== */
+/* Sombras suaves para cards y botones */
 .shadow-sm { 
   box-shadow: 0 1px 0 rgba(0,0,0,0.04), inset 0 -1px 0 rgba(0,0,0,0.05) !important; 
 }
 
-/* ==========================================
-   Botones principales
-   ========================================== */
+/* Botones principales */
 .btn {
   border-radius: .65rem;
   font-weight: 600;
@@ -61,34 +53,57 @@
   box-shadow: 0 4px 10px rgba(0,0,0,.1);
 }
 
+/* Botón primario (azul) */
 .btn-primary {
   background-color: #0069d9;
   border-color: #0062cc;
+  color: #fff;
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus {
   background-color: #0056b3;
   border-color: #004a99;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
+/* Botón verde (success) */
 .btn-success {
   background-color: #28a745;
-  border-color: #218838;
+  border-color: #28a745;
+  color: #fff;
 }
 
-.btn-success:hover {
+.btn-success:hover,
+.btn-success:focus {
   background-color: #218838;
   border-color: #1e7e34;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
+/* Botón secundario (gris) */
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: #fff;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: #5a6268;
+  border-color: #545b62;
+  color: #fff;
+}
+
+/* Botón outline secundario */
 .btn-outline-secondary {
   border-radius: 2rem;
   font-weight: 500;
 }
 
-/* ==========================================
-   Modals
-   ========================================== */
+/* Modals */
 .modal-content {
   border-radius: 1rem;
   border: none;
@@ -103,9 +118,7 @@
   border-top: 1px solid #e9ecef;
 }
 
-/* ==========================================
-   Floating Labels
-   ========================================== */
+/* Floating Labels */
 .form-floating > label {
   color: #6c757d;
   font-size: 0.9rem;
@@ -121,9 +134,7 @@
   box-shadow: 0 0 0 0.2rem rgba(0,105,217,.25);
 }
 
-/* ==========================================
-   Toasts
-   ========================================== */
+/* Toasts */
 .toast {
   border-radius: .75rem;
   font-weight: 500;
@@ -134,9 +145,7 @@
   font-size: .95rem;
 }
 
-/* ==========================================
-   Cards (Métricas principales)
-   ========================================== */
+/* Cards (Métricas principales) */
 .card {
   border: none;
   border-radius: .75rem;
