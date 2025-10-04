@@ -9,39 +9,10 @@
   --bs-primary: rgba(var(--color-primary-rgb), 1);
 }
 
-/* Botones del menú (similares a diseño original) */
-.btn.btn-light {
-  background-color: #efeff1;
-  color: #222222;
-  border-color: var(--color-border);
-  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-}
+/* ============================== */
+/* BOTONES PRINCIPALES Y MENÚ     */
+/* ============================== */
 
-.btn.btn-light:hover,
-.btn.btn-light:focus {
-  background-color: #e0e0e0; /* gris más oscuro */
-  color: #000000;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
-
-/* Navbar y menú */
-.bg-body-tertiary { 
-  background-color: var(--color-surface) !important; 
-}
-
-.menu a.active {
-  background-color: var(--color-surface);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  border-color: var(--color-border);
-  color: #222222;
-}
-
-/* Sombras suaves para cards y botones */
-.shadow-sm { 
-  box-shadow: 0 1px 0 rgba(0,0,0,0.04), inset 0 -1px 0 rgba(0,0,0,0.05) !important; 
-}
-
-/* Botones principales */
 .btn {
   border-radius: .65rem;
   font-weight: 600;
@@ -55,6 +26,28 @@
   outline: none;
 }
 
+/* Botón del menú */
+.btn.btn-light {
+  background-color: #efeff1;
+  color: #222;
+  border-color: var(--color-border);
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn.btn-light:hover,
+.btn.btn-light:focus {
+  background-color: #e0e0e0;
+  color: #000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.menu a.active {
+  background-color: var(--color-surface);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border-color: var(--color-border);
+  color: #222;
+}
+
 /* Botón primario (azul) */
 .btn-primary {
   background-color: #0069d9;
@@ -66,7 +59,6 @@
 .btn-primary:focus {
   background-color: #0056b3;
   border-color: #004a99;
-  color: #fff;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
@@ -79,13 +71,13 @@
 
 .btn-success:hover,
 .btn-success:focus {
-  background-color: #218838; /* verde más oscuro */
+  background-color: #218838;
   border-color: #1e7e34;
   color: #fff;
   box-shadow: 0 2px 6px rgba(0,0,0,0.25);
 }
 
-/* Botón outline success (para Ver Detalle en verde opaco) */
+/* Botón outline success (para Ver Detalle) */
 .btn-outline-success {
   color: #218838;
   border-color: #218838;
@@ -116,13 +108,76 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-/* Botón outline secundario */
+/* Outline secundario */
 .btn-outline-secondary {
   border-radius: 2rem;
   font-weight: 500;
 }
 
-/* Modals */
+/* ============================== */
+/* FORMULARIOS Y FLOATING LABELS  */
+/* ============================== */
+
+.form-floating > label {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.form-control {
+  border-radius: .5rem;
+  border-color: #dee2e6;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.form-control:focus {
+  border-color: #0069d9;
+  box-shadow: 0 0 0 0.2rem rgba(0,105,217,.25);
+  outline: none;
+}
+
+/* Ajustes globales de formularios en modales y secciones */
+form {
+  padding: 1rem 0.75rem;
+}
+
+.modal-body form {
+  padding: 1.25rem;
+  background-color: #f8f9fa;
+  border-radius: 0.75rem;
+}
+
+/* ============================== */
+/* TOGGLES ACTIVO/INACTIVO        */
+/* ============================== */
+
+.estado {
+  font-weight: 600;
+  color: #fff;
+  border-radius: 2rem;
+  padding: 0.35rem 0.9rem;
+  background-color: #28a745;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.estado:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+.estado.inactivo {
+  background-color: #6c757d;
+}
+
+.estado.inactivo:hover {
+  background-color: #5a6268;
+}
+
+/* ============================== */
+/* MODALES Y BOTÓN DE CIERRE      */
+/* ============================== */
+
 .modal-content {
   border-radius: 1rem;
   border: none;
@@ -137,24 +192,30 @@
   border-top: 1px solid #e9ecef;
 }
 
-/* Floating Labels */
-.form-floating > label {
-  color: #6c757d;
-  font-size: 0.9rem;
+/* Fix global del botón de cierre (todas las páginas) */
+.btn-close {
+  background: var(--bs-btn-close-bg) center/1em auto no-repeat !important;
+  background-color: transparent !important;
+  width: 1.2em;
+  height: 1.2em;
+  opacity: 0.75;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 50%;
+  transition: all 0.15s ease;
+}
+.btn-close:hover {
+  opacity: 0.9;
+  transform: scale(1.1);
+}
+.btn-close:focus {
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
 }
 
-.form-control {
-  border-radius: .5rem;
-  border-color: #dee2e6;
-}
+/* ============================== */
+/* TOASTS                         */
+/* ============================== */
 
-.form-control:focus {
-  border-color: #0069d9;
-  box-shadow: 0 0 0 0.2rem rgba(0,105,217,.25);
-  outline: none;
-}
-
-/* Toasts */
 .toast {
   border-radius: .75rem;
   font-weight: 500;
@@ -165,7 +226,15 @@
   font-size: .95rem;
 }
 
-/* Cards (Métricas principales) */
+/* ============================== */
+/* CARDS Y SOMBRAS                */
+/* ============================== */
+
+.shadow-sm {
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04),
+              inset 0 -1px 0 rgba(0,0,0,0.05) !important;
+}
+
 .card {
   border: none;
   border-radius: .75rem;
@@ -188,4 +257,18 @@
   font-size: 1.2rem;
   font-weight: bold;
   color: #212529;
+}
+
+/* ============================== */
+/* PADDINGS UNIFICADOS            */
+/* ============================== */
+
+.container, .modal-content, .card-body {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+input, select, textarea {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
 }

@@ -1,50 +1,94 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Configuración - EMITÍ</title>
-  <meta name="description" content="Configurá los impuestos y tu cuenta en Emití Web. Gestioná tus preferencias y seguridad de acceso.">
-  <link rel="icon" href="assets/favicon.png" type="image/png">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/bootstrap-overrides.css">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-</head>
+  <meta name="description" content="Configurá impuestos y preferencias de cuenta en Emití Web."/>
 
-<body style="font-family: 'Inter', sans-serif;">
+  <link rel="icon" href="assets/favicon.png" type="image/png"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous"/>
+
+  <!-- Fuentes y estilos del proyecto -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" as="style" onload="this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="css/bootstrap-overrides.css"/>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="css/components.css"/>
+  <link rel="stylesheet" href="css/responsive.css"/>
+
+  <style>
+    /* Asegura Inter en toda la página */
+    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+
+    /* Arreglo global para la X de cierre de modales si algún estilo la pisa */
+    .btn-close{
+      background: var(--bs-btn-close-bg) center/1em auto no-repeat !important;
+      background-color: transparent !important;
+      width: 1em; height: 1em;
+      opacity: .65;
+      border: 0 !important;
+      box-shadow: none !important;
+    }
+    .btn-close:hover{ opacity: .85; }
+    .btn-close:focus{ box-shadow: 0 0 0 .25rem rgba(13,110,253,.25) !important; }
+
+    /* Alineación y respiración de la caja "Agregar nuevo impuesto" */
+    .card-add-tax .form-floating > label { padding-left:.75rem; }
+    .card-add-tax .form-floating > .form-control{ padding-left:.75rem; }
+    .card-add-tax .row{ align-items:center; }
+
+    /* Pastilla “estado” (por si la usás en otros lados) */
+    .estado-pill{
+      font-weight:600;
+      border-radius: 999px;
+      padding: .25rem .75rem;
+    }
+
+    /* Arreglo visual del switch para que quede alineado en grillas */
+    .form-switch .form-check-input{
+      width: 2.5rem; height: 1.25rem;
+    }
+    .form-switch .form-check-input:focus{ box-shadow: 0 0 0 .2rem rgba(25,135,84,.25); }
+    .form-switch .form-check-label{ user-select:none; }
+
+    /* Headings y secciones */
+    .section-card{
+      background: #fff; border: 1px solid var(--color-border, #e9ecef);
+      border-radius: .75rem;
+    }
+  </style>
+</head>
+<body>
   <!-- Encabezado -->
   <header class="bg-white border-bottom py-3">
     <div class="container d-flex flex-column flex-sm-row align-items-center gap-3 text-center text-sm-start">
-      <img src="assets/logo.png" alt="Logo Emití" width="120" height="120" class="img-fluid">
+      <img src="assets/logo.png" alt="Logo Emití" width="120" height="120" class="img-fluid" decoding="async" fetchpriority="high">
       <h1 class="h5 text-muted mb-0">Gestión Profesional de Facturas</h1>
     </div>
   </header>
 
-  <!-- Navegación -->
+  <!-- Menú principal -->
   <nav class="menu">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
         <div class="col d-grid">
-          <a href="index.html" class="btn btn-light border rounded-pill shadow-sm fw-bold d-flex align-items-center justify-content-center gap-2">
+          <a href="index.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
             <i class="fa-solid fa-chart-column"></i> Dashboard
           </a>
         </div>
         <div class="col d-grid">
-          <a href="nueva-factura.html" class="btn btn-light border rounded-pill shadow-sm fw-bold d-flex align-items-center justify-content-center gap-2">
+          <a href="nueva-factura.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
             <i class="fa-solid fa-file-invoice"></i> Nueva Factura
           </a>
         </div>
         <div class="col d-grid">
-          <a href="facturas.html" class="btn btn-light border rounded-pill shadow-sm fw-bold d-flex align-items-center justify-content-center gap-2">
+          <a href="facturas.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
             <i class="fa-solid fa-file-invoice-dollar"></i> Facturas
           </a>
         </div>
         <div class="col d-grid">
-          <a href="configuracion.html" aria-current="page" class="btn btn-light border rounded-pill shadow-sm fw-bold d-flex align-items-center justify-content-center gap-2 active">
+          <a href="configuracion.html" aria-current="page" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2 active">
             <i class="fa-solid fa-gear"></i> Configuración
           </a>
         </div>
@@ -52,157 +96,165 @@
     </div>
   </nav>
 
-  <!-- Contenido principal -->
   <main class="configuracion">
-    <section aria-label="Configuración de impuestos">
-      <div class="container py-4">
-        <div class="bg-white border rounded-3 p-4 shadow-sm">
-          <h2 class="mb-2">Configuración de impuestos</h2>
-          <p class="text-muted mb-3">Gestioná los impuestos que se aplicarán a tus facturas</p>
+    <div class="container py-3">
+      <!-- Configuración de impuestos -->
+      <section class="section-card p-4 mb-4">
+        <h2 class="mb-1">Configuración de impuestos</h2>
+        <p class="text-muted mb-3">Gestioná los impuestos que se aplicarán a tus facturas</p>
 
-          <!-- Impuestos configurados -->
-          <div class="card border rounded-3 mb-4">
-            <div class="card-body d-flex align-items-center justify-content-between py-2 px-3">
-              <div class="d-flex align-items-center gap-2">
-                <input type="checkbox" id="iva21" checked>
-                <label for="iva21" class="fw-semibold mb-0">IVA</label>
-                <span class="text-muted">21%</span>
-                <button type="button" id="estadoImpuesto" class="btn btn-success btn-sm rounded-pill px-3 ms-2">
-                  Activo
-                </button>
-              </div>
-              <div class="d-inline-flex align-items-center gap-2">
-                <button class="btn btn-light border rounded-pill btn-sm"><i class="fa-solid fa-pen"></i></button>
-                <button class="btn btn-light border rounded-pill btn-sm"><i class="fa-solid fa-trash"></i></button>
-              </div>
+        <!-- Impuestos configurados (ejemplo IVA) -->
+        <div class="list-group rounded-3 mb-3">
+          <div class="list-group-item d-flex align-items-center gap-3">
+            <div class="form-check m-0">
+              <input class="form-check-input me-2" type="checkbox" id="ivaCheck" checked>
+              <label class="form-check-label fw-semibold" for="ivaCheck">IVA</label>
+            </div>
+            <span class="text-muted">21%</span>
+
+            <!-- Switch Activo a la par de IVA -->
+            <div class="form-check form-switch ms-3">
+              <input class="form-check-input" type="checkbox" id="ivaActivo" checked>
+              <label class="form-check-label" for="ivaActivo" id="ivaActivoLabel">Activo</label>
+            </div>
+
+            <div class="ms-auto d-inline-flex align-items-center gap-2">
+              <button type="button" class="btn btn-light border rounded-pill btn-sm" title="Editar">
+                <i class="fa-solid fa-pen"></i>
+              </button>
+              <button type="button" class="btn btn-light border rounded-pill btn-sm" title="Eliminar">
+                <i class="fa-solid fa-trash"></i>
+              </button>
             </div>
           </div>
-
-          <!-- Agregar nuevo impuesto -->
-          <h3 class="h6 text-uppercase text-muted mb-2">Agregar nuevo impuesto</h3>
-          <form class="row g-3 p-3 border rounded-3 align-items-end bg-light">
-            <div class="col-md-6 form-floating">
-              <input type="text" id="nuevoNombre" class="form-control" placeholder="Ej: Percepción IIBB">
-              <label for="nuevoNombre">Nombre del impuesto</label>
-            </div>
-            <div class="col-md-3 form-floating">
-              <input type="number" id="nuevoPorcentaje" class="form-control" placeholder="0" min="0" max="100">
-              <label for="nuevoPorcentaje">Porcentaje (%)</label>
-            </div>
-            <div class="col-md-3">
-              <div class="form-check form-switch mt-3">
-                <input class="form-check-input" type="checkbox" id="nuevoActivo" checked>
-                <label class="form-check-label" for="nuevoActivo">Activo</label>
-              </div>
-            </div>
-            <div class="col-12">
-              <button type="button" id="agregarImpuestoBtn" class="btn btn-success">Agregar</button>
-            </div>
-          </form>
         </div>
 
-        <!-- Configuración de cuenta -->
-        <div class="bg-white border rounded-3 p-4 shadow-sm mt-4">
-          <h2 class="mb-3">Configuración de cuenta</h2>
-          <p class="text-muted mb-3">Ajustá tu información personal, seguridad y preferencias.</p>
-
-          <div class="accordion" id="accordionCuenta">
-            <!-- Datos de la cuenta -->
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingDatos">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDatos">
-                  <i class="fa-solid fa-user me-2"></i> Datos de la cuenta
-                </button>
-              </h2>
-              <div id="collapseDatos" class="accordion-collapse collapse show" data-bs-parent="#accordionCuenta">
-                <div class="accordion-body">
-                  <form class="row g-3 p-3">
-                    <div class="col-md-6 form-floating">
-                      <input type="text" id="nombreUsuario" class="form-control" placeholder="Nombre de usuario">
-                      <label for="nombreUsuario">Nombre de usuario</label>
-                    </div>
-                    <div class="col-md-6 form-floating">
-                      <input type="email" id="emailCuenta" class="form-control" placeholder="Correo electrónico">
-                      <label for="emailCuenta">Correo electrónico</label>
-                    </div>
-                    <div class="col-12">
-                      <button type="button" id="btnGuardarDatos" class="btn btn-success">Guardar cambios</button>
-                    </div>
-                  </form>
+        <!-- Agregar nuevo impuesto (alineado) -->
+        <h3 class="h6 text-uppercase text-muted mb-2">Agregar nuevo impuesto</h3>
+        <div class="card card-add-tax border rounded-3">
+          <div class="card-body">
+            <div class="row g-3 align-items-center">
+              <div class="col-12 col-lg-6">
+                <div class="form-floating">
+                  <input type="text" id="nuevoNombre" class="form-control" placeholder="Ej: Percepción IIBB" />
+                  <label for="nuevoNombre">Nombre del impuesto</label>
                 </div>
               </div>
-            </div>
 
-            <!-- Seguridad -->
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingSeguridad">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeguridad">
-                  <i class="fa-solid fa-lock me-2"></i> Seguridad
-                </button>
-              </h2>
-              <div id="collapseSeguridad" class="accordion-collapse collapse" data-bs-parent="#accordionCuenta">
-                <div class="accordion-body">
-                  <form class="row g-3 p-3">
-                    <div class="col-md-6 form-floating">
-                      <input type="password" id="passwordActual" class="form-control" placeholder="Contraseña actual">
-                      <label for="passwordActual">Contraseña actual</label>
-                    </div>
-                    <div class="col-md-6 form-floating">
-                      <input type="password" id="nuevaPassword" class="form-control" placeholder="Nueva contraseña">
-                      <label for="nuevaPassword">Nueva contraseña</label>
-                    </div>
-                    <div class="col-12">
-                      <button type="button" id="btnGuardarSeguridad" class="btn btn-success">Actualizar contraseña</button>
-                    </div>
-                  </form>
+              <div class="col-8 col-lg-4">
+                <div class="form-floating">
+                  <input type="number" id="nuevoPorcentaje" class="form-control" placeholder="0" min="0" max="100" step="0.1"/>
+                  <label for="nuevoPorcentaje">Porcentaje (%)</label>
                 </div>
               </div>
-            </div>
 
-            <!-- Preferencias -->
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingPreferencias">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePreferencias">
-                  <i class="fa-solid fa-sliders me-2"></i> Preferencias
-                </button>
-              </h2>
-              <div id="collapsePreferencias" class="accordion-collapse collapse" data-bs-parent="#accordionCuenta">
-                <div class="accordion-body">
-                  <form class="row g-3 p-3">
-                    <div class="col-12 form-check">
-                      <input class="form-check-input" type="checkbox" id="notificaciones" checked>
-                      <label class="form-check-label" for="notificaciones">Recibir notificaciones por correo</label>
-                    </div>
-                    <div class="col-md-4 form-floating">
-                      <select id="idioma" class="form-select">
-                        <option>Español</option>
-                        <option>Inglés</option>
-                        <option>Portugués</option>
-                      </select>
-                      <label for="idioma">Idioma</label>
-                    </div>
-                    <div class="col-12">
-                      <button type="button" id="btnGuardarPreferencias" class="btn btn-success">Guardar preferencias</button>
-                    </div>
-                  </form>
+              <div class="col-4 col-lg-2">
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="nuevoActivo" checked>
+                  <label class="form-check-label" for="nuevoActivo" id="nuevoActivoLabel">Activo</label>
                 </div>
+              </div>
+
+              <div class="col-12">
+                <button type="button" id="agregarImpuestoBtn" class="btn btn-success">Agregar</button>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
 
-  <!-- Toasts -->
-  <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
-    <div id="toastGeneral" class="toast align-items-center text-bg-success border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="d-flex">
-        <div class="toast-body" id="toastMessage">Acción realizada con éxito</div>
-        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
-      </div>
+      <!-- Configuración de cuenta (acordeón) -->
+      <section class="section-card p-4">
+        <h2 class="mb-1">Configuración de cuenta</h2>
+        <p class="text-muted mb-3">Ajustá tu información personal, seguridad y preferencias.</p>
+
+        <div class="accordion" id="cuentaAccordion">
+          <!-- Datos de la cuenta -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="accDatosHeading">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accDatos" aria-expanded="true" aria-controls="accDatos">
+                <i class="fa-solid fa-circle-user me-2"></i> Datos de la cuenta
+              </button>
+            </h2>
+            <div id="accDatos" class="accordion-collapse collapse show" aria-labelledby="accDatosHeading" data-bs-parent="#cuentaAccordion">
+              <div class="accordion-body">
+                <form class="row g-3 p-2">
+                  <div class="col-12 col-md-6 form-floating">
+                    <input type="text" id="usuario" class="form-control" placeholder="Nombre de usuario">
+                    <label for="usuario">Nombre de usuario</label>
+                  </div>
+                  <div class="col-12 col-md-6 form-floating">
+                    <input type="email" id="correo" class="form-control" placeholder="correo@ejemplo.com">
+                    <label for="correo">Correo electrónico</label>
+                  </div>
+                  <div class="col-12">
+                    <button type="button" id="guardarCuentaBtn" class="btn btn-success">Guardar cambios</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Seguridad -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="accSeguridadHeading">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accSeguridad" aria-expanded="false" aria-controls="accSeguridad">
+                <i class="fa-solid fa-lock me-2"></i> Seguridad
+              </button>
+            </h2>
+            <div id="accSeguridad" class="accordion-collapse collapse" aria-labelledby="accSeguridadHeading" data-bs-parent="#cuentaAccordion">
+              <div class="accordion-body">
+                <form class="row g-3 p-2">
+                  <div class="col-12 col-md-6 form-floating">
+                    <input type="password" id="passActual" class="form-control" placeholder="••••••••">
+                    <label for="passActual">Contraseña actual</label>
+                  </div>
+                  <div class="col-12 col-md-6 form-floating">
+                    <input type="password" id="passNueva" class="form-control" placeholder="••••••••">
+                    <label for="passNueva">Nueva contraseña</label>
+                  </div>
+                  <div class="col-12 col-md-6 form-floating">
+                    <input type="password" id="passRep" class="form-control" placeholder="••••••••">
+                    <label for="passRep">Confirmar nueva contraseña</label>
+                  </div>
+                  <div class="col-12">
+                    <button type="button" id="guardarSeguridadBtn" class="btn btn-success">Guardar cambios</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notificaciones -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="accNotifHeading">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accNotif" aria-expanded="false" aria-controls="accNotif">
+                <i class="fa-solid fa-bell me-2"></i> Notificaciones
+              </button>
+            </h2>
+            <div id="accNotif" class="accordion-collapse collapse" aria-labelledby="accNotifHeading" data-bs-parent="#cuentaAccordion">
+              <div class="accordion-body">
+                <form class="row g-3 p-2">
+                  <div class="col-12">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="notifFacturas" checked>
+                      <label class="form-check-label" for="notifFacturas">
+                        Recibir notificaciones de facturas y vencimientos por correo
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <button type="button" id="guardarNotifBtn" class="btn btn-success">Guardar cambios</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
     </div>
-  </div>
+  </main>
 
   <!-- Footer -->
   <footer class="bg-white border-top py-3">
@@ -220,31 +272,64 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Toasts centrados -->
+  <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
+    <div id="toastImpuestoOk" class="toast align-items-center text-bg-success border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">✅ Tu impuesto se agregó correctamente</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+      </div>
+    </div>
+
+    <div id="toastCuentaOk" class="toast align-items-center text-bg-success border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">✅ Cambios guardados</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const toastEl = document.getElementById("toastGeneral");
-      const toastMessage = document.getElementById("toastMessage");
-
-      function showToast(message) {
-        toastMessage.textContent = message;
-        new bootstrap.Toast(toastEl).show();
+    document.addEventListener('DOMContentLoaded', () => {
+      // Toggle etiquetas Activo/Inactivo (IVA + nuevo)
+      const ivaActivo = document.getElementById('ivaActivo');
+      const ivaActivoLabel = document.getElementById('ivaActivoLabel');
+      if (ivaActivo) {
+        ivaActivo.addEventListener('change', () => {
+          ivaActivoLabel.textContent = ivaActivo.checked ? 'Activo' : 'Inactivo';
+        });
       }
 
-      document.getElementById("agregarImpuestoBtn").addEventListener("click", () => showToast("💰 Tu impuesto se agregó correctamente"));
-      document.getElementById("btnGuardarDatos").addEventListener("click", () => showToast("✅ Datos de cuenta actualizados"));
-      document.getElementById("btnGuardarSeguridad").addEventListener("click", () => showToast("🔒 Contraseña actualizada correctamente"));
-      document.getElementById("btnGuardarPreferencias").addEventListener("click", () => showToast("⚙️ Preferencias guardadas"));
+      const nuevoActivo = document.getElementById('nuevoActivo');
+      const nuevoActivoLabel = document.getElementById('nuevoActivoLabel');
+      if (nuevoActivo) {
+        nuevoActivo.addEventListener('change', () => {
+          nuevoActivoLabel.textContent = nuevoActivo.checked ? 'Activo' : 'Inactivo';
+        });
+      }
 
-      const estadoBtn = document.getElementById("estadoImpuesto");
-      estadoBtn.addEventListener("mouseenter", () => {
-        estadoBtn.textContent = "Desactivar";
-        estadoBtn.classList.replace("btn-success", "btn-warning");
+      // Toasts
+      const toastImpuestoOk = new bootstrap.Toast(document.getElementById('toastImpuestoOk'));
+      const toastCuentaOk   = new bootstrap.Toast(document.getElementById('toastCuentaOk'));
+
+      // Botón Agregar impuesto
+      const agregarImpuestoBtn = document.getElementById('agregarImpuestoBtn');
+      agregarImpuestoBtn?.addEventListener('click', (e) => {
+        e.preventDefault();
+        toastImpuestoOk.show();
       });
-      estadoBtn.addEventListener("mouseleave", () => {
-        estadoBtn.textContent = "Activo";
-        estadoBtn.classList.replace("btn-warning", "btn-success");
+
+      // Botones de guardar (acordeón)
+      document.getElementById('guardarCuentaBtn')?.addEventListener('click', (e) => {
+        e.preventDefault(); toastCuentaOk.show();
+      });
+      document.getElementById('guardarSeguridadBtn')?.addEventListener('click', (e) => {
+        e.preventDefault(); toastCuentaOk.show();
+      });
+      document.getElementById('guardarNotifBtn')?.addEventListener('click', (e) => {
+        e.preventDefault(); toastCuentaOk.show();
       });
     });
   </script>
