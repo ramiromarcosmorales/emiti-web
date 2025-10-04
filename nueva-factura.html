@@ -93,69 +93,74 @@
     </div>
   </footer>
 
-  <!-- Modal Nueva Factura -->
-  <div class="modal fade" id="modalFactura" tabindex="-1" aria-labelledby="modalFacturaLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content rounded-4 shadow">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalFacturaLabel">Nueva Factura</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </div>
-        <div class="modal-body">
-          <form class="row g-3 p-3">
-            <div class="col-md-6 form-floating">
-              <input type="text" class="form-control" id="clienteFactura" placeholder="Nombre del cliente">
-              <label for="clienteFactura">Cliente</label>
-            </div>
-            <div class="col-md-6 form-floating">
-              <input type="text" class="form-control" id="cuitFactura" placeholder="CUIT / CUIL">
-              <label for="cuitFactura">CUIT / CUIL</label>
-            </div>
-            <div class="col-md-6 form-floating">
-              <input type="text" class="form-control" id="direccionFactura" placeholder="Dirección">
-              <label for="direccionFactura">Dirección</label>
-            </div>
-            <div class="col-md-6 form-floating">
-              <input type="email" class="form-control" id="emailFactura" placeholder="Correo electrónico">
-              <label for="emailFactura">Correo electrónico</label>
-            </div>
-            <div class="col-md-6 form-floating">
-              <input type="tel" class="form-control" id="telefonoFactura" placeholder="Teléfono">
-              <label for="telefonoFactura">Teléfono</label>
-            </div>
-            <div class="col-md-6 form-floating">
-              <select class="form-select" id="tipoFactura">
-                <option>A</option><option>B</option><option>C</option>
-              </select>
-              <label for="tipoFactura">Tipo de Factura</label>
-            </div>
-            <div class="col-md-6 form-floating">
-              <input type="date" class="form-control" id="fechaFactura">
-              <label for="fechaFactura">Fecha</label>
-            </div>
-            <div class="col-md-12 form-floating">
-              <textarea class="form-control" id="descripcionFactura" placeholder="Descripción" style="height: 100px"></textarea>
-              <label for="descripcionFactura">Descripción</label>
-            </div>
+ <!-- Modal Nueva Factura -->
+<div class="modal fade" id="modalFactura" tabindex="-1" aria-labelledby="modalFacturaLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalFacturaLabel">Nueva Factura</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form class="row g-3 p-3">
+          <div class="col-md-6 form-floating">
+            <input type="text" class="form-control" id="clienteFactura" placeholder="Nombre del cliente">
+            <label for="clienteFactura">Cliente</label>
+          </div>
+          <div class="col-md-6 form-floating">
+            <input type="text" class="form-control" id="cuitFactura" placeholder="CUIT / CUIL">
+            <label for="cuitFactura">CUIT / CUIL</label>
+          </div>
+          <div class="col-md-6 form-floating">
+            <input type="text" class="form-control" id="direccionFactura" placeholder="Dirección">
+            <label for="direccionFactura">Dirección</label>
+          </div>
+          <div class="col-md-6 form-floating">
+            <input type="email" class="form-control" id="emailFactura" placeholder="Correo electrónico">
+            <label for="emailFactura">Correo electrónico</label>
+          </div>
+          <div class="col-md-6 form-floating">
+            <input type="tel" class="form-control" id="telefonoFactura" placeholder="Teléfono">
+            <label for="telefonoFactura">Teléfono</label>
+          </div>
+          <div class="col-md-6 form-floating">
+            <select class="form-select" id="tipoFactura">
+              <option>A</option><option>B</option><option>C</option>
+            </select>
+            <label for="tipoFactura">Tipo de Factura</label>
+          </div>
+          <div class="col-md-6 form-floating">
+            <input type="date" class="form-control" id="fechaFactura">
+            <label for="fechaFactura">Fecha</label>
+          </div>
+          <div class="col-md-12 form-floating">
+            <textarea class="form-control" id="descripcionFactura" placeholder="Descripción" style="height: 100px"></textarea>
+            <label for="descripcionFactura">Descripción</label>
+          </div>
 
-            <!-- Productos / Ítems -->
-            <div class="col-12">
-              <h6>Productos / Ítems</h6>
-              <div class="row g-2 align-items-center mb-2">
-                <div class="col-md-8"><input type="text" class="form-control" placeholder="Producto / Ítem"></div>
-                <div class="col-md-4"><input type="number" class="form-control" placeholder="Precio"></div>
+          <!-- Productos / Ítems -->
+          <div class="col-12">
+            <h6>Productos / Ítems</h6>
+            <div class="row g-2 align-items-center mb-2">
+              <div class="col-md-8">
+                <input type="text" class="form-control" placeholder="Producto / Ítem">
               </div>
-              <button type="button" class="btn btn-sm btn-success">+ Agregar item</button>
+              <div class="col-md-4">
+                <input type="number" class="form-control" placeholder="Precio">
+              </div>
             </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="submit" id="crearFacturaBtn" class="btn btn-success">Crear Factura</button>
-        </div>
+            <button type="button" class="btn btn-sm btn-success">+ Agregar item</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" id="crearFacturaBtn" class="btn btn-success">Crear Factura</button>
       </div>
     </div>
   </div>
+</div>
+
 
   <!-- Toasts -->
   <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
