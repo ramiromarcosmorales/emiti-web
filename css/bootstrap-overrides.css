@@ -219,6 +219,42 @@ form {
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
 }
 
+/* 🔽 AJUSTES ESPECÍFICOS PARA EL MODAL DE NUEVA FACTURA */
+
+#modalFactura .form-control,
+#modalFactura .form-select,
+#modalFactura textarea {
+  font-size: 0.9rem;              /* Más compacto */
+  padding: 0.4rem 0.75rem;        /* Menos relleno */
+  border-radius: 0.45rem;
+}
+
+#modalFactura .form-floating > label {
+  padding-left: 0.5rem;           /* Separación izquierda */
+  font-size: 0.9rem;
+  color: #495057;
+}
+
+#modalFactura .form-floating > .form-control::placeholder {
+  color: #adb5bd;
+  opacity: 1;
+  padding-left: 0.5rem;
+}
+
+#modalFactura .modal-body {
+  padding: 1.25rem 1.5rem;
+}
+
+#modalFactura .btn-success {
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+#modalFactura .btn-success:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.25);
+}
+
 /* TOASTS */
 
 .toast {
