@@ -24,7 +24,6 @@
   outline: none;
 }
 
-/* Botón del menú */
 .btn.btn-light {
   background-color: #efeff1;
   color: #222;
@@ -46,7 +45,6 @@
   color: #222;
 }
 
-/* Botón primario (azul) */
 .btn-primary {
   background-color: #0069d9;
   border-color: #0062cc;
@@ -60,7 +58,6 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Botón verde (success) */
 .btn-success {
   background-color: #28a745;
   border-color: #28a745;
@@ -75,7 +72,6 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
-/* Botón outline success (para Ver Detalle) */
 .btn-outline-success {
   color: #218838;
   border-color: #218838;
@@ -91,7 +87,6 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
-/* Botón secundario (gris) */
 .btn-secondary {
   background-color: #6c757d;
   border-color: #6c757d;
@@ -106,13 +101,12 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Outline secundario */
 .btn-outline-secondary {
   border-radius: 2rem;
   font-weight: 500;
 }
 
-/* FORMULARIOS Y FLOATING LABELS */
+/* FORMULARIOS */
 
 .form-floating > label {
   color: #6c757d;
@@ -132,7 +126,6 @@
   outline: none;
 }
 
-/* Ajustes globales de formularios en modales y secciones */
 form {
   padding: 1rem 0.75rem;
 }
@@ -181,7 +174,7 @@ form {
   box-shadow: 0 3px 8px rgba(229, 110, 15, 0.5);
 }
 
-/* MODALES Y BOTÓN DE CIERRE */
+/* MODALES Y CIERRE */
 
 .modal-content {
   border-radius: 1rem;
@@ -197,7 +190,6 @@ form {
   border-top: 1px solid #e9ecef;
 }
 
-/* Botón de cierre global */
 .btn-close {
   background: var(--bs-btn-close-bg) center/1em auto no-repeat !important;
   background-color: transparent !important;
@@ -217,42 +209,6 @@ form {
 
 .btn-close:focus {
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
-}
-
-/* 🔽 AJUSTES ESPECÍFICOS PARA EL MODAL DE NUEVA FACTURA */
-
-#modalFactura .form-control,
-#modalFactura .form-select,
-#modalFactura textarea {
-  font-size: 0.9rem;              /* Más compacto */
-  padding: 0.4rem 0.75rem;        /* Menos relleno */
-  border-radius: 0.45rem;
-}
-
-#modalFactura .form-floating > label {
-  padding-left: 0.5rem;           /* Separación izquierda */
-  font-size: 0.9rem;
-  color: #495057;
-}
-
-#modalFactura .form-floating > .form-control::placeholder {
-  color: #adb5bd;
-  opacity: 1;
-  padding-left: 0.5rem;
-}
-
-#modalFactura .modal-body {
-  padding: 1.25rem 1.5rem;
-}
-
-#modalFactura .btn-success {
-  font-weight: 600;
-  transition: all 0.2s ease;
-}
-
-#modalFactura .btn-success:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.25);
 }
 
 /* TOASTS */
@@ -308,4 +264,40 @@ form {
 input, select, textarea {
   font-family: 'Inter', sans-serif;
   font-size: 0.95rem;
+}
+
+/* AJUSTES MODAL NUEVA FACTURA */
+
+#modalFactura .form-control,
+#modalFactura .form-select,
+#modalFactura textarea {
+  font-size: 0.9rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.45rem;
+}
+
+#modalFactura .form-floating > label {
+  padding-left: 0.5rem;
+  font-size: 0.9rem;
+  color: #495057;
+}
+
+#modalFactura .form-floating > .form-control::placeholder {
+  color: #adb5bd;
+  opacity: 1;
+  padding-left: 0.5rem;
+}
+
+#modalFactura .modal-body {
+  padding: 1.25rem 1.5rem;
+}
+
+#modalFactura .btn-success {
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+#modalFactura .btn-success:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.25);
 }
