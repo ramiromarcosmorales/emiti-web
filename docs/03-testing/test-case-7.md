@@ -43,10 +43,10 @@ Verificar la correcta integración, personalización visual y comportamiento res
 ![iPhone 14 Pro Landscape Modal Crear Factura](../screenshots/14pro_CrearF_landscape.png)
 
 **Modal Añadir Impuesto – Portrait**
-![iPhone 14 Pro Portrait Modal Añadir Impuesto](../screenshots/14pro_Aimp_portair.png)
+![iPhone 14 Pro Portrait Modal Añadir Impuesto](../screenshots/14pro_AImp_portair.png)
 
 **Modal Añadir Impuesto – Landscape**
-![iPhone 14 Pro Landscape Modal Añadir Impuesto](../screenshots/14pro_Aimp_landscape.png)
+![iPhone 14 Pro Landscape Modal Añadir Impuesto](../screenshots/14pro_AImp_landscape.png)
 
 ---
 
@@ -58,10 +58,10 @@ Verificar la correcta integración, personalización visual y comportamiento res
 ![Galaxy S23 Landscape Modal Crear Factura](../screenshots/S22_CrearF_landscape.png)
 
 **Modal Añadir Impuesto – Portrait**
-![Galaxy S23 Portrait Modal Añadir Impuesto](../screenshots/S22_Aimp_Portair.png)
+![Galaxy S23 Portrait Modal Añadir Impuesto](../screenshots/S22_AImp_Portair.png)
 
 **Modal Añadir Impuesto – Landscape**
-![Galaxy S23 Landscape Modal Añadir Impuesto](../screenshots/S22_Aimp_landspape.png)
+![Galaxy S23 Landscape Modal Añadir Impuesto](../screenshots/S22_AImp_landspape.png)
 
 ---
 
