@@ -138,6 +138,6 @@ Verificar la correcta integración, personalización visual y comportamiento res
 ## Issues Encontrados
 | IssueID | Descripción |
 |----------|-------------|
-| [#73](https://github.com/ramiromarcosmorales/emiti-web/issues/73) | Scroll leve en landscape de Iphone 14 Pro durante apertura de modal |
+| [#74](https://github.com/ramiromarcosmorales/emiti-web/issues/74) | Error responsive en mobile  |
 
 ---
