@@ -14,22 +14,24 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 
 ---
 
-## 🎯 Objetivos del entregable actual (Actividad Obligatoria N.º 2)
+## 🎯 Objetivos del entregable actual (Primer Parcial)
 
-- Aplicar estilos CSS avanzados para mejorar la estética y la estructura de la interfaz.
-- Implementar un diseño responsive con Flexbox, Grid y media queries.
-- Mantener una documentación técnica completa y actualizada.
-- Estandarizar la estructura del repositorio y la colaboración con GitHub.
+- Incorporar al menos un componente avanzado de HTML (ej.: iframe de video de YouTube, mapa, etiqueta de audio o video).
+- Asegurar que el componente HTML avanzado se adapte correctamente mediante los helpers de Bootstrap.
+- Implementar Bootstrap en el proyecto para reforzar la responsividad en móviles, tablets y escritorio.
+- Incluir al menos un componente avanzado de Bootstrap (ej.: carrusel, barra de navegación o modal).
+- Mantener documentación técnica completa y actualizada.
 
 ---
 
 ## 💻 Tecnologías utilizadas
 
-- HTML5
-- CSS3
-- Figma
-- Git y GitHub
-- Visual Studio Code
+- HTML5.
+- CSS3.
+- Bootstrap 5.
+- Figma.
+- Git y GitHub.
+- Visual Studio Code.
 - Herramientas Principales Testing: BrowserStack, PageSpeed Insights, WAVE, GTMetrix, ResponsivelyApp, SauceLabs.
 
 ---
@@ -37,8 +39,10 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 ## 🔧 Funcionalidades previstas
 
 - Maquetación semántica en HTML5.
-- Estilos CSS modulares y reutilizables.
-- Diseño responsive para dispositivos móviles, tablets y escritorio.
+- Estilos CSS y clases utilitarias de Bootstrap.
+- Diseño responsive basado en sistema de columnas de Bootstrap.
+- Componente avanzado de HTML adaptado con Bootstrap.
+- Componente avanzado de Bootstrap.
 - Pruebas de compatibilidad y rendimiento documentadas.
 
 ---
@@ -57,10 +61,10 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 
 | Nombre completo           | Usuario GitHub              | Matrícula | Rol                            |
 |---------------------------|-----------------------------|-----------|--------------------------------|
-| Sebasthian Harika         | @Harika-sebasthian          | 148722    | Coordinador / DevOps           | 
-| Victoria Imoberdorff      | @victoriaimo                | 119707    | Desarrollador Frontend / CSS   |
-|Ramiro Nicolás Renterías   | @ramire-uces                | 143709    | Especialista en Responsive     |
-| Ramiro Marcos Morales     | @ramiromarcosmorales        | 149386    | Documentador / QA Tester       |
+| Ramiro Nicolás Renterías  | @ramire-uces                | 143709    | Coordinador / DevOps           | 
+| Ramiro Marcos Morales     | @ramiromarcosmorales        | 149386    | Desarrollador Frontend / Bootstrap   |
+| Sebasthian Harika         | @Harika-sebasthian          | 148722    | Especialista en Componentes Bootstrap     |
+| Victoria Imoberdorff      | @victoriaimo                | 119707    | Desarrollador de Componentes HTML       |
 
 ---
 
@@ -69,8 +73,3 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 ➡️ [Versión en línea del sitio](https://ramiromarcosmorales.github.io/emiti-web/)
 
 ---
-
-
-
-
-
