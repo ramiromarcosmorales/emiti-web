@@ -36,55 +36,69 @@ Verificar la correcta integración, personalización visual y comportamiento res
 ## Capturas por Dispositivo
 
 ### iPhone 14 Pro
-**Modal Nueva Factura – Portrait**
+**Modal Nueva Factura**
+ – Portrait:
 ![iPhone 14 Pro Portrait Modal Crear Factura](../screenshots/14pro_CrearF_portair.png)
 
-**Modal Nueva Factura – Landscape**
+**Modal Nueva Factura**
+ – Landscape:
 ![iPhone 14 Pro Landscape Modal Crear Factura](../screenshots/14pro_CrearF_landscape.png)
 
-**Modal Añadir Impuesto – Portrait**
+**Modal Añadir Impuesto** 
+– Portrait:
 ![iPhone 14 Pro Portrait Modal Añadir Impuesto](../screenshots/14pro_AImp_portair.png)
 
-**Modal Añadir Impuesto – Landscape**
+**Modal Añadir Impuesto**
+ – Landscape:
 ![iPhone 14 Pro Landscape Modal Añadir Impuesto](../screenshots/14pro_AImp_landscape.png)
 
 ---
 
 ### Samsung Galaxy S23
-**Modal Nueva Factura – Portrait**
+**Modal Nueva Factura**
+ – Portrait:
 ![Galaxy S23 Portrait Modal Crear Factura](../screenshots/S22_CrearF_Portair.png)
 
-**Modal Nueva Factura – Landscape**
+**Modal Nueva Factura**
+ – Landscape:
 ![Galaxy S23 Landscape Modal Crear Factura](../screenshots/S22_CrearF_landscape.png)
 
-**Modal Añadir Impuesto – Portrait**
+**Modal Añadir Impuesto**
+ – Portrait:
 ![Galaxy S23 Portrait Modal Añadir Impuesto](../screenshots/S22_AImp_Portair.png)
 
-**Modal Añadir Impuesto – Landscape**
+**Modal Añadir Impuesto**
+– Landscape:
 ![Galaxy S23 Landscape Modal Añadir Impuesto](../screenshots/S22_AImp_landspape.png)
 
 ---
 
 ### iPad Air
-**Modal Nueva Factura – Portrait**
+**Modal Nueva Factura**
+– Portrait:
 ![iPad Air Portrait Modal Crear Factura](../screenshots/Ipad_Air_Factura_Portairt.png)
 
-**Modal Nueva Factura – Landscape**
+**Modal Nueva Factura**
+ – Landscape:
 ![iPad Air Landscape Modal Crear Factura](../screenshots/Ipad_Air_Factura_landscape2.png)
 
-**Modal Añadir Impuesto – Portrait**
+**Modal Añadir Impuesto**
+ – Portrait:
 ![iPad Air Portrait Modal Añadir Impuesto](../screenshots/Ipad_Air_Portair_Aimp1.png)
 
-**Modal Añadir Impuesto – Landscape**
+**Modal Añadir Impuesto**
+ – Landscape:
 ![iPad Air Landscape Modal Añadir Impuesto](../screenshots/Ipad_Air_Aimp_landscape.png)
 
 ---
 
 ### Desktop
-**Vista General Desktop**
+**Vista Añadir Impuesto**
+
 ![Desktop Dashboard](../screenshots/Chorme_Destokp.png)
 
 **Vista Nueva Factura**
+
 ![Desktop Modal Crear Factura](../screenshots/Chorme_Destokp_2.png)
 
 ---
@@ -93,10 +107,10 @@ Verificar la correcta integración, personalización visual y comportamiento res
 
 ### Performance Overview
 
-![Performance Metrics](../screenshots/Metricas_Css_Js.png)
+![Performance Metrics](../screenshots/Perfomance_metrica_f.png)
 
-- **LCP (Largest Contentful Paint):** 0.42 s  
-- **INP (Interaction to Next Paint):** 54 ms  
+- **LCP (Largest Contentful Paint):** 0.38 s  
+- **INP (Interaction to Next Paint):** 48 ms 
 - **CLS (Cumulative Layout Shift):** 0.00  
 - **Resultado general:** rendimiento estable y carga fluida del modal.
 
@@ -120,12 +134,12 @@ Verificar la correcta integración, personalización visual y comportamiento res
 
 | Métrica | Antes | Después |
 |----------|--------|----------|
-| Rendimiento (PageSpeed) | 85 | 87 |
-| FCP | 0.5 s | 0.6 s |
-| LCP | 0.5 s | 0.6 s |
-| CLS | 0.001 | 0 |
-| Tamaño de Página | 237 KB | 294 KB |
-| Fully Loaded | 322 ms | 692 ms |
+| Rendimiento (PageSpeed) | 87 | 85 |
+| FCP | 0.6 s | 0.5 s |
+| LCP | 0.6 s | 0.5 s |
+| CLS | 0     | 0.001 |
+| Tamaño de Página | 294 KB | 237 KB |
+| Fully Loaded | 692 ms | 322 ms |
 
 ---
 
