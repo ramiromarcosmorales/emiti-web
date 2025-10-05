@@ -126,6 +126,50 @@
             </div>
           </div>
         </div>
+
+    <!-- Calculadora de IVA (dentro del mismo container) -->
+      <div class="calculadora-iva mt-4">
+        <div class="p-3 p-md-4 border rounded-3 bg-white shadow-sm">
+          <h2 class="h5 mb-3" id="calc-iva-title">Calculadora de IVA</h2>
+          <p class="text-muted mb-3">Simulá el precio final de una factura con IVA incluido.</p>
+
+          <form class="row g-3" oninput="total.value = ((parseFloat(precio.value||0) * (1 + (parseFloat(aliquota.value||0)/100))).toFixed(2))">
+
+            <div class="col-12 col-md-4">
+              <label for="precio" class="form-label">Precio neto</label>
+              <div class="input-group">
+                <span class="input-group-text">$</span>
+                <input type="number" id="precio" name="precio" class="form-control" placeholder="0.00" min="0" step="0.01" required>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+              <label for="aliquota" class="form-label">Alícuota IVA</label>
+              <input list="opciones-iva" id="aliquota" name="aliquota" class="form-control" placeholder="Ej: 21 o elegí una alícuota…">
+              <datalist id="opciones-iva">
+                <option value="21">
+                <option value="10.5">
+                <option value="27">
+                <option value="0">
+              </datalist>
+            </div>
+
+            <div class="col-12 col-md-4">
+              <label for="total" class="form-label">Total con IVA</label>
+              <div class="input-group">
+                <span class="input-group-text">$</span>
+                <output id="total" name="total" class="form-control bg-light">0.00</output>
+              </div>
+            </div>
+          </form>
+
+          <p class="text-muted small mt-3 mb-0">
+            <i class="fa-solid fa-lightbulb text-warning me-1" aria-hidden="true"></i>
+            Consejo: usá punto para decimales (ej: <code>1234.56</code>).  
+            La alícuota puede ser 21, 10.5, 27 o 0 según el tipo de operación.
+          </p>
+        </div>
+      </div>
       </div>
     </section>
   </main>
@@ -141,6 +185,9 @@
                 <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Política de Privacidad</a></li>
                 <li class="list-inline-item">•</li>
                 <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Cookies</a></li>
+                <li class="list-inline-item">•</li>
+                <li class="list-inline-item"><a class="text-reset text-decoration-none" href="preguntas-frecuentes.html">Preguntas Frecuentes</a></li>
+            </ul>
             </ul>
             <p class="mb-0 small text-muted">&copy; 2025 Emití. Todos los derechos reservados.</p>
         </div>

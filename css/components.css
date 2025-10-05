@@ -214,4 +214,45 @@ nav.menu i{
   border:0;
 }
 
+/* FAQ (details / summary) */
+.faq details {
+  background: #fff;
+  border: 1px solid var(--color-border, #dee2e6);
+  border-radius: 10px;
+  padding: .75rem 1rem;
+}
+
+.faq details + details {
+  margin-top: .75rem;
+}
+
+.faq summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.faq summary:focus-visible {
+  outline: 2px solid var(--color-primary, #28a745);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.faq p {
+  margin: .5rem 0 0;
+}
+
+/* Calculadora de IVA */
+
+/* Fondo y bordes del output */
+form output.form-control {
+  background: var(--color-surface, #f8f9fa);
+  border: 1px solid var(--color-border, #dee2e6);
+  border-radius: 6px;
+  color: var(--color-text, #212529);
+}
+
+/* Ícono del consejo */
+.calculadora-iva .fa-lightbulb {
+  color: var(--color-warning, #ffc107);
+}
 
