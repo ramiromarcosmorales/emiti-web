@@ -1,20 +1,22 @@
 # Test Case 7: Responsive – Implementación de Componente Avanzado Bootstrap (1)
 
 ## Objetivo
-Verificar la correcta integración, personalización y comportamiento responsive del primer componente avanzado de Bootstrap seleccionado (ejemplo: **Navbar con menú desplegable** o **Accordion interactivo**) en diferentes dispositivos y navegadores.  
+Verificar la correcta integración, personalización visual y comportamiento responsive del modal “Nueva Factura” y del toast de confirmación verde en distintos dispositivos y navegadores, asegurando la coherencia visual y funcional del proyecto.
+ 
 
 ## Herramientas Utilizadas
 - BrowserStack Mobile Testing  
 - Chrome DevTools Device Mode  
-- Google PageSpeed Insights  
+- Google PageSpeed Insights 
+- Lambdatest
 
 ## Dispositivos Probados
 | Dispositivo       | Resolución | Navegador | Orientación         | Resultado |
 |-------------------|------------|-----------|---------------------|-----------|
-| iPhone 14 Pro     | 393x852    | Safari    | Portrait/Landscape  | ✅/❌ |
-| Galaxy S23        | 360x780    | Chrome    | Portrait/Landscape  | ✅/❌ |
-| iPad Air          | 820x1180   | Safari    | Portrait/Landscape  | ✅/❌ |
-| Desktop (Laptop)  | >1024px    | Chrome    | Landscape           | ✅/❌ |
+| iPhone 14 Pro     | 393x852    | Safari    | Portrait/Landscape  | ❌ |
+| Galaxy S23        | 360x780    | Chrome    | Portrait/Landscape  | ✅ |
+| iPad Air          | 820x1180   | Safari    | Portrait/Landscape  | ✅ |
+| Desktop (Laptop)  | >1024px    | Chrome    | Landscape           | ✅ |
 
 ## Breakpoints Verificados
 - **Mobile:** 320px – 768px  
@@ -31,32 +33,113 @@ Verificar la correcta integración, personalización y comportamiento responsive
 
 ---
 
-## Capturas esperadas
-1. **Mobile (iPhone 14 Pro, portrait y landscape)** mostrando la versión adaptada del componente.  
-2. **Tablet (iPad Air)** validando el comportamiento del componente en resolución intermedia.  
-3. **Desktop** confirmando el comportamiento esperado con todas las funcionalidades activas.  
-4. **DevTools → Performance & Network** mostrando que la integración del componente no afectó la performance ni cargó CSS/JS extra innecesario.
+## Capturas por Dispositivo
+
+### iPhone 14 Pro
+**Modal Nueva Factura – Portrait**
+![iPhone 14 Pro Portrait Modal Crear Factura](../screenshots/14pro_CrearF_portair.png)
+
+**Modal Nueva Factura – Landscape**
+![iPhone 14 Pro Landscape Modal Crear Factura](../screenshots/14pro_CrearF_landscape.png)
+
+**Modal Añadir Impuesto – Portrait**
+![iPhone 14 Pro Portrait Modal Añadir Impuesto](../screenshots/14pro_Aimp_portair.png)
+
+**Modal Añadir Impuesto – Landscape**
+![iPhone 14 Pro Landscape Modal Añadir Impuesto](../screenshots/14pro_Aimp_landscape.png)
+
+---
+
+### Samsung Galaxy S23
+**Modal Nueva Factura – Portrait**
+![Galaxy S23 Portrait Modal Crear Factura](../screenshots/S22_CrearF_Portair.png)
+
+**Modal Nueva Factura – Landscape**
+![Galaxy S23 Landscape Modal Crear Factura](../screenshots/S22_CrearF_landscape.png)
+
+**Modal Añadir Impuesto – Portrait**
+![Galaxy S23 Portrait Modal Añadir Impuesto](../screenshots/S22_Aimp_Portair.png)
+
+**Modal Añadir Impuesto – Landscape**
+![Galaxy S23 Landscape Modal Añadir Impuesto](../screenshots/S22_Aimp_landspape.png)
+
+---
+
+### iPad Air
+**Modal Nueva Factura – Portrait**
+![iPad Air Portrait Modal Crear Factura](../screenshots/Ipad_Air_Factura_Portairt.png)
+
+**Modal Nueva Factura – Landscape**
+![iPad Air Landscape Modal Crear Factura](../screenshots/Ipad_Air_Factura_landscape2.png)
+
+**Modal Añadir Impuesto – Portrait**
+![iPad Air Portrait Modal Añadir Impuesto](../screenshots/Ipad_Air_Portair_Aimp1.png)
+
+**Modal Añadir Impuesto – Landscape**
+![iPad Air Landscape Modal Añadir Impuesto](../screenshots/Ipad_Air_Aimp_landscape.png)
+
+---
+
+### Desktop
+**Vista General Desktop**
+![Desktop Dashboard](../screenshots/Chorme_Destokp.png)
+
+**Vista Nueva Factura**
+![Desktop Modal Crear Factura](../screenshots/Chorme_Destokp_2.png)
+
+---
+
+## DevTools → Performance & Network
+
+### Performance Overview
+
+![Performance Metrics](../screenshots/Metricas_Css_Js.png)
+
+- **LCP (Largest Contentful Paint):** 0.42 s  
+- **INP (Interaction to Next Paint):** 54 ms  
+- **CLS (Cumulative Layout Shift):** 0.00  
+- **Resultado general:** rendimiento estable y carga fluida del modal.
+
+## Detalle de Recursos en Network
+![Network Recursos CSS](../screenshots/Performance_Css_Js.png)
+
+| Archivo | Tipo | Tamaño | Tiempo |
+|----------|------|--------|--------|
+| bootstrap.min.css | stylesheet | 33.4 kB | 47 ms |
+| bootstrap-overrides.css | stylesheet | 1.7 kB | 38 ms |
+| styles.css | stylesheet | 1.0 kB | 39 ms |
+| components.css | stylesheet | 2.1 kB | 39 ms |
+| responsive.css | stylesheet | 2.3 kB | 38 ms |
+
 ---
 
 ## Performance en Mobile
-- Ejecutar **Google PageSpeed Insights** después de integrar el componente.  
-- Comparar score con la versión sin el componente. 
-- Captura del resultado global (Performance, Accessibility, Best Practices, SEO).  
-- Comparar resultados *antes y después* de la incorporación del componente Bootstrap.   
-- Confirmar que los recursos cargados no bloquean la renderización.  
+ **Reporte de PageSpeed**  
+
+![Results](../screenshots/Metricas_PageSpeed.jpg)  
+
+| Métrica | Antes | Después |
+|----------|--------|----------|
+| Rendimiento (PageSpeed) | 85 | 87 |
+| FCP | 0.5 s | 0.6 s |
+| LCP | 0.5 s | 0.6 s |
+| CLS | 0.001 | 0 |
+| Tamaño de Página | 237 KB | 294 KB |
+| Fully Loaded | 322 ms | 692 ms |
 
 ---
 
 ## Resultado Esperado
-- El componente se adapta correctamente en todos los dispositivos y resoluciones.  
-- Mantiene coherencia visual y estilo definido en los archivos CSS del proyecto.  
-- No genera problemas de performance ni bloqueos de carga.  
+- El modal **se adapta correctamente** a todos los dispositivos y resoluciones.  
+- Mantiene la **identidad visual** del proyecto.  
+- No genera **bloqueos de carga** ni retrasa la renderización.  
+- El **toast de confirmación** se muestra correctamente en verde tras guardar o añadir datos.
 
 ---
 
-## Issues encontrados
-Registrar aquí los problemas detectados y su correspondiente issue en el repositorio:  
+## Issues Encontrados
+| IssueID | Descripción |
+|----------|-------------|
+| [#73](https://github.com/ramiromarcosmorales/emiti-web/issues/73) | Scroll leve en landscape de Iphone 14 Pro durante apertura de modal |
 
-| IssueID | Descripción 
-|----|-------------|
-| [#101](https://github.com/tu-org/tu-repo/issues/101) | Ejemplo: Scroll horizontal en versión mobile (iPhone 14 Pro) 
+---
