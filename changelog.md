@@ -21,6 +21,9 @@
 
 ### Fixed  
 
+- [feature/coord-devops-update-doc-project] Corrección en componentes-html.md.
+  PR: [#76](https://github.com/ramiromarcosmorales/emiti-web/pull/76) - @ramire-uces (Coordinador / DevOps)
+
 ## [Release Actividad Obligatoria N°2] - 2025-09-26
 
 ### Added
