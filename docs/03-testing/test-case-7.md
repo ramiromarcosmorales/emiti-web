@@ -1,4 +1,4 @@
-# Test Case 7: Responsive – Implementación de Componente Avanzado Bootstrap (1)
+# Test Case 7: Responsive – Implementación de Componente Avanzado Bootstrap 
 
 ## Objetivo
 Verificar la correcta integración, personalización visual y comportamiento responsive del modal “Nueva Factura” y del toast de confirmación verde en distintos dispositivos y navegadores, asegurando la coherencia visual y funcional del proyecto.
@@ -36,58 +36,71 @@ Verificar la correcta integración, personalización visual y comportamiento res
 ## Capturas por Dispositivo
 
 ### iPhone 14 Pro
+
 **Modal Nueva Factura**
- – Portrait:
+- Portrait:
+
 ![iPhone 14 Pro Portrait Modal Crear Factura](../screenshots/14pro_CrearF_portair.png)
 
 **Modal Nueva Factura**
- – Landscape:
+- Landscape:
+
 ![iPhone 14 Pro Landscape Modal Crear Factura](../screenshots/14pro_CrearF_landscape.png)
 
 **Modal Añadir Impuesto** 
-– Portrait:
+- Portrait:
+
 ![iPhone 14 Pro Portrait Modal Añadir Impuesto](../screenshots/14pro_AImp_portair.png)
 
 **Modal Añadir Impuesto**
- – Landscape:
+- Landscape:
+
 ![iPhone 14 Pro Landscape Modal Añadir Impuesto](../screenshots/14pro_AImp_landscape.png)
 
 ---
 
 ### Samsung Galaxy S23
 **Modal Nueva Factura**
- – Portrait:
+- Portrait:
+
 ![Galaxy S23 Portrait Modal Crear Factura](../screenshots/S22_CrearF_Portair.png)
 
 **Modal Nueva Factura**
- – Landscape:
+- Landscape:
+
 ![Galaxy S23 Landscape Modal Crear Factura](../screenshots/S22_CrearF_landscape.png)
 
 **Modal Añadir Impuesto**
- – Portrait:
+- Portrait:
+
 ![Galaxy S23 Portrait Modal Añadir Impuesto](../screenshots/S22_AImp_Portair.png)
 
 **Modal Añadir Impuesto**
-– Landscape:
+- Landscape:
+
 ![Galaxy S23 Landscape Modal Añadir Impuesto](../screenshots/S22_AImp_landspape.png)
 
 ---
 
 ### iPad Air
 **Modal Nueva Factura**
-– Portrait:
+- Portrait:
+
 ![iPad Air Portrait Modal Crear Factura](../screenshots/Ipad_Air_Factura_Portairt.png)
 
 **Modal Nueva Factura**
- – Landscape:
+- Landscape:
+
 ![iPad Air Landscape Modal Crear Factura](../screenshots/Ipad_Air_Factura_landscape2.png)
 
 **Modal Añadir Impuesto**
- – Portrait:
+- Portrait:
+
 ![iPad Air Portrait Modal Añadir Impuesto](../screenshots/Ipad_Air_Portair_Aimp1.png)
 
 **Modal Añadir Impuesto**
- – Landscape:
+- Landscape:
+
 ![iPad Air Landscape Modal Añadir Impuesto](../screenshots/Ipad_Air_Aimp_landscape.png)
 
 ---
@@ -107,7 +120,7 @@ Verificar la correcta integración, personalización visual y comportamiento res
 
 ### Performance Overview
 
-![Performance Metrics](../screenshots/Perfomance_metrica_f.png)
+![Performance Metrics](../screenshots/Performance_metrica_f.png)
 
 - **LCP (Largest Contentful Paint):** 0.38 s  
 - **INP (Interaction to Next Paint):** 48 ms 
