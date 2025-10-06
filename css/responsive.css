@@ -336,9 +336,9 @@ footer {
     .nueva-factura .estado-factura {
         flex-direction: column;
     }
-    body {
+    main {
         padding-left: 1rem;
-        padding-right: 1rem; /* evita que se vea alejado */
+        padding-right: 1rem;
     }
 }
 /* Ajuste específico para landscape en dispositivos de 601px a 900px 
