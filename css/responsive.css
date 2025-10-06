@@ -272,6 +272,38 @@ footer {
     }
 }
 
+/*  Orden: botón, editar, borrar */
+@media (max-width: 576px) {
+  .imp-item { 
+    row-gap: .35rem; 
+}
+  .imp-item .btn-estado-col, 
+  .imp-item .edit-col, 
+  .imp-item .delete-col { 
+    flex: 0 0 auto; 
+}
+}
+@media (max-width: 520px) {
+  .imp-item 
+  .btn-estado-col { 
+    flex: 0 0 100%; 
+    max-width: 100%; 
+}
+}
+@media (max-width: 480px) {
+  .imp-item .edit-col { 
+    flex: 0 0 100%; 
+    max-width: 100%; 
+  }
+}
+@media (max-width: 440px) {
+  .imp-item 
+  .delete-col { 
+    flex: 0 0 100%; 
+    max-width: 100%;
+  }
+}
+
 /* ====== TABLET: 601px–900px ======
    - Dos columnas para menú y métricas.
    - Botones envueltos en flex-wrap.
@@ -416,3 +448,56 @@ nav.menu a {
     transition: all 0.15s ease;
 }
 
+/* Configuración: fila de impuestos - comportamiento fluido y limpio */
+@media (max-width: 600px) {
+  .configuracion 
+  .section-card { 
+    padding: 1rem !important; 
+}
+  .configuracion 
+  .list-group, 
+  .configuracion 
+  .list-group-item { 
+    overflow-x: hidden; 
+    }
+  .imp-item { 
+    --bs-gutter-x: .5rem; 
+    row-gap: .35rem; 
+    }
+  html, 
+  body { 
+    overflow-x: hidden;
+    }
+}
+
+/* Entre 576px y 600px: forzar una sola línea, sin espacios muertos */
+@media (min-width: 576px) and (max-width: 600px) {
+  .imp-item { 
+    flex-wrap: nowrap; 
+}
+  .imp-item 
+  .name-group { 
+    flex: 1 1 auto; 
+    min-width: 0; 
+    }
+  .imp-item 
+  .btn-estado-col, 
+  .imp-item .actions-col { 
+    flex: 0 0 auto; 
+    }
+}
+
+/* <= 575px: apilar ordenado - primero botón Activo, luego acciones */
+@media (max-width: 575px) {
+  .imp-item 
+  .btn-estado-col { 
+    flex: 0 0 100% !important; 
+    max-width: 100% !important; 
+    }
+  .imp-item 
+  .actions-col { 
+    flex: 0 0 100% !important; 
+    max-width: 100% !important; 
+    justify-content: flex-start !important; 
+    }
+}

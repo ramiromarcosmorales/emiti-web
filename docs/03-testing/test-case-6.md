@@ -26,20 +26,21 @@ Verificar la adaptabilidad responsive en dispositivos móviles, tablets y deskto
 ![Portrait](../screenshots/iphone_14_pro_portrait_2.jpeg)
 - Landscape:  
 ![Landscape](../screenshots/iphone_14_pro_landscape_2.jpeg)
+Ambos formatos coinciden con el mockup. ✅
 
 ### Galaxy S23
 - Portrait:  
 ![Portrait](../screenshots/s23_portrait_2.jpg)
 - Landscape:
 ![Landscape](../screenshots/s23_landscape_2.jpg)
+Ambos formatos coinciden con el mockup. ✅
 
 ### iPad Air
 - Portrait:
 ![Portrait](../screenshots/ipad_air_portrait_2.jpeg)
 - Landscape:
 ![Landscape](../screenshots/ipad_air_landscape_2.jpeg)
-
-- Marcar en cada captura si la visualización coincide con el mockup `disenio-bootstrap.png`.  
+Ambos formatos coinciden con el mockup. ✅
 
 ## Media Queries Validadas
 - `[min-width: 320px]`  

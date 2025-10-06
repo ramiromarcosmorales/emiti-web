@@ -112,23 +112,27 @@
 
         <!-- Impuestos configurados -->
         <div class="list-group rounded-3 mb-3">
-          <div class="list-group-item d-flex align-items-center gap-2 gap-sm-3 flex-wrap">
-            <div class="form-check m-0">
-              <input class="form-check-input me-2" type="checkbox" id="ivaCheck" checked>
-              <label class="form-check-label fw-semibold" for="ivaCheck">IVA</label>
-            </div>
-            <span class="text-muted mb-2 mb-sm-0">21%</span>
-
-            <!-- Botón Activo/Inactivo -->
-            <button type="button" id="btnEstadoIVA" class="btn-estado activo ms-3 mb-2 mb-sm-0">Activo</button>
-
-            <div class="ms-sm-auto d-inline-flex align-items-center gap-2 w-100 justify-content-end justify-content-sm-end">
-              <button type="button" class="btn btn-light border rounded-pill btn-sm" title="Editar">
-                <i class="fa-solid fa-pen"></i>
-              </button>
-              <button type="button" class="btn btn-light border rounded-pill btn-sm" title="Eliminar">
-                <i class="fa-solid fa-trash"></i>
-              </button>
+          <div class="list-group-item">
+            <div class="row align-items-center g-2 imp-item">
+              <!-- Nombre del impuesto + Importe (%) juntos -->
+              <div class="col-12 col-sm d-flex align-items-center gap-2 name-group">
+                <div class="form-check m-0 d-flex align-items-center gap-2">
+                  <input class="form-check-input" type="checkbox" id="ivaCheck" checked>
+                  <label class="form-check-label fw-semibold m-0" for="ivaCheck">IVA</label>
+                </div>
+                <span class="badge bg-light text-dark px-2 py-1">21%</span>
+              </div>
+              <!-- Botón Activo -->
+              <div class="col-auto btn-estado-col">
+                <div class="d-inline">
+                  <button type="button" id="btnEstadoIVA" class="btn-estado activo">Activo</button>
+                </div>
+              </div>
+              <!-- Acciones al final -->
+              <div class="col-auto ms-sm-auto actions-col d-flex justify-content-end gap-2">
+                <button type="button" class="btn btn-light border rounded-pill btn-sm" title="Editar"><i class="fa-solid fa-pen"></i></button>
+                <button type="button" class="btn btn-light border rounded-pill btn-sm" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
+              </div>
             </div>
           </div>
         </div>
