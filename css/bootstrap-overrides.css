@@ -130,7 +130,7 @@ form {
   padding: 1rem 0.75rem;
 }
 
-.modal-body form {
+.modal-body form:not(#formImpuesto) {
   padding: 1.25rem;
   background-color: #f8f9fa;
   border-radius: 0.75rem;
@@ -283,6 +283,26 @@ input, select, textarea {
 
 #modalFactura .modal-body {
   padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 0.75rem;
+}
+
+/* AJUSTES MODAL AÑADIR IMPUESTO */
+#modalImpuesto .form-control,
+#modalImpuesto textarea {
+  font-size: 0.9rem;
+  padding: 0.45rem 0.75rem 0.45rem 1rem; 
+  border-radius: 0.45rem;
+}
+
+#modalImpuesto .form-label {
+  color: #495057;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+#modalImpuesto .modal-body {
+  padding: 1.5rem; 
   background-color: #f8f9fa;
   border-radius: 0.75rem;
 }
