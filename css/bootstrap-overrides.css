@@ -286,3 +286,9 @@ input, select, textarea {
   background-color: #f8f9fa;
   border-radius: 0.75rem;
 }
+
+#modalImpuesto .modal-body {
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 0.75rem;
+}
