@@ -8,6 +8,9 @@
 - [feature/esp-com-bootstrap-add-components] Agregacion de Componentes Bootstrap + Documentación de Caso de Prueba.  
   PR: [#75](https://github.com/ramiromarcosmorales/emiti-web/pull/75) - @Harika-sebasthian (Especialista en Componentes/ Bootstrap)
 
+- [feature/dev-comp-html-avanzados-add-components] Implementacion de Componentes HTML Avanzados + Documentacion de Caso de Prueba. 
+  PR: [#79](https://github.com/ramiromarcosmorales/emiti-web/pull/79) - @victoriaimo (Desarrollador de Componentes HTML Avanzados)
+
 ### Changed  
 
 - [feature/coord-devops-update-doc-project] Actualización de template de issues.  
