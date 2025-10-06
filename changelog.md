@@ -30,6 +30,9 @@
 - [feature/dev-frontend-bootstrap-update-migration] Corrección en responsive.css.   
   PR: [#77](https://github.com/ramiromarcosmorales/emiti-web/pull/77) - @ramiromarcosmorales (Desarrollador Frontend/Bootstrap)
 
+- [feature/dev-frontend-bootstrap-update-migration] Correción de footer y respoonsividad en configuracion.html  
+  PR: [#81](https://github.com/ramiromarcosmorales/emiti-web/pull/81) - @ramiromarcosmorales (Desarrollador Frontend/Bootstrap)
+
 ## [Release Actividad Obligatoria N°2] - 2025-09-26
 
 ### Added
