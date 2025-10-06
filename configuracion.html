@@ -1,128 +1,159 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Configuración - EMITÍ</title>
-    <meta name="description" content="Configurá los impuestos en Emití Web. Gestioná el IVA que se aplicará automáticamente a tus facturas.">
-    <link rel="icon" href="assets/favicon.png" type="image/png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/bootstrap-overrides.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        as="style" onload="this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    </noscript>    
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" 
-        as="style" onload="this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
-    </noscript>
-    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Configuración - EMITÍ</title>
+  <meta name="description" content="Configurá los impuestos en Emití Web."/>
+  <link rel="icon" href="assets/favicon.png" type="image/png"/>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous"/>
+  
+  <!-- Fuente Inter -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" as="style" onload="this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"></noscript>
+
+  <!-- Estilos del proyecto -->
+  <link rel="stylesheet" href="css/bootstrap-overrides.css"/>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="css/components.css"/>
+  <link rel="stylesheet" href="css/responsive.css"/>
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* Botón Activo / Inactivo estilo píldora */
+    .btn-estado {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.35rem 1.2rem;
+      border: none;
+      border-radius: 50px;
+      transition: all 0.25s ease-in-out;
+      cursor: pointer;
+      min-width: 90px;
+    }
+    .btn-estado.activo {
+      background-color: #28a745;
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(40,167,69,0.4);
+    }
+    .btn-estado.activo:hover {
+      background-color: #218838;
+      box-shadow: 0 3px 8px rgba(33,136,56,0.5);
+    }
+    .btn-estado.inactivo {
+      background-color: #fd7e14;
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(253,126,20,0.4);
+    }
+    .btn-estado.inactivo:hover {
+      background-color: #e56e0f;
+      box-shadow: 0 3px 8px rgba(229,110,15,0.5);
+    }
+
+    /* Ajustes visuales del formulario */
+    .form-floating > label {
+      padding-left: .75rem;
+    }
+  </style>
 </head>
 <body>
-    <!-- Encabezado principal (bootstrap utilities) -->
-    <header class="bg-white border-bottom py-3">
-        <div class="container d-flex flex-column flex-sm-row align-items-center gap-3 text-center text-sm-start">
-            <img src="assets/logo.png" alt="Logo Emití" width="120" height="120" class="img-fluid" decoding="async" fetchpriority="high">
-            <h1 class="h5 text-muted mb-0">Gestión Profesional de Facturas</h1>
-        </div>
-    </header>
+  <!-- Encabezado -->
+  <header class="bg-white border-bottom py-3">
+    <div class="container d-flex flex-column flex-sm-row align-items-center gap-3 text-center text-sm-start">
+      <img src="assets/logo.png" alt="Logo Emití" width="120" height="120" class="img-fluid" decoding="async" fetchpriority="high">
+      <h1 class="h5 text-muted mb-0">Gestión Profesional de Facturas</h1>
+    </div>
+  </header>
 
-    <!-- Menú principal (bootstrap grid) -->
-    <nav class="menu">
-        <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
-                <div class="col d-grid">
-                    <a href="index.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
-                        <i class="fa-solid fa-chart-column"></i>
-                        Dashboard
-                    </a>
-                </div>
-                <div class="col d-grid">
-                    <a href="nueva-factura.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
-                        <i class="fa-solid fa-file-invoice"></i>
-                        Nueva Factura
-                    </a>
-                </div>
-                <div class="col d-grid">
-                    <a href="facturas.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
-                        <i class="fa-solid fa-file-invoice-dollar"></i>
-                        Facturas
-                    </a>
-                </div>
-                <div class="col d-grid">
-                    <a href="configuracion.html" aria-current="page" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2 active">
-                        <i class="fa-solid fa-gear"></i>
-                        Configuración
-                    </a>
-                </div>
+  <!-- Menú principal -->
+  <nav class="menu">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
+        <div class="col d-grid">
+          <a href="index.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
+            <i class="fa-solid fa-chart-column"></i> Dashboard
+          </a>
+        </div>
+        <div class="col d-grid">
+          <a href="nueva-factura.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
+            <i class="fa-solid fa-file-invoice"></i> Nueva Factura
+          </a>
+        </div>
+        <div class="col d-grid">
+          <a href="facturas.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
+            <i class="fa-solid fa-file-invoice-dollar"></i> Facturas
+          </a>
+        </div>
+        <div class="col d-grid">
+          <a href="configuracion.html" aria-current="page" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2 active">
+            <i class="fa-solid fa-gear"></i> Configuración
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido principal -->
+  <main class="configuracion">
+    <div class="container py-4">
+      <section class="section-card p-4">
+        <h2 class="mb-1">Configuración de impuestos</h2>
+        <p class="text-muted mb-3">Gestioná los impuestos que se aplicarán a tus facturas.</p>
+
+        <!-- Impuestos configurados -->
+        <div class="list-group rounded-3 mb-3">
+          <div class="list-group-item d-flex align-items-center gap-3">
+            <div class="form-check m-0">
+              <input class="form-check-input me-2" type="checkbox" id="ivaCheck" checked>
+              <label class="form-check-label fw-semibold" for="ivaCheck">IVA</label>
             </div>
+            <span class="text-muted">21%</span>
+
+            <!-- Botón Activo/Inactivo -->
+            <button type="button" id="btnEstadoIVA" class="btn-estado activo ms-3">Activo</button>
+
+            <div class="ms-auto d-inline-flex align-items-center gap-2">
+              <button type="button" class="btn btn-light border rounded-pill btn-sm" title="Editar">
+                <i class="fa-solid fa-pen"></i>
+              </button>
+              <button type="button" class="btn btn-light border rounded-pill btn-sm" title="Eliminar">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+          </div>
         </div>
-    </nav>
 
-   <main class="configuracion">
-    <section aria-label="Configuración de impuestos">
-      <div class="container py-3">
-        <div class="row">
-          <div class="col-12">
-            <div class="bg-white border rounded-3 p-4">
-              <h2 class="mb-1">Configuración de impuestos</h2>
-              <p class="text-muted mb-3">Gestiona los impuestos que se aplicarán a tus facturas</p>
-
-              <h3 class="h6 text-uppercase text-muted mb-2">Impuestos Configurados</h3>
-              <div class="card border rounded-3 mb-2">
-                <div class="card-body py-2">
-                  <div class="d-flex align-items-center gap-2">
-                    <input type="checkbox" id="iva21" checked>
-                    <label for="iva21" class="nombre mb-0">IVA</label>
-                    <span class="porcentaje">21%</span>
-                    <span class="estado activo rounded-pill px-2 py-1">Activo</span>
-                    <div class="ms-auto d-inline-flex align-items-center gap-2">
-                      <button type="button" class="btn btn-light border rounded-pill btn-sm" aria-label="Editar impuesto" title="Editar">
-                        <i class="fa-solid fa-pen"></i>
-                      </button>
-                      <button type="button" class="btn btn-light border rounded-pill btn-sm" aria-label="Eliminar impuesto" title="Eliminar">
-                        <i class="fa-solid fa-trash"></i>
-                      </button>
-                    </div>
-                  </div>
+        <!-- Agregar nuevo impuesto -->
+        <h3 class="h6 text-uppercase text-muted mb-2">Agregar nuevo impuesto</h3>
+        <div class="card border rounded-3">
+          <div class="card-body">
+            <div class="row g-3 align-items-center">
+              <div class="col-12 col-lg-6">
+                <div class="form-floating">
+                  <input type="text" id="nuevoNombre" class="form-control" placeholder="Ej: Percepción IIBB" />
+                  <label for="nuevoNombre">Nombre del impuesto</label>
                 </div>
               </div>
-
-              <hr class="my-4">
-              <h3 class="h6 text-uppercase text-muted mb-2">Agregar nuevo impuesto</h3>
-              <div class="card border rounded-3">
-                <div class="card-body">
-                  <div class="row g-2 align-items-end">
-                    <div class="col-12 col-md-6">
-                      <label for="nuevoNombre" class="form-label mb-1">Nombre</label>
-                      <input type="text" id="nuevoNombre" class="form-control" placeholder="Ej: Percepción IIBB" aria-label="Nombre del impuesto">
-                    </div>
-                    <div class="col-6 col-md-3">
-                      <label for="nuevoPorcentaje" class="form-label mb-1">Porcentaje</label>
-                      <div class="input-group">
-                        <input type="number" id="nuevoPorcentaje" class="form-control" placeholder="0" min="0" max="100" step="0.1" aria-label="Porcentaje">
-                        <span class="input-group-text">%</span>
-                      </div>
-                    </div>
-                    <div class="col-6 col-md-3">
-                      <label class="form-label mb-1">Estado</label>
-                      <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="nuevoActivo" checked>
-                        <label class="form-check-label" for="nuevoActivo">Activo</label>
-                      </div>
-                    </div>
-                    <div class="col-12 mt-2">
-                      <button type="button" class="button">Agregar</button>
-                    </div>
-                  </div>
+              <div class="col-8 col-lg-4">
+                <div class="form-floating">
+                  <input type="number" id="nuevoPorcentaje" class="form-control" placeholder="0" min="0" max="100" step="0.1"/>
+                  <label for="nuevoPorcentaje">Porcentaje (%)</label>
                 </div>
               </div>
-
+              <div class="col-4 col-lg-2">
+                <button type="button" id="btnEstadoNuevo" class="btn-estado activo">Activo</button>
+              </div>
+              <div class="col-12">
+                <button type="button" id="agregarImpuestoBtn" class="btn btn-success">Agregar</button>
+              </div>
             </div>
           </div>
         </div>
@@ -170,28 +201,62 @@
           </p>
         </div>
       </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </main>
 
-    <!-- Pie de página -->
-    <footer class="bg-white border-top py-3">
-        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
-            <ul class="list-inline mb-0 small text-muted">
-                <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">¿Quiénes Somos?</a></li>
-                <li class="list-inline-item">•</li>
-                <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Contacto</a></li>
-                <li class="list-inline-item">•</li>
-                <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Política de Privacidad</a></li>
-                <li class="list-inline-item">•</li>
-                <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Cookies</a></li>
-                <li class="list-inline-item">•</li>
-                <li class="list-inline-item"><a class="text-reset text-decoration-none" href="preguntas-frecuentes.html">Preguntas Frecuentes</a></li>
-            </ul>
-            </ul>
-            <p class="mb-0 small text-muted">&copy; 2025 Emití. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <!-- Toast -->
+  <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
+    <div id="toastImpuestoOk" class="toast align-items-center text-bg-success border-0 shadow" role="alert">
+      <div class="d-flex">
+        <div class="toast-body">✅ Tu impuesto se agregó correctamente</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white border-top py-3 mt-4">
+    <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+      <ul class="list-inline mb-0 small text-muted">
+        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">¿Quiénes Somos?</a></li>
+        <li class="list-inline-item">•</li>
+        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Contacto</a></li>
+        <li class="list-inline-item">•</li>
+        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Política de Privacidad</a></li>
+        <li class="list-inline-item">•</li>
+        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="preguntas-frecuentes.html">Preguntas Frecuentes</a></li>
+      </ul>
+      <p class="mb-0 small text-muted">&copy; 2025 Emití. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toastImpuestoOk = new bootstrap.Toast(document.getElementById('toastImpuestoOk'), {
+        delay: 3000 // se oculta automáticamente en 3 segundos
+      });
+
+      // Toggle Activo/Inactivo
+      const toggleEstado = (btn) => {
+        btn.classList.toggle('activo');
+        btn.classList.toggle('inactivo');
+        btn.textContent = btn.classList.contains('activo') ? 'Activo' : 'Inactivo';
+      };
+
+      document.getElementById('btnEstadoIVA')?.addEventListener('click', e => toggleEstado(e.target));
+      document.getElementById('btnEstadoNuevo')?.addEventListener('click', e => toggleEstado(e.target));
+
+      // Mostrar toast al agregar
+      document.getElementById('agregarImpuestoBtn')?.addEventListener('click', e => {
+        e.preventDefault();
+        toastImpuestoOk.show();
+      });
+    });
+  </script>
 </body>
 </html>

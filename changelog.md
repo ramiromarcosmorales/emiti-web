@@ -5,6 +5,9 @@
 - [feature/dev-frontend-bootstrap-update-migration] Migración a Bootstrap + Documentación de Caso de Prueba.  
   PR: [#69](https://github.com/ramiromarcosmorales/emiti-web/pull/69) - @ramiromarcosmorales (Desarrollador Frontend/Bootstrap)
 
+- [feature/esp-com-bootstrap-add-components] Agregacion de Componentes Bootstrap + Documentación de Caso de Prueba.  
+  PR: [#75](https://github.com/ramiromarcosmorales/emiti-web/pull/75) - @Harika-sebasthian (Especialista en Componentes/ Bootstrap)
+
 ### Changed  
 
 - [feature/coord-devops-update-doc-project] Actualización de template de issues.
@@ -17,6 +20,9 @@
   PR: [#70](https://github.com/ramiromarcosmorales/emiti-web/pull/70) - @ramire-uces (Coordinador / DevOps)
 
 ### Fixed  
+
+- [feature/coord-devops-update-doc-project] Corrección en componentes-html.md.
+  PR: [#76](https://github.com/ramiromarcosmorales/emiti-web/pull/76) - @ramire-uces (Coordinador / DevOps)
 
 ## [Release Actividad Obligatoria N°2] - 2025-09-26
 
