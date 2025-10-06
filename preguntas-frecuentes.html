@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMITÍ — Preguntas Frecuentes</title>
+  <meta name="description" content="Centro de ayuda de Emití: preguntas frecuentes sobre emisión de facturas y uso del sistema.">
+
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/bootstrap-overrides.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"></noscript>
+</head>
+
+<body>
+  
+  <header class="bg-white border-bottom py-3">
+    <div class="container d-flex align-items-center gap-3">
+      <img src="assets/logo.png" alt="Logo Emití" width="120" height="120" class="img-fluid" decoding="async" fetchpriority="high">
+      <h1 class="h5 text-muted mb-0">Gestión Profesional de Facturas</h1>
+    </div>
+  </header>
+
+  
+  <nav class="menu">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
+        <div class="col d-grid">
+          <a href="index.html"
+             class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
+            <i class="fa-solid fa-chart-column"></i>
+            Dashboard
+          </a>
+        </div>
+        <div class="col d-grid">
+          <a href="nueva-factura.html"
+             class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
+            <i class="fa-solid fa-file-invoice"></i>
+            Nueva Factura
+          </a>
+        </div>
+        <div class="col d-grid">
+          <a href="facturas.html"
+             class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+            Facturas
+          </a>
+        </div>
+        <div class="col d-grid">
+          <a href="configuracion.html"
+             class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
+            <i class="fa-solid fa-gear"></i>
+            Configuración
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido principal -->
+  <main class="container my-5">
+    <h2 class="h3 mb-4">Preguntas Frecuentes</h2>
+
+    <section class="faq" aria-label="Preguntas frecuentes">
+      <details open>
+        <summary>¿Cómo emitir una factura?</summary>
+        <p>Ingresá a <strong>Nueva factura</strong>, completá los datos del cliente, agregá los ítems y guardá. Se genera automáticamente el comprobante.</p>
+      </details>
+
+      <details>
+        <summary>¿Cómo ver las facturas anteriores?</summary>
+        <p>Entrá en la sección <strong>Facturas</strong> para consultar, filtrar o descargar tus comprobantes emitidos.</p>
+      </details>
+
+      <details>
+        <summary>¿Cómo descargo una factura en formato PDF?</summary>
+        <p>En la sección <strong>Facturas</strong>, seleccioná el comprobante que quieras y hacé clic en <em>Descargar PDF</em>. El archivo se abrirá o guardará automáticamente en tu dispositivo.</p>
+     </details>
+
+     <details>
+       <summary>¿Qué tipos de facturas puedo emitir?</summary>
+       <p>Emití permite generar facturas de tipo <strong>A</strong>, <strong>B</strong> y <strong>C</strong>. El sistema selecciona automáticamente el tipo correspondiente al generar el comprobante, según los datos fiscales definidos por el usuario.</p>
+     </details>
+
+
+      <details>
+        <summary>¿Cómo se calcula el total con IVA?</summary>
+        <p>El total se calcula como <code>subtotal + (subtotal × IVA)</code>. En Argentina, el IVA habitual es 21%.</p>
+      </details>
+
+      <details>
+        <summary>¿Qué datos obligatorios tiene el formulario?</summary>
+        <p>Cliente, CUIT/CUIL, correo, fecha y al menos un ítem con cantidad y precio.</p>
+      </details>
+    </section>
+  </main>
+
+  <!-- Pie de pagina -->
+  <footer class="bg-white border-top py-3">
+    <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+      <ul class="list-inline mb-0 small text-muted">
+        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">¿Quiénes Somos?</a></li>
+        <li class="list-inline-item">•</li>
+        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Contacto</a></li>
+        <li class="list-inline-item">•</li>
+        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Política de Privacidad</a></li>
+        <li class="list-inline-item">•</li>
+        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Cookies</a></li>
+        <li class="list-inline-item">•</li>
+        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="preguntas-frecuentes.html">Preguntas Frecuentes</a></li>
+      </ul>
+      <p class="mb-0 small text-muted">&copy; 2025 Emití. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
