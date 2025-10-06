@@ -136,37 +136,42 @@
     </div>
   </footer>
 
-  <!-- Modal Añadir Impuesto -->
-  <div class="modal fade" id="modalImpuesto" tabindex="-1" aria-labelledby="modalImpuestoLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md modal-dialog-centered">
-      <div class="modal-content rounded-4 shadow">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalImpuestoLabel">Añadir Impuesto</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </div>
-        <div class="modal-body">
-          <form id="formImpuesto" class="row g-3">
-            <div class="col-12 form-floating">
-              <input type="text" class="form-control" id="nombreImpuesto" placeholder="IVA">
-              <label for="nombreImpuesto">Nombre del impuesto</label>
-            </div>
-            <div class="col-12 form-floating">
-              <input type="number" class="form-control" id="porcentajeImpuesto" placeholder="21">
-              <label for="porcentajeImpuesto">Porcentaje (%)</label>
-            </div>
-            <div class="col-12 form-floating">
-              <textarea class="form-control" id="descripcionImpuesto" placeholder="Descripción" style="height: 80px"></textarea>
-              <label for="descripcionImpuesto">Descripción</label>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="submit" id="guardarImpuestoBtn" class="btn btn-success">Guardar</button>
-        </div>
+ <!-- Modal Añadir Impuesto -->
+<div class="modal fade" id="modalImpuesto" tabindex="-1" aria-labelledby="modalImpuestoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md modal-dialog-centered">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalImpuestoLabel">Añadir Impuesto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formImpuesto" class="row g-3">
+          <!-- Campo: Nombre del impuesto -->
+          <div class="col-12">
+            <label for="nombreImpuesto" class="form-label">Nombre del impuesto</label>
+            <input type="text" class="form-control" id="nombreImpuesto" placeholder="Ej: IVA 21%">
+          </div>
+
+          <!-- Campo: Porcentaje -->
+          <div class="col-12">
+            <label for="porcentajeImpuesto" class="form-label">Porcentaje (%)</label>
+            <input type="number" class="form-control" id="porcentajeImpuesto" placeholder="21">
+          </div>
+
+          <!-- Campo: Descripción -->
+          <div class="col-12">
+            <label for="descripcionImpuesto" class="form-label">Descripción</label>
+            <textarea class="form-control" id="descripcionImpuesto" rows="3" placeholder="Descripción adicional"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" id="guardarImpuestoBtn" class="btn btn-success">Guardar</button>
       </div>
     </div>
   </div>
+</div>
 
   <!-- Modal Nueva Factura -->
   <div class="modal fade" id="modalFactura" tabindex="-1" aria-labelledby="modalFacturaLabel" aria-hidden="true">
