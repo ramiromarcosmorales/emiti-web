@@ -130,7 +130,7 @@ form {
   padding: 1rem 0.75rem;
 }
 
-.modal-body form {
+.modal-body form:not(#formImpuesto) {
   padding: 1.25rem;
   background-color: #f8f9fa;
   border-radius: 0.75rem;
