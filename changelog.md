@@ -51,6 +51,11 @@
   - [feature/esp-com-bootstrap-add-components] Corrección de Modal impuesto bootstrap-overrides,css y Archivo index.html.  
   PR: [#83](https://github.com/ramiromarcosmorales/emiti-web/pull/83) - @Harika-sebasthian (Especialista en Componentes/ Bootstrap)
 
+### Release
+
+- [feature/coord-devops-update-doc-project] Entrega Release Primer Parcial.  
+  PR: [#85](https://github.com/ramiromarcosmorales/emiti-web/pull/85) - @ramire-uces (Coordinador / DevOps)
+
 
 ## [Release Actividad Obligatoria N°2] - 2025-09-26
 
