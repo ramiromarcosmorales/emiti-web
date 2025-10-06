@@ -1,5 +1,14 @@
 ## [Unreleased]
 
+### Added
+
+### Changed
+
+### Fixed
+
+
+## [Release Primer Parcial] - 2025-10-06
+
 ### Added  
 
 - [feature/dev-frontend-bootstrap-update-migration] Migración a Bootstrap + Documentación de Caso de Prueba.  
