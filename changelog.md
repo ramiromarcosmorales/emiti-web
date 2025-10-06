@@ -10,19 +10,22 @@
 
 ### Changed  
 
-- [feature/coord-devops-update-doc-project] Actualización de template de issues.
+- [feature/coord-devops-update-doc-project] Actualización de template de issues.  
   PR: [#65](https://github.com/ramiromarcosmorales/emiti-web/pull/65) - @ramire-uces (Coordinador / DevOps)
 
-- [feature/coord-devops-update-doc-project] Actualización de template de Pull Request.
+- [feature/coord-devops-update-doc-project] Actualización de template de Pull Request.  
   PR: [#66](https://github.com/ramiromarcosmorales/emiti-web/pull/66) - @ramire-uces (Coordinador / DevOps)
 
-- [feature/coord-devops-update-doc-project] Actualización de README.md.
+- [feature/coord-devops-update-doc-project] Actualización de README.md.  
   PR: [#70](https://github.com/ramiromarcosmorales/emiti-web/pull/70) - @ramire-uces (Coordinador / DevOps)
 
 ### Fixed  
 
-- [feature/coord-devops-update-doc-project] Corrección en componentes-html.md.
+- [feature/coord-devops-update-doc-project] Corrección en componentes-html.md.  
   PR: [#76](https://github.com/ramiromarcosmorales/emiti-web/pull/76) - @ramire-uces (Coordinador / DevOps)
+
+- [feature/dev-frontend-bootstrap-update-migration] Corrección en responsive.css.   
+  PR: [#77](https://github.com/ramiromarcosmorales/emiti-web/pull/77) - @ramiromarcosmorales (Desarrollador Frontend/Bootstrap)
 
 ## [Release Actividad Obligatoria N°2] - 2025-09-26
 
