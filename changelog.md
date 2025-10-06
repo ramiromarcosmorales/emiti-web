@@ -11,6 +11,9 @@
 - [feature/dev-comp-html-avanzados-add-components] Implementacion de Componentes HTML Avanzados + Documentacion de Caso de Prueba. 
   PR: [#79](https://github.com/ramiromarcosmorales/emiti-web/pull/79) - @victoriaimo (Desarrollador de Componentes HTML Avanzados)
 
+- [feature/coord-devops-update-doc-project] Actualización de mockup con imágenes de Bootstrap y cambios en testing-doc y README.md.
+  PR: [#82](https://github.com/ramiromarcosmorales/emiti-web/pull/82) - @ramire-uces (Coordinador / DevOps)
+
 ### Changed  
 
 - [feature/coord-devops-update-doc-project] Actualización de template de issues.  
@@ -30,8 +33,12 @@
 - [feature/dev-frontend-bootstrap-update-migration] Corrección en responsive.css.   
   PR: [#77](https://github.com/ramiromarcosmorales/emiti-web/pull/77) - @ramiromarcosmorales (Desarrollador Frontend/Bootstrap)
 
-- [feature/dev-frontend-bootstrap-update-migration] Correción de footer y respoonsividad en configuracion.html  
+- [feature/dev-frontend-bootstrap-update-migration] Corrección de footer y responsividad en configuracion.html  
   PR: [#81](https://github.com/ramiromarcosmorales/emiti-web/pull/81) - @ramiromarcosmorales (Desarrollador Frontend/Bootstrap)
+
+  - [feature/esp-com-bootstrap-add-components] Corrección de Modal impuesto bootstrap-overrides,css y Archivo index.html.  
+  PR: [#83](https://github.com/ramiromarcosmorales/emiti-web/pull/83) - @Harika-sebasthian (Especialista en Componentes/ Bootstrap)
+
 
 ## [Release Actividad Obligatoria N°2] - 2025-09-26
 
