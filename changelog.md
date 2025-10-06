@@ -25,6 +25,9 @@
 - [feature/coord-devops-update-doc-project] Actualización de README.md.  
   PR: [#70](https://github.com/ramiromarcosmorales/emiti-web/pull/70) - @ramire-uces (Coordinador / DevOps)
 
+- [feature/coord-devops-update-doc-project] Actualización de imagen en mockup. 
+  PR: [#84](https://github.com/ramiromarcosmorales/emiti-web/pull/84) - @ramire-uces (Coordinador / DevOps)
+
 ### Fixed  
 
 - [feature/coord-devops-update-doc-project] Corrección en componentes-html.md.  
