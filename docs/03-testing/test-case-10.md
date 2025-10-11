@@ -64,10 +64,7 @@ Validar la integración, compatibilidad y comportamiento responsive del componen
 
 ## Performance con ajustes
 
-![Imagen](https://drive.google.com/uc?export=view&id=17NJE9-k2NTb6dQexVCwgEuIBR-1gBZq4) 
-
-
-![Imagen](https://drive.google.com/uc?export=view&id=1TCArEFWxxyjJ0Voh6M2Cfn6IVddDL_h8)
+![Imagen](https://drive.google.com/uc?export=view&id=1ifxKhoOR6IRYcANme2_K4xFkIU7qmNcz) 
  
 Resultado del **First Contentful Paint (FCP)** y **Largest Contentful Paint (LCP)** debido a que es una nueva pantalla.  
 
