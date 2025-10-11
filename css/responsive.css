@@ -222,7 +222,7 @@ footer {
     .configuracion .impuesto-card { grid-template-columns: 1fr; justify-items: start; }
     /* Configuración: evitar desbordes en filas y formularios */
     .configuracion .section-card { 
-        padding: 1rem !important; 
+        padding: 1rem; 
         max-width: 100%; 
     }
     .configuracion .list-group, 
@@ -235,7 +235,7 @@ footer {
     }
     .configuracion .ms-auto, 
     .configuracion .ms-sm-auto { 
-        margin-left: 0 !important; 
+        margin-left: 0; 
         width: 100%; 
         display: flex; 
         justify-content: 
@@ -478,13 +478,13 @@ nav.menu a {
 @media (max-width: 575px) {
   .imp-item 
   .btn-estado-col { 
-    flex: 0 0 100% !important; 
-    max-width: 100% !important; 
+    flex: 0 0 100%; 
+    max-width: 100%; 
     }
   .imp-item 
   .actions-col { 
-    flex: 0 0 100% !important; 
-    max-width: 100% !important; 
-    justify-content: flex-start !important; 
+    flex: 0 0 100%; 
+    max-width: 100%; 
+    justify-content: flex-start; 
     }
 }
