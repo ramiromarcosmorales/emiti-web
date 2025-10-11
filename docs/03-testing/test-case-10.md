@@ -61,6 +61,13 @@ Validar la integración, compatibilidad y comportamiento responsive del componen
 ![Imagen](https://drive.google.com/uc?export=view&id=1umq8LbeZ4J0MLeTc5ltG9weXD4liwh_y)
 
 ![Imagen](https://drive.google.com/uc?export=view&id=1AtvCG1GG05GcZUc19DciuxwivSuG18EP)
+
+## Performance con ajustes
+
+![Imagen](https://drive.google.com/uc?export=view&id=17NJE9-k2NTb6dQexVCwgEuIBR-1gBZq4) 
+
+
+![Imagen](https://drive.google.com/uc?export=view&id=1TCArEFWxxyjJ0Voh6M2Cfn6IVddDL_h8)
  
 Resultado del **First Contentful Paint (FCP)** y **Largest Contentful Paint (LCP)** debido a que es una nueva pantalla.  
 
@@ -115,3 +122,9 @@ Resultado del **First Contentful Paint (FCP)** y **Largest Contentful Paint (LCP
 - Es compatible con los principales navegadores según **Can I Use** y válido según **W3C HTML Validator**.  
 
 ---
+
+## Issues encontrados
+
+| IssueID | Descripción 
+|----|-------------|
+| [#88](https://github.com/ramiromarcosmorales/emiti-web/issues/88) | Ajuste de Performance 
