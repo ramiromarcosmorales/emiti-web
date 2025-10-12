@@ -62,6 +62,11 @@ Validar la integración, compatibilidad y comportamiento responsive del componen
 
 ![Imagen](https://drive.google.com/uc?export=view&id=113F9mTUB5k3Oe9EEEKvsyq-xZ84P1MEE)
 
+## Performance con ajustes
+
+![Imagen](https://drive.google.com/uc?export=view&id=1MS1S1MDFXRaXTuzBsRaxbM-pVE1x-QW8)
+
+
 - Comparación del **First Contentful Paint (FCP)** y **Largest Contentful Paint (LCP)** antes y después de agregar el componente.  
 
 ![Imagen](https://drive.google.com/uc?export=view&id=1DOpNp7zTAIra5VKfQxJFZbaHBzJ-tIFs)
@@ -116,3 +121,9 @@ Validar la integración, compatibilidad y comportamiento responsive del componen
 - Es compatible con los principales navegadores según **Can I Use** y válido según **W3C HTML Validator**.  
 
 ---
+
+## Issues encontrados
+
+| IssueID | Descripción 
+|----|-------------|
+| [#88](https://github.com/ramiromarcosmorales/emiti-web/issues/88) | Ajuste de Performance 

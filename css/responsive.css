@@ -151,9 +151,18 @@ footer {
    - Botones en columna.
    - Header y footer centrados.
 */
+
+
+/* Configuración: fila de impuestos - comportamiento fluido y limpio */
+
 @media (max-width: 600px) {
+    html {
+        overflow-x: hidden;
+    }
+    
     body { 
         padding-bottom: 0 !important; 
+        overflow-x: hidden;
     }
     
     nav.menu ul {
@@ -213,7 +222,7 @@ footer {
     .configuracion .impuesto-card { grid-template-columns: 1fr; justify-items: start; }
     /* Configuración: evitar desbordes en filas y formularios */
     .configuracion .section-card { 
-        padding: 1rem !important; 
+        padding: 1rem; 
         max-width: 100%; 
     }
     .configuracion .list-group, 
@@ -226,7 +235,7 @@ footer {
     }
     .configuracion .ms-auto, 
     .configuracion .ms-sm-auto { 
-        margin-left: 0 !important; 
+        margin-left: 0; 
         width: 100%; 
         display: flex; 
         justify-content: 
@@ -448,28 +457,6 @@ nav.menu a {
     transition: all 0.15s ease;
 }
 
-/* Configuración: fila de impuestos - comportamiento fluido y limpio */
-@media (max-width: 600px) {
-  .configuracion 
-  .section-card { 
-    padding: 1rem !important; 
-}
-  .configuracion 
-  .list-group, 
-  .configuracion 
-  .list-group-item { 
-    overflow-x: hidden; 
-    }
-  .imp-item { 
-    --bs-gutter-x: .5rem; 
-    row-gap: .35rem; 
-    }
-  html, 
-  body { 
-    overflow-x: hidden;
-    }
-}
-
 /* Entre 576px y 600px: forzar una sola línea, sin espacios muertos */
 @media (min-width: 576px) and (max-width: 600px) {
   .imp-item { 
@@ -491,13 +478,13 @@ nav.menu a {
 @media (max-width: 575px) {
   .imp-item 
   .btn-estado-col { 
-    flex: 0 0 100% !important; 
-    max-width: 100% !important; 
+    flex: 0 0 100%; 
+    max-width: 100%; 
     }
   .imp-item 
   .actions-col { 
-    flex: 0 0 100% !important; 
-    max-width: 100% !important; 
-    justify-content: flex-start !important; 
+    flex: 0 0 100%; 
+    max-width: 100%; 
+    justify-content: flex-start; 
     }
 }
