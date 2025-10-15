@@ -1,10 +1,56 @@
 ## [Unreleased]
 
+### Added
+
+### Changed
+
+### Fixed
+
+
+## [Release Primer Parcial] - 2025-10-06
+
 ### Added  
+
+- [feature/dev-frontend-bootstrap-update-migration] Migración a Bootstrap + Documentación de Caso de Prueba.  
+  PR: [#69](https://github.com/ramiromarcosmorales/emiti-web/pull/69) - @ramiromarcosmorales (Desarrollador Frontend/Bootstrap)
+
+- [feature/esp-com-bootstrap-add-components] Agregacion de Componentes Bootstrap + Documentación de Caso de Prueba.  
+  PR: [#75](https://github.com/ramiromarcosmorales/emiti-web/pull/75) - @Harika-sebasthian (Especialista en Componentes/ Bootstrap)
+
+- [feature/dev-comp-html-avanzados-add-components] Implementacion de Componentes HTML Avanzados + Documentacion de Caso de Prueba. 
+  PR: [#79](https://github.com/ramiromarcosmorales/emiti-web/pull/79) - @victoriaimo (Desarrollador de Componentes HTML Avanzados)
+
+- [feature/coord-devops-update-doc-project] Actualización de mockup con imágenes de Bootstrap y cambios en testing-doc y README.md.
+  PR: [#82](https://github.com/ramiromarcosmorales/emiti-web/pull/82) - @ramire-uces (Coordinador / DevOps)
 
 ### Changed  
 
+- [feature/coord-devops-update-doc-project] Actualización de template de issues.  
+  PR: [#65](https://github.com/ramiromarcosmorales/emiti-web/pull/65) - @ramire-uces (Coordinador / DevOps)
+
+- [feature/coord-devops-update-doc-project] Actualización de template de Pull Request.  
+  PR: [#66](https://github.com/ramiromarcosmorales/emiti-web/pull/66) - @ramire-uces (Coordinador / DevOps)
+
+- [feature/coord-devops-update-doc-project] Actualización de README.md.  
+  PR: [#70](https://github.com/ramiromarcosmorales/emiti-web/pull/70) - @ramire-uces (Coordinador / DevOps)
+
+- [feature/coord-devops-update-doc-project] Actualización de imagen en mockup. 
+  PR: [#84](https://github.com/ramiromarcosmorales/emiti-web/pull/84) - @ramire-uces (Coordinador / DevOps)
+
 ### Fixed  
+
+- [feature/coord-devops-update-doc-project] Corrección en componentes-html.md.  
+  PR: [#76](https://github.com/ramiromarcosmorales/emiti-web/pull/76) - @ramire-uces (Coordinador / DevOps)
+
+- [feature/dev-frontend-bootstrap-update-migration] Corrección en responsive.css.   
+  PR: [#77](https://github.com/ramiromarcosmorales/emiti-web/pull/77) - @ramiromarcosmorales (Desarrollador Frontend/Bootstrap)
+
+- [feature/dev-frontend-bootstrap-update-migration] Corrección de footer y responsividad en configuracion.html  
+  PR: [#81](https://github.com/ramiromarcosmorales/emiti-web/pull/81) - @ramiromarcosmorales (Desarrollador Frontend/Bootstrap)
+
+- [feature/esp-com-bootstrap-add-components] Corrección de Modal impuesto bootstrap-overrides,css y Archivo index.html.  
+  PR: [#83](https://github.com/ramiromarcosmorales/emiti-web/pull/83) - @Harika-sebasthian (Especialista en Componentes/ Bootstrap)
+
 
 ## [Release Actividad Obligatoria N°2] - 2025-09-26
 

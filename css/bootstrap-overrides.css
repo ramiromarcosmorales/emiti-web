@@ -1,0 +1,308 @@
+/* Bootstrap overrides para mantener identidad visual
+   Proyecto: Emití Web */
+
+/* Variables base */
+:root {
+  --bs-body-bg: var(--color-bg);
+  --bs-body-color: var(--color-text);
+  --bs-border-color: var(--color-border);
+  --bs-primary: rgba(var(--color-primary-rgb), 1);
+}
+
+/* BOTONES PRINCIPALES Y MENÚ */
+
+.btn {
+  border-radius: .65rem;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover,
+.btn:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .1);
+  outline: none;
+}
+
+.btn.btn-light {
+  background-color: #efeff1;
+  color: #222;
+  border-color: var(--color-border);
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn.btn-light:hover,
+.btn.btn-light:focus {
+  background-color: #e0e0e0;
+  color: #000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.menu a.active {
+  background-color: var(--color-surface);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-border);
+  color: #222;
+}
+
+.btn-primary {
+  background-color: #0069d9;
+  border-color: #0062cc;
+  color: #fff;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #0056b3;
+  border-color: #004a99;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+  color: #fff;
+}
+
+.btn-success:hover,
+.btn-success:focus {
+  background-color: #218838;
+  border-color: #1e7e34;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.btn-outline-success {
+  color: #218838;
+  border-color: #218838;
+  background-color: transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-outline-success:hover,
+.btn-outline-success:focus {
+  background-color: #218838;
+  color: #fff;
+  border-color: #1e7e34;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: #fff;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: #5a6268;
+  border-color: #545b62;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn-outline-secondary {
+  border-radius: 2rem;
+  font-weight: 500;
+}
+
+/* FORMULARIOS */
+
+.form-floating > label {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.form-control {
+  border-radius: .5rem;
+  border-color: #dee2e6;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.form-control:focus {
+  border-color: #0069d9;
+  box-shadow: 0 0 0 0.2rem rgba(0, 105, 217, .25);
+  outline: none;
+}
+
+form {
+  padding: 1rem 0.75rem;
+}
+
+.modal-body form:not(#formImpuesto) {
+  padding: 1.25rem;
+  background-color: #f8f9fa;
+  border-radius: 0.75rem;
+}
+
+/* BOTÓN ACTIVO / INACTIVO */
+
+.btn-estado {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.35rem 1.2rem;
+  border: none;
+  border-radius: 50px;
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+  min-width: 90px;
+}
+
+.btn-estado.activo {
+  background-color: #28a745;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(40, 167, 69, 0.4);
+}
+
+.btn-estado.activo:hover {
+  background-color: #218838;
+  box-shadow: 0 3px 8px rgba(33, 136, 56, 0.5);
+}
+
+.btn-estado.inactivo {
+  background-color: #fd7e14;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(253, 126, 20, 0.4);
+}
+
+.btn-estado.inactivo:hover {
+  background-color: #e56e0f;
+  box-shadow: 0 3px 8px rgba(229, 110, 15, 0.5);
+}
+
+/* MODALES Y CIERRE */
+
+.modal-content {
+  border-radius: 1rem;
+  border: none;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, .15);
+}
+
+.modal-header {
+  border-bottom: 1px solid #e9ecef;
+}
+
+.modal-footer {
+  border-top: 1px solid #e9ecef;
+}
+
+.btn-close {
+  background: var(--bs-btn-close-bg) center/1em auto no-repeat !important;
+  background-color: transparent !important;
+  width: 1.2em;
+  height: 1.2em;
+  opacity: 0.75;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 50%;
+  transition: all 0.15s ease;
+}
+
+.btn-close:hover {
+  opacity: 0.9;
+  transform: scale(1.1);
+}
+
+.btn-close:focus {
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
+}
+
+/* TOASTS */
+
+.toast {
+  border-radius: .75rem;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+}
+
+.toast-body {
+  font-size: .95rem;
+}
+
+/* CARDS Y SOMBRAS */
+
+.shadow-sm {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04),
+              inset 0 -1px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+.card {
+  border: none;
+  border-radius: .75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .05);
+  transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+}
+
+.card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #495057;
+}
+
+.card p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #212529;
+}
+
+/* PADDINGS UNIFICADOS */
+
+.container, .modal-content, .card-body {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+input, select, textarea {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+}
+
+/* AJUSTES MODAL NUEVA FACTURA */
+#modalFactura .form-control,
+#modalFactura .form-select,
+#modalFactura textarea {
+  font-size: 0.9rem;
+  padding: 0.45rem 0.75rem 0.45rem 1rem; /* Espacio a la izquierda */
+  border-radius: 0.45rem;
+}
+
+#modalFactura .form-label {
+  color: #495057;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+#modalFactura .modal-body {
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 0.75rem;
+}
+
+/* AJUSTES MODAL AÑADIR IMPUESTO */
+#modalImpuesto .form-control,
+#modalImpuesto textarea {
+  font-size: 0.9rem;
+  padding: 0.45rem 0.75rem 0.45rem 1rem; 
+  border-radius: 0.45rem;
+}
+
+#modalImpuesto .form-label {
+  color: #495057;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+#modalImpuesto .modal-body {
+  padding: 1.5rem; 
+  background-color: #f8f9fa;
+  border-radius: 0.75rem;
+}

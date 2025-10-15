@@ -1,45 +1,38 @@
 /* Nav */
 
-nav.menu{
+/* Menú: Bootstrap maneja layout; mantenemos tipografía y pill visuals */
+nav.menu {
     width: 100%;
-    padding-left: var(--page-gutter, 16px);
-    padding-right: var(--page-gutter, 16px);
     margin: 0 auto 20px;
     box-sizing: border-box;
-
     --nav-font: 16px;
 }
 
-nav.menu ul{
+nav.menu ul {
     list-style: none;
     padding: 0;
     margin: 14px 0;
-    text-align: left;
-
     font-size: 0;
 }
 
 /* Restauracion del font-size en los ítems del menú*/
 
-nav.menu li{
+nav.menu li {
     font-size: var(--nav-font);
     display: inline-block;
     vertical-align: top;
-    width: 24%;
-    min-width: 220px;
-    margin: 0 1% 0 0;
     box-sizing: border-box;
 }
 
 /* Cada 4 item sin margen derecho para cuadrar*/
 
-nav.menu li:nth-child(4n){
-    margin-right:0;
+nav.menu li:nth-child(4n) {
+    margin-right: 0;
 }
 
 /* Enlaces, estilo pill redondeado */
 
-nav.menu a{
+nav.menu a {
     font-size: var(--nav-font);
     display: block;
     width: 100%;
@@ -56,21 +49,21 @@ nav.menu a{
 /* Hover y foco del menu */
 nav.menu a:hover,
 nav.menu a:focus,
-nav.menu a:focus-visible{
-filter: brightness(0.92);
-text-decoration: none;
-color: #222;
+nav.menu a:focus-visible {
+    filter: brightness(0.92);
+    text-decoration: none;
+    color: #222;
 }
 
 /* Click (estado activo al presionar) */
 
-nav.menu a:active{
+nav.menu a:active {
     transform: translateY(1px);
 }
 
 /* Estado activo, resalta pagina actual */
 
-nav.menu a.activo{
+nav.menu a.activo {
     background: var(--color-surface);
     box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     border-color: var(--color-border);
@@ -79,7 +72,7 @@ nav.menu a.activo{
 
 /* Estilos para iconos dentro del menu */
 
-nav.menu i{
+nav.menu i {
     margin-right: 0.7rem;
     font-size: 1rem;
     vertical-align: middle;
@@ -88,10 +81,8 @@ nav.menu i{
 
 /* Metricas */
 
-.metricas{
+.metricas {
     width: 100%;
-    padding-left: var(--page-gutter, 16px);
-    padding-right: var(--page-gutter, 16px);
     margin: 0 auto 20px;
     box-sizing: border-box;
     font-size: 0;
@@ -99,26 +90,20 @@ nav.menu i{
 
 /* Cuatro columnas con inline-block*/
 
-.metricas .card{
-    display: inline-block;
-    vertical-align: top;
-    width: 24%; min-width: 220px;
-    margin: 0 1% 16px 0;
+.metricas .card {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: 14px;
-    padding: 1rem;
     box-shadow: 0 3px 8px rgba(0,0,0,0.06);
-    box-sizing: border-box;
     font-size: 16px;
     transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
-.metricas .card:nth-child(4n){
+.metricas .card:nth-child(4n) {
     margin-right: 0;
 }
 
-.metricas .card h3{
+.metricas .card h3 {
     font-size: 1rem;
     font-weight: 700;
     margin-bottom: 0.25rem;
@@ -128,45 +113,51 @@ nav.menu i{
     justify-content: space-between;
 }
 
-.metricas .card h3 i{
+.metricas .card h3 i {
     font-size: 1.2rem;
     color: #000;
 }
 
-.metricas .card p{
+.metricas .card p {
     margin: 0;
     font-size: 1rem;
     font-weight: 600;
     color: var(--color-text);
 }
 
-.metricas .card:hover{
+.metricas .card:hover {
     box-shadow: 0 6px 14px rgba(0,0,0,0.08);
     transform: translateY(-1px);
 }
 
 /* Acciones rapidas */
 
-.acciones{
+.acciones {
     width: 100%;
     padding: 16px var(--page-gutter, 16px);
     margin: 0 auto 20px;
     box-sizing: border-box;
-    background: #f0f0f0;
-    border: 1px solid var(--color-border);
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.7);
-    min-height: 140px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 0;
     text-align: left;
 }
 
-.acciones h2{ margin-bottom: 0.25rem; }
-.acciones p{ margin-bottom: 0.75rem; color: var(--color-text);}
+.acciones h2 {
+    margin-bottom: 0.25rem;
+}
+
+.acciones p {
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+}
 
 /* Botones en linea */
 
 .acciones .acciones-botones button,
-.acciones .acciones-botones .button{
+.acciones .acciones-botones .button {
     display: inline-block;
     margin-right: 0.75rem;
     margin-bottom: 0.5rem;
@@ -176,51 +167,99 @@ nav.menu i{
 
 /* Caja gris*/
 
-.configuracion{
-    background:#f3f3f3; 
-    border:1px solid var(--color-border);
-    border-radius:18px; 
-    padding:1.25rem; 
-    box-shadow:0 1px 0 rgba(0,0,0,.05);
+.configuracion {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
 }
 
 /* Caja blanca única */
 
-.configuracion .impuesto-card{
-    background:#fff; 
-    border:1px solid var(--color-border);
-    border-radius:16px; 
-    padding:14px 16px; 
-    box-shadow:0 2px 0 rgba(0,0,0,.06);
-}
+/* impuesto-card migra a .card Bootstrap en configuracion.html */
 
 /* Fila plana */
 
-.configuracion .impuesto-item{ 
-    display:flex; 
-    align-items:center; gap:0.5rem; 
+.configuracion .impuesto-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 /* Texto y pill */
 
-.configuracion .nombre{ font-weight:700; color:#1b1b1b; }
-.configuracion .porcentaje{ color:var(--color-muted); margin-left:0.35rem; }
-.configuracion .estado{
-    margin-left:.5rem; 
-    display:inline-block; 
-    padding:.25rem .7rem;
-    border-radius:999px; 
-    font-size:.9rem; 
-    font-weight:600;
+.configuracion .nombre {
+    font-weight: 700;
+    color: #1b1b1b;
 }
-.configuracion .estado.activo{ 
-    background:var(--color-primary); 
-    color:#fff; 
+
+.configuracion .porcentaje {
+    color: var(--color-muted);
+    margin-left: 0.35rem;
+}
+.configuracion .estado {
+    margin-left: .5rem;
+    display: inline-block;
+    padding: .25rem .7rem;
+    border-radius: 999px;
+    font-size: .9rem;
+    font-weight: 600;
+}
+.configuracion .estado.activo {
+    background: var(--color-primary);
+    color: #fff;
 }
 
 /* PAGINA NUEVA FACTURA */
 
-.nueva-factura .estado-factura{
+/* Sección "Nueva Factura" migra a Bootstrap card en nueva-factura.html.
+   Conservamos estas reglas por compatibilidad, pero ya no se usan allí. */
+
+/* PANTALLA FACTURAS */
+
+.facturas {
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* Buscador */
+
+/* Buscador de Facturas migra a input-group Bootstrap. Conservamos estilos genéricos */
+.facturas .buscador {
+    margin: 1rem 0;
+}
+.estado-facturas i,
+.estado-factura i {
+    font-size: 4rem;
+    color: #000000;
+    margin-bottom: 1rem;
+}
+
+/* Foco visible en input y boton */
+
+.facturas .buscador input:focus-visible {
+    outline: none;
+}
+
+.facturas .buscador button:focus-visible {
+    outline: none;
+}
+
+.facturas .buscador input:placeholder-shown + button {
+    visibility: hidden;
+}
+
+.facturas .buscador input:not(:placeholder-shown) + button {
+    visibility: visible;
+}
+
+/* Estado inicial */
+
+.facturas .estado-facturas {
     text-align: center;
     background: #fff;
     border: 1px solid var(--color-border);
@@ -232,115 +271,99 @@ nav.menu i{
     box-shadow: 0 2px 0 rgba(0,0,0,.06);
 }
 
-.nueva-factura .estado-factura img{
-    display:block;
-    margin: 0 auto 8px;
+.sr-only {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
 }
 
-/* PANTALLA FACTURAS */
-
-.facturas{
-    padding: 1.25rem;
-    background: #f3f3f3;
-    border: 1px solid var(--color-border);
-    border-radius: 18px;
-    box-shadow: 0 1px 0 rgba(0,0,0,.05);
+/* FAQ (details / summary) */
+.faq details {
+    background: #fff;
+    border: 1px solid var(--color-border, #dee2e6);
+    border-radius: 10px;
+    padding: .75rem 1rem;
 }
 
-/* Buscador */
-
-.facturas .buscador{
-    position: relative;
-    margin:1rem 0;
-    max-width: 400px;
-    display: flex;
-    align-items: center;
+.faq details + details {
+    margin-top: .75rem;
 }
 
-.facturas .buscador input::placeholder{
-    font-style: italic;
-}
-
-.facturas .buscador i.fa-magnifying-glass { 
-    position:absolute; 
-    left: 12px;
-    color: var(--color-muted); 
-    font-size:1rem;
-    pointer-events:none;
-}
-
-.facturas .buscador input {
-  width: 100%;                      
-  padding: 10px 42px 10px 36px; 
-  box-sizing: border-box;
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-}
-
-.facturas .buscador button{
-    background: transparent;
-    border: none;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 2rem;
-    height: 2rem;
-    text-align: center;
+.faq summary {
     cursor: pointer;
-    color: var(--color-muted);
-    display: flex;
+    font-weight: 600;
+}
+
+.faq summary:focus-visible {
+    outline: 2px solid var(--color-primary, #28a745);
+    outline-offset: 2px;
+    border-radius: 8px;
+}
+
+.faq p {
+    margin: .5rem 0 0;
+}
+
+/* Calculadora de IVA */
+
+/* Fondo y bordes del output */
+form output.form-control {
+    background: var(--color-surface, #f8f9fa);
+    border: 1px solid var(--color-border, #dee2e6);
+    border-radius: 6px;
+    color: var(--color-text, #212529);
+}
+
+/* Ícono del consejo */
+.calculadora-iva .fa-lightbulb {
+    color: var(--color-warning, #ffc107);
+}
+
+
+/* Botón Activo / Inactivo estilo píldora */
+.btn-estado {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.35rem 1.2rem;
+    border: none;
+    border-radius: 50px;
+    transition: all 0.25s ease-in-out;
+    cursor: pointer;
+    min-width: 90px;
 }
 
-.facturas .buscador button i {
-    font-size: 1.2rem;
+.btn-estado.activo {
+    background-color: #28a745;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(40,167,69,0.4);
 }
 
-.estado-facturas i,
-.estado-factura i {
-    font-size: 4rem;
-    color: #000000;
-    margin-bottom: 1rem;
+.btn-estado.activo:hover {
+    background-color: #218838;
+    box-shadow: 0 3px 8px rgba(33,136,56,0.5);
 }
 
-/* Foco visible en input y boton */
-
-.facturas .buscador input:focus-visible{
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+.btn-estado.inactivo {
+    background-color: #fd7e14;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(253,126,20,0.4);
 }
 
-.facturas .buscador button:focus-visible{
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+.btn-estado.inactivo:hover {
+    background-color: #e56e0f;
+    box-shadow: 0 3px 8px rgba(229,110,15,0.5);
 }
 
-.facturas .buscador input:placeholder-shown + button {visibility: hidden;}
-.facturas .buscador input:not(:placeholder-shown) + button {visibility: visible;}
-
-/* Estado inicial */
-
-.facturas .estado-facturas { 
-    text-align:center; 
-    background:#fff; 
-    border: 1px solid var(--color-border);
-    border-radius:16px; 
-    padding:24px; 
-    margin:1rem 0;
-    width: 100%;
-    box-sizing: border-box;
-    box-shadow: 0 2px 0 rgba(0,0,0,.06); 
+/* Ajustes visuales del formulario */
+.form-floating > label {
+    padding-left: .75rem;
 }
-
-.sr-only{
-  position:absolute !important;
-  width:1px; height:1px;
-  padding:0; margin:-1px; overflow:hidden;
-  clip:rect(0,0,0,0);
-  white-space:nowrap;
-  border:0;
-}
-
-

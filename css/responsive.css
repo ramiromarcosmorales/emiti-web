@@ -151,7 +151,20 @@ footer {
    - Botones en columna.
    - Header y footer centrados.
 */
+
+
+/* Configuración: fila de impuestos - comportamiento fluido y limpio */
+
 @media (max-width: 600px) {
+    html {
+        overflow-x: hidden;
+    }
+    
+    body { 
+        padding-bottom: 0 !important; 
+        overflow-x: hidden;
+    }
+    
     nav.menu ul {
         grid-template-columns: 1fr;
         gap: 0.5rem;
@@ -206,10 +219,98 @@ footer {
         flex-direction: column;
         gap: 0.75rem;
     }
-    .configuracion .impuesto-card {
-        grid-template-columns: 1fr;
-        justify-items: start;
+    .configuracion .impuesto-card { grid-template-columns: 1fr; justify-items: start; }
+    /* Configuración: evitar desbordes en filas y formularios */
+    .configuracion .section-card { 
+        padding: 1rem; 
+        max-width: 100%; 
     }
+    .configuracion .list-group, 
+    .configuracion .list-group-item { 
+        overflow-x: 
+        hidden; max-width: 100%; 
+    }
+    .configuracion .list-group-item .d-flex { 
+        flex-wrap: wrap; 
+    }
+    .configuracion .ms-auto, 
+    .configuracion .ms-sm-auto { 
+        margin-left: 0; 
+        width: 100%; 
+        display: flex; 
+        justify-content: 
+        flex-end; gap: .5rem; 
+    }
+    .configuracion 
+    .text-muted { 
+        white-space: normal; 
+    }
+    .configuracion 
+    .form-floating 
+    .form-control { 
+        min-width: 0; 
+    }
+    .configuracion 
+    .calculadora-iva > .p-3, 
+    .configuracion 
+    .calculadora-iva > .p-md-4 { 
+        max-width: 100%; overflow-x: hidden; 
+    }
+    html, body { 
+        overflow-x: hidden; 
+    }
+}
+
+/* ====== EXTRA SMALL: <= 375px ======
+   En "Agregar nuevo impuesto", forzar que el botón "Activo" baje a otra fila
+   y que los campos ocupen 100% para evitar desbordes. */
+@media (max-width: 375px) {
+    .configuracion .card .row .col-8 { 
+        flex: 0 0 100%; 
+        max-width: 100%; 
+    }
+    .configuracion 
+    .card 
+    .row 
+    .col-4 { 
+        flex: 0 0 100%; 
+        max-width: 100%; 
+    }
+    #btnEstadoNuevo { 
+        width: 100%; 
+    }
+}
+
+/*  Orden: botón, editar, borrar */
+@media (max-width: 576px) {
+  .imp-item { 
+    row-gap: .35rem; 
+}
+  .imp-item .btn-estado-col, 
+  .imp-item .edit-col, 
+  .imp-item .delete-col { 
+    flex: 0 0 auto; 
+}
+}
+@media (max-width: 520px) {
+  .imp-item 
+  .btn-estado-col { 
+    flex: 0 0 100%; 
+    max-width: 100%; 
+}
+}
+@media (max-width: 480px) {
+  .imp-item .edit-col { 
+    flex: 0 0 100%; 
+    max-width: 100%; 
+  }
+}
+@media (max-width: 440px) {
+  .imp-item 
+  .delete-col { 
+    flex: 0 0 100%; 
+    max-width: 100%;
+  }
 }
 
 /* ====== TABLET: 601px–900px ======
@@ -332,9 +433,9 @@ footer {
     .nueva-factura .estado-factura {
         flex-direction: column;
     }
-    body {
+    main {
         padding-left: 1rem;
-        padding-right: 1rem; /* evita que se vea alejado */
+        padding-right: 1rem;
     }
 }
 /* Ajuste específico para landscape en dispositivos de 601px a 900px 
@@ -354,4 +455,36 @@ para solucionar errores en nueva-factura y facturas
 .metricas .card,
 nav.menu a {
     transition: all 0.15s ease;
+}
+
+/* Entre 576px y 600px: forzar una sola línea, sin espacios muertos */
+@media (min-width: 576px) and (max-width: 600px) {
+  .imp-item { 
+    flex-wrap: nowrap; 
+}
+  .imp-item 
+  .name-group { 
+    flex: 1 1 auto; 
+    min-width: 0; 
+    }
+  .imp-item 
+  .btn-estado-col, 
+  .imp-item .actions-col { 
+    flex: 0 0 auto; 
+    }
+}
+
+/* <= 575px: apilar ordenado - primero botón Activo, luego acciones */
+@media (max-width: 575px) {
+  .imp-item 
+  .btn-estado-col { 
+    flex: 0 0 100%; 
+    max-width: 100%; 
+    }
+  .imp-item 
+  .actions-col { 
+    flex: 0 0 100%; 
+    max-width: 100%; 
+    justify-content: flex-start; 
+    }
 }
