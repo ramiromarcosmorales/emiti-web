@@ -1,5 +1,14 @@
 ## [Unreleased]
 
+### Added
+
+### Changed
+
+### Fixed
+
+
+## [Release Primer Parcial] - 2025-10-06
+
 ### Added  
 
 - [feature/dev-frontend-bootstrap-update-migration] Migración a Bootstrap + Documentación de Caso de Prueba.  
@@ -39,7 +48,7 @@
 - [feature/dev-frontend-bootstrap-update-migration] Corrección de footer y responsividad en configuracion.html  
   PR: [#81](https://github.com/ramiromarcosmorales/emiti-web/pull/81) - @ramiromarcosmorales (Desarrollador Frontend/Bootstrap)
 
-  - [feature/esp-com-bootstrap-add-components] Corrección de Modal impuesto bootstrap-overrides,css y Archivo index.html.  
+- [feature/esp-com-bootstrap-add-components] Corrección de Modal impuesto bootstrap-overrides,css y Archivo index.html.  
   PR: [#83](https://github.com/ramiromarcosmorales/emiti-web/pull/83) - @Harika-sebasthian (Especialista en Componentes/ Bootstrap)
 
 
