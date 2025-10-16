@@ -2,6 +2,9 @@
 
 ### Added
 
+- [feature/coord-devops-tercera-entrega] Actualización del archivo `feature-template.md` y creación de plantillas para issues por rol.  
+  PR: [#90](https://github.com/ramiromarcosmorales/emiti-web/pull/90) - @victoriaimo (Coordinador / DevOps)
+
 ### Changed
 
 ### Fixed
