@@ -772,7 +772,7 @@ function inicializarAplicacion() {
 // EXPORTACIÓN PARA TESTING
 
 
-// Exponer funciones para testing (no anidar en IIFE para facilitar testing)
+// Exponer funciones para testing 
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         validarTextoObligatorio,
