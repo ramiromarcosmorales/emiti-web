@@ -1,12 +1,6 @@
 /**
  * EMITÍ - Sistema de Gestión de Facturas
- * JavaScript Logica de Negocio
- * 
- * Este archivo contiene la lógica de negocio para los 4 flujos principales:
- * 1. Dashboard - Visualización de métricas
- * 2. Nueva Factura - Creación de facturas
- * 3. Facturas - Gestión de facturas existentes
- * 4. Configuración - Configuración de impuestos
+ * JavaScript Logica de Negocio 
  */
 
 
@@ -51,8 +45,8 @@ const dataStore = {
                 { producto: "Desarrollo Web", precio: 22500 }
             ],
             subtotal: 22500,
-            iva: 4725, // IVA del 21% calculado pero incluido en el precio
-            total: 22500, // Precio ya incluye el IVA
+            iva: 4725, // IVA del 21% calculado e implícito
+            total: 22500, // Precio final
             estado: "pendiente"
         },
         {
@@ -70,8 +64,8 @@ const dataStore = {
                 { producto: "Mantenimiento mensual", precio: 5000 }
             ],
             subtotal: 5000,
-            iva: 1050, // IVA del 21% calculado pero incluido en el precio
-            total: 5000, // Precio ya incluye el IVA
+            iva: 0, // IVA 0 (Monotributista)
+            total: 5000, // Precio final
             estado: "pendiente"
         }
     ],
@@ -112,13 +106,17 @@ function validarEmail(email) {
 }
 
 /**
- * Valida formato de CUIT/CUIL
+ * Valida formato de CUIT/CUIL (CORRECCIÓN: más flexible)
+ * Permite guiones, puntos o solo números, pero deben ser 11 dígitos.
  * @param {string} cuit - CUIT a validar
  * @returns {boolean} - true si es válido
  */
 function validarCUIT(cuit) {
-    const cuitRegex = /^\d{2}-\d{8}-\d{1}$/;
-    return cuitRegex.test(cuit);
+    if (!cuit) return false;
+    // Limpia el CUIT/CUIL: elimina guiones, puntos y espacios.
+    const cleanCuit = cuit.replace(/[-.\s]/g, ''); 
+    // Valida que sean exactamente 11 dígitos
+    return /^\d{11}$/.test(cleanCuit); 
 }
 
 /**
@@ -241,19 +239,19 @@ function mostrarDashboard() {
  */
 function solicitarDatosCliente() {
     const cliente = prompt("Ingrese el nombre del cliente:");
-    if (!cliente) return null;
+    if (cliente === null) return null;
     
     const cuit = prompt("Ingrese el CUIT/CUIL del cliente:");
-    if (!cuit) return null;
+    if (cuit === null) return null;
     
     const direccion = prompt("Ingrese la dirección del cliente:");
-    if (!direccion) return null;
+    if (direccion === null) return null;
     
     const email = prompt("Ingrese el email del cliente:");
-    if (!email) return null;
+    if (email === null) return null;
     
     const telefono = prompt("Ingrese el teléfono del cliente:");
-    if (!telefono) return null;
+    if (telefono === null) return null;
     
     return { cliente, cuit, direccion, email, telefono };
 }
@@ -263,17 +261,17 @@ function solicitarDatosCliente() {
  * @returns {Object|null} - Datos de la factura o null si se cancela
  */
 function solicitarDatosFactura() {
-    const tipo = prompt("Ingrese el tipo de factura:\n" +
-                       "A - Responsable Inscripto (discrimina IVA)\n" +
-                       "B - Consumidor Final (incluye IVA)\n" +
-                       "C - Monotributista (sin IVA)");
-    if (!tipo) return null;
+    const tipo = prompt("Ingrese el tipo de factura (A, B o C):\n" +
+                         "A - Responsable Inscripto (discrimina IVA)\n" +
+                         "B - Consumidor Final (incluye IVA)\n" +
+                         "C - Monotributista (sin IVA)");
+    if (tipo === null) return null;
     
     const fecha = prompt("Ingrese la fecha (YYYY-MM-DD):");
-    if (!fecha) return null;
+    if (fecha === null) return null;
     
     const descripcion = prompt("Ingrese la descripción de la factura:");
-    if (!descripcion) return null;
+    if (descripcion === null) return null;
     
     return { tipo, fecha, descripcion };
 }
@@ -323,30 +321,24 @@ function crearFactura(datosCliente, datosFactura, items) {
     // Algoritmo condicional según reglas fiscales argentinas
     switch (datosFactura.tipo.toUpperCase()) {
         case 'A':
-            // FACTURA A: Responsable Inscripto → Responsable Inscripto/Monotributista
-            // Características: Discrimina el IVA por separado (crédito fiscal)
+            // FACTURA A: Discrimina el IVA
             iva = calcularIVA(subtotal);
             total = calcularTotal(subtotal, iva);
             break;
             
         case 'B':
-            // FACTURA B: Responsable Inscripto → Consumidor Final/Monotributista/Exento
-            // Características: Incluye IVA en el precio total (sin discriminar)
-            // El precio ingresado ya incluye el IVA, pero el IVA sigue siendo 21%
-            iva = calcularIVA(subtotal); // IVA del 21% calculado
-            total = subtotal; // El precio ya incluye el IVA (no se suma)
+            // FACTURA B: IVA incluido en el subtotal. Se calcula el IVA implícito para registro.
+            iva = calcularIVA(subtotal);
+            total = subtotal; // El precio de los items ya es el precio final
             break;
             
         case 'C':
-            // FACTURA C: Monotributista → Cualquier cliente
-            // Características: Incluye IVA en el precio total (sin discriminar)
-            // El precio ingresado ya incluye el IVA, pero el IVA sigue siendo 21%
-            iva = calcularIVA(subtotal); // IVA del 21% calculado
-            total = subtotal; // El precio ya incluye el IVA (no se suma)
+            // FACTURA C: Monotributista. No lleva IVA.
+            iva = 0; 
+            total = subtotal; 
             break;
             
         default:
-            // Tipo no válido, usar lógica por defecto
             iva = 0;
             total = subtotal;
     }
@@ -373,58 +365,65 @@ function crearFactura(datosCliente, datosFactura, items) {
 function flujoNuevaFactura() {
     console.log("=== NUEVA FACTURA ===");
     
-    // Solicitar datos del cliente
+    // 1. Solicitar y validar datos del cliente
     const datosCliente = solicitarDatosCliente();
     if (!datosCliente) {
         alert("Creación de factura cancelada.");
         return;
     }
     
-    // Validar datos del cliente
     if (!validarTextoObligatorio(datosCliente.cliente)) {
         alert("El nombre del cliente es obligatorio.");
         return;
     }
     
+    // CORRECCIÓN CUIT: usa la validación flexible y guarda el formato estándar si es válido.
     if (!validarCUIT(datosCliente.cuit)) {
-        alert("El CUIT/CUIL debe tener el formato XX-XXXXXXXX-X");
+        alert("El CUIT/CUIL debe ser un número de 11 dígitos (puede ingresar guiones o no).");
         return;
     }
+    // Formatear el CUIT/CUIL limpio para guardarlo de forma consistente
+    const cuitLimpio = datosCliente.cuit.replace(/[-.\s]/g, '');
+    datosCliente.cuit = cuitLimpio.substring(0, 2) + '-' + cuitLimpio.substring(2, 10) + '-' + cuitLimpio.substring(10, 11);
     
     if (!validarEmail(datosCliente.email)) {
         alert("El email debe tener un formato válido.");
         return;
     }
     
-    // Solicitar datos de la factura
+    // 2. Solicitar y validar datos de la factura
     const datosFactura = solicitarDatosFactura();
     if (!datosFactura) {
         alert("Creación de factura cancelada.");
         return;
     }
     
-    // Validar datos de la factura
-    if (!['A', 'B', 'C'].includes(datosFactura.tipo)) {
-        alert("El tipo de factura debe ser A, B o C.");
+    // CORRECCIÓN TIPO: Validación case-insensitive
+    const tipoFacturaUpper = datosFactura.tipo.toUpperCase();
+
+    if (!['A', 'B', 'C'].includes(tipoFacturaUpper)) {
+        alert("El tipo de factura debe ser A, B o C (o a, b, c).");
         return;
     }
+    // Guardar el tipo en mayúsculas para la consistencia
+    datosFactura.tipo = tipoFacturaUpper;
     
     if (!validarFecha(datosFactura.fecha)) {
         alert("La fecha debe tener el formato YYYY-MM-DD.");
         return;
     }
     
-    // Solicitar items
+    // 3. Solicitar items (la validación de precio ya está dentro de esta función)
     const items = solicitarItemsFactura();
     if (items.length === 0) {
         alert("Debe agregar al menos un ítem a la factura.");
         return;
     }
     
-    // Crear la factura
+    // 4. Crear la factura (usa la lógica corregida para IVA)
     const factura = crearFactura(datosCliente, datosFactura, items);
     
-    // Mostrar resumen
+    // 5. Mostrar resumen
     console.log("Factura creada exitosamente:");
     console.log(`Número: ${factura.numero}`);
     console.log(`Cliente: ${factura.cliente}`);
@@ -438,7 +437,6 @@ function flujoNuevaFactura() {
 
 
 // FLUJO 3: FACTURAS - GESTIÓN DE FACTURAS EXISTENTES
-
 
 /**
  * Lista todas las facturas
@@ -499,7 +497,7 @@ function mostrarDetalleFactura(factura) {
     console.log(`Descripción: ${factura.descripcion}`);
     console.log("Items:");
     factura.items.forEach((item, index) => {
-        console.log(`  ${index + 1}. ${item.producto} - ${formatearMoneda(item.precio)}`);
+        console.log(`  ${index + 1}. ${item.producto} - ${formatearMoneda(item.precio)}`);
     });
     console.log(`Subtotal: ${formatearMoneda(factura.subtotal)}`);
     console.log(`IVA: ${formatearMoneda(factura.iva)}`);
@@ -532,7 +530,7 @@ function mostrarDetalleFactura(factura) {
     mensaje += `Descripción: ${factura.descripcion}\n\n`;
     mensaje += `Items:\n`;
     factura.items.forEach((item, index) => {
-        mensaje += `  ${index + 1}. ${item.producto} - ${formatearMoneda(item.precio)}\n`;
+        mensaje += `  ${index + 1}. ${item.producto} - ${formatearMoneda(item.precio)}\n`;
     });
     mensaje += `\nSubtotal: ${formatearMoneda(factura.subtotal)}\n`;
     mensaje += `IVA: ${formatearMoneda(factura.iva)}\n`;
@@ -794,6 +792,8 @@ if (typeof module !== 'undefined' && module.exports) {
 // Inicializar la aplicación cuando se carga el script
 if (typeof window !== 'undefined') {
     // Solo iniciar la lógica de prompt/alert en el navegador
+    // Se ha cambiado el inicio a mostrarMenuPrincipal() en la versión inicial.
+    // Para iniciar correctamente:
+    // inicializarAplicacion(); 
     mostrarMenuPrincipal();
 }
-
