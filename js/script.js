@@ -83,7 +83,7 @@ const dataStore = {
 };
 
 
-// FUNCIONES DE VALIDACIÓN
+// FUNCIONES DE VALIDACIÓN (PURAS - TESTEABLES)
 
 
 /**
@@ -106,7 +106,7 @@ function validarEmail(email) {
 }
 
 /**
- * Valida formato de CUIT/CUIL (CORRECCIÓN: más flexible)
+ * Valida formato de CUIT/CUIL (flexible)
  * Permite guiones, puntos o solo números, pero deben ser 11 dígitos.
  * @param {string} cuit - CUIT a validar
  * @returns {boolean} - true si es válido
@@ -125,21 +125,32 @@ function validarCUIT(cuit) {
  * @returns {boolean} - true si es válido
  */
 function validarNumeroPositivo(numero) {
-    return numero > 0;
+    return !isNaN(numero) && numero > 0;
 }
 
 /**
- * Valida formato de fecha
+ * Valida formato de fecha (YYYY-MM-DD)
  * @param {string} fecha - Fecha a validar
  * @returns {boolean} - true si es válido
  */
 function validarFecha(fecha) {
+    if (!fecha) return false;
+    // Simple regex para el formato YYYY-MM-DD
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(fecha)) return false; 
+    
     const fechaObj = new Date(fecha);
-    return fechaObj instanceof Date && !isNaN(fechaObj);
+    // Verifica si es una fecha válida y si el año coincide (evita desbordamiento)
+    if (fechaObj instanceof Date && !isNaN(fechaObj)) {
+        // Validación extra: nos aseguramos que el string de entrada coincida 
+        // con el formato ISO de la fecha para evitar fechas parciales o inválidas.
+        const iso = fechaObj.toISOString().split('T')[0];
+        return iso === fecha;
+    }
+    return false;
 }
 
 
-// FUNCIONES DE UTILIDAD
+// FUNCIONES DE UTILIDAD (PURAS - TESTEABLES)
 
 
 /**
@@ -230,54 +241,106 @@ function mostrarDashboard() {
 }
 
 
-// FLUJO 2: NUEVA FACTURA - CREACIÓN DE FACTURAS
+// FLUJO 2: NUEVA FACTURA - CREACIÓN DE FACTURAS (I/O - IMPURAS CON VALIDACIÓN ITERATIVA)
 
 
 /**
- * Solicita los datos del cliente para una nueva factura
+ * Solicita los datos del cliente para una nueva factura, con validación inmediata.
  * @returns {Object|null} - Datos del cliente o null si se cancela
  */
 function solicitarDatosCliente() {
-    const cliente = prompt("Ingrese el nombre del cliente:");
-    if (cliente === null) return null;
+    let cliente, cuit, direccion, email, telefono;
+
+    // 1. Cliente (Obligatorio)
+    while (true) {
+        cliente = prompt("Ingrese el nombre del cliente (Obligatorio):");
+        if (cliente === null) return null; 
+        if (validarTextoObligatorio(cliente)) break;
+        alert("❌ Error: El nombre del cliente es obligatorio. Vuelva a intentar.");
+    }
     
-    const cuit = prompt("Ingrese el CUIT/CUIL del cliente:");
-    if (cuit === null) return null;
+    // 2. CUIT/CUIL (Validación de 11 dígitos)
+    while (true) {
+        cuit = prompt("Ingrese el CUIT/CUIL del cliente (11 dígitos):");
+        if (cuit === null) return null; 
+        if (validarCUIT(cuit)) break;
+        alert("❌ Error: El CUIT/CUIL debe ser un número de 11 dígitos válido. Vuelva a intentar.");
+    }
     
-    const direccion = prompt("Ingrese la dirección del cliente:");
-    if (direccion === null) return null;
-    
-    const email = prompt("Ingrese el email del cliente:");
-    if (email === null) return null;
-    
-    const telefono = prompt("Ingrese el teléfono del cliente:");
-    if (telefono === null) return null;
+    // 3. Dirección (Obligatorio)
+    while (true) {
+        direccion = prompt("Ingrese la dirección del cliente (Obligatorio):");
+        if (direccion === null) return null; 
+        if (validarTextoObligatorio(direccion)) break;
+        alert("❌ Error: La dirección es obligatoria. Vuelva a intentar.");
+    }
+
+    // 4. Email (Validación de formato)
+    while (true) {
+        email = prompt("Ingrese el email del cliente (ej: usuario@dominio.com):");
+        if (email === null) return null; 
+        if (validarEmail(email)) break;
+        alert("❌ Error: El email debe tener un formato válido. Vuelva a intentar.");
+    }
+
+    // 5. Teléfono (Obligatorio)
+    while (true) {
+        telefono = prompt("Ingrese el teléfono del cliente (Obligatorio):");
+        if (telefono === null) return null; 
+        if (validarTextoObligatorio(telefono)) break;
+        alert("❌ Error: El teléfono es obligatorio. Vuelva a intentar.");
+    }
     
     return { cliente, cuit, direccion, email, telefono };
 }
 
 /**
- * Solicita los datos de la factura
+ * Solicita los datos de la factura, con validación inmediata.
  * @returns {Object|null} - Datos de la factura o null si se cancela
  */
 function solicitarDatosFactura() {
-    const tipo = prompt("Ingrese el tipo de factura (A, B o C):\n" +
-                         "A - Responsable Inscripto (discrimina IVA)\n" +
-                         "B - Consumidor Final (incluye IVA)\n" +
-                         "C - Monotributista (sin IVA)");
-    if (tipo === null) return null;
-    
-    const fecha = prompt("Ingrese la fecha (YYYY-MM-DD):");
-    if (fecha === null) return null;
-    
-    const descripcion = prompt("Ingrese la descripción de la factura:");
-    if (descripcion === null) return null;
+    let tipo, fecha, descripcion;
+
+    // 1. Tipo de Factura (A, B, C)
+    while (true) {
+        tipo = prompt("Ingrese el tipo de factura (A, B o C):\n" +
+                      "A - Responsable Inscripto (discrimina IVA)\n" +
+                      "B - Consumidor Final (incluye IVA)\n" +
+                      "C - Monotributista (sin IVA)");
+        if (tipo === null) return null; 
+        
+        const tipoUpper = tipo.toUpperCase().trim();
+        if (['A', 'B', 'C'].includes(tipoUpper)) {
+            tipo = tipoUpper; // Guardar el tipo en mayúsculas para consistencia
+            break;
+        }
+        alert("❌ Error: El tipo de factura debe ser A, B o C. Vuelva a intentar.");
+    }
+
+    // 2. Fecha (YYYY-MM-DD)
+    while (true) {
+        fecha = prompt("Ingrese la fecha (YYYY-MM-DD):");
+        if (fecha === null) return null; 
+        
+        if (validarFecha(fecha)) {
+            break;
+        }
+        alert("❌ Error: La fecha debe tener un formato válido (YYYY-MM-DD). Vuelva a intentar.");
+    }
+
+    // 3. Descripción (Obligatorio)
+    while (true) {
+        descripcion = prompt("Ingrese la descripción de la factura (Obligatorio):");
+        if (descripcion === null) return null; 
+        if (validarTextoObligatorio(descripcion)) break;
+        alert("❌ Error: La descripción es obligatoria. Vuelva a intentar.");
+    }
     
     return { tipo, fecha, descripcion };
 }
 
 /**
- * Solicita los items de la factura
+ * Solicita los items de la factura, con validación inmediata para el precio.
  * @returns {Array} - Array de items
  */
 function solicitarItemsFactura() {
@@ -285,19 +348,34 @@ function solicitarItemsFactura() {
     let continuar = true;
     
     while (continuar) {
-        const producto = prompt("Ingrese el nombre del producto/ítem:");
-        if (!producto) break;
-        
-        const precioStr = prompt("Ingrese el precio del producto:");
-        if (!precioStr) break;
-        
-        const precio = parseFloat(precioStr);
-        if (isNaN(precio) || precio <= 0) {
-            alert("El precio debe ser un número positivo válido.");
-            continue;
+        let producto;
+        // Bucle para validar que el nombre del producto no esté vacío
+        while (true) {
+            producto = prompt("Ingrese el nombre del producto/ítem (o Cancelar para terminar la carga):");
+            if (producto === null) return items; // Sale de la función y retorna lo cargado
+            if (validarTextoObligatorio(producto)) break;
+            alert("❌ Error: El nombre del producto es obligatorio. Vuelva a intentar.");
         }
         
-        items.push({ producto, precio });
+        let precio;
+        // Bucle para validar que el precio sea un número positivo
+        while (true) {
+            const precioStr = prompt(`Ingrese el precio del producto "${producto}" (número positivo):`);
+            if (precioStr === null) {
+                precio = null;
+                break; // El usuario canceló la entrada de precio, salta este ítem
+            }
+            
+            precio = parseFloat(precioStr);
+            if (validarNumeroPositivo(precio)) {
+                break; 
+            }
+            alert("❌ Error: El precio debe ser un número positivo válido. Vuelva a intentar.");
+        }
+
+        if (precio !== null) {
+            items.push({ producto, precio });
+        }
         
         continuar = confirm("¿Desea agregar otro ítem?");
     }
@@ -365,62 +443,32 @@ function crearFactura(datosCliente, datosFactura, items) {
 function flujoNuevaFactura() {
     console.log("=== NUEVA FACTURA ===");
     
-    // 1. Solicitar y validar datos del cliente
+    // 1. Solicitar datos del cliente (Validación iterativa integrada)
     const datosCliente = solicitarDatosCliente();
     if (!datosCliente) {
         alert("Creación de factura cancelada.");
         return;
     }
     
-    if (!validarTextoObligatorio(datosCliente.cliente)) {
-        alert("El nombre del cliente es obligatorio.");
-        return;
-    }
-    
-    // CORRECCIÓN CUIT: usa la validación flexible y guarda el formato estándar si es válido.
-    if (!validarCUIT(datosCliente.cuit)) {
-        alert("El CUIT/CUIL debe ser un número de 11 dígitos (puede ingresar guiones o no).");
-        return;
-    }
-    // Formatear el CUIT/CUIL limpio para guardarlo de forma consistente
+    // Formatear el CUIT/CUIL limpio para guardarlo de forma consistente (lógica movida de la validación a la acción)
     const cuitLimpio = datosCliente.cuit.replace(/[-.\s]/g, '');
     datosCliente.cuit = cuitLimpio.substring(0, 2) + '-' + cuitLimpio.substring(2, 10) + '-' + cuitLimpio.substring(10, 11);
     
-    if (!validarEmail(datosCliente.email)) {
-        alert("El email debe tener un formato válido.");
-        return;
-    }
-    
-    // 2. Solicitar y validar datos de la factura
+    // 2. Solicitar datos de la factura (Validación iterativa integrada)
     const datosFactura = solicitarDatosFactura();
     if (!datosFactura) {
         alert("Creación de factura cancelada.");
         return;
     }
     
-    // CORRECCIÓN TIPO: Validación case-insensitive
-    const tipoFacturaUpper = datosFactura.tipo.toUpperCase();
-
-    if (!['A', 'B', 'C'].includes(tipoFacturaUpper)) {
-        alert("El tipo de factura debe ser A, B o C (o a, b, c).");
-        return;
-    }
-    // Guardar el tipo en mayúsculas para la consistencia
-    datosFactura.tipo = tipoFacturaUpper;
-    
-    if (!validarFecha(datosFactura.fecha)) {
-        alert("La fecha debe tener el formato YYYY-MM-DD.");
-        return;
-    }
-    
-    // 3. Solicitar items (la validación de precio ya está dentro de esta función)
+    // 3. Solicitar items (Validación iterativa integrada)
     const items = solicitarItemsFactura();
     if (items.length === 0) {
-        alert("Debe agregar al menos un ítem a la factura.");
+        alert("Debe agregar al menos un ítem a la factura. Creación cancelada.");
         return;
     }
     
-    // 4. Crear la factura (usa la lógica corregida para IVA)
+    // 4. Crear la factura
     const factura = crearFactura(datosCliente, datosFactura, items);
     
     // 5. Mostrar resumen
@@ -618,16 +666,24 @@ function listarImpuestos() {
  * Agrega un nuevo impuesto
  */
 function agregarImpuesto() {
-    const nombre = prompt("Ingrese el nombre del impuesto:");
-    if (!nombre) return;
+    let nombre;
+    while(true) {
+        nombre = prompt("Ingrese el nombre del impuesto (Obligatorio):");
+        if (nombre === null) return;
+        if (validarTextoObligatorio(nombre)) break;
+        alert("❌ Error: El nombre es obligatorio. Vuelva a intentar.");
+    }
     
-    const porcentajeStr = prompt("Ingrese el porcentaje del impuesto:");
-    if (!porcentajeStr) return;
-    
-    const porcentaje = parseFloat(porcentajeStr);
-    if (isNaN(porcentaje) || porcentaje < 0 || porcentaje > 100) {
-        alert("El porcentaje debe ser un número entre 0 y 100.");
-        return;
+    let porcentaje;
+    while(true) {
+        const porcentajeStr = prompt(`Ingrese el porcentaje de "${nombre}" (0-100):`);
+        if (porcentajeStr === null) return;
+        
+        porcentaje = parseFloat(porcentajeStr);
+        if (!isNaN(porcentaje) && porcentaje >= 0 && porcentaje <= 100) {
+            break;
+        }
+        alert("❌ Error: El porcentaje debe ser un número entre 0 y 100. Vuelva a intentar.");
     }
     
     const activo = confirm("¿El impuesto está activo?");
@@ -649,21 +705,32 @@ function agregarImpuesto() {
  * Calcula el IVA de un monto usando la calculadora
  */
 function usarCalculadoraIVA() {
-    const precioStr = prompt("Ingrese el precio neto:");
-    if (!precioStr) return;
-    
-    const precio = parseFloat(precioStr);
-    if (isNaN(precio) || precio <= 0) {
-        alert("El precio debe ser un número positivo válido.");
-        return;
+    let precio;
+    while(true) {
+        const precioStr = prompt("Ingrese el precio neto (número positivo):");
+        if (precioStr === null) return;
+        
+        precio = parseFloat(precioStr);
+        if (validarNumeroPositivo(precio)) {
+            break;
+        }
+        alert("❌ Error: El precio debe ser un número positivo válido. Vuelva a intentar.");
     }
     
-    const porcentajeStr = prompt("Ingrese el porcentaje de IVA (por defecto 21%):");
-    const porcentaje = porcentajeStr ? parseFloat(porcentajeStr) : 21;
-    
-    if (isNaN(porcentaje) || porcentaje < 0 || porcentaje > 100) {
-        alert("El porcentaje debe ser un número entre 0 y 100.");
-        return;
+    let porcentaje;
+    while(true) {
+        const porcentajeStr = prompt("Ingrese el porcentaje de IVA (por defecto 21%):");
+        
+        if (porcentajeStr === null || porcentajeStr.trim() === "") {
+            porcentaje = 21;
+            break;
+        }
+        
+        porcentaje = parseFloat(porcentajeStr);
+        if (!isNaN(porcentaje) && porcentaje >= 0 && porcentaje <= 100) {
+            break;
+        }
+        alert("❌ Error: El porcentaje debe ser un número entre 0 y 100. Vuelva a intentar.");
     }
     
     const iva = calcularIVA(precio, porcentaje);
@@ -738,6 +805,7 @@ function mostrarMenuPrincipal() {
                 flujoConfiguracion();
                 break;
             case "5":
+            case null:
                 continuar = false;
                 alert("¡Gracias por usar EMITÍ!");
                 break;
@@ -748,26 +816,7 @@ function mostrarMenuPrincipal() {
 }
 
 
-
-// INICIALIZACIÓN
-
-
-/**
- * Inicializa la aplicación
- */
-function inicializarAplicacion() {
-    console.log("=== EMITÍ - SISTEMA DE GESTIÓN DE FACTURAS ===");
-    console.log("Aplicación inicializada correctamente.");
-    console.log("Datos de ejemplo cargados:");
-    console.log(`- ${dataStore.facturas.length} facturas`);
-    console.log(`- ${dataStore.impuestos.length} impuestos configurados`);
-    
-    // Mostrar el menú principal
-    mostrarMenuPrincipal();
-}
-
-
-// EXPORTACIÓN PARA TESTING
+// EXPORTACIÓN PARA TESTING (Se mantienen las funciones puras)
 
 
 // Exponer funciones para testing 
@@ -791,9 +840,5 @@ if (typeof module !== 'undefined' && module.exports) {
 
 // Inicializar la aplicación cuando se carga el script
 if (typeof window !== 'undefined') {
-    // Solo iniciar la lógica de prompt/alert en el navegador
-    // Se ha cambiado el inicio a mostrarMenuPrincipal() en la versión inicial.
-    // Para iniciar correctamente:
-    // inicializarAplicacion(); 
     mostrarMenuPrincipal();
 }
