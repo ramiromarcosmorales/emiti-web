@@ -87,7 +87,7 @@ describe("Validaciones y utilidades", () => {
       expect(s).toMatch(/\$\s?\d/);
     });
 
-    // revisar esto
+    // pendiente de definir contrato, cuando se vea excepciones se puede validar esto
     it("maneja entradas inválidas de forma controlada (definir contrato)", () => {
       expect(() => E().formatearMoneda("test")).toThrow();
       expect(() => E().formatearMoneda("")).toThrow();
