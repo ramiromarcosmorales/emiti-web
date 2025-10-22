@@ -1,0 +1,45 @@
+@startuml name Nueva Factura
+title Flujo 2: Nueva Factura
+
+|Usuario|
+start
+:Selecciona "Nueva factura";
+:Completa datos del cliente;
+
+|Sistema|
+:Valida los datos ingresados;
+
+|Usuario|
+repeat
+  :Agrega ítem (descripción, cantidad, precio);
+repeat while (¿Agregar otro ítem?) is (Sí)
+
+|Sistema|
+:Calcula subtotal;
+
+fork
+  :Factura tipo A;
+  :Aplica IVA 21% (discriminado);
+fork again
+  :Factura tipo B;
+  :Incluye IVA en subtotal;
+fork again
+  :Factura tipo C;
+  :Sin IVA (monotributista);
+end fork
+
+:Calcula total y genera número de factura;
+
+|Usuario|
+if (¿Crear Factura?) then (Sí)
+  |Sistema|
+  :Emite y guarda en "Facturas";
+  |Usuario|
+  :Finaliza la creación de factura;
+else (Cancelar)
+  |Sistema|
+  :Factura cancelada;
+endif
+
+stop
+@enduml
