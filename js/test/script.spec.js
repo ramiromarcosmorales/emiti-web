@@ -123,12 +123,6 @@ describe("Cálculos de facturación", () => {
     });
   });
 
-  describe("otro", () => {
-    it("subtotal 1000 devuelve mmm", () => {
-      expect(E().calcularTotal(1000)).toBe(0);
-    });
-  })
-
   describe("generarNumeroFactura", () => {
     let facturas;
     beforeEach(() => facturas = JSON.parse(JSON.stringify(E().dataStore.facturas)));
