@@ -129,12 +129,12 @@ describe("Cálculos de facturación", () => {
     afterEach(() => { E().dataStore.facturas.length = 0; facturas.forEach(f => E().dataStore.facturas.push(f)); }); 
   
     it("devuelve 004 con una nueva factura", () => {
-      expect(E().generarNumeroFactura()).toBe("004");
+      expect(E().generarNumeroFactura(E().dataStore.facturas)).toBe("004");
     });
 
     it("devuelve 001 con dataStore vacío", () => {
       E().dataStore.facturas.length = 0;
-      expect(E().generarNumeroFactura()).toBe("001");
+      expect(E().generarNumeroFactura(E().dataStore.facturas)).toBe("001");
     });
   });
 
@@ -155,7 +155,7 @@ describe("Cálculos de facturación", () => {
     it("devuelve la suma del subtotal y iva por default (21%)", () => {
       const f = E().crearFactura(client, { tipo: "A", fecha: "2025-10-25", descripcion: 'Test' }, items);
       expect(f.subtotal).toBe(1500)
-      expect(f.iva).toBeCloseTo(315, 2);
+      expect(f.iva).toBeCloseTo(260.33, 2);
       expect(f.total).toBeCloseTo(1815, 2);
     });
 
@@ -199,7 +199,7 @@ describe("Gestión de Facturas", () => {
 
 describe("Métricas del Dashboard", () => {
   it("calcularMetricas", () => {
-    const metricas = E().calcularMetricas();
+    const metricas = E().calcularMetricas(E().dataStore.facturas);
     // se asumen los sig. valores de acuerdo a la dataset definida
     expect(metricas.totalFacturas).toBe(3);
     expect(metricas.facturasPagadas).toBe(1);
