@@ -1,0 +1,25 @@
+@startuml name Facturas
+title Flujo 3: Facturas
+
+|Usuario|
+start
+:Accede a la sección Facturas;
+:Elige acción a realizar;
+
+|Sistema|
+if (Listar facturas?) then (Sí)
+  :Muestra listado general;
+elseif (Buscar facturas?) then (Sí)
+  :Solicita criterio y muestra resultados;
+elseif (Ver detalle?) then (Sí)
+  :Muestra información completa de la factura seleccionada;
+else
+  :Regresa al menú principal;
+  stop
+endif
+
+|Usuario|
+:Visualiza resultados;
+
+stop
+@enduml
