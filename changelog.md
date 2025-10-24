@@ -14,6 +14,9 @@
 - [feature/arq-diagramas-actividades] Creación de los 4 diagramas de actividades y documentación.
   PR: [#101](https://github.com/ramiromarcosmorales/emiti-web/pull/101) - @ramire-uces (Arquitecto de Diagrama de Actividades)
 
+- [feature/coord-devops-tercera-entrega] Actualización README.md.  
+  PR: [#104](https://github.com/ramiromarcosmorales/emiti-web/pull/104) - @victoriaimo (Coordinador / DevOps)
+
 ### Changed
 
 ### Fixed
