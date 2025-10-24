@@ -18,6 +18,8 @@
 
 ### Fixed
 
+- [feature/dev-javascript-logica-negocio] Correciones de Validaciones en archivo script.js 
+  PR: [#102](https://github.com/ramiromarcosmorales/emiti-web/pull/102) - @Harika-sebasthian (Desarrollador JavaScript)
 
 ## [Release Primer Parcial] - 2025-10-06
 

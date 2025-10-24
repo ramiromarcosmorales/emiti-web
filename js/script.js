@@ -87,12 +87,16 @@ const dataStore = {
 
 
 /**
- * Valida si un string no está vacío
- * @param {string} value - Valor a validar
- * @returns {boolean} - true si es válido
+ * Valida si un string no está vacío.
+ * Retorna false con valores no string, "" o solo espacios.
+ * @param {*} value - Valor a validar
+ * @returns {boolean} - true si es un string no vacío
  */
 function validarTextoObligatorio(value) {
-    return value && value.trim().length > 0;
+    if (typeof value !== 'string') {
+        return false;
+    }
+    return value.trim().length > 0;
 }
 
 /**
@@ -121,11 +125,13 @@ function validarCUIT(cuit) {
 
 /**
  * Valida que un número sea positivo
- * @param {number} numero - Número a validar
- * @returns {boolean} - true si es válido
+ * Se asegura que el tipo de dato sea 'number' y que sea > 0.
+ * @param {*} numero - Valor a validar
+ * @returns {boolean} - true si es un número válido y mayor a 0
  */
 function validarNumeroPositivo(numero) {
-    return !isNaN(numero) && numero > 0;
+    // Debe ser de tipo 'number', no debe ser NaN, y debe ser mayor a 0
+    return typeof numero === 'number' && !isNaN(numero) && numero > 0;
 }
 
 /**
@@ -139,12 +145,9 @@ function validarFecha(fecha) {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(fecha)) return false; 
     
     const fechaObj = new Date(fecha);
-    // Verifica si es una fecha válida y si el año coincide (evita desbordamiento)
+    // Verifica si es una fecha válida
     if (fechaObj instanceof Date && !isNaN(fechaObj)) {
-        // Validación extra: nos aseguramos que el string de entrada coincida 
-        // con el formato ISO de la fecha para evitar fechas parciales o inválidas.
-        const iso = fechaObj.toISOString().split('T')[0];
-        return iso === fecha;
+        return true; 
     }
     return false;
 }
@@ -167,12 +170,13 @@ function formatearMoneda(monto) {
 }
 
 /**
- * Genera el próximo número de factura
+ * Genera el próximo número de factura, basándose en el array de facturas proporcionado.
+ * @param {Array<Object>} facturas - El array de facturas existentes.
  * @returns {string} - Próximo número de factura
  */
-function generarNumeroFactura() {
-    const ultimaFactura = dataStore.facturas.reduce((max, factura) => {
-        const numero = parseInt(factura.numero);
+function generarNumeroFactura(facturas) {
+    const ultimaFactura = facturas.reduce((max, factura) => {
+        const numero = parseInt(factura.numero, 10);
         return numero > max ? numero : max;
     }, 0);
     return String(ultimaFactura + 1).padStart(3, '0');
@@ -185,28 +189,31 @@ function generarNumeroFactura() {
  * @returns {number} - Monto del IVA
  */
 function calcularIVA(subtotal, porcentajeIVA = 21) {
-    return subtotal * (porcentajeIVA / 100);
+    // Redondeo para evitar problemas de coma flotante en los totales
+    return Math.round((subtotal * (porcentajeIVA / 100)) * 100) / 100; 
 }
 
 /**
  * Calcula el total de una factura
+ * Se Asigna 0 como valor por defecto al IVA para evitar NaN.
  * @param {number} subtotal - Subtotal
- * @param {number} iva - Monto del IVA
+ * @param {number} [iva=0] - Monto del IVA (opcional)
  * @returns {number} - Total
  */
-function calcularTotal(subtotal, iva) {
-    return subtotal + iva;
+function calcularTotal(subtotal, iva = 0) {
+    // Redondeo para evitar problemas de coma flotante en los totales
+    return Math.round((subtotal + iva) * 100) / 100;
 }
 
 
 // FLUJO 1: DASHBOARD - VISUALIZACIÓN DE MÉTRICAS
 
 /**
- * Calcula las métricas del dashboard
+ * Calcula las métricas del dashboard a partir de un array de facturas.
+ * @param {Array<Object>} facturas - El array de facturas existentes.
  * @returns {Object} - Objeto con las métricas calculadas
  */
-function calcularMetricas() {
-    const facturas = dataStore.facturas;
+function calcularMetricas(facturas) {
     const totalFacturas = facturas.length;
     const importeTotal = facturas.reduce((sum, factura) => sum + factura.total, 0);
     const promedio = totalFacturas > 0 ? importeTotal / totalFacturas : 0;
@@ -224,7 +231,7 @@ function calcularMetricas() {
  * Muestra las métricas del dashboard
  */
 function mostrarDashboard() {
-    const metricas = calcularMetricas();
+    const metricas = calcularMetricas(dataStore.facturas);
     
     console.log("=== DASHBOARD - MÉTRICAS PRINCIPALES ===");
     console.log(`Total Facturas: ${metricas.totalFacturas}`);
@@ -367,7 +374,8 @@ function solicitarItemsFactura() {
             }
             
             precio = parseFloat(precioStr);
-            if (validarNumeroPositivo(precio)) {
+            // La validación utiliza la función corregida validarNumeroPositivo, que ya fuerza el tipo 'number'
+            if (validarNumeroPositivo(precio)) { 
                 break; 
             }
             alert("❌ Error: El precio debe ser un número positivo válido. Vuelva a intentar.");
@@ -406,7 +414,9 @@ function crearFactura(datosCliente, datosFactura, items) {
             
         case 'B':
             // FACTURA B: IVA incluido en el subtotal. Se calcula el IVA implícito para registro.
-            iva = calcularIVA(subtotal);
+            // Para el cálculo de IVA implícito: IVA = subtotal / (1 + tasa) * tasa
+            const tasaIVA = 21 / 100;
+            iva = calcularIVA(subtotal / (1 + tasaIVA), 21);
             total = subtotal; // El precio de los items ya es el precio final
             break;
             
@@ -421,15 +431,22 @@ function crearFactura(datosCliente, datosFactura, items) {
             total = subtotal;
     }
     
+    // Formatear el CUIT/CUIL limpio para guardarlo de forma consistente
+    const cuitInput = datosCliente.cuit;
+    const cuitLimpio = cuitInput.replace(/[-.\s]/g, '');
+    const cuitFormateado = cuitLimpio.substring(0, 2) + '-' + cuitLimpio.substring(2, 10) + '-' + cuitLimpio.substring(10, 11);
+    
     const nuevaFactura = {
         id: dataStore.facturas.length + 1,
-        numero: generarNumeroFactura(),
+        numero: generarNumeroFactura(dataStore.facturas),
         ...datosCliente,
+        cuit: cuitFormateado, // Sobreescribe el CUIT del objeto datosCliente
         ...datosFactura,
         items,
-        subtotal,
-        iva,
-        total,
+        // Redondeo final de totales
+        subtotal: Math.round(subtotal * 100) / 100,
+        iva: Math.round(iva * 100) / 100,
+        total: Math.round(total * 100) / 100,
         estado: "pendiente"
     };
     
@@ -449,10 +466,6 @@ function flujoNuevaFactura() {
         alert("Creación de factura cancelada.");
         return;
     }
-    
-    // Formatear el CUIT/CUIL limpio para guardarlo de forma consistente (lógica movida de la validación a la acción)
-    const cuitLimpio = datosCliente.cuit.replace(/[-.\s]/g, '');
-    datosCliente.cuit = cuitLimpio.substring(0, 2) + '-' + cuitLimpio.substring(2, 10) + '-' + cuitLimpio.substring(10, 11);
     
     // 2. Solicitar datos de la factura (Validación iterativa integrada)
     const datosFactura = solicitarDatosFactura();
@@ -691,7 +704,7 @@ function agregarImpuesto() {
     const nuevoImpuesto = {
         id: dataStore.impuestos.length + 1,
         nombre,
-        porcentaje,
+        porcentaje: Math.round(porcentaje * 100) / 100,
         activo
     };
     
@@ -711,6 +724,7 @@ function usarCalculadoraIVA() {
         if (precioStr === null) return;
         
         precio = parseFloat(precioStr);
+        // Utiliza la validación corregida
         if (validarNumeroPositivo(precio)) {
             break;
         }
@@ -819,26 +833,37 @@ function mostrarMenuPrincipal() {
 // EXPORTACIÓN PARA TESTING (Se mantienen las funciones puras)
 
 
-// Exponer funciones para testing 
+const EmisVisibleFunctions = {
+    validarTextoObligatorio,
+    validarEmail,
+    validarCUIT,
+    validarNumeroPositivo,
+    validarFecha,
+    formatearMoneda,
+    generarNumeroFactura,
+    calcularIVA,
+    calcularTotal,
+    calcularMetricas,
+    crearFactura,
+    buscarFacturas,
+    dataStore
+};
+
+
+// Exposición de funciones puras en entorno de testing
+if (typeof window !== 'undefined' && window.__TEST__ === true) {
+    window.Emiti = EmisVisibleFunctions;
+}
+
+// Exportación para testing en Node.js/CommonJS (mantener coherencia)
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        validarTextoObligatorio,
-        validarEmail,
-        validarCUIT,
-        validarNumeroPositivo,
-        validarFecha,
-        formatearMoneda,
-        generarNumeroFactura,
-        calcularIVA,
-        calcularTotal,
-        calcularMetricas,
-        crearFactura,
-        buscarFacturas,
-        dataStore
-    };
+    module.exports = EmisVisibleFunctions;
 }
 
 // Inicializar la aplicación cuando se carga el script
+// Evita la ejecución del menú principal si window.__TEST__ es true
 if (typeof window !== 'undefined') {
-    mostrarMenuPrincipal();
+    if (window.__TEST__ !== true) {
+        mostrarMenuPrincipal();
+    }
 }
