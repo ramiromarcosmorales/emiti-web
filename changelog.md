@@ -5,8 +5,11 @@
 - [feature/coord-devops-tercera-entrega] Actualización del archivo `feature-template.md` y creación de plantillas para issues por rol.  
   PR: [#90](https://github.com/ramiromarcosmorales/emiti-web/pull/90) - @victoriaimo (Coordinador / DevOps)
 
-  - [feature/dev-javascript-logica-negocio] Agregacion Archivos JavaScripts + Modificación de archivos html.  
+- [feature/dev-javascript-logica-negocio] Agregacion Archivos JavaScripts + Modificación de archivos html.  
   PR: [#91](https://github.com/ramiromarcosmorales/emiti-web/pull/91) - @Harika-sebasthian (Desarrollador JavaScript)
+
+- [feature/tester-javascript-jasmine] Implementación de tests automatizados y documentación.  
+  PR: [#100](https://github.com/ramiromarcosmorales/emiti-web/pull/100) - @ramiromarcosmorales (Tester JavaScript / QA Engineer)
 
 ### Changed
 
