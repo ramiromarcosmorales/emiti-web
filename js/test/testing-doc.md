@@ -15,7 +15,7 @@
     expect(E().validarTextoObligatorio(null)).toBeFalse();
   ```
 - **GitHub Issue:** #95
-- **Estado:** Abierto  
+- **Estado:** Resuelto  
 
 ### Issue #97: `validarNumeroPositivo` acepta strings númericos
 - **Severidad:** Alta
@@ -32,7 +32,7 @@
     expect(E().validarNumeroPositivo("5")).toBeFalse();
   ```
 - **GitHub Issue:** #97
-- **Estado:** Abierto   
+- **Estado:** Resuelto   
 
 ### Issue #99: `calcularTotal` devuelve `NaN` si no se pasa el IVA
 - **Severidad:** Alta
@@ -49,7 +49,7 @@
     expect(E().calcularTotal(0)).toBe(0);
   ```
 - **GitHub Issue:** #99
-- **Estado:** Abierto
+- **Estado:** Resuelto
 
 ---
 
@@ -59,6 +59,6 @@
 
 ---
 
-**Última Actualización:** 22/10/2025  
+**Última Actualización:** 24/10/2025  
 **Tester/QA Engineer:** Ramiro Marcos Morales  
 **Colaboración con:** Desarrollador JavaScript - Sebasthian Harika
