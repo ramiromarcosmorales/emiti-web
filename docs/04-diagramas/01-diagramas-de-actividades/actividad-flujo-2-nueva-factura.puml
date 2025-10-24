@@ -4,10 +4,13 @@ title Flujo 2: Nueva Factura
 |Usuario|
 start
 :Selecciona "Nueva factura";
-:Completa datos del cliente;
 
-|Sistema|
-:Valida los datos ingresados;
+repeat
+  :Completa datos del cliente;
+  |Sistema|
+  :Valida los datos ingresados;
+repeat while (¿Datos incorrectos?) is (Sí)
+
 
 |Usuario|
 repeat
@@ -37,8 +40,6 @@ if (¿Crear Factura?) then (Sí)
   |Usuario|
   :Finaliza la creación de factura;
 else (Cancelar)
-  |Sistema|
-  :Factura cancelada;
 endif
 
 stop
