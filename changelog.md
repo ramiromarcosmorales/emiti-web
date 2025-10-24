@@ -18,6 +18,8 @@
   PR: [#104](https://github.com/ramiromarcosmorales/emiti-web/pull/104) - @victoriaimo (Coordinador / DevOps)
 
 ### Changed
+- [feature/tester-javascript-jasmine] Cambio de lógica en los tests y actualización de estado de issues.  
+  PR: [#105](https://github.com/ramiromarcosmorales/emiti-web/pull/105) - @ramiromarcosmorales (Tester JavaScript / QA Engineer)
 
 ### Fixed
 
