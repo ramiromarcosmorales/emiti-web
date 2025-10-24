@@ -11,6 +11,9 @@
 - [feature/tester-javascript-jasmine] Implementación de tests automatizados y documentación.  
   PR: [#100](https://github.com/ramiromarcosmorales/emiti-web/pull/100) - @ramiromarcosmorales (Tester JavaScript / QA Engineer)
 
+- [feature/arq-diagramas-actividades] Creación de los 4 diagramas de actividades y documentación.
+  PR: [#101](https://github.com/ramiromarcosmorales/emiti-web/pull/101) - @ramire-uces (Arquitecto de Diagrama de Actividades)
+
 ### Changed
 
 ### Fixed
