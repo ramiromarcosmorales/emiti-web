@@ -73,7 +73,7 @@
 |---|-------------|------|
 | 1 | Devuelve un array con las facturas del cliente | Happy Path |
 | 2 | Devuelve array vacío cuando no hay coincidencias | Validación de Errores |
-| 3 | Verifica estructura de array y objetos | ACA MMM |
+| 3 | Verifica estructura de array y objetos | Operaciones con Arrays/Objetos |
 
 ---
 
@@ -85,7 +85,7 @@
 | # | Descripción | Tipo |
 |---|-------------|------|
 | 1 | Retorna totales correctos | Happy Path |
-| 2 | Valores numéricos válidos en promedio y total | Aca mMM |
+| 2 | Valores numéricos válidos en promedio y total | Cálculos y Algoritmos |
 
 ---
 
