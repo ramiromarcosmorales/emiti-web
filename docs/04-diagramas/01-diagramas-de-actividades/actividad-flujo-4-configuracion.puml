@@ -1,0 +1,25 @@
+@startuml name Configuracion
+title Flujo 4: Configuración
+
+|Usuario|
+start
+:Accede a Configuración;
+:Selecciona una opción;
+
+|Sistema|
+if (Listar impuestos?) then (Sí)
+  :Muestra lista de impuestos configurados;
+elseif (Agregar impuesto?) then (Sí)
+  :Solicita datos y los guarda;
+elseif (Usar calculadora IVA?) then (Sí)
+  :Calcula IVA y muestra resultado;
+else
+  :Regresa al menú principal;
+  stop
+endif
+
+|Usuario|
+:Finaliza la configuración;
+
+stop
+@enduml

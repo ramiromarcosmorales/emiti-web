@@ -1,0 +1,21 @@
+@startuml name Dashboard
+title Flujo 1: Dashboard
+
+|Usuario|
+start
+:Accede a "Dashboard";
+
+|Sistema|
+:Obtiene todas las facturas del dataStore;
+:Calcula total de facturas, importe total, promedio y cantidad de pagadas;
+
+if (¿Existen facturas?) then (Sí)
+  :Muestra métricas calculadas;
+else (No)
+  :Muestra métricas en cero;
+endif
+
+:Formatea montos en moneda argentina;
+:Muestra resumen con alert();
+stop
+@enduml
