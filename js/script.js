@@ -830,35 +830,8 @@ function mostrarMenuPrincipal() {
 }
 
 
-// EXPORTACIÓN PARA TESTING (Se mantienen las funciones puras)
-
-
-const EmisVisibleFunctions = {
-    validarTextoObligatorio,
-    validarEmail,
-    validarCUIT,
-    validarNumeroPositivo,
-    validarFecha,
-    formatearMoneda,
-    generarNumeroFactura,
-    calcularIVA,
-    calcularTotal,
-    calcularMetricas,
-    crearFactura,
-    buscarFacturas,
-    dataStore
-};
-
-
-// Exposición de funciones puras en entorno de testing
-if (typeof window !== 'undefined' && window.__TEST__ === true) {
-    window.Emiti = EmisVisibleFunctions;
-}
-
-// Exportación para testing en Node.js/CommonJS (mantener coherencia)
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = EmisVisibleFunctions;
-}
+// Las funciones puras ya están disponibles en el scope global y pueden ser accesibles para testing
+// No es necesario exportarlas ya que están definidas con 'function' en el scope global
 
 // Inicializar la aplicación cuando se carga el script
 // Evita la ejecución del menú principal si window.__TEST__ es true
