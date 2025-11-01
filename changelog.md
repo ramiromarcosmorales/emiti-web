@@ -7,6 +7,34 @@
 ### Fixed
 
 
+## [Release Actividad Obligatoria 3] - 2025-10-24
+
+### Added
+
+- [feature/coord-devops-tercera-entrega] Actualización del archivo `feature-template.md` y creación de plantillas para issues por rol.  
+  PR: [#90](https://github.com/ramiromarcosmorales/emiti-web/pull/90) - @victoriaimo (Coordinador / DevOps)
+
+- [feature/dev-javascript-logica-negocio] Agregacion Archivos JavaScripts + Modificación de archivos html.  
+  PR: [#91](https://github.com/ramiromarcosmorales/emiti-web/pull/91) - @Harika-sebasthian (Desarrollador JavaScript)
+
+- [feature/tester-javascript-jasmine] Implementación de tests automatizados y documentación.  
+  PR: [#100](https://github.com/ramiromarcosmorales/emiti-web/pull/100) - @ramiromarcosmorales (Tester JavaScript / QA Engineer)
+
+- [feature/arq-diagramas-actividades] Creación de los 4 diagramas de actividades y documentación.
+  PR: [#101](https://github.com/ramiromarcosmorales/emiti-web/pull/101) - @ramire-uces (Arquitecto de Diagrama de Actividades)
+
+- [feature/coord-devops-tercera-entrega] Actualización README.md.  
+  PR: [#104](https://github.com/ramiromarcosmorales/emiti-web/pull/104) - @victoriaimo (Coordinador / DevOps)
+
+### Changed
+- [feature/tester-javascript-jasmine] Cambio de lógica en los tests y actualización de estado de issues.  
+  PR: [#105](https://github.com/ramiromarcosmorales/emiti-web/pull/105) - @ramiromarcosmorales (Tester JavaScript / QA Engineer)
+
+### Fixed
+
+- [feature/dev-javascript-logica-negocio] Correciones de Validaciones en archivo script.js 
+  PR: [#102](https://github.com/ramiromarcosmorales/emiti-web/pull/102) - @Harika-sebasthian (Desarrollador JavaScript)
+
 ## [Release Primer Parcial] - 2025-10-06
 
 ### Added  

@@ -201,31 +201,8 @@
     </div>
     </footer>
 
-  <!-- Scripts -->
+<!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const toastImpuestoOk = new bootstrap.Toast(document.getElementById('toastImpuestoOk'), {
-        delay: 3000 // se oculta automáticamente en 3 segundos
-      });
-
-      // Toggle Activo/Inactivo
-      const toggleEstado = (btn) => {
-        btn.classList.toggle('activo');
-        btn.classList.toggle('inactivo');
-        btn.textContent = btn.classList.contains('activo') ? 'Activo' : 'Inactivo';
-      };
-
-      document.getElementById('btnEstadoIVA')?.addEventListener('click', e => toggleEstado(e.target));
-      document.getElementById('btnEstadoNuevo')?.addEventListener('click', e => toggleEstado(e.target));
-
-      // Mostrar toast al agregar
-      document.getElementById('agregarImpuestoBtn')?.addEventListener('click', e => {
-        e.preventDefault();
-        toastImpuestoOk.show();
-      });
-    });
-  </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
