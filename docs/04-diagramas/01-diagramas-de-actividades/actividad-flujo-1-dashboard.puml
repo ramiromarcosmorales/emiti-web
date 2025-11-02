@@ -6,10 +6,24 @@ start
 :Accede a "Dashboard";
 
 |Sistema|
-:Obtiene todas las facturas del dataStore;
-:Calcula total de facturas, importe total, promedio y cantidad de pagadas;
+:Solicita todas las facturas;
 
+|DataSource|
+:Obtiene todas las facturas del dataStore;
+:Devuelve lista de facturas;
+
+|Sistema|
 if (¿Existen facturas?) then (Sí)
+  fork
+    :Calcula total de facturas;
+  fork again
+    :Calcula importe total;
+  fork again
+    :Calcula promedio;
+  fork again
+    :Calcula cantidad de pagadas;
+  end fork
+
   :Muestra métricas calculadas;
 else (No)
   :Muestra métricas en cero;

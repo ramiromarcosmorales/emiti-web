@@ -4,32 +4,51 @@ title Flujo 2: Nueva Factura
 |Usuario|
 start
 :Selecciona "Nueva factura";
+:Completa datos del cliente;
 
-repeat
-  :Completa datos del cliente;
-  |Sistema|
-  :Valida los datos ingresados;
-repeat while (¿Datos incorrectos?) is (Sí)
+note right
+Datos del cliente:
+- Nombre/Razón social
+- CUIT
+- Dirección
+- Email
+- Teléfono
+end note
 
+|Sistema|
+:Valida los datos ingresados;
 
 |Usuario|
 repeat
-  :Agrega ítem (descripción, cantidad, precio);
+  :Agrega ítem;
+  note right
+  Ítem incluye:
+  - Descripción
+  - Cantidad
+  - Precio unitario
+  end note
 repeat while (¿Agregar otro ítem?) is (Sí)
 
 |Sistema|
 :Calcula subtotal;
 
-fork
-  :Factura tipo A;
-  :Aplica IVA 21% (discriminado);
-fork again
-  :Factura tipo B;
-  :Incluye IVA en subtotal;
-fork again
-  :Factura tipo C;
-  :Sin IVA (monotributista);
-end fork
+switch (Tipo de factura)
+case (A)
+  :Aplica IVA;
+  note right
+  IVA discriminado 21%
+  end note
+case (B)
+  :Incluye IVA;
+  note right
+  IVA incluido en subtotal
+  end note
+case (C)
+  :Sin IVA;
+  note right
+  Monotributista
+  end note
+endswitch
 
 :Calcula total y genera número de factura;
 
@@ -40,7 +59,10 @@ if (¿Crear Factura?) then (Sí)
   |Usuario|
   :Finaliza la creación de factura;
 else (Cancelar)
+  |Sistema|
+  :Factura cancelada;
 endif
 
 stop
 @enduml
+
