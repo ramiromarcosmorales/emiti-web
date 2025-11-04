@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMITÍ - Pruebas Jasmine</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/5.10.0/jasmine.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/5.10.0/jasmine.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/5.10.0/jasmine-html.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/5.10.0/boot0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/5.10.0/boot1.min.js"></script>
+</head>
+<body>
+
+    <script>
+        // Flag para que script.js NO ejecute mostrarMenuPrincipal() durante los tests
+        window.__TEST__ = true;
+    </script>
+
+
+
+
+    <!-- Código fuente -->
+    <script src="../script.js"></script>
+
+    <!-- Tests -->
+    <script src="script.spec.js"></script>
+</body>
+</html>

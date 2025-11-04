@@ -18,6 +18,10 @@
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/responsive.css">
 
+    <!-- Atributo Defer -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="js/script.js" defer></script>
+
   <!-- Font Awesome y fuentes -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         as="style" onload="this.rel='stylesheet'">
@@ -253,21 +257,6 @@
     </div>
   </div>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const crearFacturaBtn = document.getElementById("crearFacturaBtn");
-      const toastFactura = document.getElementById("toastFactura");
-
-      if (crearFacturaBtn && toastFactura) {
-        crearFacturaBtn.addEventListener("click", e => {
-          e.preventDefault();
-          new bootstrap.Toast(toastFactura).show();
-        });
-      }
-    });
-  </script>
 </body>
 </html>
 

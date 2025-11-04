@@ -1,4 +1,4 @@
-# 🟣 PULL REQUEST – Primer Parcial – Programación Web I
+# 🟣 PULL REQUEST – Actividad Obligatoria N° 3 – Programación Web I
 
 ---
 
@@ -11,9 +11,9 @@
 - **Profesor:** Lic. Matías Velasquez  
 - **Cuatrimestre/Año:** 2º Cuatrimestre / 2025  
 - **Rol asignado para esta entrega:** _(Ej.:
- ■ Desarrollador Frontend/Bootstrap
- ■ Especialista en Componentes Bootstrap
- ■ Desarrollador de Componentes HTML Avanzados
+ ■ Arquitecto de Diagramas de Actividades
+ ■ Desarrollador JavaScript
+ ■ Tester JavaScript / QA Engineer
  ■ Coordinador/DevOps)
  (Borrar los roles que no te correspondan)
 
@@ -22,7 +22,7 @@
 ## 📂 Rama de trabajo
 
 - **Nombre de la rama:** `feature/<rol>-<descripcion>`  
-  _Ejemplo: `feature/frontend-add-html-structure`_
+  _Ejemplo: `feature/arq-diagramas-actividades`_
 
 ---
 
@@ -69,6 +69,6 @@ _(Opcional – Aclaraciones, dificultades encontradas, sugerencias, etc.)_
 
 ## 🧾 Enlace a la consigna
 
-[📄 Consigna Primer Parcial - GitHub](https://drive.google.com/file/d/1S71mqK000qHV2__x_A_VtKd-MszVAc7c/view?usp=sharing)
+[📄 Consigna Actividad Obligatoria N° 3 - GitHub](https://drive.google.com/file/d/1eyNc2goRxQOh3P90E_LDplIa9ySRAMjs/view?usp=sharing)
 
 ---

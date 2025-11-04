@@ -14,13 +14,14 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 
 ---
 
-## 🎯 Objetivos del entregable actual (Primer Parcial)
+## 🎯 Objetivos del entregable actual (Actividad Obligatoria 3)
 
-- Incorporar al menos un componente avanzado de HTML (ej.: iframe de video de YouTube, mapa, etiqueta de audio o video).
-- Asegurar que el componente HTML avanzado se adapte correctamente mediante los helpers de Bootstrap.
-- Implementar Bootstrap en el proyecto para reforzar la responsividad en móviles, tablets y escritorio.
-- Incluir al menos un componente avanzado de Bootstrap (ej.: carrusel, barra de navegación o modal).
-- Mantener documentación técnica completa y actualizada.
+- Implementar la lógica del sistema en JavaScript aplicando estructuras de control, funciones y validaciones.  
+- Implementar al menos cuatro flujos de trabajo principales que simulen el funcionamiento del proyecto.  
+- Incorporar un menú interactivo con prompt() para navegar entre los distintos flujos.    
+- Elaborar y documentar diagramas de actividades con PlantUML.  
+- Aplicar testing automatizado con Jasmine para comprobar la funcionalidad de los flujos.  
+- Mantener buenas prácticas de legibilidad, nomenclatura y documentación en el código.
 
 ---
 
@@ -29,6 +30,9 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 - HTML5.
 - CSS3.
 - Bootstrap 5.
+- JavaScript.
+- Jasmine.
+- PlantUML.
 - Figma.
 - Git y GitHub.
 - Visual Studio Code.
@@ -38,12 +42,10 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 
 ## 🔧 Funcionalidades previstas
 
-- Maquetación semántica en HTML5.
-- Estilos CSS y clases utilitarias de Bootstrap.
-- Diseño responsive basado en sistema de columnas de Bootstrap.
-- Componente avanzado de HTML adaptado con Bootstrap.
-- Componente avanzado de Bootstrap.
-- Pruebas de compatibilidad y rendimiento documentadas.
+- Ejecución de flujos interactivos que representan procesos básicos del proyecto.  
+- Navegación por menú con prompt() para acceder a cada flujo de simulación.  
+- Ingreso y validación de datos por parte del usuario.  
+- Representación general de los procesos mediante diagramas de actividades UML.  
 
 ---
 
@@ -53,6 +55,8 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 - 🔗 [Versión online en Figma](https://www.figma.com/proto/h9mE1D1OyWJGGGXtMpGQ6E/Emit%C3%AD-Web?node-id=18-133&p=f&t=fH3ojOpydZFQDtel-0&scaling=min-zoom&content-scaling=fixed&page-id=18%3A132)
 - 📁 [Índice de prompts](docs/02-prompts/prompts.md)
 - 🧪 [Índice de testing (test-case)](docs/03-testing/testing-doc.md)
+- 📘 [Diagramas de actividades UML](docs/04-diagramas/01-diagramas-de-actividades/diagramas-doc.md)  
+- 📄 [Documento de testing JavaScript](js/test/testing-doc.md) 
 - ♼ [Changelog](/changelog.md)
 
 ---
@@ -61,11 +65,10 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 
 | Nombre completo           | Usuario GitHub              | Matrícula | Rol                            |
 |---------------------------|-----------------------------|-----------|--------------------------------|
-| Ramiro Nicolás Renterías  | @ramire-uces                | 143709    | Coordinador / DevOps           | 
-| Ramiro Marcos Morales     | @ramiromarcosmorales        | 149386    | Desarrollador Frontend / Bootstrap   |
-| Sebasthian Harika         | @Harika-sebasthian          | 148722    | Especialista en Componentes Bootstrap     |
-| Victoria Imoberdorff      | @victoriaimo                | 119707    | Desarrollador de Componentes HTML       |
-
+| Victoria Imoberdorff      | @victoriaimo                | 119707    | Coordinador / DevOps           | 
+| Ramiro Nicolás Renterías  | @ramire-uces                | 143709    | Arquitecto de Diagramas de Actividades |
+| Sebasthian Harika         | @Harika-sebasthian          | 148722    | Desarrollador JavaScript              |
+| Ramiro Marcos Morales     | @ramiromarcosmorales        | 149386    | Tester JavaScript / QA Engineer       |
 ---
 
 ## 📌 Enlace del sitio (GitHub Pages)
