@@ -82,6 +82,12 @@ Cada acción ejecuta procesos específicos del sistema, concluyendo con la actua
    - Asegurarse de tener **Java** y **Graphviz** instalados en el sistema.  
    - Abrir el archivo `.puml` y presionar `Alt + D` o `Ctrl + Shift + P` → “PlantUML: Preview Current Diagram”.
 
-3. **Exportar a PNG:**  
+3. **Servidor PlantUML Online (render sin instalar nada):**  
+   También podés usar el servidor oficial para visualizar el diagrama online.  
+   https://www.plantuml.com/plantuml/uml/
+
+   Pegá tu código PlantUML en el cuadro y el servidor generará la imagen automáticamente.
+
+4. **Exportar a PNG:**  
    - En VSCode: clic derecho sobre el editor → *Export Current Diagram*.  
    - En PlantText: clic en *Save as Image* → elegir formato `.png`.

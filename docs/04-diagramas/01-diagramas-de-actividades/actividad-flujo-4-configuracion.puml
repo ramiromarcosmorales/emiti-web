@@ -4,15 +4,54 @@ title Flujo 4: Configuración
 |Usuario|
 start
 :Accede a Configuración;
-:Selecciona una opción;
 
 |Sistema|
 if (Listar impuestos?) then (Sí)
+
+  :Solicita lista de impuestos;
+
+  |DataSource|
+  :Obtiene impuestos configurados;
+  :Devuelve lista de impuestos;
+
+  |Sistema|
   :Muestra lista de impuestos configurados;
+
 elseif (Agregar impuesto?) then (Sí)
-  :Solicita datos y los guarda;
+
+  :Solicita datos del impuesto;
+
+  note right
+  Datos solicitados:
+  - Nombre del impuesto
+  - Porcentaje
+  - Tipo
+  end note
+
+  |Usuario|
+  :Ingresa datos del impuesto;
+
+  |Sistema|
+  :Envía datos del impuesto;
+
+  |DataSource|
+  :Guarda impuesto;
+  :Confirma operación;
+
+  |Sistema|
+  :Muestra mensaje de confirmación;
+
 elseif (Usar calculadora IVA?) then (Sí)
-  :Calcula IVA y muestra resultado;
+
+  :Solicita monto base al usuario;
+
+  |Usuario|
+  :Ingresa monto base;
+
+  |Sistema|
+  :Calcula IVA;
+  :Muestra resultado;
+
 else
   :Regresa al menú principal;
   stop

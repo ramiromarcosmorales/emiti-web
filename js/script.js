@@ -155,6 +155,16 @@ function validarFecha(fecha) {
 
 // FUNCIONES DE UTILIDAD (PURAS - TESTEABLES)
 
+/**
+ * Obtiene el porcentaje activo del IVA desde el dataStore.
+ * Por defecto, usa 21 si no se encuentra un IVA activo.
+ * @returns {number} - Porcentaje de IVA (ej: 21)
+ */
+function obtenerTasaIVAActiva() {
+    const ivaImpuesto = dataStore.impuestos.find(imp => imp.nombre.toUpperCase() === 'IVA' && imp.activo);
+    // Retorna el porcentaje o 21 como valor de fallback seguro.
+    return ivaImpuesto ? ivaImpuesto.porcentaje : 21;
+}
 
 /**
  * Formatea un número como moneda argentina
@@ -184,13 +194,16 @@ function generarNumeroFactura(facturas) {
 
 /**
  * Calcula el IVA de un monto
+ * **CORRECCIÓN:** Ahora utiliza `obtenerTasaIVAActiva()` si `porcentajeIVA` no es proporcionado.
  * @param {number} subtotal - Subtotal
- * @param {number} porcentajeIVA - Porcentaje de IVA
+ * @param {number} [porcentajeIVA] - Porcentaje de IVA (opcional)
  * @returns {number} - Monto del IVA
  */
-function calcularIVA(subtotal, porcentajeIVA = 21) {
+function calcularIVA(subtotal, porcentajeIVA) {
+    // Usa el porcentaje pasado o el activo del dataStore
+    const tasa = porcentajeIVA || obtenerTasaIVAActiva(); 
     // Redondeo para evitar problemas de coma flotante en los totales
-    return Math.round((subtotal * (porcentajeIVA / 100)) * 100) / 100; 
+    return Math.round((subtotal * (tasa / 100)) * 100) / 100; 
 }
 
 /**
@@ -408,15 +421,25 @@ function crearFactura(datosCliente, datosFactura, items) {
     switch (datosFactura.tipo.toUpperCase()) {
         case 'A':
             // FACTURA A: Discrimina el IVA
+            // Usa la tasa activa definida en dataStore
             iva = calcularIVA(subtotal);
             total = calcularTotal(subtotal, iva);
             break;
             
         case 'B':
             // FACTURA B: IVA incluido en el subtotal. Se calcula el IVA implícito para registro.
-            // Para el cálculo de IVA implícito: IVA = subtotal / (1 + tasa) * tasa
-            const tasaIVA = 21 / 100;
-            iva = calcularIVA(subtotal / (1 + tasaIVA), 21);
+            // **CORRECCIÓN:** Usa la tasa activa definida en dataStore
+            
+            // Tasa de IVA como decimal (ej: 0.21)
+            const tasaIVA = obtenerTasaIVAActiva() / 100; 
+            
+            // Fórmula para IVA implícito: Subtotal - (Subtotal / (1 + Tasa))
+            const precioNeto = subtotal / (1 + tasaIVA);
+            iva = subtotal - precioNeto;
+            
+            // Redondeo de IVA para consistencia
+            iva = Math.round(iva * 100) / 100; 
+            
             total = subtotal; // El precio de los items ya es el precio final
             break;
             
@@ -732,11 +755,15 @@ function usarCalculadoraIVA() {
     }
     
     let porcentaje;
+    // Obtener la tasa activa para usarla como default en el prompt
+    const tasaActiva = obtenerTasaIVAActiva(); 
+    
     while(true) {
-        const porcentajeStr = prompt("Ingrese el porcentaje de IVA (por defecto 21%):");
+        const porcentajeStr = prompt(`Ingrese el porcentaje de IVA (por defecto ${tasaActiva}%):`);
         
         if (porcentajeStr === null || porcentajeStr.trim() === "") {
-            porcentaje = 21;
+            // **CORRECCIÓN:** Usar la tasa activa como default
+            porcentaje = tasaActiva; 
             break;
         }
         
@@ -830,35 +857,8 @@ function mostrarMenuPrincipal() {
 }
 
 
-// EXPORTACIÓN PARA TESTING (Se mantienen las funciones puras)
-
-
-const EmisVisibleFunctions = {
-    validarTextoObligatorio,
-    validarEmail,
-    validarCUIT,
-    validarNumeroPositivo,
-    validarFecha,
-    formatearMoneda,
-    generarNumeroFactura,
-    calcularIVA,
-    calcularTotal,
-    calcularMetricas,
-    crearFactura,
-    buscarFacturas,
-    dataStore
-};
-
-
-// Exposición de funciones puras en entorno de testing
-if (typeof window !== 'undefined' && window.__TEST__ === true) {
-    window.Emiti = EmisVisibleFunctions;
-}
-
-// Exportación para testing en Node.js/CommonJS (mantener coherencia)
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = EmisVisibleFunctions;
-}
+// Las funciones puras ya están disponibles en el scope global y pueden ser accesibles para testing
+// No es necesario exportarlas ya que están definidas con 'function' en el scope global
 
 // Inicializar la aplicación cuando se carga el script
 // Evita la ejecución del menú principal si window.__TEST__ es true

@@ -8,11 +8,44 @@ start
 
 |Sistema|
 if (Listar facturas?) then (Sí)
+
+  :Solicita todas las facturas;
+
+  |DataSource|
+  :Obtiene todas las facturas;
+  :Devuelve listado;
+
+  |Sistema|
   :Muestra listado general;
+
 elseif (Buscar facturas?) then (Sí)
-  :Solicita criterio y muestra resultados;
+
+  :Solicita criterio de búsqueda al usuario;
+
+  |Usuario|
+  :Ingresa criterio;
+
+  |Sistema|
+  :Envía criterio de búsqueda;
+
+  |DataSource|
+  :Obtiene facturas filtradas por criterio;
+  :Devuelve resultados filtrados;
+
+  |Sistema|
+  :Muestra resultados filtrados;
+
 elseif (Ver detalle?) then (Sí)
-  :Muestra información completa de la factura seleccionada;
+
+  :Solicita detalle de factura;
+
+  |DataSource|
+  :Obtiene factura por ID;
+  :Devuelve datos de factura;
+
+  |Sistema|
+  :Muestra información completa;
+
 else
   :Regresa al menú principal;
   stop

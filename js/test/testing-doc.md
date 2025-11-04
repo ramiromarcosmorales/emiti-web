@@ -25,67 +25,160 @@
 
 ## Suites de Tests
 
-### Suite 1: Validaciones y Utilidades
-**Funciones Testeadas:**
-- `validarTextoObligatorio()` - valida los campos de texto  
-- `validarEmail()` - valida formato de email  
-- `validarCUIT()` - valida formato de CUIT  
-- `validarNumeroPositivo()` - valida que solo acepte números mayores que 0  
-- `validarFecha()` - valida formato de fecha  
-- `formatearMoneda()` - formatea numeros como moneda argentina  
+### FLUJO 1: Dashboard – Visualización de métricas
 
-**Casos de Prueba:**
-| # | Descripción | Tipo |
-|---|-------------|------|
-| 1 | Texto válido "Ramiro" devuelve true | Happy Path |
-| 2 | Campos vacíos o null retornan false | Caso Borde |
-| 3 | Email con formato inválido retorna false | Validación de Errores |
-| 4 | CUIT con formato válido | Happy Path |
-| 5 | Números negativos o ceros inválidos | Caso borde |
-| 6 | Moneda devuelve string formateado | Happy Path |
-
----
-
-### Suite 2: Cálculos de Facturación
-**Funciones Testeadas:**
-- `calcularIVA()` - calcula el IVA de un subtotal
-- `calcularTotal()` - suma subtotal e IVA
-- `generarNumeroFactura()` - genera número de factura autoincremental
-- `crearFactura()` - crea una nueva factura de tipo A, B Y C
-
-**Casos de Prueba:**
-| # | Descripción | Tipo |
-|---|-------------|------|
-| 1 | IVA del 21% calculado correctamente | Happy Path |
-| 2 | IVA decimal redondeado correctamente | Caso Borde |
-| 3 | Total con 0 devuelve 0 | Caso Borde |
-| 4 | Genera número "004" según dataset | Happy Path |
-| 5 | Factura tipo C sin IVA | Validación de lógica de negocio |
-
----
-
-### Suite 3: Gestión de Facturas
-**Funciones Testeadas:**
-- `buscarFacturas()` - busca facturas por nombre, número o CUIT
-
-**Casos de Prueba:**
-| # | Descripción | Tipo |
-|---|-------------|------|
-| 1 | Devuelve un array con las facturas del cliente | Happy Path |
-| 2 | Devuelve array vacío cuando no hay coincidencias | Validación de Errores |
-| 3 | Verifica estructura de array y objetos | Operaciones con Arrays/Objetos |
-
----
-
-### Suite 4: Métricas del Dashboard
 **Funciones Testeadas:**
 - `calcularMetricas()` - obtiene el total de facturas, promedio e importe total
+- `mostrarDashboard()` - muestra las métricas del dashboard usando alert
 
 **Casos de Prueba:**
 | # | Descripción | Tipo |
 |---|-------------|------|
 | 1 | Retorna totales correctos | Happy Path |
-| 2 | Valores numéricos válidos en promedio y total | Cálculos y Algoritmos |
+| 2 | Valores numéricos válidos en promedio y total | Happy Path |
+| 3 | Calcula métricas correctamente con array vacío | Caso Borde |
+| 4 | Maneja facturas con total igual a 0 | Caso Borde |
+| 5 | Calcula promedio correcto con una sola factura | Caso Borde |
+| 6 | Maneja facturas con valores decimales múltiples | Caso Borde |
+| 7 | Muestra las métricas correctamente usando alert | Happy Path |
+
+---
+
+### FLUJO 2: Nueva Factura – Creación de facturas
+
+#### Validaciones
+
+**Funciones Testeadas:**
+- `validarTextoObligatorio()` - valida los campos de texto  
+- `validarEmail()` - valida formato de email  
+- `validarCUIT()` - valida formato de CUIT  
+- `validarNumeroPositivo()` - valida que solo acepte números mayores que 0  
+- `validarFecha()` - valida formato de fecha
+
+**Casos de Prueba:**
+| # | Descripción | Tipo |
+|---|-------------|------|
+| 1 | Texto válido devuelve true | Happy Path |
+| 2 | Campos vacíos, null o undefined retornan false | Caso Borde |
+| 3 | Texto con solo espacios retorna false | Caso Borde |
+| 4 | Email con formato válido devuelve true | Happy Path |
+| 5 | Email con formato inválido retorna false | Validación de Errores |
+| 6 | Email sin @ retorna false | Validación de Errores |
+| 7 | Email con múltiples @ retorna false | Validación de Errores |
+| 8 | CUIT con formato válido (con o sin separadores) devuelve true | Happy Path |
+| 9 | CUIT con menos de 11 dígitos retorna false | Validación de Errores |
+| 10 | CUIT con más de 11 dígitos retorna false | Validación de Errores |
+| 11 | CUIT con caracteres no numéricos retorna false | Validación de Errores |
+| 12 | CUIT vacío o null retorna false | Caso Borde |
+| 13 | Números positivos válidos devuelven true | Happy Path |
+| 14 | Números negativos o cero retornan false | Caso Borde |
+| 15 | Strings, null o undefined retornan false | Validación de Errores |
+| 16 | Fecha con formato válido YYYY-MM-DD devuelve true | Happy Path |
+| 17 | Fecha con formato inválido retorna false | Validación de Errores |
+| 18 | Fecha vacía o null retorna false | Caso Borde |
+
+#### Utilidades
+
+**Funciones Testeadas:**
+- `formatearMoneda()` - formatea numeros como moneda argentina  
+- `calcularTotal()` - suma subtotal e IVA
+- `generarNumeroFactura()` - genera número de factura autoincremental
+
+**Casos de Prueba:**
+| # | Descripción | Tipo |
+|---|-------------|------|
+| 1 | Formatea números como moneda argentina | Happy Path |
+| 2 | Formatea cero correctamente | Caso Borde |
+| 3 | Calcula total correctamente (subtotal + IVA) | Happy Path |
+| 4 | Total con 0 devuelve 0 | Caso Borde |
+| 5 | Maneja redondeo correcto con decimales | Caso Borde |
+| 6 | Genera número de factura secuencial | Happy Path |
+| 7 | Genera "001" cuando array está vacío | Caso Borde |
+| 8 | Genera correctamente con números no secuenciales | Caso Borde |
+
+#### Creación de Facturas
+
+**Funciones Testeadas:**
+- `crearFactura()` - crea una nueva factura de tipo A, B Y C
+- `solicitarDatosCliente()` - solicita y valida datos del cliente
+- `solicitarDatosFactura()` - solicita y valida datos de la factura
+- `solicitarItemsFactura()` - solicita items de la factura
+
+**Casos de Prueba:**
+| # | Descripción | Tipo |
+|---|-------------|------|
+| 1 | Crea factura tipo A con IVA discrimado | Happy Path |
+| 2 | Crea factura tipo B con IVA incluido | Happy Path |
+| 3 | Crea factura tipo C sin IVA | Happy Path |
+| 4 | Maneja items con precios decimales | Caso Borde |
+| 5 | Verifica formateo de CUIT en factura creada | Happy Path |
+| 6 | Maneja array de items vacío | Caso Borde |
+| 7 | Solicita y valida datos del cliente correctamente | Happy Path |
+| 8 | Valida CUIT inválido y solicita nuevamente | Validación de Errores |
+| 9 | Valida email inválido y solicita nuevamente | Validación de Errores |
+| 10 | Permite cancelar entrada de datos (retorna null) | Caso Borde |
+| 11 | Solicita y valida datos de factura correctamente | Happy Path |
+| 12 | Valida tipo de factura inválido y solicita nuevamente | Validación de Errores |
+| 13 | Valida fecha inválida y solicita nuevamente | Validación de Errores |
+| 14 | Solicita items y permite agregar múltiples | Happy Path |
+| 15 | Valida precio inválido (no numérico) y solicita nuevamente | Validación de Errores |
+| 16 | Rechaza precio igual a 0 | Validación de Errores |
+| 17 | Maneja cancelación al ingresar producto | Caso Borde |
+| 18 | Verifica operaciones con array de items | Operaciones con Arrays/Objetos |
+
+---
+
+### FLUJO 3: Facturas – Gestión de facturas existentes
+
+**Funciones Testeadas:**
+- `buscarFacturas()` - busca facturas por nombre, número o CUIT
+- `listarFacturas()` - lista todas las facturas
+- `mostrarDetalleFactura()` - muestra el detalle completo de una factura
+
+**Casos de Prueba:**
+| # | Descripción | Tipo |
+|---|-------------|------|
+| 1 | Busca facturas por nombre de cliente | Happy Path |
+| 2 | Busca facturas por número de factura | Happy Path |
+| 3 | Busca facturas por CUIT | Happy Path |
+| 4 | Devuelve array vacío cuando no hay coincidencias | Validación de Errores |
+| 5 | Verifica estructura de array y objetos retornados | Operaciones con Arrays/Objetos |
+| 6 | Busca sin distinguir mayúsculas/minúsculas | Caso Borde |
+| 7 | Lista todas las facturas usando alert | Happy Path |
+| 8 | Muestra mensaje cuando no hay facturas | Caso Borde |
+| 9 | Muestra detalle completo de factura | Happy Path |
+| 10 | Maneja factura con múltiples items | Operaciones con Arrays/Objetos |
+
+---
+
+### FLUJO 4: Configuración – Impuestos
+
+**Funciones Testeadas:**
+- `calcularIVA()` - calcula el IVA de un subtotal
+- `listarImpuestos()` - lista todos los impuestos configurados
+- `agregarImpuesto()` - agrega un nuevo impuesto
+- `usarCalculadoraIVA()` - calcula IVA usando la calculadora
+
+**Casos de Prueba:**
+| # | Descripción | Tipo |
+|---|-------------|------|
+| 1 | Calcula IVA del 21% correctamente | Happy Path |
+| 2 | Calcula IVA con porcentaje personalizado | Happy Path |
+| 3 | IVA decimal redondeado correctamente | Caso Borde |
+| 4 | Calcula IVA con porcentaje 0 (retorna 0) | Caso Borde |
+| 5 | Calcula IVA con subtotal 0 (retorna 0) | Caso Borde |
+| 6 | Lista todos los impuestos usando alert | Happy Path |
+| 7 | Muestra mensaje cuando no hay impuestos | Caso Borde |
+| 8 | Agrega un nuevo impuesto correctamente | Happy Path |
+| 9 | Valida que el nombre sea obligatorio (vacío) | Validación de Errores |
+| 10 | Valida que el porcentaje esté entre 0 y 100 | Validación de Errores |
+| 11 | Rechaza porcentaje negativo | Validación de Errores |
+| 12 | Rechaza porcentaje mayor a 100 | Validación de Errores |
+| 13 | Calcula IVA usando calculadora | Happy Path |
+| 14 | Usa 21% por defecto si no se ingresa porcentaje | Caso Borde |
+| 15 | Valida que el precio sea un número positivo | Validación de Errores |
+| 16 | Rechaza precio negativo o cero | Validación de Errores |
+| 17 | Verifica operaciones con array de impuestos | Operaciones con Arrays/Objetos |
 
 ---
 
@@ -94,18 +187,19 @@
 ### Resumen General
 | Métrica | Valor |
 |---------|-------|
-| Total de Tests | 25 |
-| Tests Pasando | 25 ✅ |
+| Total de Tests | 48 |
+| Tests Pasando | 48 ✅ |
 | Tests Fallando | 0 ❌ |
 | Porcentaje de Éxito | 100% |
 
-### Cobertura por Tipo de Test
-| Tipo | Cantidad | Porcentaje |
-|------|----------|------------|
-| Happy Path | 14 | 56% |
-| Casos Borde | 4 | 16% |
-| Validación de Errores | 6 | 24% |
-| Operaciones Arrays/Objetos | 1 | 4% |
+### Cobertura por Tipo de Test (Requisitos)
+| Tipo de Test | Cantidad | Porcentaje |
+|--------------|----------|------------|
+| Happy Path (Funcionalidad básica) | 20 | 42% |
+| Casos Borde y Valores Límite | 16 | 33% |
+| Validación de Errores | 9 | 19% |
+| Operaciones con Arrays/Objetos | 3 | 6% |
+| **Total** | **48** | **100%** |
 
 ### Análisis de Cobertura de Código
 
@@ -131,7 +225,6 @@
 #### Líneas NO Cubiertas
 - `formatearMoneda()` - validación de tipo sin implementación de excepciones
 
----
 
 ## Capturas de Pantalla
 
@@ -206,6 +299,6 @@
 
 ---
 
-**Última Actualización:** 24/10/2025  
+**Última Actualización:** 31/10/2025  
 **Tester/QA Engineer:** Ramiro Marcos Morales  
 **Colaboración con:** Desarrollador JavaScript - Sebasthian Harika
