@@ -65,10 +65,10 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 
 | Nombre completo           | Usuario GitHub              | Matrícula | Rol                            |
 |---------------------------|-----------------------------|-----------|--------------------------------|
-| Victoria Imoberdorff      | @victoriaimo                | 119707    | Coordinador / DevOps           | 
-| Ramiro Nicolás Renterías  | @ramire-uces                | 143709    | Arquitecto de Diagramas de Actividades |
-| Sebasthian Harika         | @Harika-sebasthian          | 148722    | Desarrollador JavaScript              |
-| Ramiro Marcos Morales     | @ramiromarcosmorales        | 149386    | Tester JavaScript / QA Engineer       |
+| Victoria Imoberdorff      | @victoriaimo                | 119707    | Desarrollador JS Local y Session Storage           | 
+| Ramiro Nicolás Renterías  | @ramire-uces                | 143709    | Desarrollador JS POO |
+| Sebasthian Harika         | @Harika-sebasthian          | 148722    | Desarrollador JS Eventos + DOM              |
+| Ramiro Marcos Morales     | @ramiromarcosmorales        | 149386    | Coordinador/DevOps + Tester QA       |
 ---
 
 ## 📌 Enlace del sitio (GitHub Pages)

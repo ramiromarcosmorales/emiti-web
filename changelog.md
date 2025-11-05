@@ -2,6 +2,9 @@
 
 ### Added
 
+- [feature/coord-devops-cuarta-entrega] Actualización base y agregado issue templates.  
+  PR: [#108](https://github.com/ramiromarcosmorales/emiti-web/pull/108) - @ramiromarcosmorales (Coordinador/DevOps + Tester QA)
+
 ### Changed
 
 ### Fixed
