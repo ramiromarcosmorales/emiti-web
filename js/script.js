@@ -40,7 +40,8 @@ function inicializarApp() {
  */
 function renderizarUIInicial() {
     renderizarListaFacturas(sistemaFacturacion.listar());
-    renderizarDashboard(calcularMetricas()); 
+    // Usa el método centralizado en la clase de dominio
+    renderizarDashboard(sistemaFacturacion.getMetrics()); 
     renderizarItemsTemporales();
 }
 
@@ -82,11 +83,12 @@ function manejarAgregarItem(event) {
     // Captura los valores del formulario de items
     const itemData = {
         producto: form.elements['item-producto']?.value,
-        precio: parseFloat(form.elements['item-precio']?.value) // Intenta parsear a float
+        // Se asume que ItemFactura validará que esto sea un número positivo.
+        precio: parseFloat(form.elements['item-precio']?.value) 
     };
 
     try {
-        // 1. Creación de objeto ItemFactura (incluye validación de precio)
+        // 1. Creación de objeto ItemFactura (delegan validación a la clase)
         const nuevoItem = new ItemFactura(itemData);
         
         // 2. Actualizar estado y UI
@@ -96,7 +98,7 @@ function manejarAgregarItem(event) {
         renderizarItemsTemporales();
         
     } catch (error) {
-        // Captura errores de validación de ItemFactura
+        // Captura errores de validación de ItemFactura (ej: Precio <= 0 o no numérico)
         mostrarError("Error al validar/procesar el ítem: " + error.message);
     }
 }
@@ -109,6 +111,7 @@ function manejarCreacionFactura(event) {
     const formId = 'form-factura-cliente';
     
     const datosFactura = capturarDatosFactura(formId);
+    // Validación inicial: revisa si los campos básicos están llenos y si hay ítems.
     if (!validarFormularioCompleto(datosFactura, itemsTemporales)) {
         mostrarError("Por favor, corrige los errores y añade al menos un ítem.");
         return;
@@ -118,7 +121,7 @@ function manejarCreacionFactura(event) {
     try {
         datosFactura.items = itemsTemporales; 
         
-        // crearFactura() internamente valida, calcula totales y llama a this.guardarEnStorage()
+        // crearFactura() internamente valida (Cliente, CUIT), calcula totales y persiste.
         const facturaCreada = sistemaFacturacion.crearFactura(datosFactura); 
 
         // 2. Limpieza y Renderizado
@@ -129,7 +132,7 @@ function manejarCreacionFactura(event) {
         renderizarItemsTemporales(); 
 
     } catch (error) {
-        // Captura errores de Cliente.js o Factura.js (ej: CUIT inválido)
+        // Captura errores de Lógica de Negocio (ej: CUIT inválido lanzado desde Cliente.js)
         mostrarError("Error de Lógica de Negocio: " + error.message);
     }
 }
@@ -151,7 +154,7 @@ function manejarAccionesFactura(event) {
     if (target.classList.contains('btn-marcar-pagada')) {
         if (confirmacionEnUI(`¿Confirmas el pago de la Factura N° ${numeroFactura}?`)) { 
             try {
-                // ORQUESTACIÓN: Llama a SistemaFacturacion.marcarPagada(numero)
+                // ORQUESTACIÓN: Llama al wrapper que resuelve por número
                 sistemaFacturacion.marcarPagada(numeroFactura); 
                 renderizarListaFacturas(sistemaFacturacion.listar());
                 mostrarMensajeExito(`Factura N° ${numeroFactura} marcada como PAGADA.`);
@@ -163,8 +166,8 @@ function manejarAccionesFactura(event) {
     
     // Acción: Eliminar Factura
     if (target.classList.contains('btn-eliminar')) {
-         // NOTA: La POO usa ID para eliminar. Buscamos el ID por el número.
-         const factura = sistemaFacturacion.listar().find(f => f.numero === numeroFactura);
+         // Se obtiene la instancia para conseguir el ID, ya que la UI solo tiene el número.
+         const factura = sistemaFacturacion.getFacturaByNumero(numeroFactura);
          if (!factura) {
              mostrarError("Factura no encontrada para eliminar.");
              return;
@@ -186,10 +189,11 @@ function manejarAccionesFactura(event) {
 
 /**
  * Maneja la validación de inputs mientras el usuario escribe.
+ * Delega toda la lógica de validación a la clase Validador.
  */
 function manejarValidacionEnTiempoReal(event) {
     const input = event.target;
-    // ... lógica de validación usando Validador.js ...
+    // Ignorar elementos que no sean campos de formulario
     if (input.tagName !== 'INPUT' && input.tagName !== 'SELECT' && input.tagName !== 'TEXTAREA') return;
 
     let esValido = true;
@@ -197,7 +201,7 @@ function manejarValidacionEnTiempoReal(event) {
     const validationType = input.dataset.validation;
     
     if (validationType) {
-        // Delega la validación a la clase Validador usando la propiedad dinámica
+        // Usa la propiedad dinámica para llamar al método estático correspondiente en Validador
         esValido = Validador[validationType] ? Validador[validationType](value) : true;
     }
 
@@ -210,24 +214,10 @@ function manejarValidacionEnTiempoReal(event) {
 // ==============================================================================
 
 /**
- * Calcula las métricas del dashboard usando el listado de facturas.
- * **IMPORTANTE:** Esta función debe ser movida a SistemaFacturacion.js (método calcularMetricas())
+ * NOTA: La lógica de métricas fue movida a SistemaFacturacion.js.
+ * La función calcularMetricas() local ha sido ELIMINADA.
  */
-function calcularMetricas() {
-    const facturas = sistemaFacturacion.listar();
-    const totalFacturas = facturas.length;
-    // Se utiliza facturas.reduce para sumar los totales
-    const importeTotal = facturas.reduce((sum, factura) => sum + factura.total, 0);
-    const promedio = totalFacturas > 0 ? importeTotal / totalFacturas : 0;
-    const facturasPagadas = facturas.filter(f => f.estado === 'pagada').length;
-    
-    return {
-        totalFacturas,
-        importeTotal,
-        promedio,
-        facturasPagadas
-    };
-}
+
 
 function capturarDatosFactura(formId) {
     const form = document.getElementById(formId);
@@ -250,14 +240,19 @@ function capturarDatosFactura(formId) {
     return data;
 }
 
+/**
+ * Validación previa a la lógica de negocio (solo campos mínimos).
+ */
 function validarFormularioCompleto(datosFactura, items) {
-    // Usa Validador.js para verificar que los datos mínimos estén presentes
     const c = datosFactura.cliente;
     const f = datosFactura;
     
+    // Valida nombre y CUIT (usando Validador.js)
     const clienteValido = Validador.texto(c.nombre) && Validador.cuit(c.cuit);
+    // Valida descripción, fecha y tipo (usando Validador.js)
     const facturaValida = Validador.texto(f.descripcion) && Validador.fecha(f.fecha) && Validador.texto(f.tipo);
     
+    // Requisito final: al menos un ítem agregado
     return clienteValido && facturaValida && items.length > 0;
 }
 
@@ -284,7 +279,7 @@ function renderizarListaFacturas(facturas) {
 
     if (facturas.length === 0) {
         listaFacturasDiv.innerHTML = '<p class="text-info">No hay facturas registradas.</p>';
-        renderizarDashboard(calcularMetricas());
+        renderizarDashboard(sistemaFacturacion.getMetrics());
         return;
     }
     
@@ -309,7 +304,8 @@ function renderizarListaFacturas(facturas) {
         `;
         listaFacturasDiv.appendChild(item);
     });
-    renderizarDashboard(calcularMetricas());
+    // Se actualiza el dashboard con las métricas del sistema
+    renderizarDashboard(sistemaFacturacion.getMetrics());
 }
 
 /**
@@ -351,10 +347,15 @@ function renderizarDashboard(metricas) {
     const promedioEl = document.getElementById('promedio');
     const facturasPagadasEl = document.getElementById('facturas-pagadas');
 
-    if (totalFacturasEl) totalFacturasEl.textContent = metricas.totalFacturas ?? 0;
-    if (importeTotalEl) importeTotalEl.textContent = formatter.format(metricas.importeTotal ?? 0);
-    if (promedioEl) promedioEl.textContent = formatter.format(metricas.promedio ?? 0);
-    if (facturasPagadasEl) facturasPagadasEl.textContent = metricas.facturasPagadas ?? 0;
+    // Los nombres de las propiedades se alinean con getMetrics()
+    if (totalFacturasEl) totalFacturasEl.textContent = metricas.cantidad ?? 0; // Usar 'cantidad' de getMetrics
+    // NOTA: Para el promedio, necesitarías recalcular o añadirlo a getMetrics,
+    // pero usando importeTotal y facturasPagadas podemos inferirlo para simplicidad.
+    const promedio = metricas.cantidad > 0 ? metricas.totalFacturado / metricas.cantidad : 0;
+    
+    if (importeTotalEl) importeTotalEl.textContent = formatter.format(metricas.totalFacturado ?? 0);
+    if (promedioEl) promedioEl.textContent = formatter.format(promedio ?? 0);
+    if (facturasPagadasEl) facturasPagadasEl.textContent = metricas.pagadas ?? 0;
 }
 
 
