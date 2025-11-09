@@ -1,402 +1,467 @@
 // ==============================================================================
-// js/script.js - CONTROLADOR PRINCIPAL (EVENTOS + DOM)
-// Tarea: Orquestar la UI usando la lógica del Dominio (POO)
+// EMITÍ - CONTROLADOR GLOBAL (UI + DOM + EVENTOS)
+// Maneja la lógica completa de index.html, nueva-factura.html, facturas.html y configuracion.html
 // ==============================================================================
 
-// 1. IMPORTS Y COORDINACIÓN
-import { SistemaFacturacion } from './models/SistemaFacturacion.js';
-import { Validador } from './models/Validador.js';
-import { ItemFactura } from './models/ItemFactura.js';
-// Importación por defecto del módulo de almacenamiento
-import StorageUtil from './utils/storage.js'; 
+import { SistemaFacturacion } from "./models/SistemaFacturacion.js";
+import { Cliente } from "./models/Cliente.js";
+import { ItemFactura } from "./models/ItemFactura.js";
+import { Impuesto } from "./models/Impuesto.js";
+import { Validador } from "./models/Validador.js";
 
-// 2. VARIABLES GLOBALES DE ESTADO (Mínimas y centradas en la UI)
-let sistemaFacturacion = null;
-let itemsTemporales = [];
+// ===============================
+// ESTADO GLOBAL Y CONFIGURACIÓN
+// ===============================
+const sistema = new SistemaFacturacion();
+sistema.cargarDesdeStorage();
 
-// 3. LISTENERS PRINCIPALES
-document.addEventListener('DOMContentLoaded', inicializarApp);
+document.addEventListener("DOMContentLoaded", () => {
+  const main = document.querySelector("main");
+  if (!main) return;
 
-// ==============================================================================
-// 4. FUNCIONES DE INICIALIZACIÓN
-// ==============================================================================
-
-function inicializarApp() {
-    // 1. Instanciar el sistema
-    sistemaFacturacion = new SistemaFacturacion();
-
-    // 2. Cargar datos desde localStorage (delegado a SistemaFacturacion.cargarDesdeStorage())
-    sistemaFacturacion.cargarDesdeStorage();
-
-    // 3. Configurar eventos de UI
-    configurarEventos();
-    
-    // 4. Renderizar el estado inicial de la UI
-    renderizarUIInicial();
-}
-
-/**
- * Renderiza el estado inicial de la UI: lista de facturas y dashboard.
- */
-function renderizarUIInicial() {
-    renderizarListaFacturas(sistemaFacturacion.listar());
-    // Usa el método centralizado en la clase de dominio
-    renderizarDashboard(sistemaFacturacion.getMetrics()); 
-    renderizarItemsTemporales();
-}
-
-// ==============================================================================
-// 5. CONFIGURACIÓN DE EVENTOS
-// ==============================================================================
-
-function configurarEventos() {
-    const formFactura = document.getElementById('form-factura-cliente');
-    if (formFactura) {
-        formFactura.addEventListener('submit', manejarCreacionFactura);
-        formFactura.addEventListener('input', manejarValidacionEnTiempoReal);
-    }
-    
-    const formItem = document.getElementById('form-agregar-item');
-    if (formItem) {
-        formItem.addEventListener('submit', manejarAgregarItem);
-        formItem.addEventListener('input', manejarValidacionEnTiempoReal);
-    }
-
-    const listaFacturas = document.getElementById('lista-facturas');
-    if (listaFacturas) {
-        listaFacturas.addEventListener('click', manejarAccionesFactura);
-    }
-}
-
-// ==============================================================================
-// 6. FUNCIONES MANEJADORAS DE EVENTOS
-// ==============================================================================
-
-/**
- * Manejador para el submit del formulario de ítems temporales.
- */
-function manejarAgregarItem(event) {
-    event.preventDefault();
-    const formId = 'form-agregar-item';
-    const form = document.getElementById(formId);
-    
-    // Captura los valores del formulario de items
-    const itemData = {
-        producto: form.elements['item-producto']?.value,
-        // Se asume que ItemFactura validará que esto sea un número positivo.
-        precio: parseFloat(form.elements['item-precio']?.value) 
-    };
-
-    try {
-        // 1. Creación de objeto ItemFactura (delegan validación a la clase)
-        const nuevoItem = new ItemFactura(itemData);
-        
-        // 2. Actualizar estado y UI
-        itemsTemporales.push(nuevoItem);
-        mostrarMensajeExito(`Ítem '${nuevoItem.producto}' añadido. Ítems: ${itemsTemporales.length}`);
-        limpiarFormulario(formId);
-        renderizarItemsTemporales();
-        
-    } catch (error) {
-        // Captura errores de validación de ItemFactura (ej: Precio <= 0 o no numérico)
-        mostrarError("Error al validar/procesar el ítem: " + error.message);
-    }
-}
-
-/**
- * Manejador para el submit del formulario principal de creación de factura.
- */
-function manejarCreacionFactura(event) {
-    event.preventDefault(); 
-    const formId = 'form-factura-cliente';
-    
-    const datosFactura = capturarDatosFactura(formId);
-    // Validación inicial: revisa si los campos básicos están llenos y si hay ítems.
-    if (!validarFormularioCompleto(datosFactura, itemsTemporales)) {
-        mostrarError("Por favor, corrige los errores y añade al menos un ítem.");
-        return;
-    }
-
-    // 1. ORQUESTACIÓN: Llamada al método de la clase de Dominio
-    try {
-        datosFactura.items = itemsTemporales; 
-        
-        // crearFactura() internamente valida (Cliente, CUIT), calcula totales y persiste.
-        const facturaCreada = sistemaFacturacion.crearFactura(datosFactura); 
-
-        // 2. Limpieza y Renderizado
-        itemsTemporales = [];
-        mostrarMensajeExito(`Factura #${facturaCreada.numero} creada exitosamente.`);
-        limpiarFormulario(formId);
-        renderizarListaFacturas(sistemaFacturacion.listar()); 
-        renderizarItemsTemporales(); 
-
-    } catch (error) {
-        // Captura errores de Lógica de Negocio (ej: CUIT inválido lanzado desde Cliente.js)
-        mostrarError("Error de Lógica de Negocio: " + error.message);
-    }
-}
-
-/**
- * Maneja eventos de click en la lista de facturas (Delegación: Pagar/Eliminar).
- */
-function manejarAccionesFactura(event) {
-    const target = event.target;
-    // Buscamos el atributo data-factura-numero en el contenedor de la factura
-    const facturaElement = target.closest('[data-factura-numero]');
-    
-    if (!facturaElement) return;
-
-    const numeroFactura = facturaElement.dataset.facturaNumero; 
-    if (!numeroFactura) return;
-
-    // Acción: Marcar Pagada
-    if (target.classList.contains('btn-marcar-pagada')) {
-        if (confirmacionEnUI(`¿Confirmas el pago de la Factura N° ${numeroFactura}?`)) { 
-            try {
-                // ORQUESTACIÓN: Llama al wrapper que resuelve por número
-                sistemaFacturacion.marcarPagada(numeroFactura); 
-                renderizarListaFacturas(sistemaFacturacion.listar());
-                mostrarMensajeExito(`Factura N° ${numeroFactura} marcada como PAGADA.`);
-            } catch (error) {
-                mostrarError(error.message);
-            }
-        }
-    }
-    
-    // Acción: Eliminar Factura
-    if (target.classList.contains('btn-eliminar')) {
-         // Se obtiene la instancia para conseguir el ID, ya que la UI solo tiene el número.
-         const factura = sistemaFacturacion.getFacturaByNumero(numeroFactura);
-         if (!factura) {
-             mostrarError("Factura no encontrada para eliminar.");
-             return;
-         }
-
-         if (confirmacionEnUI(`¿Seguro que deseas eliminar la Factura N° ${numeroFactura}?`)) {
-            try {
-                // ORQUESTACIÓN: Llama a SistemaFacturacion.eliminarFactura(id)
-                sistemaFacturacion.eliminarFactura(factura.id); 
-                renderizarListaFacturas(sistemaFacturacion.listar());
-                mostrarMensajeExito(`Factura N° ${numeroFactura} eliminada.`);
-            } catch (error) {
-                mostrarError(error.message);
-            }
-        }
-    }
-}
-
-
-/**
- * Maneja la validación de inputs mientras el usuario escribe.
- * Delega toda la lógica de validación a la clase Validador.
- */
-function manejarValidacionEnTiempoReal(event) {
-    const input = event.target;
-    // Ignorar elementos que no sean campos de formulario
-    if (input.tagName !== 'INPUT' && input.tagName !== 'SELECT' && input.tagName !== 'TEXTAREA') return;
-
-    let esValido = true;
-    const value = input.value.trim();
-    const validationType = input.dataset.validation;
-    
-    if (validationType) {
-        // Usa la propiedad dinámica para llamar al método estático correspondiente en Validador
-        esValido = Validador[validationType] ? Validador[validationType](value) : true;
-    }
-
-    aplicarFeedbackVisual(input, esValido);
-}
+  // Detección de página según la clase principal del <main>
+  if (main.classList.contains("dashboard")) {
+    initDashboard();
+  } else if (main.classList.contains("nueva-factura")) {
+    initNuevaFactura();
+  } else if (main.classList.contains("facturas")) {
+    // 🧩 Corre ambas: listado y creación de facturas desde el modal
+    initFacturas();
+    initNuevaFactura();
+  } else if (main.classList.contains("configuracion")) {
+    initConfiguracion();
+  }
+});
 
 
 // ==============================================================================
-// 7. FUNCIONES DE MANIPULACIÓN DEL DOM (Entradas, Salidas, Estados)
+// SECCIÓN 1: DASHBOARD (index.html)
 // ==============================================================================
+function initDashboard() {
+  console.log("📊 Dashboard inicializado");
 
-/**
- * NOTA: La lógica de métricas fue movida a SistemaFacturacion.js.
- * La función calcularMetricas() local ha sido ELIMINADA.
- */
+  actualizarMetricas();
 
+  // === EVENTOS DEL MODAL "AÑADIR IMPUESTO" ===
+  const formImpuesto = document.getElementById("formImpuesto");
+  const guardarImpuestoBtn = document.getElementById("guardarImpuestoBtn");
+  const toastImpuesto = document.getElementById("toastImpuesto");
+  const toastFactura = document.getElementById("toastFactura");
+  const modalImpuesto = document.getElementById("modalImpuesto");
 
-function capturarDatosFactura(formId) {
-    const form = document.getElementById(formId);
-    if (!form) return {};
-    
-    // Captura los campos por su atributo 'name'
-    const data = {
-        cliente: {
-            nombre: form.elements['cliente-nombre']?.value,
-            cuit: form.elements['cliente-cuit']?.value,
-            direccion: form.elements['cliente-direccion']?.value,
-            email: form.elements['cliente-email']?.value,
-            telefono: form.elements['cliente-telefono']?.value,
-        },
-        tipo: form.elements['factura-tipo']?.value,
-        fecha: form.elements['factura-fecha']?.value,
-        descripcion: form.elements['factura-descripcion']?.value,
-    };
-    
-    return data;
-}
+  const toastOk = toastImpuesto ? new bootstrap.Toast(toastImpuesto) : null;
+  const toastFacturaOk = toastFactura ? new bootstrap.Toast(toastFactura) : null;
 
-/**
- * Validación previa a la lógica de negocio (solo campos mínimos).
- */
-function validarFormularioCompleto(datosFactura, items) {
-    const c = datosFactura.cliente;
-    const f = datosFactura;
-    
-    // Valida nombre y CUIT (usando Validador.js)
-    const clienteValido = Validador.texto(c.nombre) && Validador.cuit(c.cuit);
-    // Valida descripción, fecha y tipo (usando Validador.js)
-    const facturaValida = Validador.texto(f.descripcion) && Validador.fecha(f.fecha) && Validador.texto(f.tipo);
-    
-    // Requisito final: al menos un ítem agregado
-    return clienteValido && facturaValida && items.length > 0;
-}
+  if (guardarImpuestoBtn && formImpuesto) {
+    guardarImpuestoBtn.addEventListener("click", (e) => {
+      e.preventDefault();
 
-function aplicarFeedbackVisual(input, esValido) {
-    input.classList.remove('is-valid', 'is-invalid');
-    if (input.value.trim() === '') return;
-    
-    if (esValido) {
-        input.classList.add('is-valid');
-    } else {
-        input.classList.add('is-invalid');
-    }
-}
+      const nombre = document.getElementById("nombreImpuesto").value.trim();
+      const porcentaje = parseFloat(document.getElementById("porcentajeImpuesto").value.trim());
 
-/**
- * Modifica el DOM para mostrar la lista de facturas (Salida dinámica).
- */
-function renderizarListaFacturas(facturas) {
-    const listaFacturasDiv = document.getElementById('lista-facturas');
-    if (!listaFacturasDiv) return;
+      try {
+        if (!Validador.texto(nombre)) throw new Error("El nombre del impuesto es obligatorio.");
+        if (!Validador.numero(porcentaje)) throw new Error("El porcentaje debe ser un número válido.");
 
-    listaFacturasDiv.innerHTML = ''; 
-    const formatter = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' });
-
-    if (facturas.length === 0) {
-        listaFacturasDiv.innerHTML = '<p class="text-info">No hay facturas registradas.</p>';
-        renderizarDashboard(sistemaFacturacion.getMetrics());
-        return;
-    }
-    
-    facturas.forEach(factura => {
-        const item = document.createElement('div');
-        const estadoClass = factura.estado === 'pagada' ? 'bg-success text-white' : 'bg-warning text-dark';
-        item.className = `factura-item p-3 mb-2 rounded shadow-sm ${estadoClass}`;
-        // CRÍTICO: Adjuntamos el número de factura para las acciones
-        item.dataset.facturaNumero = factura.numero; 
-
-        item.innerHTML = `
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <strong>Factura N° ${factura.numero} (${factura.tipo})</strong> - Cliente: ${factura.cliente.nombre}<br>
-                    Total: ${formatter.format(factura.total)} - Estado: ${factura.estado.toUpperCase()}
-                </div>
-                <div class="btn-group">
-                    ${factura.estado !== 'pagada' ? '<button class="btn btn-sm btn-success btn-marcar-pagada">Pagar</button>' : ''}
-                    <button class="btn btn-sm btn-danger btn-eliminar">Eliminar</button>
-                </div>
-            </div>
-        `;
-        listaFacturasDiv.appendChild(item);
-    });
-    // Se actualiza el dashboard con las métricas del sistema
-    renderizarDashboard(sistemaFacturacion.getMetrics());
-}
-
-/**
- * Renderiza la lista de ítems temporales.
- */
-function renderizarItemsTemporales() {
-    const container = document.getElementById('lista-items-temporales'); 
-    if (!container) return;
-    
-    container.innerHTML = '';
-    
-    if (itemsTemporales.length === 0) {
-        container.innerHTML = '<p class="text-secondary small">Añade ítems aquí.</p>';
-        return;
-    }
-
-    const formatter = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' });
-
-    itemsTemporales.forEach((item, index) => {
-        const itemEl = document.createElement('li');
-        itemEl.className = 'list-group-item d-flex justify-content-between align-items-center';
-        itemEl.innerHTML = `
-            ${item.producto} - ${formatter.format(item.precio)}
-            <button class="btn btn-sm btn-outline-danger" data-index="${index}" onclick="manejarEliminarItemTemporal(${index})">X</button>
-        `;
-        container.appendChild(itemEl);
-    });
-}
-
-/**
- * Renderiza las métricas del dashboard.
- */
-function renderizarDashboard(metricas) {
-    const formatter = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' });
-    
-    // Se asume que existen los elementos con estos IDs
-    const totalFacturasEl = document.getElementById('total-facturas');
-    const importeTotalEl = document.getElementById('importe-total');
-    const promedioEl = document.getElementById('promedio');
-    const facturasPagadasEl = document.getElementById('facturas-pagadas');
-
-    // Los nombres de las propiedades se alinean con getMetrics()
-    if (totalFacturasEl) totalFacturasEl.textContent = metricas.cantidad ?? 0; // Usar 'cantidad' de getMetrics
-    // NOTA: Para el promedio, necesitarías recalcular o añadirlo a getMetrics,
-    // pero usando importeTotal y facturasPagadas podemos inferirlo para simplicidad.
-    const promedio = metricas.cantidad > 0 ? metricas.totalFacturado / metricas.cantidad : 0;
-    
-    if (importeTotalEl) importeTotalEl.textContent = formatter.format(metricas.totalFacturado ?? 0);
-    if (promedioEl) promedioEl.textContent = formatter.format(promedio ?? 0);
-    if (facturasPagadasEl) facturasPagadasEl.textContent = metricas.pagadas ?? 0;
-}
-
-
-// --- GESTIÓN DE ESTADOS DE UI (Error/Success) ---
-
-function mostrarError(mensaje) {
-    const container = document.getElementById('feedback-container');
-    if (container) {
-        container.innerHTML = `<div class="alert alert-danger" role="alert">❌ ERROR: ${mensaje}</div>`;
-        container.style.display = 'block';
-    }
-}
-
-function mostrarMensajeExito(mensaje) {
-    const container = document.getElementById('feedback-container');
-    if (container) {
-        container.innerHTML = `<div class="alert alert-success" role="alert">✅ ÉXITO: ${mensaje}</div>`;
-        container.style.display = 'block';
-        setTimeout(() => container.style.display = 'none', 5000);
-    }
-}
-
-function confirmacionEnUI(pregunta) {
-    return window.confirm(pregunta); 
-}
-
-function limpiarFormulario(formId) {
-    const form = document.getElementById(formId);
-    if (form) {
-        form.reset();
-        form.querySelectorAll('.is-valid, .is-invalid').forEach(el => {
-            el.classList.remove('is-valid', 'is-invalid');
+        const impuesto = new Impuesto({
+          id: Date.now(),
+          nombre,
+          porcentaje,
+          activo: true,
         });
-    }
+
+        sistema.agregarImpuesto(impuesto);
+        sistema.guardarEnStorage();
+
+        const modal = bootstrap.Modal.getInstance(modalImpuesto);
+        if (modal) modal.hide();
+        if (toastOk) toastOk.show();
+
+        formImpuesto.reset();
+        console.log("✅ Impuesto agregado:", impuesto);
+      } catch (err) {
+        alert("Error al guardar impuesto: " + err.message);
+      }
+    });
+  }
+
+  // === EVENTO DEL MODAL "NUEVA FACTURA" (REUTILIZA MISMO CÓDIGO) ===
+  const formFactura = document.querySelector("#modalFactura form");
+  const crearFacturaBtn = document.getElementById("crearFacturaBtn");
+  let itemsTemporales = [];
+
+  if (formFactura && crearFacturaBtn) {
+    crearFacturaBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      try {
+        const nombre = document.getElementById("clienteFactura").value.trim();
+        const cuit = document.getElementById("cuitFactura").value.trim();
+        const direccion = document.getElementById("direccionFactura").value.trim();
+        const email = document.getElementById("emailFactura").value.trim();
+        const telefono = document.getElementById("telefonoFactura").value.trim();
+        const tipo = document.getElementById("tipoFactura").value;
+        const fecha = document.getElementById("fechaFactura").value;
+        const descripcion = document.getElementById("descripcionFactura").value.trim();
+
+        if (!Validador.texto(nombre)) throw new Error("El nombre del cliente es obligatorio.");
+        if (!Validador.cuit(cuit)) throw new Error("El CUIT debe tener 11 dígitos numéricos.");
+        if (email && !Validador.email(email)) throw new Error("El email no tiene un formato válido.");
+        if (telefono && !Validador.telefono(telefono)) throw new Error("El teléfono contiene caracteres inválidos.");
+        if (!Validador.texto(descripcion)) throw new Error("La descripción es obligatoria.");
+
+        const productoInput = formFactura.querySelector('input[placeholder="Producto / Ítem"]');
+        const precioInput = formFactura.querySelector('input[placeholder="Precio"]');
+        if (productoInput?.value.trim() && precioInput?.value.trim()) {
+          const item = new ItemFactura({
+            producto: productoInput.value.trim(),
+            precio: parseFloat(precioInput.value.trim()),
+          });
+          itemsTemporales.push(item);
+        }
+
+        if (itemsTemporales.length === 0) throw new Error("Debe agregar al menos un ítem.");
+
+        const cliente = new Cliente({ nombre, cuit, direccion, email, telefono });
+        const factura = sistema.crearFactura({
+          cliente,
+          tipo,
+          fecha,
+          descripcion,
+          items: itemsTemporales,
+        });
+
+        sistema.guardarEnStorage();
+        itemsTemporales = [];
+        formFactura.reset();
+
+        const modalFactura = bootstrap.Modal.getInstance(document.getElementById("modalFactura"));
+        if (modalFactura) modalFactura.hide();
+        if (toastFacturaOk) toastFacturaOk.show();
+
+        console.log("✅ Factura creada:", factura);
+        actualizarMetricas();
+      } catch (err) {
+        alert("Error: " + err.message);
+      }
+    });
+  }
+
+  function actualizarMetricas() {
+    const metrics = sistema.getMetrics();
+    const f = new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS" });
+
+    const total = document.getElementById("total-facturas");
+    const totalImporte = document.getElementById("importe-total");
+    const promedio = document.getElementById("promedio");
+    const pagadas = document.getElementById("facturas-pagadas");
+
+    if (total) total.textContent = metrics.cantidad ?? 0;
+    if (totalImporte) totalImporte.textContent = f.format(metrics.totalFacturado ?? 0);
+    if (promedio)
+      promedio.textContent = f.format(
+        metrics.cantidad > 0 ? metrics.totalFacturado / metrics.cantidad : 0
+      );
+    if (pagadas) pagadas.textContent = metrics.pagadas ?? 0;
+  }
 }
 
-// Función global (para ser usada desde el HTML)
-window.manejarEliminarItemTemporal = function(index) {
-    if (index >= 0 && index < itemsTemporales.length) {
-        itemsTemporales.splice(index, 1);
-        renderizarItemsTemporales();
-        mostrarMensajeExito("Ítem temporal eliminado.");
-    }
+// ==============================================================================
+// SECCIÓN 2: NUEVA FACTURA (nueva-factura.html)
+// ==============================================================================
+function initNuevaFactura() {
+  console.log("🧾 Modo: Nueva Factura");
+  const formFactura = document.getElementById("formFactura");
+  const crearFacturaBtn = document.getElementById("crearFacturaBtn");
+  const addItemBtn = document.getElementById("addItemBtn");
+  const toastFactura = document.getElementById("toastFactura");
+  const toast = toastFactura ? new bootstrap.Toast(toastFactura) : null;
+  const modalFactura = document.getElementById("modalFactura");
+
+  let itemsTemporales = [];
+
+  if (addItemBtn) {
+    addItemBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      try {
+        const producto = document.getElementById("productoFactura").value.trim();
+        const precio = document.getElementById("precioFactura").value.trim();
+
+        if (!Validador.texto(producto)) throw new Error("El nombre del producto es obligatorio.");
+        if (!Validador.numero(precio)) throw new Error("El precio debe ser un número válido mayor a 0.");
+
+        const item = new ItemFactura({ producto, precio });
+        itemsTemporales.push(item);
+
+        limpiarCamposItem();
+        alert(`Ítem "${producto}" agregado.`);
+      } catch (err) {
+        alert("Error al agregar ítem: " + err.message);
+      }
+    });
+  }
+
+  if (formFactura && crearFacturaBtn) {
+    formFactura.addEventListener("submit", (e) => {
+      e.preventDefault();
+      try {
+        const nombre = document.getElementById("clienteFactura").value.trim();
+        const cuit = document.getElementById("cuitFactura").value.trim();
+        const direccion = document.getElementById("direccionFactura").value.trim();
+        const email = document.getElementById("emailFactura").value.trim();
+        const telefono = document.getElementById("telefonoFactura").value.trim();
+        const tipo = document.getElementById("tipoFactura").value;
+        const fecha = document.getElementById("fechaFactura").value;
+        const descripcion = document.getElementById("descripcionFactura").value.trim();
+
+        if (!Validador.texto(nombre)) throw new Error("El nombre del cliente es obligatorio.");
+        if (!Validador.cuit(cuit)) throw new Error("El CUIT debe tener 11 dígitos numéricos.");
+        if (email && !Validador.email(email)) throw new Error("El email no tiene un formato válido.");
+        if (telefono && !Validador.telefono(telefono)) throw new Error("El teléfono contiene caracteres inválidos.");
+        if (!Validador.texto(descripcion)) throw new Error("La descripción es obligatoria.");
+        if (itemsTemporales.length === 0) throw new Error("Debe agregar al menos un ítem.");
+
+        const cliente = new Cliente({ nombre, cuit, direccion, email, telefono });
+        const factura = sistema.crearFactura({
+          cliente,
+          tipo,
+          fecha,
+          descripcion,
+          items: itemsTemporales,
+        });
+
+        sistema.guardarEnStorage();
+        formFactura.reset();
+        itemsTemporales = [];
+
+        const modal = bootstrap.Modal.getInstance(modalFactura);
+        if (modal) modal.hide();
+        if (toast) toast.show();
+
+        console.log("Factura creada:", factura);
+      } catch (err) {
+        alert("Error: " + err.message);
+      }
+    });
+  }
+
+  function limpiarCamposItem() {
+    document.getElementById("productoFactura").value = "";
+    document.getElementById("precioFactura").value = "";
+  }
 }
+
+// ==============================================================================
+// SECCIÓN 3: FACTURAS (facturas.html)
+// ==============================================================================
+function initFacturas() {
+  console.log("📄 Modo: Listado de Facturas");
+
+  const contenedor = document.getElementById("lista-facturas");
+  if (!contenedor) return;
+
+  renderizarFacturas();
+
+  contenedor.addEventListener("click", (e) => {
+    const target = e.target;
+    const facturaEl = target.closest("[data-factura-numero]");
+    if (!facturaEl) return;
+
+    const numero = facturaEl.dataset.facturaNumero;
+    const factura = sistema.getFacturaByNumero(numero);
+    if (!factura) return;
+
+    if (target.classList.contains("btn-marcar-pagada")) {
+      if (confirm(`¿Confirmas marcar como pagada la Factura N° ${numero}?`)) {
+        sistema.marcarPagada(numero);
+        sistema.guardarEnStorage();
+        renderizarFacturas();
+        mostrarToast(`Factura N° ${numero} marcada como pagada.`, "success");
+      }
+    }
+
+    if (target.classList.contains("btn-eliminar")) {
+      if (confirm(`¿Eliminar la Factura N° ${numero}?`)) {
+        sistema.eliminarFactura(factura.id);
+        renderizarFacturas();
+        mostrarToast(`Factura N° ${numero} eliminada.`, "warning");
+      }
+    }
+  });
+
+function renderizarFacturas() {
+  const contenedor = document.getElementById("lista-facturas");
+  const template = document.getElementById("template-factura");
+  contenedor.innerHTML = "";
+
+  const facturas = sistema.listar();
+  const f = new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS" });
+
+  if (facturas.length === 0) {
+    contenedor.innerHTML = `<p class="text-muted text-center mt-3">No hay facturas registradas.</p>`;
+    return;
+  }
+
+  facturas.forEach((factura) => {
+    const clone = template.content.cloneNode(true);
+    const card = clone.querySelector(".factura-card");
+
+    // Estado visual
+    if (factura.estado === "pagada") {
+      card.classList.add("border-success", "bg-light");
+      clone.querySelector(".factura-estado").innerHTML = `<span class="badge bg-success">Pagada</span>`;
+      const btnPagar = clone.querySelector(".btn-marcar-pagada");
+      btnPagar.disabled = true;
+      btnPagar.textContent = "Pagada";
+      btnPagar.classList.replace("btn-success", "btn-outline-secondary");
+    } else {
+      card.classList.add("border-warning", "bg-white");
+      clone.querySelector(".factura-estado").innerHTML = `<span class="badge bg-warning text-dark">Pendiente</span>`;
+    }
+
+    // Datos dinámicos
+    clone.querySelector(".factura-numero").textContent = `Factura N° ${factura.numero} (${factura.tipo})`;
+    clone.querySelector(".factura-cliente").textContent = factura.cliente.nombre;
+    clone.querySelector(".factura-total").textContent = f.format(factura.total);
+
+    // Atributo identificador
+    card.dataset.facturaNumero = factura.numero;
+
+    contenedor.appendChild(clone);
+  });
+}
+}
+
+// ==============================================================================
+// SECCIÓN 4: CONFIGURACIÓN (configuracion.html)
+// ==============================================================================
+function initConfiguracion() {
+  console.log("⚙️ Modo: Configuración");
+
+  const formImpuesto = document.getElementById("formAgregarImpuesto");
+  const guardarBtn = document.getElementById("agregarImpuestoBtn");
+  const toastImpuestoOk = document.getElementById("toastImpuestoOk");
+  const listaImpuestos = document.querySelector(".list-group"); // lista de impuestos existentes
+  const toastImpuesto = toastImpuestoOk ? new bootstrap.Toast(toastImpuestoOk) : null;
+
+  // Función para renderizar todos los impuestos guardados
+  function renderizarImpuestos() {
+    if (!listaImpuestos) return;
+    listaImpuestos.innerHTML = "";
+
+    const impuestos = sistema.impuestos ?? [];
+    if (impuestos.length === 0) {
+      listaImpuestos.innerHTML = `<div class="list-group-item text-muted">No hay impuestos configurados.</div>`;
+      return;
+    }
+
+    impuestos.forEach((imp) => {
+      const item = document.createElement("div");
+      item.classList.add("list-group-item");
+      item.innerHTML = `
+        <div class="row align-items-center g-2 imp-item">
+          <div class="col-12 col-sm d-flex align-items-center gap-2 name-group">
+            <div class="form-check m-0 d-flex align-items-center gap-2">
+              <input class="form-check-input" type="checkbox" ${imp.activo ? "checked" : ""}>
+              <label class="form-check-label fw-semibold m-0">${imp.nombre}</label>
+            </div>
+            <span class="badge bg-light text-dark px-2 py-1">${imp.porcentaje}%</span>
+          </div>
+          <div class="col-auto btn-estado-col">
+            <button type="button" class="btn-estado ${imp.activo ? "activo" : ""}">
+              ${imp.activo ? "Activo" : "Inactivo"}
+            </button>
+          </div>
+          <div class="col-auto ms-sm-auto actions-col d-flex justify-content-end gap-2">
+            <button type="button" class="btn btn-light border rounded-pill btn-sm btn-eliminar" data-id="${imp.id}">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+        </div>`;
+      listaImpuestos.appendChild(item);
+    });
+  }
+
+  // Evento de agregar nuevo impuesto
+  if (formImpuesto && guardarBtn) {
+    guardarBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      try {
+        const nombre = document.getElementById("nuevoNombre").value.trim();
+        const porcentaje = parseFloat(document.getElementById("nuevoPorcentaje").value);
+        const activo = document.getElementById("btnEstadoNuevo").classList.contains("activo");
+
+        if (!Validador.texto(nombre)) throw new Error("El nombre del impuesto es obligatorio.");
+        if (!Validador.numero(porcentaje)) throw new Error("El valor del IVA debe ser un número válido.");
+
+        const nuevoImpuesto = new Impuesto({
+          id: Date.now(),
+          nombre,
+          porcentaje,
+          activo,
+        });
+
+        sistema.agregarImpuesto(nuevoImpuesto);
+        sistema.guardarEnStorage();
+
+        formImpuesto.reset();
+        if (toastImpuesto) toastImpuesto.show();
+        console.log("✅ Impuesto agregado:", nuevoImpuesto);
+
+        // Actualiza la lista visual
+        renderizarImpuestos();
+      } catch (err) {
+        mostrarToast("Error: " + err.message, "danger");
+      }
+    });
+  }
+
+  renderizarImpuestos();
+
+  // 🗑️ Eliminar impuesto
+  if (listaImpuestos) {
+    listaImpuestos.addEventListener("click", (e) => {
+      const btn = e.target.closest(".btn-eliminar");
+      if (!btn) return;
+
+      const id = btn.dataset.id;
+      if (!id) return;
+
+      // Confirmación opcional
+      if (!confirm("¿Seguro que querés eliminar este impuesto?")) return;
+
+      // Filtramos y guardamos
+      sistema.impuestos = sistema.impuestos.filter((i) => String(i.id) !== String(id));
+      sistema.guardarEnStorage();
+
+      // Vuelve a renderizar la lista
+      renderizarImpuestos();
+
+      mostrarToast("Impuesto eliminado correctamente.", "warning");
+    });
+  }
+
+// ==============================================================================
+// UTILIDADES COMUNES
+// ==============================================================================
+function mostrarToast(mensaje, tipo = "info") {
+  const toastContainer = document.querySelector(".toast-container") || crearToastContainer();
+  const toast = document.createElement("div");
+  toast.className = `toast align-items-center text-bg-${tipo} border-0 show mb-2`;
+  toast.role = "alert";
+  toast.innerHTML = `
+    <div class="d-flex">
+      <div class="toast-body">${mensaje}</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>`;
+  toastContainer.appendChild(toast);
+  new bootstrap.Toast(toast).show();
+}
+
+function crearToastContainer() {
+  const container = document.createElement("div");
+  container.className = "toast-container position-fixed bottom-0 end-0 p-3";
+  document.body.appendChild(container);
+  return container;
+}}
