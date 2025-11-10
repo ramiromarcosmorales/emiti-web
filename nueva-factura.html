@@ -1,212 +1,182 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Nueva Factura - EMITÍ</title>
-    <meta name="description" content="Generá una nueva factura en Emití Web."/>
-    <link rel="icon" href="assets/favicon.png" type="image/png"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nueva Factura - EMITÍ</title>
+  <meta name="description" content="Creá facturas digitales en segundos con Emití Web de forma simple, rápida y segura.">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
 
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" as="style" crossorigin>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" crossorigin>
+  <!-- Bootstrap optimizado -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" as="style" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" crossorigin>
 
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-    
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" as="style" onload="this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"></noscript>
+  <!-- Estilos locales -->
+  <link rel="stylesheet" href="css/bootstrap-overrides.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
 
-    <link rel="stylesheet" href="css/bootstrap-overrides.css"/>
-    <link rel="stylesheet" href="css/styles.css"/>
-    <link rel="stylesheet" href="css/components.css"/>
-    <link rel="stylesheet" href="css/responsive.css"/>
-
+  <!-- Font Awesome y fuentes -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        as="style" onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  </noscript>    
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" 
+        as="style" onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+  </noscript>
 </head>
+
 <body>
-    <header class="bg-white border-bottom py-3">
-        <div class="container d-flex align-items-center gap-3">
-            <img src="assets/logo.png" alt="Logo Emití" width="120" height="120" class="img-fluid" decoding="async" fetchpriority="high">
-            <h1 class="h5 text-muted mb-0">Gestión Profesional de Facturas</h1>
-        </div>
-    </header>
+  <!-- Encabezado -->
+  <header class="bg-white border-bottom py-3">
+    <div class="container d-flex align-items-center gap-3">
+      <img src="assets/logo.png" alt="Logo Emití" width="120" height="120" class="img-fluid">
+      <h1 class="h5 text-muted mb-0">Gestión Profesional de Facturas</h1>
+    </div>
+  </header>
 
-    <nav class="menu">
-        <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
-                <div class="col d-grid">
-                    <a href="index.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
-                        <i class="fa-solid fa-chart-column"></i> Dashboard
-                    </a>
-                </div>
-                <div class="col d-grid">
-                    <a href="nueva-factura.html" aria-current="page" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2 active">
-                        <i class="fa-solid fa-file-invoice"></i> Nueva Factura
-                    </a>
-                </div>
-                <div class="col d-grid">
-                    <a href="facturas.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
-                        <i class="fa-solid fa-file-invoice-dollar"></i> Facturas
-                    </a>
-                </div>
-                <div class="col d-grid">
-                    <a href="configuracion.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
-                        <i class="fa-solid fa-gear"></i> Configuración
-                    </a>
-                </div>
+  <!-- Menú -->
+  <nav class="menu">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
+        <div class="col d-grid">
+          <a href="index.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
+            <i class="fa-solid fa-chart-column"></i> Dashboard
+          </a>
+        </div>
+        <div class="col d-grid">
+          <a href="nueva-factura.html" aria-current="page" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2 active">
+            <i class="fa-solid fa-file-invoice"></i> Nueva Factura
+          </a>
+        </div>
+        <div class="col d-grid">
+          <a href="facturas.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
+            <i class="fa-solid fa-file-invoice-dollar"></i> Facturas
+          </a>
+        </div>
+        <div class="col d-grid">
+          <a href="configuracion.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
+            <i class="fa-solid fa-gear"></i> Configuración
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido principal -->
+  <main class="nueva-factura">
+    <div class="container py-3">
+      <div class="row">
+        <div class="col-12">
+          <div class="bg-white border rounded-3 p-4 text-center">
+            <i class="fa-solid fa-file-invoice display-3 mb-3"></i>
+            <h2 class="h4">No hay factura en edición</h2>
+            <p class="text-muted mb-3">Creá una nueva factura para comenzar</p>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalFactura">
+              + Nueva Factura
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal Nueva Factura -->
+  <div class="modal fade" id="modalFactura" tabindex="-1" aria-labelledby="modalFacturaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalFacturaLabel">Nueva Factura</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="formFactura" class="row g-3">
+            <div class="col-md-6">
+              <label for="clienteFactura" class="form-label fw-semibold">Cliente</label>
+              <input type="text" class="form-control" id="clienteFactura" placeholder="Nombre del cliente">
             </div>
-        </div>
-    </nav>
 
-    <main class="nueva-factura">
-        <div class="container py-4">
+            <div class="col-md-6">
+              <label for="cuitFactura" class="form-label fw-semibold">CUIT / CUIL</label>
+              <input type="text" class="form-control" id="cuitFactura" placeholder="CUIT / CUIL">
+            </div>
 
-            <h2 class="mb-3">Generar Nueva Factura</h2>
+            <div class="col-md-6">
+              <label for="direccionFactura" class="form-label fw-semibold">Dirección</label>
+              <input type="text" class="form-control" id="direccionFactura" placeholder="Dirección del cliente">
+            </div>
 
-            <form id="formNuevaFactura">
-                <div class="row g-4">
+            <div class="col-md-6">
+              <label for="emailFactura" class="form-label fw-semibold">Correo electrónico</label>
+              <input type="email" class="form-control" id="emailFactura" placeholder="correo@ejemplo.com">
+            </div>
 
-                    <div class="col-12 col-xl-6">
-                        <section class="section-card p-4">
-                            <h3 class="h5 mb-3">Datos del Comprobante</h3>
-                            
-                            <div class="row g-3">
-                                <div class="col-6">
-                                    <label for="tipoComprobante" class="form-label">Tipo</label>
-                                    <select id="tipoComprobante" name="factura-tipo" class="form-select">
-                                        <option value="A">Factura A</option>
-                                        <option value="B" selected>Factura B</option>
-                                        <option value="C">Factura C</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="col-6">
-                                    <label for="fechaEmision" class="form-label">Fecha de Emisión</label>
-                                    <input type="date" id="fechaEmision" name="factura-fecha" class="form-control" data-validation="fecha" required>
-                                </div>
+            <div class="col-md-6">
+              <label for="telefonoFactura" class="form-label fw-semibold">Teléfono</label>
+              <input type="tel" class="form-control" id="telefonoFactura" placeholder="Teléfono de contacto">
+            </div>
 
-                                <div class="col-12">
-                                    <label for="descripcionFactura" class="form-label">Descripción</label>
-                                    <textarea id="descripcionFactura" name="factura-descripcion" class="form-control" rows="2"></textarea>
-                                </div>
-                            </div>
+            <div class="col-md-6">
+              <label for="tipoFactura" class="form-label fw-semibold">Tipo de Factura</label>
+              <select class="form-select" id="tipoFactura">
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+              </select>
+            </div>
 
-                            <h3 class="h5 mt-4 mb-3">Datos del Cliente</h3>
-                            <div class="row g-3">
-                                <div class="col-12">
-                                    <label for="clienteNombre" class="form-label">Nombre o Razón Social</label>
-                                    <input type="text" id="clienteNombre" name="cliente-nombre" class="form-control" data-validation="texto" required>
-                                </div>
-                                <div class="col-6">
-                                    <label for="clienteCuit" class="form-label">CUIT/CUIL</label>
-                                    <input type="text" id="clienteCuit" name="cliente-cuit" class="form-control" placeholder="XX-XXXXXXXX-X" data-validation="cuit" required>
-                                </div>
-                                <div class="col-6">
-                                    <label for="clienteEmail" class="form-label">Email</label>
-                                    <input type="email" id="clienteEmail" name="cliente-email" class="form-control" data-validation="email" required>
-                                </div>
-                                <div class="col-12">
-                                    <label for="clienteDireccion" class="form-label">Dirección</label>
-                                    <input type="text" id="clienteDireccion" name="cliente-direccion" class="form-control" data-validation="texto" required>
-                                </div>
-                                <div class="col-12">
-                                    <label for="clienteTelefono" class="form-label">Teléfono (opcional)</label>
-                                    <input type="text" id="clienteTelefono" name="cliente-telefono" class="form-control">
-                                </div>
-                            </div>
-                        </section>
-                    </div>
+            <div class="col-md-6">
+              <label for="fechaFactura" class="form-label fw-semibold">Fecha</label>
+              <input type="date" class="form-control" id="fechaFactura">
+            </div>
 
-                    <div class="col-12 col-xl-6">
-                        <section class="section-card p-4">
-                            <h3 class="h5 mb-3">Items de la Factura</h3>
+            <div class="col-md-12">
+              <label for="descripcionFactura" class="form-label fw-semibold">Descripción</label>
+              <textarea class="form-control" id="descripcionFactura" placeholder="Detalle de la factura" style="height: 90px"></textarea>
+            </div>
 
-                            <div class="card bg-light border-dashed mb-3">
-                                <div class="card-body">
-                                    <h4 class="h6">Agregar Ítem</h4>
-                                    <form id="formNuevoItem" class="row g-3">
-                                        <div class="col-12 col-lg-6">
-                                            <input type="text" id="itemProducto" name="item-producto" class="form-control" placeholder="Descripción del producto/servicio" data-validation="texto" required>
-                                        </div>
-                                        <div class="col-8 col-lg-4">
-                                            <div class="input-group">
-                                                <span class="input-group-text">$</span>
-                                                <input type="number" id="itemPrecio" name="item-precio" class="form-control" placeholder="Precio unitario" min="0.01" step="0.01" data-validation="numero" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 col-lg-2 d-grid">
-                                            <button type="submit" form="formNuevoItem" id="agregarItemBtn" class="btn btn-sm btn-success">
-                                                <i class="fa-solid fa-plus"></i>
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            
-                            <div class="table-responsive">
-                                <table class="table table-sm align-middle mb-0">
-                                    <thead class="table-secondary">
-                                        <tr>
-                                            <th>Producto/Servicio</th>
-                                            <th class="text-end">Precio</th>
-                                            <th class="text-center">Acción</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="items-list-body">
-                                        <tr>
-                                            <td colspan="3" class="text-center text-muted py-3">
-                                                Añade un producto o servicio para calcular el total.
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+          <!-- Productos / Ítems -->
+          <div class="col-12">
+            <h6 class="fw-semibold mb-2">Productos / Ítems</h6>
+            <div class="row g-2 align-items-center mb-2">
+              <div class="col-md-8">
+                <input type="text" class="form-control" id="productoFactura" placeholder="Producto / Ítem">
+              </div>
+              <div class="col-md-4">
+                <input type="number" class="form-control" id="precioFactura" placeholder="Precio">
+              </div>
+            </div>
+            <button type="button" id="addItemBtn" class="btn btn-success">+ Agregar ítem</button>
+          </div>
 
-                            <div class="row g-2 mt-3 fw-bold">
-                                <div class="col-6 text-end">Subtotal:</div>
-                                <div class="col-6 text-end text-primary" id="outputSubtotal">$0.00</div>
-                                
-                                <div class="col-6 text-end">IVA (<span id="iva-tasa-output">0%</span>):</div>
-                                <div class="col-6 text-end text-primary" id="outputIVA">$0.00</div>
-                                
-                                <div class="col-6 text-end fs-5">TOTAL:</div>
-                                <div class="col-6 text-end fs-5 text-success" id="outputTotal">$0.00</div>
-                            </div>
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" id="crearFacturaBtn" class="btn btn-success">Crear Factura</button>
+          </div>
+      </div>
+    </div>
+  </div>
 
-                            <div id="feedback-container" class="mt-4">
-                                </div>
-                            
-                            <div class="d-grid mt-4">
-                                <button type="submit" class="btn btn-primary btn-lg">
-                                    <i class="fa-solid fa-cloud-arrow-up me-2"></i> Emitir Factura
-                                </button>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </main>
+  <!-- Toasts -->
+  <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
+    <div id="toastFactura" class="toast align-items-center text-bg-success border-0 shadow" role="alert">
+      <div class="d-flex">
+        <div class="toast-body">✅ Factura creada con éxito</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
 
-    <footer class="bg-white border-top py-3 mt-4">
-        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
-            <ul class="list-inline mb-0 small text-muted">
-                <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">¿Quiénes Somos?</a></li>
-                <li class="list-inline-item">•</li>
-                <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Contacto</a></li>
-                <li class="list-inline-item">•</li>
-                <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Política de Privacidad</a></li>
-                <li class="list-inline-item">•</li>
-                <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Cookies</a></li>
-                <li class="list-inline-item">•</li>
-                <li class="list-inline-item"><a class="text-reset text-decoration-none" href="preguntas-frecuentes.html">Preguntas Frecuentes</a></li>
-            </ul>
-            <p class="mb-0 small text-muted">&copy; 2025 Emití. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" defer></script>
-<script src="js/script.js" type="module" defer></script>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script type="module" src="js/script.js" defer></script>
 </body>
 </html>

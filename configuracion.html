@@ -1,173 +1,190 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Configuración - EMITÍ</title>
-    <meta name="description" content="Configurá los impuestos en Emití Web."/>
-    <link rel="icon" href="assets/favicon.png" type="image/png"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Configuración - EMITÍ</title>
+  <meta name="description" content="Configurá los impuestos en Emití Web."/>
+  <link rel="icon" href="assets/favicon.png" type="image/png"/>
 
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" as="style" crossorigin>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" crossorigin>
+  <!-- Bootstrap optimizado -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" as="style" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" crossorigin>
 
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-    
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" as="style" onload="this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"></noscript>
+  <!-- Font Awesome -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+  
+  <!-- Fuente Inter -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" as="style" onload="this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"></noscript>
 
-    <link rel="stylesheet" href="css/bootstrap-overrides.css"/>
-    <link rel="stylesheet" href="css/styles.css"/>
-    <link rel="stylesheet" href="css/components.css"/>
-    <link rel="stylesheet" href="css/responsive.css"/>
+  <!-- Estilos del proyecto -->
+  <link rel="stylesheet" href="css/bootstrap-overrides.css"/>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="css/components.css"/>
+  <link rel="stylesheet" href="css/responsive.css"/>
 </head>
 
 <body>
-    <header class="bg-white border-bottom py-3">
-        <div class="container d-flex align-items-center gap-3">
-            <img src="assets/logo.png" alt="Logo Emití" width="120" height="120" class="img-fluid" decoding="async" fetchpriority="high">
-            <h1 class="h5 text-muted mb-0">Gestión Profesional de Facturas</h1>
-        </div>
-    </header>
-
-    <nav class="menu">
-        <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
-                <div class="col d-grid">
-                    <a href="index.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
-                        <i class="fa-solid fa-chart-column"></i> Dashboard
-                    </a>
-                </div>
-                <div class="col d-grid">
-                    <a href="nueva-factura.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
-                        <i class="fa-solid fa-file-invoice"></i> Nueva Factura
-                    </a>
-                </div>
-                <div class="col d-grid">
-                    <a href="facturas.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
-                        <i class="fa-solid fa-file-invoice-dollar"></i> Facturas
-                    </a>
-                </div>
-                <div class="col d-grid">
-                    <a href="configuracion.html" aria-current="page" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2 active">
-                        <i class="fa-solid fa-gear"></i> Configuración
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <main class="configuracion">
-        <div class="container py-4">
-            <section class="section-card p-4">
-                <h2 class="mb-1">Configuración de impuestos</h2>
-                <p class="text-muted mb-3">Gestioná los impuestos que se aplicarán a tus facturas.</p>
-
-                <div class="list-group rounded-3 mb-3" id="listaImpuestos">
-                    </div>
-
-                <h3 class="h6 text-uppercase text-muted mb-2">Agregar nuevo impuesto</h3>
-                <div class="card border rounded-3">
-                    <form id="formNuevoImpuesto" class="card-body">
-                        <div class="row g-3 align-items-center">
-                            <div class="col-12 col-lg-6">
-                                <div class="form-floating">
-                                    <input type="text" id="nuevoNombre" name="impuesto-nombre" class="form-control" placeholder="Ej: Percepción IIBB" required />
-                                    <label for="nuevoNombre">Nombre del impuesto</label>
-                                </div>
-                            </div>
-                            <div class="col-8 col-lg-4">
-                                <div class="form-floating">
-                                    <input type="number" id="nuevoPorcentaje" name="impuesto-porcentaje" class="form-control" placeholder="0" min="0.01" step="0.01" required/>
-                                    <label for="nuevoPorcentaje">Porcentaje (%)</label>
-                                </div>
-                            </div>
-                            <div class="col-4 col-lg-2">
-                                <input type="checkbox" id="nuevoActivo" name="impuesto-activo" class="d-none" checked>
-                                <button type="button" id="btnEstadoNuevo" class="btn-estado activo" data-toggle="nuevoActivo">Activo</button>
-                            </div>
-                            <div class="col-12">
-                                <button type="submit" id="agregarImpuestoBtn" class="btn btn-success">Agregar</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-            <div class="calculadora-iva mt-4">
-                <div class="p-3 p-md-4 border rounded-3 bg-white shadow-sm">
-                    <h2 class="h5 mb-3" id="calc-iva-title">Calculadora de IVA</h2>
-                    <p class="text-muted mb-3">Simulá el precio final de una factura con IVA incluido.</p>
-
-                    <form class="row g-3" oninput="total.value = ((parseFloat(precio.value||0) * (1 + (parseFloat(aliquota.value||0)/100))).toFixed(2))">
-
-                        <div class="col-12 col-md-4">
-                            <label for="precio" class="form-label">Precio neto</label>
-                            <div class="input-group">
-                                <span class="input-group-text">$</span>
-                                <input type="number" id="precio" name="precio" class="form-control" placeholder="0.00" min="0" step="0.01" required>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-md-4">
-                            <label for="aliquota" class="form-label">Alícuota IVA</label>
-                            <input list="opciones-iva" id="aliquota" name="aliquota" class="form-control" placeholder="Ej: 21 o elegí una alícuota…">
-                            <datalist id="opciones-iva">
-                                <option value="21">
-                                <option value="10.5">
-                                <option value="27">
-                                <option value="0">
-                            </datalist>
-                        </div>
-
-                        <div class="col-12 col-md-4">
-                            <label for="total" class="form-label">Total con IVA</label>
-                            <div class="input-group">
-                                <span class="input-group-text">$</span>
-                                <output id="total" name="total" class="form-control bg-light">0.00</output>
-                            </div>
-                        </div>
-                    </form>
-
-                    <p class="text-muted small mt-3 mb-0">
-                        <i class="fa-solid fa-lightbulb text-warning me-1" aria-hidden="true"></i>
-                        Consejo: usá punto para decimales (ej: <code>1234.56</code>).  
-                        La alícuota puede ser 21, 10.5, 27 o 0 según el tipo de operación.
-                    </p>
-                </div>
-            </div>
-            </section>
-        </div>
-    </main>
-
-    <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3" id="toast-container">
-        <div id="toastFeedback" class="toast align-items-center border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="d-flex">
-                <div class="toast-body"></div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
-            </div>
-        </div>
+  <!-- Encabezado -->
+  <header class="bg-white border-bottom py-3">
+    <div class="container d-flex align-items-center gap-3">
+      <img src="assets/logo.png" alt="Logo Emití" width="120" height="120" class="img-fluid" decoding="async" fetchpriority="high">
+      <h1 class="h5 text-muted mb-0">Gestión Profesional de Facturas</h1>
     </div>
+  </header>
 
-    <footer class="bg-white border-top py-3 mt-4">
-        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
-            <ul class="list-inline mb-0 small text-muted">
-                <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">¿Quiénes Somos?</a></li>
-                <li class="list-inline-item">•</li>
-                <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Contacto</a></li>
-                <li class="list-inline-item">•</li>
-                <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Política de Privacidad</a></li>
-                <li class="list-inline-item">•</li>
-                <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Cookies</a></li>
-                <li class="list-inline-item">•</li>
-                <li class="list-inline-item"><a class="text-reset text-decoration-none" href="preguntas-frecuentes.html">Preguntas Frecuentes</a></li>
-            </ul>
-            <p class="mb-0 small text-muted">&copy; 2025 Emití. Todos los derechos reservados.</p>
+  <!-- Menú principal -->
+  <nav class="menu">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
+        <div class="col d-grid">
+          <a href="index.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
+            <i class="fa-solid fa-chart-column"></i> Dashboard
+          </a>
         </div>
-    </footer>
+        <div class="col d-grid">
+          <a href="nueva-factura.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
+            <i class="fa-solid fa-file-invoice"></i> Nueva Factura
+          </a>
+        </div>
+        <div class="col d-grid">
+          <a href="facturas.html" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2">
+            <i class="fa-solid fa-file-invoice-dollar"></i> Facturas
+          </a>
+        </div>
+        <div class="col d-grid">
+          <a href="configuracion.html" aria-current="page" class="btn btn-light border rounded-pill w-100 shadow-sm fw-bold d-inline-flex align-items-center justify-content-center gap-2 active">
+            <i class="fa-solid fa-gear"></i> Configuración
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" defer></script>
-    <script src="js/script.js" type="module" defer></script>
+  <!-- Contenido principal -->
+  <main class="configuracion">
+    <div class="container py-4">
+      <section class="section-card p-4">
+        <h2 class="mb-1">Configuración de impuestos</h2>
+        <p class="text-muted mb-3">Gestioná los impuestos que se aplicarán a tus facturas.</p>
+
+        <!-- Impuestos configurados dinámicamente -->
+        <div id="lista-impuestos" class="list-group rounded-3 mb-3">
+          <!-- Los impuestos se cargarán automáticamente desde localStorage -->
+        </div>
+
+  <!-- Agregar nuevo impuesto -->
+  <h3 class="h6 text-uppercase text-muted mb-2">Agregar nuevo impuesto</h3>
+  <form id="formAgregarImpuesto" class="card border rounded-3">
+    <div class="card-body">
+      <div class="row g-3 align-items-center">
+        <div class="col-12 col-lg-6">
+          <div class="form-floating">
+            <input type="text" id="nuevoNombre" class="form-control" placeholder="Ej: Percepción IIBB" />
+            <label for="nuevoNombre">Nombre del impuesto</label>
+          </div>
+        </div>
+        <div class="col-8 col-lg-4">
+          <div class="form-floating">
+            <input type="number" id="nuevoPorcentaje" class="form-control" placeholder="0" min="0" max="100" step="0.1" />
+            <label for="nuevoPorcentaje">Porcentaje (%)</label>
+          </div>
+        </div>
+        <div class="col-4 col-lg-2">
+          <button type="button" id="btnEstadoNuevo" class="btn-estado activo">Activo</button>
+        </div>
+        <div class="col-4 col-lg-2 d-flex justify-content-start align-items-center">
+          <button type="button" id="agregarImpuestoBtn" class="btn btn-success px-3">
+            Agregar
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <!-- Calculadora de IVA (Formulario separado) -->
+  <div class="calculadora-iva mt-4">
+    <div class="p-3 p-md-4 border rounded-3 bg-white shadow-sm">
+      <h2 class="h5 mb-3" id="calc-iva-title">Calculadora de IVA</h2>
+      <p class="text-muted mb-3">Simulá el precio final de una factura con IVA incluido.</p>
+
+      <form id="formCalculadoraIVA" novalidate class="row g-3"
+        oninput="total.value = ((parseFloat(precio.value||0) * (1 + (parseFloat(aliquota.value||0)/100))).toFixed(2))">
+
+        <div class="col-12 col-md-4">
+          <label for="precio" class="form-label">Precio neto</label>
+          <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input type="number" id="precio" name="precio" class="form-control" placeholder="0.00" min="0" step="0.01">
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <label for="aliquota" class="form-label">Alícuota IVA</label>
+          <input list="opciones-iva" id="aliquota" name="aliquota" class="form-control" placeholder="Ej: 21 o elegí una alícuota…">
+          <datalist id="opciones-iva">
+            <option value="21">
+            <option value="10.5">
+            <option value="27">
+            <option value="0">
+          </datalist>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <label for="total" class="form-label">Total con IVA</label>
+          <div class="input-group">
+            <span class="input-group-text">$</span>
+            <output id="total" name="total" class="form-control bg-light">0.00</output>
+          </div>
+        </div>
+      </form>
+
+      <p class="text-muted small mt-3 mb-0">
+        <i class="fa-solid fa-lightbulb text-warning me-1" aria-hidden="true"></i>
+        Consejo: usá punto para decimales (ej: <code>1234.56</code>).  
+        La alícuota puede ser 21, 10.5, 27 o 0 según el tipo de operación.
+      </p>
+    </div>
+  </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- Toast -->
+  <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
+    <div id="toastImpuestoOk" class="toast align-items-center text-bg-success border-0 shadow" role="alert">
+      <div class="d-flex">
+        <div class="toast-body">✅ Configuración guardada correctamente</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white border-top py-3 mt-4">
+    <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+      <ul class="list-inline mb-0 small text-muted">
+        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">¿Quiénes Somos?</a></li>
+        <li class="list-inline-item">•</li>
+        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Contacto</a></li>
+        <li class="list-inline-item">•</li>
+        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Política de Privacidad</a></li>
+        <li class="list-inline-item">•</li>
+        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Cookies</a></li>
+        <li class="list-inline-item">•</li>
+        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="preguntas-frecuentes.html">Preguntas Frecuentes</a></li>
+      </ul>
+      <p class="mb-0 small text-muted">&copy; 2025 Emití. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="js/script.js"></script>
 </body>
 </html>
