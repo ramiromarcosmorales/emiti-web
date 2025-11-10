@@ -5,6 +5,9 @@
 - [feature/coord-devops-cuarta-entrega] Actualización base y agregado issue templates.  
   PR: [#108](https://github.com/ramiromarcosmorales/emiti-web/pull/108) - @ramiromarcosmorales (Coordinador/DevOps + Tester QA)
 
+- [feature/dev-storage] Creación y finalización de archivos `js/utils/storage.js` y `docs/05-storage/storage-doc.md`.  
+  PR: [#114](https://github.com/ramiromarcosmorales/emiti-web/pull/114) - @victoriaimo (Desarrollador JS Local y Session Storage)
+
 ### Changed
 
 ### Fixed
