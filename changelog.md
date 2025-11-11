@@ -10,6 +10,9 @@
 
 ### Changed
 
+- [revert/dom-eventos] Reversión de la PR #115 hasta la integración completa de la capa POO.
+  PR: [#117](https://github.com/ramiromarcosmorales/emiti-web/pull/117) - @ramiromarcosmorales (Coordinador/DevOps + Tester QA)
+
 ### Fixed
 
 
