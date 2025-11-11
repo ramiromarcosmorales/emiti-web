@@ -26,19 +26,19 @@
   <link rel="stylesheet" href="css/styles.css"/>
   <link rel="stylesheet" href="css/components.css"/>
   <link rel="stylesheet" href="css/responsive.css"/>
-
 </head>
+
 <body>
-    <!-- Encabezado -->
+  <!-- Encabezado -->
   <header class="bg-white border-bottom py-3">
     <div class="container d-flex align-items-center gap-3">
       <img src="assets/logo.png" alt="Logo Emití" width="120" height="120" class="img-fluid" decoding="async" fetchpriority="high">
       <h1 class="h5 text-muted mb-0">Gestión Profesional de Facturas</h1>
-        </div>
-    </header>
+    </div>
+  </header>
 
   <!-- Menú principal -->
-    <nav class="menu">
+  <nav class="menu">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
         <div class="col d-grid">
@@ -63,121 +63,103 @@
         </div>
       </div>
     </div>
-    </nav>
+  </nav>
 
   <!-- Contenido principal -->
-   <main class="configuracion">
+  <main class="configuracion">
     <div class="container py-4">
       <section class="section-card p-4">
         <h2 class="mb-1">Configuración de impuestos</h2>
         <p class="text-muted mb-3">Gestioná los impuestos que se aplicarán a tus facturas.</p>
 
-        <!-- Impuestos configurados -->
-        <div class="list-group rounded-3 mb-3">
-          <div class="list-group-item">
-            <div class="row align-items-center g-2 imp-item">
-              <!-- Nombre del impuesto + Importe (%) juntos -->
-              <div class="col-12 col-sm d-flex align-items-center gap-2 name-group">
-                <div class="form-check m-0 d-flex align-items-center gap-2">
-                  <input class="form-check-input" type="checkbox" id="ivaCheck" checked>
-                  <label class="form-check-label fw-semibold m-0" for="ivaCheck">IVA</label>
-                </div>
-                <span class="badge bg-light text-dark px-2 py-1">21%</span>
-              </div>
-              <!-- Botón Activo -->
-              <div class="col-auto btn-estado-col">
-                <div class="d-inline">
-                  <button type="button" id="btnEstadoIVA" class="btn-estado activo">Activo</button>
-                </div>
-              </div>
-              <!-- Acciones al final -->
-              <div class="col-auto ms-sm-auto actions-col d-flex justify-content-end gap-2">
-                <button type="button" class="btn btn-light border rounded-pill btn-sm" title="Editar"><i class="fa-solid fa-pen"></i></button>
-                <button type="button" class="btn btn-light border rounded-pill btn-sm" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
-              </div>
-            </div>
-          </div>
+        <!-- Impuestos configurados dinámicamente -->
+        <div id="lista-impuestos" class="list-group rounded-3 mb-3">
+          <!-- Los impuestos se cargarán automáticamente desde localStorage -->
         </div>
 
-        <!-- Agregar nuevo impuesto -->
-        <h3 class="h6 text-uppercase text-muted mb-2">Agregar nuevo impuesto</h3>
-        <div class="card border rounded-3">
-          <div class="card-body">
-            <div class="row g-3 align-items-center">
-              <div class="col-12 col-lg-6">
-                <div class="form-floating">
-                  <input type="text" id="nuevoNombre" class="form-control" placeholder="Ej: Percepción IIBB" />
-                  <label for="nuevoNombre">Nombre del impuesto</label>
-                </div>
-              </div>
-              <div class="col-8 col-lg-4">
-                <div class="form-floating">
-                  <input type="number" id="nuevoPorcentaje" class="form-control" placeholder="0" min="0" max="100" step="0.1"/>
-                  <label for="nuevoPorcentaje">Porcentaje (%)</label>
-                </div>
-              </div>
-              <div class="col-4 col-lg-2">
-                <button type="button" id="btnEstadoNuevo" class="btn-estado activo">Activo</button>
-              </div>
-              <div class="col-12">
-                <button type="button" id="agregarImpuestoBtn" class="btn btn-success">Agregar</button>
-              </div>
-            </div>
+  <!-- Agregar nuevo impuesto -->
+  <h3 class="h6 text-uppercase text-muted mb-2">Agregar nuevo impuesto</h3>
+  <form id="formAgregarImpuesto" class="card border rounded-3">
+    <div class="card-body">
+      <div class="row g-3 align-items-center">
+        <div class="col-12 col-lg-6">
+          <div class="form-floating">
+            <input type="text" id="nuevoNombre" class="form-control" placeholder="Ej: Percepción IIBB" />
+            <label for="nuevoNombre">Nombre del impuesto</label>
           </div>
         </div>
-
-    <!-- Calculadora de IVA (dentro del mismo container) -->
-      <div class="calculadora-iva mt-4">
-        <div class="p-3 p-md-4 border rounded-3 bg-white shadow-sm">
-          <h2 class="h5 mb-3" id="calc-iva-title">Calculadora de IVA</h2>
-          <p class="text-muted mb-3">Simulá el precio final de una factura con IVA incluido.</p>
-
-          <form class="row g-3" oninput="total.value = ((parseFloat(precio.value||0) * (1 + (parseFloat(aliquota.value||0)/100))).toFixed(2))">
-
-            <div class="col-12 col-md-4">
-              <label for="precio" class="form-label">Precio neto</label>
-              <div class="input-group">
-                <span class="input-group-text">$</span>
-                <input type="number" id="precio" name="precio" class="form-control" placeholder="0.00" min="0" step="0.01" required>
-              </div>
-            </div>
-
-            <div class="col-12 col-md-4">
-              <label for="aliquota" class="form-label">Alícuota IVA</label>
-              <input list="opciones-iva" id="aliquota" name="aliquota" class="form-control" placeholder="Ej: 21 o elegí una alícuota…">
-              <datalist id="opciones-iva">
-                <option value="21">
-                <option value="10.5">
-                <option value="27">
-                <option value="0">
-              </datalist>
-            </div>
-
-            <div class="col-12 col-md-4">
-              <label for="total" class="form-label">Total con IVA</label>
-              <div class="input-group">
-                <span class="input-group-text">$</span>
-                <output id="total" name="total" class="form-control bg-light">0.00</output>
-              </div>
-            </div>
-          </form>
-
-          <p class="text-muted small mt-3 mb-0">
-            <i class="fa-solid fa-lightbulb text-warning me-1" aria-hidden="true"></i>
-            Consejo: usá punto para decimales (ej: <code>1234.56</code>).  
-            La alícuota puede ser 21, 10.5, 27 o 0 según el tipo de operación.
-          </p>
+        <div class="col-8 col-lg-4">
+          <div class="form-floating">
+            <input type="number" id="nuevoPorcentaje" class="form-control" placeholder="0" min="0" max="100" step="0.1" />
+            <label for="nuevoPorcentaje">Porcentaje (%)</label>
+          </div>
+        </div>
+        <div class="col-4 col-lg-2">
+          <button type="button" id="btnEstadoNuevo" class="btn-estado activo">Activo</button>
+        </div>
+        <div class="col-4 col-lg-2 d-flex justify-content-start align-items-center">
+          <button type="button" id="agregarImpuestoBtn" class="btn btn-success px-3">
+            Agregar
+          </button>
         </div>
       </div>
+    </div>
+  </form>
+
+  <!-- Calculadora de IVA (Formulario separado) -->
+  <div class="calculadora-iva mt-4">
+    <div class="p-3 p-md-4 border rounded-3 bg-white shadow-sm">
+      <h2 class="h5 mb-3" id="calc-iva-title">Calculadora de IVA</h2>
+      <p class="text-muted mb-3">Simulá el precio final de una factura con IVA incluido.</p>
+
+      <form id="formCalculadoraIVA" novalidate class="row g-3"
+        oninput="total.value = ((parseFloat(precio.value||0) * (1 + (parseFloat(aliquota.value||0)/100))).toFixed(2))">
+
+        <div class="col-12 col-md-4">
+          <label for="precio" class="form-label">Precio neto</label>
+          <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input type="number" id="precio" name="precio" class="form-control" placeholder="0.00" min="0" step="0.01">
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <label for="aliquota" class="form-label">Alícuota IVA</label>
+          <input list="opciones-iva" id="aliquota" name="aliquota" class="form-control" placeholder="Ej: 21 o elegí una alícuota…">
+          <datalist id="opciones-iva">
+            <option value="21">
+            <option value="10.5">
+            <option value="27">
+            <option value="0">
+          </datalist>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <label for="total" class="form-label">Total con IVA</label>
+          <div class="input-group">
+            <span class="input-group-text">$</span>
+            <output id="total" name="total" class="form-control bg-light">0.00</output>
+          </div>
+        </div>
+      </form>
+
+      <p class="text-muted small mt-3 mb-0">
+        <i class="fa-solid fa-lightbulb text-warning me-1" aria-hidden="true"></i>
+        Consejo: usá punto para decimales (ej: <code>1234.56</code>).  
+        La alícuota puede ser 21, 10.5, 27 o 0 según el tipo de operación.
+      </p>
+    </div>
+  </div>
+
       </section>
     </div>
-</main>
+  </main>
 
   <!-- Toast -->
   <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
     <div id="toastImpuestoOk" class="toast align-items-center text-bg-success border-0 shadow" role="alert">
       <div class="d-flex">
-        <div class="toast-body">✅ Tu impuesto se agregó correctamente</div>
+        <div class="toast-body">✅ Configuración guardada correctamente</div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
       </div>
     </div>
@@ -199,10 +181,10 @@
       </ul>
       <p class="mb-0 small text-muted">&copy; 2025 Emití. Todos los derechos reservados.</p>
     </div>
-    </footer>
+  </footer>
 
-<!-- Scripts -->
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
+  <script type="module" src="js/script.js"></script>
 </body>
 </html>

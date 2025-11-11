@@ -13,15 +13,12 @@
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" as="style" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" crossorigin>
 
+  <!-- Estilos locales -->
   <link rel="stylesheet" href="css/bootstrap-overrides.css">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/responsive.css">
 
-    <!-- Atributo Defer -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" defer></script>
-  <script src="js/script.js" defer></script>
-  
   <!-- Font Awesome y fuentes -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         as="style" onload="this.rel='stylesheet'">
@@ -34,6 +31,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
   </noscript>
 </head>
+
 <body>
   <!-- Encabezado -->
   <header class="bg-white border-bottom py-3">
@@ -71,7 +69,7 @@
     </div>
   </nav>
 
-  <!-- Contenido -->
+  <!-- Contenido principal -->
   <main class="nueva-factura">
     <div class="container py-3">
       <div class="row">
@@ -89,105 +87,83 @@
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-white border-top py-3">
-    <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
-      <ul class="list-inline mb-0 small text-muted">
-        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">¿Quiénes Somos?</a></li>
-        <li class="list-inline-item">•</li>
-        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Contacto</a></li>
-        <li class="list-inline-item">•</li>
-        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Política de Privacidad</a></li>
-        <li class="list-inline-item">•</li>
-        <li class="list-inline-item"><a class="text-reset text-decoration-none" href="#">Cookies</a></li>
-                <li class="list-inline-item">•</li>
-                <li class="list-inline-item"><a class="text-reset text-decoration-none" href="preguntas-frecuentes.html">Preguntas Frecuentes</a></li>
-      </ul>
-      <p class="mb-0 small text-muted">&copy; 2025 Emití. Todos los derechos reservados.</p>
-    </div>
-  </footer>
+  <!-- Modal Nueva Factura -->
+  <div class="modal fade" id="modalFactura" tabindex="-1" aria-labelledby="modalFacturaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalFacturaLabel">Nueva Factura</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
 
-<!-- Modal Nueva Factura -->
-<div class="modal fade" id="modalFactura" tabindex="-1" aria-labelledby="modalFacturaLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content rounded-4 shadow">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalFacturaLabel">Nueva Factura</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
+        <div class="modal-body">
+          <form id="formFactura" class="row g-3">
+            <div class="col-md-6">
+              <label for="clienteFactura" class="form-label fw-semibold">Cliente</label>
+              <input type="text" class="form-control" id="clienteFactura" placeholder="Nombre del cliente">
+            </div>
 
-      <div class="modal-body">
-        <form class="row g-3">
-          
-          <div class="col-md-6">
-            <label for="clienteFactura" class="form-label fw-semibold">Cliente</label>
-            <input type="text" class="form-control" id="clienteFactura" placeholder="Nombre del cliente">
-          </div>
+            <div class="col-md-6">
+              <label for="cuitFactura" class="form-label fw-semibold">CUIT / CUIL</label>
+              <input type="text" class="form-control" id="cuitFactura" placeholder="CUIT / CUIL">
+            </div>
 
-          <div class="col-md-6">
-            <label for="cuitFactura" class="form-label fw-semibold">CUIT / CUIL</label>
-            <input type="text" class="form-control" id="cuitFactura" placeholder="CUIT / CUIL">
-          </div>
+            <div class="col-md-6">
+              <label for="direccionFactura" class="form-label fw-semibold">Dirección</label>
+              <input type="text" class="form-control" id="direccionFactura" placeholder="Dirección del cliente">
+            </div>
 
-          <div class="col-md-6">
-            <label for="direccionFactura" class="form-label fw-semibold">Dirección</label>
-            <input type="text" class="form-control" id="direccionFactura" placeholder="Dirección del cliente">
-          </div>
+            <div class="col-md-6">
+              <label for="emailFactura" class="form-label fw-semibold">Correo electrónico</label>
+              <input type="email" class="form-control" id="emailFactura" placeholder="correo@ejemplo.com">
+            </div>
 
-          <div class="col-md-6">
-            <label for="emailFactura" class="form-label fw-semibold">Correo electrónico</label>
-            <input type="email" class="form-control" id="emailFactura" placeholder="correo@ejemplo.com">
-          </div>
+            <div class="col-md-6">
+              <label for="telefonoFactura" class="form-label fw-semibold">Teléfono</label>
+              <input type="tel" class="form-control" id="telefonoFactura" placeholder="Teléfono de contacto">
+            </div>
 
-          <div class="col-md-6">
-            <label for="telefonoFactura" class="form-label fw-semibold">Teléfono</label>
-            <input type="tel" class="form-control" id="telefonoFactura" placeholder="Teléfono de contacto">
-          </div>
+            <div class="col-md-6">
+              <label for="tipoFactura" class="form-label fw-semibold">Tipo de Factura</label>
+              <select class="form-select" id="tipoFactura">
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+              </select>
+            </div>
 
-          <div class="col-md-6">
-            <label for="tipoFactura" class="form-label fw-semibold">Tipo de Factura</label>
-            <select class="form-select" id="tipoFactura">
-              <option>A</option>
-              <option>B</option>
-              <option>C</option>
-            </select>
-          </div>
+            <div class="col-md-6">
+              <label for="fechaFactura" class="form-label fw-semibold">Fecha</label>
+              <input type="date" class="form-control" id="fechaFactura">
+            </div>
 
-          <div class="col-md-6">
-            <label for="fechaFactura" class="form-label fw-semibold">Fecha</label>
-            <input type="date" class="form-control" id="fechaFactura">
-          </div>
-
-          <div class="col-md-12">
-            <label for="descripcionFactura" class="form-label fw-semibold">Descripción</label>
-            <textarea class="form-control" id="descripcionFactura" placeholder="Detalle de la factura" style="height: 90px"></textarea>
-          </div>
+            <div class="col-md-12">
+              <label for="descripcionFactura" class="form-label fw-semibold">Descripción</label>
+              <textarea class="form-control" id="descripcionFactura" placeholder="Detalle de la factura" style="height: 90px"></textarea>
+            </div>
 
           <!-- Productos / Ítems -->
           <div class="col-12">
             <h6 class="fw-semibold mb-2">Productos / Ítems</h6>
             <div class="row g-2 align-items-center mb-2">
               <div class="col-md-8">
-                <input type="text" class="form-control" placeholder="Producto / Ítem">
+                <input type="text" class="form-control" id="productoFactura" placeholder="Producto / Ítem">
               </div>
               <div class="col-md-4">
-                <input type="number" class="form-control" placeholder="Precio">
+                <input type="number" class="form-control" id="precioFactura" placeholder="Precio">
               </div>
             </div>
-            <button type="button" class="btn btn-sm btn-success">+ Agregar ítem</button>
+            <button type="button" id="addItemBtn" class="btn btn-success">+ Agregar ítem</button>
           </div>
-        </form>
-      </div>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="submit" id="crearFacturaBtn" class="btn btn-success">Crear Factura</button>
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" id="crearFacturaBtn" class="btn btn-success">Crear Factura</button>
+          </div>
       </div>
     </div>
   </div>
-</div>
-
-
 
   <!-- Toasts -->
   <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
@@ -198,6 +174,9 @@
       </div>
     </div>
   </div>
-  
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script type="module" src="js/script.js" defer></script>
 </body>
 </html>
