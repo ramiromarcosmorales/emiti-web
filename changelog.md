@@ -8,10 +8,10 @@
 - [feature/dev-storage] Creación y finalización de archivos `js/utils/storage.js` y `docs/05-storage/storage-doc.md`.  
   PR: [#114](https://github.com/ramiromarcosmorales/emiti-web/pull/114) - @victoriaimo (Desarrollador JS Local y Session Storage)
 
-  - [feature/dev-eventos-dom] Agregacion Archivos JavaScripts + Dom - Eventos + HTML.  
-  PR: [#115](https://github.com/ramiromarcosmorales/emiti-web/pull/115) - @Harika-sebasthian (Desarrollador JS Eventos + DOM)
-
 ### Changed
+
+- [revert/dom-eventos] Reversión de la PR #115 hasta la integración completa de la capa POO.
+  PR: [#117](https://github.com/ramiromarcosmorales/emiti-web/pull/117) - @ramiromarcosmorales (Coordinador/DevOps + Tester QA)
 
 ### Fixed
 
