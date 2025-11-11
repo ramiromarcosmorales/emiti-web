@@ -11,6 +11,9 @@
 - [feature/dev-poo-logica-negocio] Creación de las clases así como diagrama de clases y documentación.
   PR: [#116](https://github.com/ramiromarcosmorales/emiti-web/pull/116) - @ramire-uces (Desarrollador JS POO)
 
+- [feature/dev-eventos-dom] Agregacion Archivos JavaScripts + Dom - Eventos + HTML.  
+  PR: [#119](https://github.com/ramiromarcosmorales/emiti-web/pull/119) - @Harika-sebasthian (Desarrollador JS Eventos + DOM)
+
 ### Changed
 
 - [revert/dom-eventos] Reversión de la PR #115 hasta la integración completa de la capa POO.
