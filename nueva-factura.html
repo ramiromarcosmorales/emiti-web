@@ -117,7 +117,8 @@
       </div>
 
       <div class="modal-body">
-        <form class="row g-3">
+        <form id="formFactura" class="row g-3"></form>
+         <form class="row g-3">
           
           <div class="col-md-6">
             <label for="clienteFactura" class="form-label fw-semibold">Cliente</label>
@@ -164,20 +165,20 @@
           </div>
 
           <!-- Productos / Ítems -->
-          <div class="col-12">
-            <h6 class="fw-semibold mb-2">Productos / Ítems</h6>
-            <div class="row g-2 align-items-center mb-2">
-              <div class="col-md-8">
-                <input type="text" class="form-control" placeholder="Producto / Ítem">
-              </div>
-              <div class="col-md-4">
-                <input type="number" class="form-control" placeholder="Precio">
-              </div>
-            </div>
-            <button type="button" class="btn btn-sm btn-success">+ Agregar ítem</button>
-          </div>
-        </form>
-      </div>
+        <div class="col-12">
+         <h6 class="fw-semibold mb-2">Productos / Ítems</h6>
+           <div class="row g-2 align-items-center mb-2">
+            <div class="col-md-8">
+                <input type="text" class="form-control" id="productoFactura" placeholder="Producto / Ítem">
+               </div>
+               <div class="col-md-4">
+              <input type="number" class="form-control" id="precioFactura" placeholder="Precio">
+           </div>
+           </div>
+            <button type="button" id="addItemBtn" class="btn btn-sm btn-success">+ Agregar ítem</button>
+           </div>
+          </form>
+        </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

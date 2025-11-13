@@ -92,50 +92,9 @@
           </div>
         </div>
 
-        <!-- Facturas de ejemplo -->
-        <div class="row mt-4 g-3">
-          <div class="col-md-4">
-            <div class="card h-100 shadow-sm">
-              <div class="card-body">
-                <h5 class="card-title">Factura #001</h5>
-                <p><strong>Cliente:</strong> Juan Pérez</p>
-                <p><strong>Monto:</strong> $15.000</p>
-                <p><strong>Fecha:</strong> 01/10/2025</p>
-              </div>
-              <div class="card-footer text-end">
-                <button class="btn btn-sm btn-outline-success" aria-label="Ver detalle de Factura #001">Ver Detalle</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card h-100 shadow-sm">
-              <div class="card-body">
-                <h5 class="card-title">Factura #002</h5>
-                <p><strong>Cliente:</strong> María López</p>
-                <p><strong>Monto:</strong> $22.500</p>
-                <p><strong>Fecha:</strong> 02/10/2025</p>
-              </div>
-              <div class="card-footer text-end">
-                <button class="btn btn-sm btn-outline-success" aria-label="Ver detalle de Factura #002">Ver Detalle</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card h-100 shadow-sm">
-              <div class="card-body">
-                <h5 class="card-title">Factura #003</h5>
-                <p><strong>Cliente:</strong> Estudio Contable SRL</p>
-                <p><strong>Monto:</strong> $35.000</p>
-                <p><strong>Fecha:</strong> 03/10/2025</p>
-              </div>
-              <div class="card-footer text-end">
-                <button class="btn btn-sm btn-outline-success" aria-label="Ver detalle de Factura #003">Ver Detalle</button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <!-- Listar Facturas -->
+          <div class="row mt-4 g-3" id="lista-facturas">
+       </div>
 
         <!-- Botón Nueva Factura -->
         <div class="text-center mt-4">
@@ -157,6 +116,7 @@
       </div>
 
       <div class="modal-body">
+        <form id="formFactura" class="row g-3"></form>
         <form class="row g-3">
           
           <div class="col-md-6">
@@ -203,21 +163,21 @@
             <textarea class="form-control" id="descripcionFactura" placeholder="Detalle de la factura" style="height: 90px"></textarea>
           </div>
 
-          <!-- Productos / Ítems -->
-          <div class="col-12">
-            <h6 class="fw-semibold mb-2">Productos / Ítems</h6>
-            <div class="row g-2 align-items-center mb-2">
-              <div class="col-md-8">
-                <input type="text" class="form-control" placeholder="Producto / Ítem">
-              </div>
-              <div class="col-md-4">
-                <input type="number" class="form-control" placeholder="Precio">
-              </div>
-            </div>
-            <button type="button" class="btn btn-sm btn-success">+ Agregar ítem</button>
-          </div>
-        </form>
-      </div>
+      <!-- Productos / Ítems -->
+        <div class="col-12">
+         <h6 class="fw-semibold mb-2">Productos / Ítems</h6>
+           <div class="row g-2 align-items-center mb-2">
+            <div class="col-md-8">
+                <input type="text" class="form-control" id="productoFactura" placeholder="Producto / Ítem">
+               </div>
+               <div class="col-md-4">
+              <input type="number" class="form-control" id="precioFactura" placeholder="Precio">
+           </div>
+           </div>
+            <button type="button" id="addItemBtn" class="btn btn-sm btn-success">+ Agregar ítem</button>
+           </div>
+          </form>
+        </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -256,6 +216,23 @@
       </div>
     </div>
   </div>
+
+  <!-- Template -->
+  <template id="template-factura">
+   <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+       <h5 class="card-title" data-factura-id></h5>
+        <p><strong>Cliente:</strong> <span data-cliente></span></p>
+        <p><strong>Monto:</strong> <span data-monto></span></p>
+        <p><strong>Fecha:</strong> <span data-fecha></span></p>
+      </div>
+     <div class="card-footer text-end">
+        <button class="btn btn-sm btn-outline-success" data-detalle-btn>Ver Detalle</button>
+     </div>
+    </div>
+  </div>
+</template>
 
 </body>
 </html>
