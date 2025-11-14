@@ -314,7 +314,7 @@ function initConfiguracion() {
 
       clone.querySelector(".imp-check").checked = imp.activo;
       clone.querySelector(".imp-nombre").textContent = imp.nombre;
-      clone.querySelector(".imp-porcentaje").textContent = `${imp.porcentaje}%`;
+      clone.querySelector(".imp-porcentaje").textContent = imp.porcentaje;
       clone.querySelector(".btn-eliminar").dataset.id = imp.id;
 
       lista.appendChild(clone);
