@@ -1,4 +1,4 @@
-# 🟣 PULL REQUEST – Actividad Obligatoria N° 3 – Programación Web I
+# 🟣 PULL REQUEST – Actividad Obligatoria N° 4 – Programación Web I
 
 ---
 
@@ -11,10 +11,10 @@
 - **Profesor:** Lic. Matías Velasquez  
 - **Cuatrimestre/Año:** 2º Cuatrimestre / 2025  
 - **Rol asignado para esta entrega:** _(Ej.:
- ■ Arquitecto de Diagramas de Actividades
- ■ Desarrollador JavaScript
- ■ Tester JavaScript / QA Engineer
- ■ Coordinador/DevOps)
+ ■ Coordinador/DevOps + Tester QA
+ ■ Desarrollador JS Eventos + DOM
+ ■ Desarrollador JS POO
+ ■ Desarrollador JS Local y Session Storage)
  (Borrar los roles que no te correspondan)
 
 ---
@@ -69,6 +69,6 @@ _(Opcional – Aclaraciones, dificultades encontradas, sugerencias, etc.)_
 
 ## 🧾 Enlace a la consigna
 
-[📄 Consigna Actividad Obligatoria N° 3 - GitHub](https://drive.google.com/file/d/1eyNc2goRxQOh3P90E_LDplIa9ySRAMjs/view?usp=sharing)
+[📄 Consigna Actividad Obligatoria N° 4 - GitHub](https://drive.google.com/file/d/1XBBDde4iICnDAaHj7sN5134iqSNkFQyJ/view)
 
 ---

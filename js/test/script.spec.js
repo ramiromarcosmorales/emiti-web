@@ -71,7 +71,7 @@ describe("FLUJO 1: Dashboard – Visualización de métricas", () => {
 
 
 // ============================================================
-// 🟡 FLUJO 2: NUEVA FACTURA – CREACIÓN DE FACTURAS (I/O - IMPURAS CON VALIDACIÓN ITERATIVA)
+// 🟡 FLUJO 2: NUEVA FACTURA – CREACIÓN DE FACTURAS
 // ============================================================
 
 describe("FLUJO 2: Nueva Factura – Creación de facturas", () => {
@@ -432,14 +432,14 @@ describe("FLUJO 2: Nueva Factura – Creación de facturas", () => {
         "500"
       );
       confirmSpy.and.returnValues(
-        true,               // agregar otro ítem
-        false               // no agregar más
+        true,
+        false
       );
 
       const items = solicitarItemsFactura();
 
       expect(items.length).toBe(2);
-      expect(alertSpy).toHaveBeenCalled(); // Debe mostrar errores de validación
+      expect(alertSpy).toHaveBeenCalled();
     });
 
     it("rechaza precio igual a 0", () => {
@@ -448,17 +448,17 @@ describe("FLUJO 2: Nueva Factura – Creación de facturas", () => {
         "0",
         "1000"
       );
-      confirmSpy.and.returnValue(false); // no agregar más
+      confirmSpy.and.returnValue(false);
 
       const items = solicitarItemsFactura();
 
       expect(items.length).toBe(1);
       expect(items[0].precio).toBe(1000);
-      expect(alertSpy).toHaveBeenCalled(); // Debe mostrar error
+      expect(alertSpy).toHaveBeenCalled();
     });
 
     it("maneja cancelación al ingresar producto", () => {
-      promptSpy.and.returnValue(null); // Simular cancelar al ingresar producto
+      promptSpy.and.returnValue(null);
 
       const items = solicitarItemsFactura();
 
@@ -597,14 +597,12 @@ describe("FLUJO 4: Configuración – Impuestos", () => {
   let alertSpy, promptSpy, confirmSpy;
 
   beforeEach(() => {
-    // Configurar spies para alert, prompt y confirm
     alertSpy = spyOn(window, 'alert');
     promptSpy = spyOn(window, 'prompt');
     confirmSpy = spyOn(window, 'confirm');
   });
 
   afterEach(() => {
-    // Restaurar funciones originales después de cada test
     alertSpy.and.stub();
     promptSpy.and.stub();
     confirmSpy.and.stub();
@@ -690,7 +688,7 @@ describe("FLUJO 4: Configuración – Impuestos", () => {
       expect(nuevoImpuesto.nombre).toBe("Ganancias");
       expect(nuevoImpuesto.porcentaje).toBe(15);
       expect(nuevoImpuesto.activo).toBe(true);
-      expect(alertSpy).toHaveBeenCalled(); // Confirmación de agregado
+      expect(alertSpy).toHaveBeenCalled();
     });
 
     it("valida que el nombre sea obligatorio (vacio)", () => {

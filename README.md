@@ -16,12 +16,10 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 
 ## 🎯 Objetivos del entregable actual (Actividad Obligatoria 3)
 
-- Implementar la lógica del sistema en JavaScript aplicando estructuras de control, funciones y validaciones.  
-- Implementar al menos cuatro flujos de trabajo principales que simulen el funcionamiento del proyecto.  
-- Incorporar un menú interactivo con prompt() para navegar entre los distintos flujos.    
-- Elaborar y documentar diagramas de actividades con PlantUML.  
-- Aplicar testing automatizado con Jasmine para comprobar la funcionalidad de los flujos.  
-- Mantener buenas prácticas de legibilidad, nomenclatura y documentación en el código.
+- Implementar Programación Orientada a Objetos
+- Persistencia mediante Local y Session Storage
+- Interacción dinámica con DOM y Eventos
+- Testing automatizado con Jasmine
 
 ---
 
@@ -42,10 +40,10 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 
 ## 🔧 Funcionalidades previstas
 
-- Ejecución de flujos interactivos que representan procesos básicos del proyecto.  
-- Navegación por menú con prompt() para acceder a cada flujo de simulación.  
-- Ingreso y validación de datos por parte del usuario.  
-- Representación general de los procesos mediante diagramas de actividades UML.  
+- Gestión POO
+- Persistencia de datos mediante Storage
+- Renderizado dinámico de los datos mediante DOM
+- Testing automatizado por módulos
 
 ---
 
@@ -56,7 +54,9 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 - 📁 [Índice de prompts](docs/02-prompts/prompts.md)
 - 🧪 [Índice de testing (test-case)](docs/03-testing/testing-doc.md)
 - 📘 [Diagramas de actividades UML](docs/04-diagramas/01-diagramas-de-actividades/diagramas-doc.md)  
+- 📘 [Diagrama POO - UML](docs/04-diagramas/02-diagrama-de-clases/diagrama-clases-doc.md)
 - 📄 [Documento de testing JavaScript](js/test/testing-doc.md) 
+- 🗄️ [Documento de Storage](docs/05-storage/storage-doc.md)
 - ♼ [Changelog](/changelog.md)
 
 ---
@@ -65,10 +65,10 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 
 | Nombre completo           | Usuario GitHub              | Matrícula | Rol                            |
 |---------------------------|-----------------------------|-----------|--------------------------------|
-| Victoria Imoberdorff      | @victoriaimo                | 119707    | Coordinador / DevOps           | 
-| Ramiro Nicolás Renterías  | @ramire-uces                | 143709    | Arquitecto de Diagramas de Actividades |
-| Sebasthian Harika         | @Harika-sebasthian          | 148722    | Desarrollador JavaScript              |
-| Ramiro Marcos Morales     | @ramiromarcosmorales        | 149386    | Tester JavaScript / QA Engineer       |
+| Victoria Imoberdorff      | @victoriaimo                | 119707    | Desarrollador JS Local y Session Storage           | 
+| Ramiro Nicolás Renterías  | @ramire-uces                | 143709    | Desarrollador JS POO |
+| Sebasthian Harika         | @Harika-sebasthian          | 148722    | Desarrollador JS Eventos + DOM              |
+| Ramiro Marcos Morales     | @ramiromarcosmorales        | 149386    | Coordinador/DevOps + Tester QA       |
 ---
 
 ## 📌 Enlace del sitio (GitHub Pages)
