@@ -116,8 +116,7 @@
       </div>
 
       <div class="modal-body">
-        <form id="formFactura" class="row g-3"></form>
-        <form class="row g-3">
+        <form id="formFactura" class="row g-3">
           
           <div class="col-md-6">
             <label for="clienteFactura" class="form-label fw-semibold">Cliente</label>
@@ -176,7 +175,7 @@
            </div>
             <button type="button" id="addItemBtn" class="btn btn-sm btn-success">+ Agregar ítem</button>
            </div>
-          </form>
+        </form>
         </div>
 
       <div class="modal-footer">
@@ -220,15 +219,16 @@
   <!-- Template -->
   <template id="template-factura">
    <div class="col-md-4">
-    <div class="card h-100 shadow-sm">
+    <div class="card h-100 shadow-sm factura-card">
       <div class="card-body">
-       <h5 class="card-title" data-factura-id></h5>
-        <p><strong>Cliente:</strong> <span data-cliente></span></p>
-        <p><strong>Monto:</strong> <span data-monto></span></p>
-        <p><strong>Fecha:</strong> <span data-fecha></span></p>
+       <h5 class="card-title factura-numero"></h5>
+        <p><strong>Cliente:</strong> <span class="factura-cliente"></span></p>
+        <p><strong>Monto:</strong> <span class="factura-total"></span></p>
+        <p><strong>Estado:</strong> <span class="factura-estado"></span></p>
       </div>
      <div class="card-footer text-end">
-        <button class="btn btn-sm btn-outline-success" data-detalle-btn>Ver Detalle</button>
+        <button class="btn btn-sm btn-outline-success btn-marcar-pagada" title="Marcar como pagada">✓ Pagada</button>
+        <button class="btn btn-sm btn-outline-danger btn-eliminar" title="Eliminar factura">🗑 Eliminar</button>
      </div>
     </div>
   </div>
