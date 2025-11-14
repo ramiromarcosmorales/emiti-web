@@ -23,6 +23,9 @@
 - [feature/tester-qa-specs] Desarrollo de tests y refactorizacion de docs.  
   PR: [#121](https://github.com/ramiromarcosmorales/emiti-web/pull/121) - @ramiromarcosmorales (Coordinador/DevOps + Tester QA)
 
+- [feature/feature/coord-devops-cuarta-entrega] Actualización del README.  
+  PR: [#122](https://github.com/ramiromarcosmorales/emiti-web/pull/122) - @ramiromarcosmorales (Coordinador/DevOps + Tester QA)
+
 ### Fixed
 
 
