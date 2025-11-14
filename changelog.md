@@ -10,11 +10,15 @@
 
 - [feature/dev-poo-logica-negocio] Creación de las clases así como diagrama de clases y documentación.
   PR: [#116](https://github.com/ramiromarcosmorales/emiti-web/pull/116) - @ramire-uces (Desarrollador JS POO)
+  
 
 ### Changed
 
 - [revert/dom-eventos] Reversión de la PR #115 hasta la integración completa de la capa POO.
   PR: [#117](https://github.com/ramiromarcosmorales/emiti-web/pull/117) - @ramiromarcosmorales (Coordinador/DevOps + Tester QA)
+
+- [feature/tester-qa-specs] Desarrollo de tests y refactorizacion de docs.  
+  PR: [#121](https://github.com/ramiromarcosmorales/emiti-web/pull/121) - @ramiromarcosmorales (Coordinador/DevOps + Tester QA)
 
 ### Fixed
 
