@@ -14,7 +14,7 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 
 ---
 
-## 🎯 Objetivos del entregable actual (Actividad Obligatoria 3)
+## 🎯 Objetivos del entregable actual (Actividad Obligatoria 4)
 
 - Implementar Programación Orientada a Objetos
 - Persistencia mediante Local y Session Storage
