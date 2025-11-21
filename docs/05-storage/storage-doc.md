@@ -126,6 +126,8 @@ Por lo tanto, se eligio guardar facturas, clientes, impuestos y configuracion en
 Cuando el usuario crea una nueva factura o modifica la configuración, el sistema guarda los datos en **localStorage** para que permanezcan disponibles entre sesiones.
 
 ```js
+
+//Ejemplos Ilustrativos
 // Guardar todas las facturas emitidas
 StorageUtil.guardar("app:facturacion:historial", sistema.facturas.map(f => f.toJSON()), "local");
 
@@ -134,6 +136,11 @@ StorageUtil.guardar("app:configuracion:impuestos", sistema.impuestos.map(i => i.
 
 // Guardar la configuración general (IVA, moneda, empresa)
 StorageUtil.guardar("app:configuracion:parametros", sistema.config, "local");
+
+//Ejemplo REAL tomado de js/models/SistemaFacturacion.js
+
+const data = sistema.toJSON();
+StorageUtil.guardar("app:facturacion:sistema", data, "local");
 ```
 
 ### Recuperar datos del sistema
@@ -141,26 +148,46 @@ StorageUtil.guardar("app:configuracion:parametros", sistema.config, "local");
 Permite que el usuario encuentre toda su informacion disponible sin necesidad de volver a cargarla.
 
 ```js
-const facturas = StorageUtil.obtener("app:facturacion:historial", "local") || [];
-const impuestos = StorageUtil.obtener("app:configuracion:impuestos", "local") || [];
-const config = StorageUtil.obtener("app:configuracion:parametros", "local") || {};
+// Ejemplo REAL tomado de js/models/SistemaFacturacion.js
+const data = StorageUtil.obtener("app:facturacion:sistema", "local");
+
+if (data) {
+  sistema.facturas  = (data.facturas  ?? []).map(Factura.fromJSON);
+  sistema.impuestos = (data.impuestos ?? []).map(Impuesto.fromJSON);
+  sistema.config    = data.config ?? null;
+}
 ```
 
 ### Guardar datos temporales
 
 Durante la creación de una factura, se usan claves de sessionStorage para guardar informacion temporal que solo existe mientras el usuario tiene la pestaña abierta.
 ```js
+// Ejemplo ILUSTRATIVO basado en las funciones del módulo StorageUtil
 // Guardar la factura que se está creando
 StorageUtil.guardar("app:facturacion:actual", facturaEnCurso.toJSON(), "session");
 
 // Guardar los ítems agregados temporalmente
 StorageUtil.guardar("app:facturacion:items-temp", items, "session");
 ```
+### Eliminar datos persistentes
+
+Este es el comportamiento real del sistema: al borrar los datos de facturación, el sistema elimina solamente la clave correspondiente y reinicia las estructuras internas.
+
+```js
+// Ejemplo REAL tomado de js/models/SistemaFacturacion.js
+StorageUtil.eliminar("app:facturacion:sistema", "local");
+
+sistema.facturas  = [];
+sistema.impuestos = [];
+sistema.config    = null;
+```
+
 
 ### Eliminar datos temporales
 
 Una vez que la factura fue emitida o el usuario cierra el formulario, los datos temporales deben eliminarse del navegador para evitar inconsistencias.
 ```js
+// Ejemplo ILUSTRATIVO basado en las funciones del módulo StorageUtil
 StorageUtil.eliminar("app:facturacion:actual", "session");
 StorageUtil.eliminar("app:facturacion:items-temp", "session");
 ```
@@ -169,6 +196,7 @@ StorageUtil.eliminar("app:facturacion:items-temp", "session");
 
 El sistema también puede utilizar la función limpiar() del módulo StorageUtil para borrar todo el contenido del tipo de almacenamiento elegido, se usa, por ejemplo, al reiniciar el sistema o restablecer la configuración.
 ```js
+//Ejemplo ILUSTRATIVO
 StorageUtil.limpiar("local");   // Limpia todo el localStorage
 StorageUtil.limpiar("session"); // Limpia todo el sessionStorage
 ```
