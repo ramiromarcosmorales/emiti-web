@@ -1,0 +1,116 @@
+@startuml name Diagrama de Clases Emití
+hide empty members
+skinparam classAttributeIconSize 0
+skinparam Shadowing false
+skinparam classBackgroundColor white
+skinparam classBorderColor black
+skinparam classFontSize 14
+
+'======================
+' CLASES DE DOMINIO
+'======================
+
+class Cliente {
+  +nombre: string
+  +cuit: string
+  +direccion: string
+  +email: string
+  +telefono: string
+  --
+  -_validarTexto(valor, campo)
+  -_validarCUIT(cuit)
+  -_validarEmail(email)
+  -_validarTelefono(t)
+  +toJSON()
+  +{static} fromJSON(data)
+}
+
+class ItemFactura {
+  +producto: string
+  +precio: number
+  +cantidad: number
+  --
+  -_validarPrecio(valor)
+  +subtotal()
+  +toJSON()
+  +{static} fromJSON(data)
+}
+
+class Impuesto {
+  +id: number
+  +nombre: string
+  +porcentaje: number
+  +activo: boolean
+  --
+  +setActivo(estado)
+  +setPorcentaje(nuevoPorcentaje)
+  +toJSON()
+  +{static} fromJSON(data)
+}
+
+class Factura {
+  +id: number
+  +numero: string
+  +cliente: Cliente
+  +tipo: string
+  +fecha: Date
+  +descripcion: string
+  +items: List<ItemFactura>
+  +tasaIVA: number
+  +estado: string
+  +total: number
+  --
+  +calcularSubtotal()
+  +calcularIVA()
+  +calcularTotal()
+  +marcarPagada()
+  +toJSON()
+  +{static} fromJSON(data)
+}
+
+class SistemaFacturacion {
+  +facturas: List<Factura>
+  +impuestos: List<Impuesto>
+  +config: Object
+  --
+  +setConfig(config)
+  +agregarImpuesto(imp)
+  +eliminarImpuesto(id)
+  +tasaIVA()
+  +generarNumero()
+  +crearFactura(data)
+  +eliminarFactura(id)
+  +getFacturaById(id)
+  +getFacturaByNumero(numero)
+  +getImpuestoById(id)
+  +getImpuestoByNombre(nombre)
+  +marcarPagadaPorId(id)
+  +marcarPagada(numero)
+  +buscar(criterio)
+  +listar()
+  +guardarEnStorage()
+  +cargarDesdeStorage()
+  +limpiarTodo()
+  +toJSON()
+  +{static} fromJSON(data)
+  +getMetrics()
+}
+
+'======================
+' RELACIONES
+'======================
+
+Factura "1" *-- "*" ItemFactura : contiene
+Factura "1" --> "1" Cliente : referencia
+
+SistemaFacturacion "1" o-- "*" Factura : gestiona
+SistemaFacturacion "1" o-- "*" Impuesto : administra
+
+note right of Factura
+Regla de IVA:
+A → subtotal * (IVA/100)
+B → subtotal * (IVA/200)
+C → 0
+end note
+
+@enduml

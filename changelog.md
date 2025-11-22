@@ -6,6 +6,33 @@
 
 ### Fixed
 
+## [Release Actividad Obligatoria 4] - 2025-11-14
+
+### Added
+
+- [feature/coord-devops-cuarta-entrega] Actualización base y agregado issue templates.  
+  PR: [#108](https://github.com/ramiromarcosmorales/emiti-web/pull/108) - @ramiromarcosmorales (Coordinador/DevOps + Tester QA)
+
+- [feature/dev-storage] Creación y finalización de archivos `js/utils/storage.js` y `docs/05-storage/storage-doc.md`.  
+  PR: [#114](https://github.com/ramiromarcosmorales/emiti-web/pull/114) - @victoriaimo (Desarrollador JS Local y Session Storage)
+
+- [feature/dev-poo-logica-negocio] Creación de las clases así como diagrama de clases y documentación.
+  PR: [#116](https://github.com/ramiromarcosmorales/emiti-web/pull/116) - @ramire-uces (Desarrollador JS POO)
+  
+
+- [feature/dev-eventos-dom] Agregacion Archivos JavaScripts + Dom - Eventos + HTML.  
+  PR: [#119](https://github.com/ramiromarcosmorales/emiti-web/pull/119) - @Harika-sebasthian (Desarrollador JS Eventos + DOM)
+
+### Changed
+
+- [revert/dom-eventos] Reversión de la PR #115 hasta la integración completa de la capa POO.
+  PR: [#117](https://github.com/ramiromarcosmorales/emiti-web/pull/117) - @ramiromarcosmorales (Coordinador/DevOps + Tester QA)
+
+- [feature/tester-qa-specs] Desarrollo de tests y refactorizacion de docs.  
+  PR: [#121](https://github.com/ramiromarcosmorales/emiti-web/pull/121) - @ramiromarcosmorales (Coordinador/DevOps + Tester QA)
+
+- [feature/feature/coord-devops-cuarta-entrega] Actualización del README.  
+  PR: [#122](https://github.com/ramiromarcosmorales/emiti-web/pull/122) - @ramiromarcosmorales (Coordinador/DevOps + Tester QA)
 
 ## [Release Actividad Obligatoria 3] - 2025-10-24
 

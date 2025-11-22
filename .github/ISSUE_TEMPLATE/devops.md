@@ -1,18 +1,18 @@
 ---
-name: "Issue DevOps"
-about: "Template para tareas relacionadas al rol de Coordinador / DevOps"
-title: "[DevOps] - "
+name: "Issue Coordinador / DevOps"
+about: "Tareas del rol Coordinador/DevOps: organización del flujo, CI/CD y releases"
+title: "[Coordinador] - "
 labels: [devops]
-assignees: [victoriaimo]
+assignees: [ramiromarcosmorales]
 ---
 
 ### Descripción
-Aplicar correcciones de la release anterior, coordinar integración de ramas, configurar GitHub Pages, gestionar backport y versionado, actualizar documentación y enlaces.
+Coordinar la ejecución de AO4 asegurando control de ramas, PRs, changelog, issues, releases y cumplimiento de deadlines.
 
 ### Criterios de aceptación
-- [ ] Correcciones aplicadas en `release/primer-parcial` y mergeadas a `master`
-- [ ] Backport realizado hacia `develop` para base de la actividad obligatoria N° 3
-- [ ] GitHub Pages configurado/actualizado
-- [ ] `README.md` y `changelog.md` actualizados con enlaces y contribuciones
-- [ ] Ramas e issues gestionadas (limpieza, tablero Kanban)
-- [ ] Release con tag creado en GitHub, con changelog y enlaces relevantes
+- [ ] Ramas feature creadas y PRs organizadas.
+- [ ] Tablero Kanban configurado con issues por rol.
+- [ ] Changelog actualizado en cada merge.
+- [ ] Validación de PRs con revisión cruzada.
+- [ ] Preparación de `release/cuarta-entrega` y PR final a `master`.
+- [ ] Coordinación con QA para validación antes del freeze funcional.
