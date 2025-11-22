@@ -34,9 +34,6 @@
 - [feature/feature/coord-devops-cuarta-entrega] Actualización del README.  
   PR: [#122](https://github.com/ramiromarcosmorales/emiti-web/pull/122) - @ramiromarcosmorales (Coordinador/DevOps + Tester QA)
 
-### Fixed
-
-
 ## [Release Actividad Obligatoria 3] - 2025-10-24
 
 ### Added
