@@ -1,5 +1,6 @@
 import { Factura } from "./Factura.js";
-import { Impuesto } from "./Impuesto.js"; 
+import { Impuesto } from "./Impuesto.js";
+import { Cliente } from "./Cliente.js";
 import StorageUtil from "../utils/storage.js";
 
 export class SistemaFacturacion {
@@ -7,61 +8,73 @@ export class SistemaFacturacion {
     this.facturas = [];
     this.impuestos = [];
     this.config = null;
-  }
 
-  // --- CONFIGURACIÓN ---
-  setConfig(config) {
-    this.config = config;
+    // --- OBSERVER ---
+    this.observers = [];
   }
 
   // ----------------------------------------------------------
-  // ✅ AGREGAR IMPUESTO con validación de duplicados
+  // OBSERVER
+  // ----------------------------------------------------------
+  suscribir(observer) {
+    this.observers.push(observer);
+  }
+
+  notificar() {
+    this.observers.forEach(o => o.actualizar());
+  }
+
+  // ----------------------------------------------------------
+  // CONFIGURACIÓN
+  // ----------------------------------------------------------
+  setConfig(config) {
+    this.config = config;
+    this.notificar();
+  }
+
+  // ----------------------------------------------------------
+  // IMPUESTOS
   // ----------------------------------------------------------
   agregarImpuesto(imp) {
     const instancia = imp instanceof Impuesto ? imp : new Impuesto(imp);
 
-    // Validar por nombre
     if (this.getImpuestoByNombre(instancia.nombre)) {
-        throw new Error(`El impuesto "${instancia.nombre}" ya existe.`);
+      throw new Error(`El impuesto "${instancia.nombre}" ya existe.`);
     }
 
     this.impuestos.push(instancia);
-    this.guardarEnStorage();
+    this.notificar();
   }
 
   eliminarImpuesto(id) {
     const numId = Number(id);
 
-    if (isNaN(numId)) {
-      throw new Error(`ID inválido: ${id}`);
-    }
+    if (isNaN(numId)) throw new Error(`ID inválido: ${id}`);
 
     const existe = this.getImpuestoById(numId);
-    if (!existe) {
-      throw new Error(`No existe un impuesto con ID ${numId}.`);
-    }
+    if (!existe) throw new Error(`No existe un impuesto con ID ${numId}.`);
 
     this.impuestos = this.impuestos.filter(imp => imp.id !== numId);
-    this.guardarEnStorage();
+    this.notificar();
   }
 
   tasaIVA() {
-    const iva = this.impuestos.find(i => i.nombre.toUpperCase() === "IVA" && i.activo);
+    const iva = this.impuestos.find(
+      i => i.nombre.toUpperCase() === "IVA" && i.activo
+    );
     return iva ? iva.porcentaje : 21;
   }
 
+  // ----------------------------------------------------------
+  // FACTURAS
+  // ----------------------------------------------------------
   generarNumero() {
     if (this.facturas.length === 0) return "001";
     const max = Math.max(...this.facturas.map(f => +f.numero));
     return String(max + 1).padStart(3, "0");
   }
 
-  // ----------------------------------------------------------
-  // ✅ CREAR FACTURA con validaciones
-  // ----------------------------------------------------------
   crearFactura({ cliente, tipo, fecha, descripcion, items }) {
-
-    // Validar datos mínimos
     if (!cliente || !tipo || !fecha || !descripcion || !items?.length) {
       throw new Error("Faltan datos obligatorios para crear la factura.");
     }
@@ -69,9 +82,8 @@ export class SistemaFacturacion {
     const numero = this.generarNumero();
     const id = this.facturas.length + 1;
 
-    // Validar duplicado por número
     if (this.getFacturaByNumero(numero)) {
-        throw new Error(`Ya existe una factura con el número ${numero}`);
+      throw new Error(`Ya existe una factura con el número ${numero}`);
     }
 
     const factura = new Factura({
@@ -85,30 +97,44 @@ export class SistemaFacturacion {
       tasaIVA: this.tasaIVA(),
     });
 
-    // Validar duplicado por ID (por seguridad)
     if (this.getFacturaById(factura.id)) {
-        throw new Error(`Ya existe una factura con el id ${factura.id}`);
+      throw new Error(`Ya existe una factura con el id ${factura.id}`);
     }
 
     this.facturas.push(factura);
-    this.guardarEnStorage();
+    this.notificar();
 
     return factura;
   }
 
-  // ----------------------------------------------------------
-  // ✅ ELIMINAR factura por ID (validación incluida)
-  // ----------------------------------------------------------
   eliminarFactura(id) {
     const f = this.getFacturaById(id);
     if (!f) throw new Error(`No existe la factura con id ${id}`);
 
     this.facturas = this.facturas.filter(x => x.id !== id);
-    this.guardarEnStorage();
+    this.notificar();
+  }
+
+  marcarPagadaPorId(id) {
+    const factura = this.getFacturaById(id);
+    if (!factura) throw new Error(`No existe la factura con id ${id}`);
+
+    if (factura.estado === "pagada") {
+      throw new Error(`La factura ${factura.numero} ya estaba pagada.`);
+    }
+
+    factura.marcarPagada();
+    this.notificar();
+  }
+
+  marcarPagada(numero) {
+    const f = this.getFacturaByNumero(numero);
+    if (!f) throw new Error(`No existe la factura N° ${numero}`);
+    this.marcarPagadaPorId(f.id);
   }
 
   // ----------------------------------------------------------
-  // ✅ ACCESOS
+  // BÚSQUEDA / LECTURA
   // ----------------------------------------------------------
   getFacturaById(id) {
     return this.facturas.find(f => f.id === id) ?? null;
@@ -127,27 +153,6 @@ export class SistemaFacturacion {
     return this.impuestos.find(i => i.nombre.toLowerCase() === n) ?? null;
   }
 
-  // ----------------------------------------------------------
-  // ✅ MARCAR como pagada con validación
-  // ----------------------------------------------------------
-  marcarPagadaPorId(id) {
-    const factura = this.getFacturaById(id);
-    if (!factura) throw new Error(`No existe la factura con id ${id}`);
-
-    if (factura.estado === "pagada") {
-        throw new Error(`La factura ${factura.numero} ya estaba pagada.`);
-    }
-
-    factura.marcarPagada();
-    this.guardarEnStorage();
-  }
-
-  marcarPagada(numero) {
-    const f = this.getFacturaByNumero(numero);
-    if (!f) throw new Error(`No existe la factura N° ${numero}`);
-    this.marcarPagadaPorId(f.id);
-  }
-
   buscar(criterio) {
     const c = String(criterio).toLowerCase();
     return this.facturas.filter(f =>
@@ -162,7 +167,7 @@ export class SistemaFacturacion {
   }
 
   // ----------------------------------------------------------
-  // ✅ PERSISTENCIA
+  // PERSISTENCIA
   // ----------------------------------------------------------
   guardarEnStorage() {
     const data = this.toJSON();
@@ -173,9 +178,9 @@ export class SistemaFacturacion {
     const data = StorageUtil.obtener("app:facturacion:sistema", "local");
     if (!data) return;
 
-    this.facturas  = (data.facturas  ?? []).map(Factura.fromJSON);
+    this.facturas = (data.facturas ?? []).map(Factura.fromJSON);
     this.impuestos = (data.impuestos ?? []).map(Impuesto.fromJSON);
-    this.config    = data.config ?? null;
+    this.config = data.config ?? null;
   }
 
   limpiarTodo() {
@@ -183,10 +188,11 @@ export class SistemaFacturacion {
     this.facturas = [];
     this.impuestos = [];
     this.config = null;
+    this.notificar();
   }
 
   // ----------------------------------------------------------
-  // ✅ SERIALIZACIÓN
+  // SERIALIZACIÓN
   // ----------------------------------------------------------
   toJSON() {
     return {
@@ -198,24 +204,24 @@ export class SistemaFacturacion {
 
   static fromJSON(data) {
     const sistema = new SistemaFacturacion();
-    sistema.facturas  = (data.facturas  ?? []).map(Factura.fromJSON);
+    sistema.facturas = (data.facturas ?? []).map(Factura.fromJSON);
     sistema.impuestos = (data.impuestos ?? []).map(Impuesto.fromJSON);
-    sistema.config    = data.config ?? null;
+    sistema.config = data.config ?? null;
     return sistema;
   }
 
   // ----------------------------------------------------------
-  // ✅ MÉTRICAS
+  // MÉTRICAS
   // ----------------------------------------------------------
   getMetrics() {
-    const cantidad   = this.facturas.length;
-    const pagadas    = this.facturas.filter(f => f.estado === "pagada");
+    const cantidad = this.facturas.length;
+    const pagadas = this.facturas.filter(f => f.estado === "pagada");
     const pendientes = this.facturas.filter(f => f.estado !== "pagada");
 
-    const totalFacturado = this.facturas.reduce((a,f)=>a + f.total, 0);
-    const totalPendiente = pendientes.reduce((a,f)=>a + f.total, 0);
+    const totalFacturado = this.facturas.reduce((a, f) => a + f.total, 0);
+    const totalPendiente = pendientes.reduce((a, f) => a + f.total, 0);
 
-    const porTipo = this.facturas.reduce((acc,f)=>{
+    const porTipo = this.facturas.reduce((acc, f) => {
       acc[f.tipo] = (acc[f.tipo] ?? 0) + 1;
       return acc;
     }, {});
@@ -226,7 +232,60 @@ export class SistemaFacturacion {
       pendientes: pendientes.length,
       totalFacturado: +totalFacturado.toFixed(2),
       totalPendiente: +totalPendiente.toFixed(2),
-      porTipo
+      porTipo,
     };
+  }
+
+  // ----------------------------------------------------------
+  // WRAPPERS DE FORMULARIO
+  // ----------------------------------------------------------
+  crearFacturaDesdeForm({ cliente, tipo, fecha, descripcion, items }) {
+    if (!items || !Array.isArray(items) || items.length === 0) {
+      throw new Error("La factura debe tener al menos un ítem.");
+    }
+
+    const itemsFormateados = items.map(item => ({
+      producto: item.producto || item.nombre || "",
+      precio: Number(item.precio) || 0,
+      cantidad: Number(item.cantidad) || 1
+    }));
+
+    for (const item of itemsFormateados) {
+      if (!item.producto || item.producto.trim() === "") {
+        throw new Error("Todos los ítems deben tener un producto válido.");
+      }
+      if (item.precio <= 0) {
+        throw new Error("Todos los ítems deben tener un precio mayor a 0.");
+      }
+    }
+
+    const clienteInstancia = cliente instanceof Cliente
+      ? cliente
+      : new Cliente(cliente);
+
+    return this.crearFactura({
+      cliente: clienteInstancia,
+      tipo,
+      fecha,
+      descripcion,
+      items: itemsFormateados
+    });
+  }
+
+  crearImpuestoDesdeForm({ nombre, porcentaje, activo = true }) {
+    if (!nombre || typeof nombre !== "string" || nombre.trim().length < 3) {
+      throw new Error("El nombre del impuesto debe tener al menos 3 caracteres.");
+    }
+
+    const porcentajeNum = Number(porcentaje);
+    if (isNaN(porcentajeNum) || porcentajeNum <= 0 || porcentajeNum > 100) {
+      throw new Error("El porcentaje debe ser un número entre 0.1 y 100.");
+    }
+
+    this.agregarImpuesto({
+      nombre: nombre.trim(),
+      porcentaje: porcentajeNum,
+      activo: Boolean(activo)
+    });
   }
 }
