@@ -9,6 +9,18 @@ import { Impuesto } from "./models/Impuesto.js";
 const sistema = new SistemaFacturacion();
 sistema.cargarDesdeStorage();
 
+// Función helper para guardar y actualizar UI
+function guardarYActualizar(callback) {
+  try {
+    callback();
+    sistema.guardarEnStorage();
+    return true;
+  } catch (err) {
+    mostrarToast(err.message, "danger");
+    return false;
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const main = document.querySelector("main");
   if (!main) return;
@@ -76,8 +88,9 @@ function initDashboard() {
           activo: true,
         });
 
-        sistema.agregarImpuesto(imp);
-        sistema.guardarEnStorage();
+        guardarYActualizar(() => {
+          sistema.agregarImpuesto(imp);
+        });
 
         bootstrap.Modal.getInstance(modalImp)?.hide();
         toastImp.show();
@@ -225,10 +238,13 @@ function initModalFacturaDashboard() {
   function renderItemsList() {
     if (!listaItems) return;
     
-    listaItems.innerHTML = "";
+    listaItems.replaceChildren();
     
     if (itemsTemp.length === 0) {
-      listaItems.innerHTML = '<p class="text-muted small mb-0">No hay ítems agregados aún.</p>';
+      const p = document.createElement("p");
+      p.className = "text-muted small mb-0";
+      p.textContent = "No hay ítems agregados aún.";
+      listaItems.appendChild(p);
       return;
     }
 
@@ -240,31 +256,42 @@ function initModalFacturaDashboard() {
       const itemEl = document.createElement("div");
       itemEl.className = "list-group-item d-flex justify-content-between align-items-center";
       
-      itemEl.innerHTML = `
-        <div class="flex-grow-1">
-          <strong>${item.producto}</strong>
-          <br>
-          <small class="text-muted">${f.format(item.precio)}</small>
-        </div>
-        <button type="button" class="btn btn-sm btn-outline-danger btn-eliminar-item" data-index="${index}">
-          <i class="fa-solid fa-trash"></i>
-        </button>
-      `;
+      const contenido = document.createElement("div");
+      contenido.className = "flex-grow-1";
       
-      listGroup.appendChild(itemEl);
-    });
-
-    listaItems.appendChild(listGroup);
-
-    // Agregar event listeners para eliminar ítems
-    listaItems.querySelectorAll(".btn-eliminar-item").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const index = parseInt(btn.dataset.index);
+      const strong = document.createElement("strong");
+      strong.textContent = item.producto;
+      contenido.appendChild(strong);
+      
+      const br = document.createElement("br");
+      contenido.appendChild(br);
+      
+      const small = document.createElement("small");
+      small.className = "text-muted";
+      small.textContent = f.format(item.precio);
+      contenido.appendChild(small);
+      
+      const btnEliminar = document.createElement("button");
+      btnEliminar.type = "button";
+      btnEliminar.className = "btn btn-sm btn-outline-danger btn-eliminar-item";
+      btnEliminar.dataset.index = index;
+      
+      const icon = document.createElement("i");
+      icon.className = "fa-solid fa-trash";
+      btnEliminar.appendChild(icon);
+      
+      btnEliminar.addEventListener("click", () => {
         itemsTemp.splice(index, 1);
         renderItemsList();
         mostrarToast("Ítem eliminado", "info");
       });
+      
+      itemEl.appendChild(contenido);
+      itemEl.appendChild(btnEliminar);
+      listGroup.appendChild(itemEl);
     });
+
+    listaItems.appendChild(listGroup);
   }
 
   // Inicializar lista vacía
@@ -324,15 +351,15 @@ function initModalFacturaDashboard() {
           telefono: form.telefonoFactura.value,
         });
 
-        sistema.crearFactura({
-          cliente,
-          tipo: form.tipoFactura.value,
-          fecha: form.fechaFactura.value,
-          descripcion: form.descripcionFactura.value,
-          items: itemsTemp,
+        guardarYActualizar(() => {
+          sistema.crearFactura({
+            cliente,
+            tipo: form.tipoFactura.value,
+            fecha: form.fechaFactura.value,
+            descripcion: form.descripcionFactura.value,
+            items: itemsTemp,
+          });
         });
-
-        sistema.guardarEnStorage();
 
         itemsTemp = [];
         renderItemsList();
@@ -469,10 +496,13 @@ function initNuevaFactura() {
   function renderItemsList() {
     if (!listaItems) return;
     
-    listaItems.innerHTML = "";
+    listaItems.replaceChildren();
     
     if (itemsTemp.length === 0) {
-      listaItems.innerHTML = '<p class="text-muted small mb-0">No hay ítems agregados aún.</p>';
+      const p = document.createElement("p");
+      p.className = "text-muted small mb-0";
+      p.textContent = "No hay ítems agregados aún.";
+      listaItems.appendChild(p);
       return;
     }
 
@@ -484,31 +514,42 @@ function initNuevaFactura() {
       const itemEl = document.createElement("div");
       itemEl.className = "list-group-item d-flex justify-content-between align-items-center";
       
-      itemEl.innerHTML = `
-        <div class="flex-grow-1">
-          <strong>${item.producto}</strong>
-          <br>
-          <small class="text-muted">${f.format(item.precio)}</small>
-        </div>
-        <button type="button" class="btn btn-sm btn-outline-danger btn-eliminar-item" data-index="${index}">
-          <i class="fa-solid fa-trash"></i>
-        </button>
-      `;
+      const contenido = document.createElement("div");
+      contenido.className = "flex-grow-1";
       
-      listGroup.appendChild(itemEl);
-    });
-
-    listaItems.appendChild(listGroup);
-
-    // Agregar event listeners para eliminar ítems
-    listaItems.querySelectorAll(".btn-eliminar-item").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const index = parseInt(btn.dataset.index);
+      const strong = document.createElement("strong");
+      strong.textContent = item.producto;
+      contenido.appendChild(strong);
+      
+      const br = document.createElement("br");
+      contenido.appendChild(br);
+      
+      const small = document.createElement("small");
+      small.className = "text-muted";
+      small.textContent = f.format(item.precio);
+      contenido.appendChild(small);
+      
+      const btnEliminar = document.createElement("button");
+      btnEliminar.type = "button";
+      btnEliminar.className = "btn btn-sm btn-outline-danger btn-eliminar-item";
+      btnEliminar.dataset.index = index;
+      
+      const icon = document.createElement("i");
+      icon.className = "fa-solid fa-trash";
+      btnEliminar.appendChild(icon);
+      
+      btnEliminar.addEventListener("click", () => {
         itemsTemp.splice(index, 1);
         renderItemsList();
         mostrarToast("Ítem eliminado", "info");
       });
+      
+      itemEl.appendChild(contenido);
+      itemEl.appendChild(btnEliminar);
+      listGroup.appendChild(itemEl);
     });
+
+    listaItems.appendChild(listGroup);
   }
 
   // Inicializar lista vacía
@@ -568,15 +609,15 @@ function initNuevaFactura() {
         telefono: form.telefonoFactura.value,
       });
 
-      sistema.crearFactura({
-        cliente,
-        tipo: form.tipoFactura.value,
-        fecha: form.fechaFactura.value,
-        descripcion: form.descripcionFactura.value,
-        items: itemsTemp,
+      guardarYActualizar(() => {
+        sistema.crearFactura({
+          cliente,
+          tipo: form.tipoFactura.value,
+          fecha: form.fechaFactura.value,
+          descripcion: form.descripcionFactura.value,
+          items: itemsTemp,
+        });
       });
-
-      sistema.guardarEnStorage();
 
       itemsTemp = [];
       renderItemsList();
@@ -602,9 +643,33 @@ function initNuevaFactura() {
 function initFacturas() {
   const cont = document.getElementById("lista-facturas");
   const template = document.getElementById("template-factura");
+  const modalConfirmar = document.getElementById("modalConfirmarEliminar");
+  const btnConfirmarEliminar = document.getElementById("confirmarEliminarBtn");
   if (!cont || !template) return;
 
-  render();
+  let facturaAEliminar = null;
+
+  // Configurar modal de confirmación
+  if (btnConfirmarEliminar && modalConfirmar) {
+    btnConfirmarEliminar.addEventListener("click", () => {
+      if (facturaAEliminar) {
+        if (guardarYActualizar(() => {
+          sistema.eliminarFactura(facturaAEliminar.id);
+        })) {
+          render();
+          mostrarToast("✔ Factura eliminada", "warning");
+          bootstrap.Modal.getInstance(modalConfirmar)?.hide();
+          facturaAEliminar = null;
+        }
+      }
+    });
+  }
+
+  function mostrarModalConfirmarEliminar(factura) {
+    facturaAEliminar = factura;
+    const modal = new bootstrap.Modal(modalConfirmar);
+    modal.show();
+  }
 
   cont.addEventListener("click", (e) => {
     const card = e.target.closest("[data-factura-numero]");
@@ -620,23 +685,16 @@ function initFacturas() {
     }
 
     if (e.target.classList.contains("btn-marcar-pagada")) {
-      try {
+      if (guardarYActualizar(() => {
         sistema.marcarPagada(numero);
-        sistema.guardarEnStorage();
+      })) {
         render();
         mostrarToast("✔ Factura pagada", "success");
-      } catch (err) {
-        mostrarToast(err.message, "danger");
       }
     }
 
     if (e.target.classList.contains("btn-eliminar")) {
-      if (!confirm("¿Eliminar factura?")) return;
-
-      sistema.eliminarFactura(factura.id);
-      sistema.guardarEnStorage();
-      render();
-      mostrarToast("✔ Factura eliminada", "warning");
+      mostrarModalConfirmarEliminar(factura);
     }
   });
 
@@ -651,9 +709,6 @@ function initFacturas() {
 
       const card = clone.querySelector(".factura-card");
       card.dataset.facturaNumero = factura.numero;
-
-      const cardEl = clone.querySelector(".factura-card");
-      cardEl.dataset.facturaNumero = factura.numero;
 
       clone.querySelector(".factura-numero").textContent = `Factura N° ${factura.numero} (${factura.tipo})`;
       clone.querySelector(".factura-cliente").textContent = factura.cliente.nombre;
@@ -671,86 +726,200 @@ function initFacturas() {
   // Función para mostrar detalles de factura
   function mostrarDetallesFactura(factura) {
     const modalBody = document.getElementById("detallesFacturaBody");
-    const modal = new bootstrap.Modal(document.getElementById("modalDetallesFactura"));
+    const modalEl = document.getElementById("modalDetallesFactura");
+    if (!modalBody || !modalEl) return;
+
+    const modal = new bootstrap.Modal(modalEl);
     const f = new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS" });
     const fechaFormateada = new Date(factura.fecha).toLocaleDateString("es-AR");
 
-    if (!modalBody) return;
+    modalBody.replaceChildren();
 
-    modalBody.innerHTML = `
-      <div class="row g-3">
-        <div class="col-12">
-          <h6 class="text-muted mb-1">Número de Factura</h6>
-          <p class="mb-0 fw-bold">${factura.numero} (${factura.tipo})</p>
-        </div>
+    const row = document.createElement("div");
+    row.className = "row g-3";
 
-        <div class="col-12">
-          <h6 class="text-muted mb-1">Fecha</h6>
-          <p class="mb-0">${fechaFormateada}</p>
-        </div>
+    // Número de Factura
+    const colNumero = document.createElement("div");
+    colNumero.className = "col-12";
+    const h6Numero = document.createElement("h6");
+    h6Numero.className = "text-muted mb-1";
+    h6Numero.textContent = "Número de Factura";
+    const pNumero = document.createElement("p");
+    pNumero.className = "mb-0 fw-bold";
+    pNumero.textContent = `${factura.numero} (${factura.tipo})`;
+    colNumero.appendChild(h6Numero);
+    colNumero.appendChild(pNumero);
+    row.appendChild(colNumero);
 
-        <div class="col-12">
-          <h6 class="text-muted mb-1">Cliente</h6>
-          <p class="mb-0 fw-bold">${factura.cliente.nombre}</p>
-          <p class="mb-0 small text-muted">CUIT: ${factura.cliente.cuit}</p>
-          <p class="mb-0 small text-muted">${factura.cliente.direccion}</p>
-          <p class="mb-0 small text-muted">${factura.cliente.email} | ${factura.cliente.telefono}</p>
-        </div>
+    // Fecha
+    const colFecha = document.createElement("div");
+    colFecha.className = "col-12";
+    const h6Fecha = document.createElement("h6");
+    h6Fecha.className = "text-muted mb-1";
+    h6Fecha.textContent = "Fecha";
+    const pFecha = document.createElement("p");
+    pFecha.className = "mb-0";
+    pFecha.textContent = fechaFormateada;
+    colFecha.appendChild(h6Fecha);
+    colFecha.appendChild(pFecha);
+    row.appendChild(colFecha);
 
-        <div class="col-12">
-          <h6 class="text-muted mb-1">Descripción</h6>
-          <p class="mb-0">${factura.descripcion || "Sin descripción"}</p>
-        </div>
+    // Cliente
+    const colCliente = document.createElement("div");
+    colCliente.className = "col-12";
+    const h6Cliente = document.createElement("h6");
+    h6Cliente.className = "text-muted mb-1";
+    h6Cliente.textContent = "Cliente";
+    const pClienteNombre = document.createElement("p");
+    pClienteNombre.className = "mb-0 fw-bold";
+    pClienteNombre.textContent = factura.cliente.nombre;
+    const pClienteCuit = document.createElement("p");
+    pClienteCuit.className = "mb-0 small text-muted";
+    pClienteCuit.textContent = `CUIT: ${factura.cliente.cuit}`;
+    const pClienteDir = document.createElement("p");
+    pClienteDir.className = "mb-0 small text-muted";
+    pClienteDir.textContent = factura.cliente.direccion;
+    const pClienteContacto = document.createElement("p");
+    pClienteContacto.className = "mb-0 small text-muted";
+    pClienteContacto.textContent = `${factura.cliente.email} | ${factura.cliente.telefono}`;
+    colCliente.appendChild(h6Cliente);
+    colCliente.appendChild(pClienteNombre);
+    colCliente.appendChild(pClienteCuit);
+    colCliente.appendChild(pClienteDir);
+    colCliente.appendChild(pClienteContacto);
+    row.appendChild(colCliente);
 
-        <div class="col-12">
-          <h6 class="text-muted mb-2">Productos / Ítems</h6>
-          <div class="table-responsive">
-            <table class="table table-sm table-bordered">
-              <thead>
-                <tr>
-                  <th>Producto</th>
-                  <th class="text-end">Cantidad</th>
-                  <th class="text-end">Precio Unit.</th>
-                  <th class="text-end">Subtotal</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${factura.items.map(item => `
-                  <tr>
-                    <td>${item.producto}</td>
-                    <td class="text-end">${item.cantidad}</td>
-                    <td class="text-end">${f.format(item.precio)}</td>
-                    <td class="text-end">${f.format(item.subtotal())}</td>
-                  </tr>
-                `).join("")}
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td colspan="3" class="text-end fw-bold">Subtotal:</td>
-                  <td class="text-end fw-bold">${f.format(factura.calcularSubtotal())}</td>
-                </tr>
-                <tr>
-                  <td colspan="3" class="text-end">IVA (${factura.tasaIVA}%):</td>
-                  <td class="text-end">${f.format(factura.calcularIVA())}</td>
-                </tr>
-                <tr class="table-success">
-                  <td colspan="3" class="text-end fw-bold">Total:</td>
-                  <td class="text-end fw-bold">${f.format(factura.total)}</td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-        </div>
+    // Descripción
+    const colDesc = document.createElement("div");
+    colDesc.className = "col-12";
+    const h6Desc = document.createElement("h6");
+    h6Desc.className = "text-muted mb-1";
+    h6Desc.textContent = "Descripción";
+    const pDesc = document.createElement("p");
+    pDesc.className = "mb-0";
+    pDesc.textContent = factura.descripcion || "Sin descripción";
+    colDesc.appendChild(h6Desc);
+    colDesc.appendChild(pDesc);
+    row.appendChild(colDesc);
 
-        <div class="col-12">
-          <h6 class="text-muted mb-1">Estado</h6>
-          <span class="badge ${factura.estado === "pagada" ? "bg-success" : "bg-warning"}">${factura.estado}</span>
-        </div>
-      </div>
-    `;
+    // Tabla de ítems
+    const colItems = document.createElement("div");
+    colItems.className = "col-12";
+    const h6Items = document.createElement("h6");
+    h6Items.className = "text-muted mb-2";
+    h6Items.textContent = "Productos / Ítems";
+    
+    const tableWrapper = document.createElement("div");
+    tableWrapper.className = "table-responsive";
+    const table = document.createElement("table");
+    table.className = "table table-sm table-bordered";
+    
+    const thead = document.createElement("thead");
+    const trHead = document.createElement("tr");
+    const thProducto = document.createElement("th");
+    thProducto.textContent = "Producto";
+    const thCantidad = document.createElement("th");
+    thCantidad.className = "text-end";
+    thCantidad.textContent = "Cantidad";
+    const thPrecio = document.createElement("th");
+    thPrecio.className = "text-end";
+    thPrecio.textContent = "Precio Unit.";
+    const thSubtotal = document.createElement("th");
+    thSubtotal.className = "text-end";
+    thSubtotal.textContent = "Subtotal";
+    trHead.appendChild(thProducto);
+    trHead.appendChild(thCantidad);
+    trHead.appendChild(thPrecio);
+    trHead.appendChild(thSubtotal);
+    thead.appendChild(trHead);
+    
+    const tbody = document.createElement("tbody");
+    factura.items.forEach(item => {
+      const tr = document.createElement("tr");
+      const tdProducto = document.createElement("td");
+      tdProducto.textContent = item.producto;
+      const tdCantidad = document.createElement("td");
+      tdCantidad.className = "text-end";
+      tdCantidad.textContent = item.cantidad;
+      const tdPrecio = document.createElement("td");
+      tdPrecio.className = "text-end";
+      tdPrecio.textContent = f.format(item.precio);
+      const tdSubtotal = document.createElement("td");
+      tdSubtotal.className = "text-end";
+      tdSubtotal.textContent = f.format(item.subtotal());
+      tr.appendChild(tdProducto);
+      tr.appendChild(tdCantidad);
+      tr.appendChild(tdPrecio);
+      tr.appendChild(tdSubtotal);
+      tbody.appendChild(tr);
+    });
+    
+    const tfoot = document.createElement("tfoot");
+    const trSubtotal = document.createElement("tr");
+    const tdSubtotalLabel = document.createElement("td");
+    tdSubtotalLabel.colSpan = 3;
+    tdSubtotalLabel.className = "text-end fw-bold";
+    tdSubtotalLabel.textContent = "Subtotal:";
+    const tdSubtotalVal = document.createElement("td");
+    tdSubtotalVal.className = "text-end fw-bold";
+    tdSubtotalVal.textContent = f.format(factura.calcularSubtotal());
+    trSubtotal.appendChild(tdSubtotalLabel);
+    trSubtotal.appendChild(tdSubtotalVal);
+    
+    const trIVA = document.createElement("tr");
+    const tdIVALabel = document.createElement("td");
+    tdIVALabel.colSpan = 3;
+    tdIVALabel.className = "text-end";
+    tdIVALabel.textContent = `IVA (${factura.tasaIVA}%):`;
+    const tdIVAVal = document.createElement("td");
+    tdIVAVal.className = "text-end";
+    tdIVAVal.textContent = f.format(factura.calcularIVA());
+    trIVA.appendChild(tdIVALabel);
+    trIVA.appendChild(tdIVAVal);
+    
+    const trTotal = document.createElement("tr");
+    trTotal.className = "table-success";
+    const tdTotalLabel = document.createElement("td");
+    tdTotalLabel.colSpan = 3;
+    tdTotalLabel.className = "text-end fw-bold";
+    tdTotalLabel.textContent = "Total:";
+    const tdTotalVal = document.createElement("td");
+    tdTotalVal.className = "text-end fw-bold";
+    tdTotalVal.textContent = f.format(factura.total);
+    trTotal.appendChild(tdTotalLabel);
+    trTotal.appendChild(tdTotalVal);
+    
+    tfoot.appendChild(trSubtotal);
+    tfoot.appendChild(trIVA);
+    tfoot.appendChild(trTotal);
+    
+    table.appendChild(thead);
+    table.appendChild(tbody);
+    table.appendChild(tfoot);
+    tableWrapper.appendChild(table);
+    colItems.appendChild(h6Items);
+    colItems.appendChild(tableWrapper);
+    row.appendChild(colItems);
 
+    // Estado
+    const colEstado = document.createElement("div");
+    colEstado.className = "col-12";
+    const h6Estado = document.createElement("h6");
+    h6Estado.className = "text-muted mb-1";
+    h6Estado.textContent = "Estado";
+    const badge = document.createElement("span");
+    badge.className = factura.estado === "pagada" ? "badge bg-success" : "badge bg-warning";
+    badge.textContent = factura.estado;
+    colEstado.appendChild(h6Estado);
+    colEstado.appendChild(badge);
+    row.appendChild(colEstado);
+
+    modalBody.appendChild(row);
     modal.show();
   }
+
+  // Llamar a render() inicialmente para mostrar las facturas
+  render();
 }
 
 
@@ -839,13 +1008,11 @@ function initConfiguracion() {
     const btn = e.target.closest(".btn-eliminar");
     if (!btn) return;
 
-    try {
+    if (guardarYActualizar(() => {
       sistema.eliminarImpuesto(btn.dataset.id);
-      sistema.guardarEnStorage();
+    })) {
       render();
       mostrarToast("✔ Impuesto eliminado", "warning");
-    } catch (err) {
-      mostrarToast(err.message, "danger");
     }
   });
 
