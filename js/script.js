@@ -501,6 +501,7 @@ function initNuevaFactura() {
   if (!form) return;
 
   const addItemBtn = document.getElementById("addItemBtn");
+  const crearBtn = document.getElementById("crearFacturaBtn");
   const toastFactura = new bootstrap.Toast(document.getElementById("toastFactura"));
   let itemsTemp = [];
 
@@ -815,10 +816,8 @@ function initNuevaFactura() {
     return true;
   }
 
-  // Crear factura
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
+  // Función para procesar la creación de la factura
+  function procesarCrearFactura() {
     try {
       // Validar todos los campos antes de continuar
       if (!validarFormularioCompleto()) {
@@ -833,7 +832,7 @@ function initNuevaFactura() {
         telefono: form.telefonoFactura.value,
       });
 
-      guardarYActualizar(() => {
+      if (guardarYActualizar(() => {
         sistema.crearFactura({
           cliente,
           tipo: form.tipoFactura.value,
@@ -841,23 +840,36 @@ function initNuevaFactura() {
           descripcion: form.descripcionFactura.value,
           items: itemsTemp,
         });
-      });
+      })) {
+        itemsTemp = [];
+        renderItemsList();
+        form.reset();
+        // Limpiar clases de validación
+        [clienteInput, cuitInput, direccionInput, emailInput, telefonoInput, fechaInput, descripcionInput, productoInput, precioInput].forEach(input => {
+          if (input) input.classList.remove("is-valid", "is-invalid");
+        });
 
-      itemsTemp = [];
-      renderItemsList();
-      form.reset();
-      // Limpiar clases de validación
-      [clienteInput, cuitInput, direccionInput, emailInput, telefonoInput, fechaInput, descripcionInput, productoInput, precioInput].forEach(input => {
-        if (input) input.classList.remove("is-valid", "is-invalid");
-      });
-
-      bootstrap.Modal.getInstance(document.getElementById("modalFactura"))?.hide();
-      toastFactura.show();
-
+        bootstrap.Modal.getInstance(document.getElementById("modalFactura"))?.hide();
+        toastFactura.show();
+      }
     } catch (err) {
       mostrarToast(err.message, "danger");
     }
+  }
+
+  // Crear factura - Event listener para submit del formulario
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    procesarCrearFactura();
   });
+
+  // Crear factura - Event listener para click del botón (cuando está fuera del formulario)
+  if (crearBtn) {
+    crearBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      procesarCrearFactura();
+    });
+  }
 }
 
 
