@@ -279,9 +279,6 @@ export class SistemaFacturacion {
       items: itemsFormateados
     });
 
-    // Guardar en storage después de crear
-    this.guardarEnStorage();
-
     return factura;
   }
 
@@ -300,8 +297,5 @@ export class SistemaFacturacion {
       porcentaje: porcentajeNum,
       activo: Boolean(activo)
     });
-
-    // Guardar en storage después de crear
-    this.guardarEnStorage();
   }
 }
