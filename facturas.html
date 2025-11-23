@@ -170,10 +170,13 @@
                 <input type="text" class="form-control" id="productoFactura" placeholder="Producto / Ítem">
                </div>
                <div class="col-md-4">
-              <input type="number" class="form-control" id="precioFactura" placeholder="Precio">
+              <input type="number" class="form-control" id="precioFactura" placeholder="Precio" min="1">
            </div>
            </div>
-            <button type="button" id="addItemBtn" class="btn btn-sm btn-success">+ Agregar ítem</button>
+            <button type="button" id="addItemBtn" class="btn btn-sm btn-success mb-3">+ Agregar ítem</button>
+            
+            <!-- Lista de ítems agregados -->
+            <div id="listaItemsAgregados" class="mt-3"></div>
            </div>
         </form>
         </div>
@@ -216,6 +219,24 @@
     </div>
   </div>
 
+  <!-- Modal Ver Detalles Factura -->
+  <div class="modal fade" id="modalDetallesFactura" tabindex="-1" aria-labelledby="modalDetallesFacturaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalDetallesFacturaLabel">Detalles de Factura</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body" id="detallesFacturaBody">
+          <!-- Se llenará dinámicamente -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Template -->
   <template id="template-factura">
    <div class="col-md-4">
@@ -227,6 +248,7 @@
         <p><strong>Estado:</strong> <span class="factura-estado"></span></p>
       </div>
      <div class="card-footer text-end">
+        <button class="btn btn-sm btn-outline-primary btn-ver-detalles me-2" title="Ver detalles">👁 Ver Detalles</button>
         <button class="btn btn-sm btn-outline-success btn-marcar-pagada" title="Marcar como pagada">✓ Pagada</button>
         <button class="btn btn-sm btn-outline-danger btn-eliminar" title="Eliminar factura">🗑 Eliminar</button>
      </div>

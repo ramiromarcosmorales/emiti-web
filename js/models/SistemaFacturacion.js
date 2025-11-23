@@ -36,6 +36,14 @@ export class SistemaFacturacion {
   // IMPUESTOS
   // ----------------------------------------------------------
   agregarImpuesto(imp) {
+    // Si no tiene ID, generarlo automáticamente
+    if (!imp.id && imp.id !== 0) {
+      const maxId = this.impuestos.length > 0 
+        ? Math.max(...this.impuestos.map(i => i.id))
+        : 0;
+      imp.id = maxId + 1;
+    }
+
     const instancia = imp instanceof Impuesto ? imp : new Impuesto(imp);
 
     if (this.getImpuestoByNombre(instancia.nombre)) {
@@ -263,13 +271,18 @@ export class SistemaFacturacion {
       ? cliente
       : new Cliente(cliente);
 
-    return this.crearFactura({
+    const factura = this.crearFactura({
       cliente: clienteInstancia,
       tipo,
       fecha,
       descripcion,
       items: itemsFormateados
     });
+
+    // Guardar en storage después de crear
+    this.guardarEnStorage();
+
+    return factura;
   }
 
   crearImpuestoDesdeForm({ nombre, porcentaje, activo = true }) {
@@ -287,5 +300,8 @@ export class SistemaFacturacion {
       porcentaje: porcentajeNum,
       activo: Boolean(activo)
     });
+
+    // Guardar en storage después de crear
+    this.guardarEnStorage();
   }
 }
