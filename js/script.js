@@ -332,24 +332,126 @@ function initModalFacturaDashboard() {
     });
   }
 
+  // Función para validar todos los campos antes de crear la factura
+  function validarFormularioCompleto() {
+    const errores = [];
+    let primerCampoInvalido = null;
+
+    // Limpiar clases de validación previas
+    [clienteInput, cuitInput, direccionInput, emailInput, telefonoInput, fechaInput, descripcionInput].forEach(input => {
+      if (input) input.classList.remove("is-invalid", "is-valid");
+    });
+
+    // Validar Cliente
+    if (!clienteInput || clienteInput.value.trim().length < 3) {
+      errores.push("El nombre del cliente debe tener al menos 3 caracteres.");
+      if (clienteInput) {
+        clienteInput.classList.add("is-invalid");
+        if (!primerCampoInvalido) primerCampoInvalido = clienteInput;
+      }
+    } else if (clienteInput) {
+      clienteInput.classList.add("is-valid");
+    }
+
+    // Validar CUIT
+    if (!cuitInput) {
+      errores.push("El CUIT es obligatorio.");
+    } else {
+      const cuitLimpio = cuitInput.value.replace(/[-.\s]/g, "");
+      if (!/^\d{11}$/.test(cuitLimpio)) {
+        errores.push("El CUIT debe tener exactamente 11 dígitos.");
+        cuitInput.classList.add("is-invalid");
+        if (!primerCampoInvalido) primerCampoInvalido = cuitInput;
+      } else {
+        cuitInput.classList.add("is-valid");
+      }
+    }
+
+    // Validar Dirección
+    if (!direccionInput || direccionInput.value.trim().length === 0) {
+      errores.push("La dirección es obligatoria.");
+      if (direccionInput) {
+        direccionInput.classList.add("is-invalid");
+        if (!primerCampoInvalido) primerCampoInvalido = direccionInput;
+      }
+    } else if (direccionInput) {
+      direccionInput.classList.add("is-valid");
+    }
+
+    // Validar Email
+    if (!emailInput) {
+      errores.push("El email es obligatorio.");
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailInput.value.trim())) {
+        errores.push("El email ingresado no tiene un formato válido.");
+        emailInput.classList.add("is-invalid");
+        if (!primerCampoInvalido) primerCampoInvalido = emailInput;
+      } else {
+        emailInput.classList.add("is-valid");
+      }
+    }
+
+    // Validar Teléfono
+    if (!telefonoInput) {
+      errores.push("El teléfono es obligatorio.");
+    } else {
+      const telefonoRegex = /^[0-9+\-\s]{6,20}$/;
+      if (!telefonoRegex.test(telefonoInput.value.trim())) {
+        errores.push("El teléfono contiene caracteres inválidos.");
+        telefonoInput.classList.add("is-invalid");
+        if (!primerCampoInvalido) primerCampoInvalido = telefonoInput;
+      } else {
+        telefonoInput.classList.add("is-valid");
+      }
+    }
+
+    // Validar Fecha
+    if (!fechaInput || !fechaInput.value.trim()) {
+      errores.push("La fecha es obligatoria.");
+      if (fechaInput) {
+        fechaInput.classList.add("is-invalid");
+        if (!primerCampoInvalido) primerCampoInvalido = fechaInput;
+      }
+    } else if (fechaInput) {
+      fechaInput.classList.add("is-valid");
+    }
+
+    // Validar Descripción
+    if (!descripcionInput || descripcionInput.value.trim().length < 3) {
+      errores.push("La descripción debe tener al menos 3 caracteres.");
+      if (descripcionInput) {
+        descripcionInput.classList.add("is-invalid");
+        if (!primerCampoInvalido) primerCampoInvalido = descripcionInput;
+      }
+    } else if (descripcionInput) {
+      descripcionInput.classList.add("is-valid");
+    }
+
+    // Validar Ítems
+    if (itemsTemp.length === 0) {
+      errores.push("La factura debe tener al menos un ítem agregado.");
+    }
+
+    if (errores.length > 0) {
+      mostrarToast(errores[0], "danger");
+      if (primerCampoInvalido) {
+        primerCampoInvalido.focus();
+      }
+      return false;
+    }
+
+    return true;
+  }
+
   // Botón crear factura
   if (crearBtn) {
     crearBtn.addEventListener("click", (e) => {
       e.preventDefault();
 
       try {
-        if (itemsTemp.length === 0) {
-          mostrarToast("La factura debe tener al menos un ítem agregado.", "danger");
-          return;
-        }
-
-        // Validar que la fecha esté presente
-        if (!fechaInput || !fechaInput.value.trim()) {
-          mostrarToast("La fecha es obligatoria para crear la factura.", "danger");
-          if (fechaInput) {
-            fechaInput.classList.add("is-invalid");
-            fechaInput.focus();
-          }
+        // Validar todos los campos antes de continuar
+        if (!validarFormularioCompleto()) {
           return;
         }
 
@@ -601,23 +703,125 @@ function initNuevaFactura() {
     });
   }
 
+  // Función para validar todos los campos antes de crear la factura
+  function validarFormularioCompleto() {
+    const errores = [];
+    let primerCampoInvalido = null;
+
+    // Limpiar clases de validación previas
+    [clienteInput, cuitInput, direccionInput, emailInput, telefonoInput, fechaInput, descripcionInput].forEach(input => {
+      if (input) input.classList.remove("is-invalid", "is-valid");
+    });
+
+    // Validar Cliente
+    if (!clienteInput || clienteInput.value.trim().length < 3) {
+      errores.push("El nombre del cliente debe tener al menos 3 caracteres.");
+      if (clienteInput) {
+        clienteInput.classList.add("is-invalid");
+        if (!primerCampoInvalido) primerCampoInvalido = clienteInput;
+      }
+    } else if (clienteInput) {
+      clienteInput.classList.add("is-valid");
+    }
+
+    // Validar CUIT
+    if (!cuitInput) {
+      errores.push("El CUIT es obligatorio.");
+    } else {
+      const cuitLimpio = cuitInput.value.replace(/[-.\s]/g, "");
+      if (!/^\d{11}$/.test(cuitLimpio)) {
+        errores.push("El CUIT debe tener exactamente 11 dígitos.");
+        cuitInput.classList.add("is-invalid");
+        if (!primerCampoInvalido) primerCampoInvalido = cuitInput;
+      } else {
+        cuitInput.classList.add("is-valid");
+      }
+    }
+
+    // Validar Dirección
+    if (!direccionInput || direccionInput.value.trim().length === 0) {
+      errores.push("La dirección es obligatoria.");
+      if (direccionInput) {
+        direccionInput.classList.add("is-invalid");
+        if (!primerCampoInvalido) primerCampoInvalido = direccionInput;
+      }
+    } else if (direccionInput) {
+      direccionInput.classList.add("is-valid");
+    }
+
+    // Validar Email
+    if (!emailInput) {
+      errores.push("El email es obligatorio.");
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailInput.value.trim())) {
+        errores.push("El email ingresado no tiene un formato válido.");
+        emailInput.classList.add("is-invalid");
+        if (!primerCampoInvalido) primerCampoInvalido = emailInput;
+      } else {
+        emailInput.classList.add("is-valid");
+      }
+    }
+
+    // Validar Teléfono
+    if (!telefonoInput) {
+      errores.push("El teléfono es obligatorio.");
+    } else {
+      const telefonoRegex = /^[0-9+\-\s]{6,20}$/;
+      if (!telefonoRegex.test(telefonoInput.value.trim())) {
+        errores.push("El teléfono contiene caracteres inválidos.");
+        telefonoInput.classList.add("is-invalid");
+        if (!primerCampoInvalido) primerCampoInvalido = telefonoInput;
+      } else {
+        telefonoInput.classList.add("is-valid");
+      }
+    }
+
+    // Validar Fecha
+    if (!fechaInput || !fechaInput.value.trim()) {
+      errores.push("La fecha es obligatoria.");
+      if (fechaInput) {
+        fechaInput.classList.add("is-invalid");
+        if (!primerCampoInvalido) primerCampoInvalido = fechaInput;
+      }
+    } else if (fechaInput) {
+      fechaInput.classList.add("is-valid");
+    }
+
+    // Validar Descripción
+    if (!descripcionInput || descripcionInput.value.trim().length < 3) {
+      errores.push("La descripción debe tener al menos 3 caracteres.");
+      if (descripcionInput) {
+        descripcionInput.classList.add("is-invalid");
+        if (!primerCampoInvalido) primerCampoInvalido = descripcionInput;
+      }
+    } else if (descripcionInput) {
+      descripcionInput.classList.add("is-valid");
+    }
+
+    // Validar Ítems
+    if (itemsTemp.length === 0) {
+      errores.push("La factura debe tener al menos un ítem agregado.");
+    }
+
+    if (errores.length > 0) {
+      mostrarToast(errores[0], "danger");
+      if (primerCampoInvalido) {
+        primerCampoInvalido.focus();
+      }
+      return false;
+    }
+
+    return true;
+  }
+
   // Crear factura
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     try {
-      if (itemsTemp.length === 0) {
-        mostrarToast("La factura debe tener al menos un ítem agregado.", "danger");
-        return;
-      }
-
-      // Validar que la fecha esté presente
-      if (!fechaInput || !fechaInput.value.trim()) {
-        mostrarToast("La fecha es obligatoria para crear la factura.", "danger");
-        if (fechaInput) {
-          fechaInput.classList.add("is-invalid");
-          fechaInput.focus();
-        }
+      // Validar todos los campos antes de continuar
+      if (!validarFormularioCompleto()) {
         return;
       }
 
