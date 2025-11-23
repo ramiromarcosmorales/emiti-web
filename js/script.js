@@ -343,6 +343,16 @@ function initModalFacturaDashboard() {
           return;
         }
 
+        // Validar que la fecha esté presente
+        if (!fechaInput || !fechaInput.value.trim()) {
+          mostrarToast("La fecha es obligatoria para crear la factura.", "danger");
+          if (fechaInput) {
+            fechaInput.classList.add("is-invalid");
+            fechaInput.focus();
+          }
+          return;
+        }
+
         const cliente = new Cliente({
           nombre: form.clienteFactura.value,
           cuit: form.cuitFactura.value,
@@ -598,6 +608,16 @@ function initNuevaFactura() {
     try {
       if (itemsTemp.length === 0) {
         mostrarToast("La factura debe tener al menos un ítem agregado.", "danger");
+        return;
+      }
+
+      // Validar que la fecha esté presente
+      if (!fechaInput || !fechaInput.value.trim()) {
+        mostrarToast("La fecha es obligatoria para crear la factura.", "danger");
+        if (fechaInput) {
+          fechaInput.classList.add("is-invalid");
+          fechaInput.focus();
+        }
         return;
       }
 
