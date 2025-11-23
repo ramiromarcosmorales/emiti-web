@@ -7,6 +7,7 @@ import { ItemFactura } from "./models/ItemFactura.js";
 import { Impuesto } from "./models/Impuesto.js";
 
 const sistema = new SistemaFacturacion();
+sistema.suscribir(new StorageObserver(sistema)); 
 sistema.cargarDesdeStorage();
 
 // Función helper para guardar y actualizar UI
