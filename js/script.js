@@ -6,6 +6,7 @@ import { Cliente } from "./models/Cliente.js";
 import { ItemFactura } from "./models/ItemFactura.js";
 import { Impuesto } from "./models/Impuesto.js";
 import { StorageObserver} from "./models/StorageObserver.js";
+import { generarPDF } from "./utils/pdf.js";
 
 const sistema = new SistemaFacturacion();
 sistema.suscribir(new StorageObserver(sistema)); 
@@ -922,6 +923,10 @@ function initFacturas() {
       mostrarDetallesFactura(factura);
     }
 
+    if (e.target.classList.contains("btn-descargar-pdf")) {
+      generarPDF(factura);
+    }
+
     if (e.target.classList.contains("btn-marcar-pagada")) {
       if (guardarYActualizar(() => {
         sistema.marcarPagada(numero);
@@ -1153,8 +1158,21 @@ function initFacturas() {
     row.appendChild(colEstado);
 
     modalBody.appendChild(row);
+    
+    const modalFooter = modalEl.querySelector(".modal-footer");
+    if (modalFooter) {
+      const btnPDF = modalFooter.querySelector(".btn-descargar-pdf-modal");
+      if (btnPDF) {
+        btnPDF.onclick = () => generarPDF(factura);
+      }
+    }
+    
     modal.show();
   }
+
+  sistema.suscribir({
+    actualizar: () => render()
+  });
 
   // Llamar a render() inicialmente para mostrar las facturas
   render();
@@ -1315,3 +1333,5 @@ function crearToastContainer() {
   document.body.appendChild(c);
   return c;
 }
+
+window.mostrarToast = mostrarToast;
