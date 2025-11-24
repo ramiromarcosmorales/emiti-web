@@ -1,4 +1,4 @@
-# 🟣 PULL REQUEST – Actividad Obligatoria N° 4 – Programación Web I
+# 🟣 PULL REQUEST – Segundo Parcial – Programación Web I
 
 ---
 
@@ -11,10 +11,10 @@
 - **Profesor:** Lic. Matías Velasquez  
 - **Cuatrimestre/Año:** 2º Cuatrimestre / 2025  
 - **Rol asignado para esta entrega:** _(Ej.:
- ■ Coordinador/DevOps + Tester QA
- ■ Desarrollador JS Eventos + DOM
- ■ Desarrollador JS POO
- ■ Desarrollador JS Local y Session Storage)
+ ■ Coordinador/DevOps + Documentador
+ ■ Desarrollador JS Librerías Externas
+ ■ Desarrollador JS Asíncrono - Fetch & APIs
+ ■ Tester QA/JS
  (Borrar los roles que no te correspondan)
 
 ---
@@ -69,6 +69,6 @@ _(Opcional – Aclaraciones, dificultades encontradas, sugerencias, etc.)_
 
 ## 🧾 Enlace a la consigna
 
-[📄 Consigna Actividad Obligatoria N° 4 - GitHub](https://drive.google.com/file/d/1XBBDde4iICnDAaHj7sN5134iqSNkFQyJ/view)
+[📄 Consigna Segundo Parcial- GitHub](https://drive.google.com/file/d/1X50Mmvm0Tc0t47eo2HMx5JNJ7VUvNT3Q/view?usp=sharing)
 
 ---

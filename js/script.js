@@ -1,15 +1,21 @@
 // EMITÍ - CONTROLADOR PRINCIPAL (DOM + EVENTOS)
 
-
 import { SistemaFacturacion } from "./models/SistemaFacturacion.js";
 import { Cliente } from "./models/Cliente.js";
 import { ItemFactura } from "./models/ItemFactura.js";
 import { Impuesto } from "./models/Impuesto.js";
-import { StorageObserver} from "./models/StorageObserver.js";
+import { StorageObserver } from "./models/StorageObserver.js";
 import { generarPDF } from "./utils/pdf.js";
 
+// --- API (EmailJS) ---
+import {
+  initEmailAPI,
+  buildInvoiceEmailPayload,
+  sendInvoiceEmail,
+} from "./api/apiService.js";
+
 const sistema = new SistemaFacturacion();
-sistema.suscribir(new StorageObserver(sistema)); 
+sistema.suscribir(new StorageObserver(sistema));
 sistema.cargarDesdeStorage();
 
 // Función helper para guardar y actualizar UI
@@ -24,7 +30,24 @@ function guardarYActualizar(callback) {
   }
 }
 
+// Enviar factura por email usando EmailJS
+async function enviarFacturaPorEmail(factura) {
+  try {
+    const payload = buildInvoiceEmailPayload(factura);
+    await sendInvoiceEmail(payload);
+    mostrarToast("✔ Factura enviada por email al cliente", "success");
+  } catch (err) {
+    mostrarToast(
+      err.message || "No se pudo enviar el email de la factura.",
+      "danger"
+    );
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  // Inicializar EmailJS (SDK debe estar cargado en el HTML)
+  initEmailAPI();
+
   const main = document.querySelector("main");
   if (!main) return;
 
@@ -37,7 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (main.classList.contains("configuracion")) initConfiguracion();
 });
 
-
 // DASHBOARD
 
 function initDashboard() {
@@ -46,7 +68,9 @@ function initDashboard() {
   const formImp = document.getElementById("formImpuesto");
   const guardarImp = document.getElementById("guardarImpuestoBtn");
   const modalImp = document.getElementById("modalImpuesto");
-  const toastImp = new bootstrap.Toast(document.getElementById("toastImpuesto"));
+  const toastImp = new bootstrap.Toast(
+    document.getElementById("toastImpuesto")
+  );
 
   if (formImp && guardarImp) {
     const nombreInput = document.getElementById("nombreImpuesto");
@@ -98,11 +122,11 @@ function initDashboard() {
         bootstrap.Modal.getInstance(modalImp)?.hide();
         toastImp.show();
         formImp.reset();
-        
+
         // Limpiar clases de validación
         if (nombreInput) nombreInput.classList.remove("is-valid", "is-invalid");
-        if (porcentajeInput) porcentajeInput.classList.remove("is-valid", "is-invalid");
-
+        if (porcentajeInput)
+          porcentajeInput.classList.remove("is-valid", "is-invalid");
       } catch (err) {
         mostrarToast(err.message, "danger");
       }
@@ -115,7 +139,10 @@ function initDashboard() {
 
 function actualizarMetricas() {
   const m = sistema.getMetrics();
-  const f = new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS" });
+  const f = new Intl.NumberFormat("es-AR", {
+    style: "currency",
+    currency: "ARS",
+  });
 
   const total = document.getElementById("total-facturas");
   const totalImporte = document.getElementById("importe-total");
@@ -124,15 +151,20 @@ function actualizarMetricas() {
 
   if (total) total.textContent = m.cantidad;
   if (totalImporte) totalImporte.textContent = f.format(m.totalFacturado);
-  if (promedio) promedio.textContent = f.format(m.cantidad ? m.totalFacturado / m.cantidad : 0);
+  if (promedio)
+    promedio.textContent = f.format(
+      m.cantidad ? m.totalFacturado / m.cantidad : 0
+    );
   if (pagadas) pagadas.textContent = m.pagadas;
 }
 
 function initModalFacturaDashboard() {
   const form = document.querySelector("#modalFactura form");
   if (!form) return;
-  
-  const toastFactura = new bootstrap.Toast(document.getElementById("toastFactura"));
+
+  const toastFactura = new bootstrap.Toast(
+    document.getElementById("toastFactura")
+  );
   let itemsTemp = [];
 
   const productoInput = document.getElementById("productoFacturaModal");
@@ -240,9 +272,9 @@ function initModalFacturaDashboard() {
   const listaItems = document.getElementById("listaItemsAgregadosModal");
   function renderItemsList() {
     if (!listaItems) return;
-    
+
     listaItems.replaceChildren();
-    
+
     if (itemsTemp.length === 0) {
       const p = document.createElement("p");
       p.className = "text-muted small mb-0";
@@ -251,44 +283,48 @@ function initModalFacturaDashboard() {
       return;
     }
 
-    const f = new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS" });
+    const f = new Intl.NumberFormat("es-AR", {
+      style: "currency",
+      currency: "ARS",
+    });
     const listGroup = document.createElement("div");
     listGroup.className = "list-group";
 
     itemsTemp.forEach((item, index) => {
       const itemEl = document.createElement("div");
-      itemEl.className = "list-group-item d-flex justify-content-between align-items-center";
-      
+      itemEl.className =
+        "list-group-item d-flex justify-content-between align-items-center";
+
       const contenido = document.createElement("div");
       contenido.className = "flex-grow-1";
-      
+
       const strong = document.createElement("strong");
       strong.textContent = item.producto;
       contenido.appendChild(strong);
-      
+
       const br = document.createElement("br");
       contenido.appendChild(br);
-      
+
       const small = document.createElement("small");
       small.className = "text-muted";
       small.textContent = f.format(item.precio);
       contenido.appendChild(small);
-      
+
       const btnEliminar = document.createElement("button");
       btnEliminar.type = "button";
       btnEliminar.className = "btn btn-sm btn-outline-danger btn-eliminar-item";
       btnEliminar.dataset.index = index;
-      
+
       const icon = document.createElement("i");
       icon.className = "fa-solid fa-trash";
       btnEliminar.appendChild(icon);
-      
+
       btnEliminar.addEventListener("click", () => {
         itemsTemp.splice(index, 1);
         renderItemsList();
         mostrarToast("Ítem eliminado", "info");
       });
-      
+
       itemEl.appendChild(contenido);
       itemEl.appendChild(btnEliminar);
       listGroup.appendChild(itemEl);
@@ -316,7 +352,10 @@ function initModalFacturaDashboard() {
         validarCampoUI(precioInput, precOk);
 
         if (!prodOk || !precOk) {
-          mostrarToast("Completá un producto y un precio válido (> 0) antes de agregar.", "danger");
+          mostrarToast(
+            "Completá un producto y un precio válido (> 0) antes de agregar.",
+            "danger"
+          );
           return;
         }
 
@@ -341,7 +380,15 @@ function initModalFacturaDashboard() {
     let primerCampoInvalido = null;
 
     // Limpiar clases de validación previas
-    [clienteInput, cuitInput, direccionInput, emailInput, telefonoInput, fechaInput, descripcionInput].forEach(input => {
+    [
+      clienteInput,
+      cuitInput,
+      direccionInput,
+      emailInput,
+      telefonoInput,
+      fechaInput,
+      descripcionInput,
+    ].forEach((input) => {
       if (input) input.classList.remove("is-invalid", "is-valid");
     });
 
@@ -447,7 +494,7 @@ function initModalFacturaDashboard() {
     return true;
   }
 
-  // Botón crear factura
+  // Botón crear factura (modal dashboard) + envío de email
   if (crearBtn) {
     crearBtn.addEventListener("click", (e) => {
       e.preventDefault();
@@ -466,36 +513,57 @@ function initModalFacturaDashboard() {
           telefono: form.telefonoFactura.value,
         });
 
-        guardarYActualizar(() => {
-          sistema.crearFactura({
-            cliente,
-            tipo: form.tipoFactura.value,
-            fecha: form.fechaFactura.value,
-            descripcion: form.descripcionFactura.value,
-            items: itemsTemp,
+        let nuevaFactura = null;
+
+        if (
+          guardarYActualizar(() => {
+            sistema.crearFactura({
+              cliente,
+              tipo: form.tipoFactura.value,
+              fecha: form.fechaFactura.value,
+              descripcion: form.descripcionFactura.value,
+              items: itemsTemp,
+            });
+
+            const facturas = sistema.listar();
+            nuevaFactura = facturas[facturas.length - 1];
+          })
+        ) {
+          // Enviar email automáticamente (sin bloquear la UI)
+          if (nuevaFactura) {
+            enviarFacturaPorEmail(nuevaFactura);
+          }
+
+          itemsTemp = [];
+          renderItemsList();
+          form.reset();
+          // Limpiar clases de validación
+          [
+            clienteInput,
+            cuitInput,
+            direccionInput,
+            emailInput,
+            telefonoInput,
+            fechaInput,
+            descripcionInput,
+            productoInput,
+            precioInput,
+          ].forEach((input) => {
+            if (input) input.classList.remove("is-valid", "is-invalid");
           });
-        });
 
-        itemsTemp = [];
-        renderItemsList();
-        form.reset();
-        // Limpiar clases de validación
-        [clienteInput, cuitInput, direccionInput, emailInput, telefonoInput, fechaInput, descripcionInput, productoInput, precioInput].forEach(input => {
-          if (input) input.classList.remove("is-valid", "is-invalid");
-        });
-
-        bootstrap.Modal.getInstance(document.getElementById("modalFactura"))?.hide();
-        toastFactura.show();
-        actualizarMetricas();
-
+          bootstrap.Modal.getInstance(
+            document.getElementById("modalFactura")
+          )?.hide();
+          toastFactura.show();
+          actualizarMetricas();
+        }
       } catch (err) {
         mostrarToast(err.message, "danger");
       }
     });
   }
 }
-
-
 
 // NUEVA FACTURA
 
@@ -505,7 +573,9 @@ function initNuevaFactura() {
 
   const addItemBtn = document.getElementById("addItemBtn");
   const crearBtn = document.getElementById("crearFacturaBtn");
-  const toastFactura = new bootstrap.Toast(document.getElementById("toastFactura"));
+  const toastFactura = new bootstrap.Toast(
+    document.getElementById("toastFactura")
+  );
   let itemsTemp = [];
 
   const productoInput = document.getElementById("productoFactura");
@@ -611,9 +681,9 @@ function initNuevaFactura() {
   const listaItems = document.getElementById("listaItemsAgregados");
   function renderItemsList() {
     if (!listaItems) return;
-    
+
     listaItems.replaceChildren();
-    
+
     if (itemsTemp.length === 0) {
       const p = document.createElement("p");
       p.className = "text-muted small mb-0";
@@ -622,44 +692,48 @@ function initNuevaFactura() {
       return;
     }
 
-    const f = new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS" });
+    const f = new Intl.NumberFormat("es-AR", {
+      style: "currency",
+      currency: "ARS",
+    });
     const listGroup = document.createElement("div");
     listGroup.className = "list-group";
 
     itemsTemp.forEach((item, index) => {
       const itemEl = document.createElement("div");
-      itemEl.className = "list-group-item d-flex justify-content-between align-items-center";
-      
+      itemEl.className =
+        "list-group-item d-flex justify-content-between align-items-center";
+
       const contenido = document.createElement("div");
       contenido.className = "flex-grow-1";
-      
+
       const strong = document.createElement("strong");
       strong.textContent = item.producto;
       contenido.appendChild(strong);
-      
+
       const br = document.createElement("br");
       contenido.appendChild(br);
-      
+
       const small = document.createElement("small");
       small.className = "text-muted";
       small.textContent = f.format(item.precio);
       contenido.appendChild(small);
-      
+
       const btnEliminar = document.createElement("button");
       btnEliminar.type = "button";
       btnEliminar.className = "btn btn-sm btn-outline-danger btn-eliminar-item";
       btnEliminar.dataset.index = index;
-      
+
       const icon = document.createElement("i");
       icon.className = "fa-solid fa-trash";
       btnEliminar.appendChild(icon);
-      
+
       btnEliminar.addEventListener("click", () => {
         itemsTemp.splice(index, 1);
         renderItemsList();
         mostrarToast("Ítem eliminado", "info");
       });
-      
+
       itemEl.appendChild(contenido);
       itemEl.appendChild(btnEliminar);
       listGroup.appendChild(itemEl);
@@ -687,7 +761,10 @@ function initNuevaFactura() {
         validarCampoUI(precioInput, precOk);
 
         if (!prodOk || !precOk) {
-          mostrarToast("Completá un producto y un precio válido (> 0) antes de agregar.", "danger");
+          mostrarToast(
+            "Completá un producto y un precio válido (> 0) antes de agregar.",
+            "danger"
+          );
           return;
         }
 
@@ -700,7 +777,6 @@ function initNuevaFactura() {
         precioInput.classList.remove("is-valid", "is-invalid");
 
         mostrarToast("✔ Ítem agregado", "success");
-
       } catch (err) {
         mostrarToast(err.message, "danger");
       }
@@ -713,7 +789,15 @@ function initNuevaFactura() {
     let primerCampoInvalido = null;
 
     // Limpiar clases de validación previas
-    [clienteInput, cuitInput, direccionInput, emailInput, telefonoInput, fechaInput, descripcionInput].forEach(input => {
+    [
+      clienteInput,
+      cuitInput,
+      direccionInput,
+      emailInput,
+      telefonoInput,
+      fechaInput,
+      descripcionInput,
+    ].forEach((input) => {
       if (input) input.classList.remove("is-invalid", "is-valid");
     });
 
@@ -819,7 +903,7 @@ function initNuevaFactura() {
     return true;
   }
 
-  // Función para procesar la creación de la factura
+  // Función para procesar la creación de la factura (Nueva factura) + envío de email
   function procesarCrearFactura() {
     try {
       // Validar todos los campos antes de continuar
@@ -835,24 +919,48 @@ function initNuevaFactura() {
         telefono: form.telefonoFactura.value,
       });
 
-      if (guardarYActualizar(() => {
-        sistema.crearFactura({
-          cliente,
-          tipo: form.tipoFactura.value,
-          fecha: form.fechaFactura.value,
-          descripcion: form.descripcionFactura.value,
-          items: itemsTemp,
-        });
-      })) {
+      let nuevaFactura = null;
+
+      if (
+        guardarYActualizar(() => {
+          sistema.crearFactura({
+            cliente,
+            tipo: form.tipoFactura.value,
+            fecha: form.fechaFactura.value,
+            descripcion: form.descripcionFactura.value,
+            items: itemsTemp,
+          });
+
+          const facturas = sistema.listar();
+          nuevaFactura = facturas[facturas.length - 1];
+        })
+      ) {
+        // Enviar email automáticamente (sin bloquear la UI)
+        if (nuevaFactura) {
+          enviarFacturaPorEmail(nuevaFactura);
+        }
+
         itemsTemp = [];
         renderItemsList();
         form.reset();
         // Limpiar clases de validación
-        [clienteInput, cuitInput, direccionInput, emailInput, telefonoInput, fechaInput, descripcionInput, productoInput, precioInput].forEach(input => {
+        [
+          clienteInput,
+          cuitInput,
+          direccionInput,
+          emailInput,
+          telefonoInput,
+          fechaInput,
+          descripcionInput,
+          productoInput,
+          precioInput,
+        ].forEach((input) => {
           if (input) input.classList.remove("is-valid", "is-invalid");
         });
 
-        bootstrap.Modal.getInstance(document.getElementById("modalFactura"))?.hide();
+        bootstrap.Modal.getInstance(
+          document.getElementById("modalFactura")
+        )?.hide();
         toastFactura.show();
       }
     } catch (err) {
@@ -875,8 +983,6 @@ function initNuevaFactura() {
   }
 }
 
-
-
 // FACTURAS
 
 function initFacturas() {
@@ -892,9 +998,11 @@ function initFacturas() {
   if (btnConfirmarEliminar && modalConfirmar) {
     btnConfirmarEliminar.addEventListener("click", () => {
       if (facturaAEliminar) {
-        if (guardarYActualizar(() => {
-          sistema.eliminarFactura(facturaAEliminar.id);
-        })) {
+        if (
+          guardarYActualizar(() => {
+            sistema.eliminarFactura(facturaAEliminar.id);
+          })
+        ) {
           render();
           mostrarToast("✔ Factura eliminada", "warning");
           bootstrap.Modal.getInstance(modalConfirmar)?.hide();
@@ -928,9 +1036,11 @@ function initFacturas() {
     }
 
     if (e.target.classList.contains("btn-marcar-pagada")) {
-      if (guardarYActualizar(() => {
-        sistema.marcarPagada(numero);
-      })) {
+      if (
+        guardarYActualizar(() => {
+          sistema.marcarPagada(numero);
+        })
+      ) {
         render();
         mostrarToast("✔ Factura pagada", "success");
       }
@@ -945,7 +1055,10 @@ function initFacturas() {
     cont.replaceChildren();
 
     const facturas = sistema.listar();
-    const f = new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS" });
+    const f = new Intl.NumberFormat("es-AR", {
+      style: "currency",
+      currency: "ARS",
+    });
 
     facturas.forEach((factura) => {
       const clone = template.content.cloneNode(true);
@@ -953,9 +1066,14 @@ function initFacturas() {
       const card = clone.querySelector(".factura-card");
       card.dataset.facturaNumero = factura.numero;
 
-      clone.querySelector(".factura-numero").textContent = `Factura N° ${factura.numero} (${factura.tipo})`;
-      clone.querySelector(".factura-cliente").textContent = factura.cliente.nombre;
-      clone.querySelector(".factura-total").textContent = f.format(factura.total);
+      clone.querySelector(
+        ".factura-numero"
+      ).textContent = `Factura N° ${factura.numero} (${factura.tipo})`;
+      clone.querySelector(".factura-cliente").textContent =
+        factura.cliente.nombre;
+      clone.querySelector(".factura-total").textContent = f.format(
+        factura.total
+      );
       clone.querySelector(".factura-estado").textContent = factura.estado;
 
       if (factura.estado === "pagada") {
@@ -973,8 +1091,13 @@ function initFacturas() {
     if (!modalBody || !modalEl) return;
 
     const modal = new bootstrap.Modal(modalEl);
-    const f = new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS" });
-    const fechaFormateada = new Date(factura.fecha).toLocaleDateString("es-AR");
+    const f = new Intl.NumberFormat("es-AR", {
+      style: "currency",
+      currency: "ARS",
+    });
+    const fechaFormateada = new Date(factura.fecha).toLocaleDateString(
+      "es-AR"
+    );
 
     modalBody.replaceChildren();
 
@@ -1051,12 +1174,12 @@ function initFacturas() {
     const h6Items = document.createElement("h6");
     h6Items.className = "text-muted mb-2";
     h6Items.textContent = "Productos / Ítems";
-    
+
     const tableWrapper = document.createElement("div");
     tableWrapper.className = "table-responsive";
     const table = document.createElement("table");
     table.className = "table table-sm table-bordered";
-    
+
     const thead = document.createElement("thead");
     const trHead = document.createElement("tr");
     const thProducto = document.createElement("th");
@@ -1075,9 +1198,9 @@ function initFacturas() {
     trHead.appendChild(thPrecio);
     trHead.appendChild(thSubtotal);
     thead.appendChild(trHead);
-    
+
     const tbody = document.createElement("tbody");
-    factura.items.forEach(item => {
+    factura.items.forEach((item) => {
       const tr = document.createElement("tr");
       const tdProducto = document.createElement("td");
       tdProducto.textContent = item.producto;
@@ -1096,7 +1219,7 @@ function initFacturas() {
       tr.appendChild(tdSubtotal);
       tbody.appendChild(tr);
     });
-    
+
     const tfoot = document.createElement("tfoot");
     const trSubtotal = document.createElement("tr");
     const tdSubtotalLabel = document.createElement("td");
@@ -1108,7 +1231,7 @@ function initFacturas() {
     tdSubtotalVal.textContent = f.format(factura.calcularSubtotal());
     trSubtotal.appendChild(tdSubtotalLabel);
     trSubtotal.appendChild(tdSubtotalVal);
-    
+
     const trIVA = document.createElement("tr");
     const tdIVALabel = document.createElement("td");
     tdIVALabel.colSpan = 3;
@@ -1119,7 +1242,7 @@ function initFacturas() {
     tdIVAVal.textContent = f.format(factura.calcularIVA());
     trIVA.appendChild(tdIVALabel);
     trIVA.appendChild(tdIVAVal);
-    
+
     const trTotal = document.createElement("tr");
     trTotal.className = "table-success";
     const tdTotalLabel = document.createElement("td");
@@ -1131,11 +1254,11 @@ function initFacturas() {
     tdTotalVal.textContent = f.format(factura.total);
     trTotal.appendChild(tdTotalLabel);
     trTotal.appendChild(tdTotalVal);
-    
+
     tfoot.appendChild(trSubtotal);
     tfoot.appendChild(trIVA);
     tfoot.appendChild(trTotal);
-    
+
     table.appendChild(thead);
     table.appendChild(tbody);
     table.appendChild(tfoot);
@@ -1151,7 +1274,8 @@ function initFacturas() {
     h6Estado.className = "text-muted mb-1";
     h6Estado.textContent = "Estado";
     const badge = document.createElement("span");
-    badge.className = factura.estado === "pagada" ? "badge bg-success" : "badge bg-warning";
+    badge.className =
+      factura.estado === "pagada" ? "badge bg-success" : "badge bg-warning";
     badge.textContent = factura.estado;
     colEstado.appendChild(h6Estado);
     colEstado.appendChild(badge);
@@ -1178,15 +1302,15 @@ function initFacturas() {
   render();
 }
 
-
-
 // CONFIGURACIÓN (Impuestos) – usando <template-impuesto>
 
 function initConfiguracion() {
   const lista = document.getElementById("lista-impuestos");
   const template = document.getElementById("template-impuesto");
   const form = document.getElementById("formAgregarImpuesto");
-  const toastOk = new bootstrap.Toast(document.getElementById("toastImpuestoOk"));
+  const toastOk = new bootstrap.Toast(
+    document.getElementById("toastImpuestoOk")
+  );
   const btnEstadoNuevo = document.getElementById("btnEstadoNuevo");
   const btnAgregar = document.getElementById("agregarImpuestoBtn");
 
@@ -1195,7 +1319,9 @@ function initConfiguracion() {
     btnEstadoNuevo.addEventListener("click", () => {
       btnEstadoNuevo.classList.toggle("activo");
       btnEstadoNuevo.classList.toggle("inactivo");
-      btnEstadoNuevo.textContent = btnEstadoNuevo.classList.contains("activo") ? "Activo" : "Inactivo";
+      btnEstadoNuevo.textContent = btnEstadoNuevo.classList.contains("activo")
+        ? "Activo"
+        : "Inactivo";
     });
   }
 
@@ -1249,11 +1375,11 @@ function initConfiguracion() {
         }
         // Limpiar clases de validación
         if (nombreInput) nombreInput.classList.remove("is-valid", "is-invalid");
-        if (porcentajeInput) porcentajeInput.classList.remove("is-valid", "is-invalid");
+        if (porcentajeInput)
+          porcentajeInput.classList.remove("is-valid", "is-invalid");
 
         toastOk.show();
         render();
-
       } catch (err) {
         mostrarToast(err.message, "danger");
       }
@@ -1264,9 +1390,11 @@ function initConfiguracion() {
     const btn = e.target.closest(".btn-eliminar");
     if (!btn) return;
 
-    if (guardarYActualizar(() => {
-      sistema.eliminarImpuesto(btn.dataset.id);
-    })) {
+    if (
+      guardarYActualizar(() => {
+        sistema.eliminarImpuesto(btn.dataset.id);
+      })
+    ) {
       render();
       mostrarToast("✔ Impuesto eliminado", "warning");
     }
@@ -1290,12 +1418,11 @@ function initConfiguracion() {
   }
 }
 
-
-
 // TOAST UTIL
 
 function mostrarToast(msg, tipo = "info") {
-  const cont = document.querySelector(".toast-container") || crearToastContainer();
+  const cont =
+    document.querySelector(".toast-container") || crearToastContainer();
 
   // Contenedor principal del toast
   const toastEl = document.createElement("div");
@@ -1333,5 +1460,3 @@ function crearToastContainer() {
   document.body.appendChild(c);
   return c;
 }
-
-window.mostrarToast = mostrarToast;

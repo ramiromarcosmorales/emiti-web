@@ -1,9 +1,18 @@
-## [Unreleased]
+## [Release Segundo Parcial]- 2025-11-25
 
 ### Added
 
 - [feature/dev-libreria-externa-jspdf] Implementación de la librería jsPDF para generar PDF de las facturas.  
   PR: [#133](https://github.com/ramiromarcosmorales/emiti-web/pull/133) - @ramiromarcosmorales (Desarrollador JS Libreria Externa)
+
+- [feature/coord-devops-segundo-parcial] Actualización README, changelog, feature template y issue templates.  
+  PR: [#126](https://github.com/ramiromarcosmorales/emiti-web/pull/126) - @Harika-sebasthian (Coordinador/DevOps + Documentación)
+
+- [feature/tester-qa-js-testing-suite] Test Case 11 "Auditoría Lighthouse - Baseline Inicial" documentado.  
+  PR: [#131](https://github.com/ramiromarcosmorales/emiti-web/pull/131) - @victoriaimo (Tester QA/JS)
+  
+- [feature/dev-async-fetch-api] Incorporación de API y actualización de script.js, nueva-factura.html, facturas.html e index.html.
+  PR: [#132](https://github.com/ramiromarcosmorales/emiti-web/pull/132) - @ramire-uces (Desarrollador JS Asíncrono - Fetch & APIs)
 
 ### Changed
 
