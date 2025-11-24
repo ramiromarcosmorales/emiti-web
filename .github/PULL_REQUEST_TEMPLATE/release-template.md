@@ -11,7 +11,7 @@
 
 ## 🧾 Descripción General de la Entrega
 
-Esta Pull Request representa la **entrega final de la Actividad Obligatoria N°1** de la materia **Programación Web I**.  
+Esta Pull Request representa la **entrega final de la Actividad Obligatoria N°4** de la materia **Programación Web I**.  
 Incluye la integración de todos los aportes realizados por los integrantes del grupo, previamente mergeados en `develop`.
 
 ---
@@ -20,10 +20,10 @@ Incluye la integración de todos los aportes realizados por los integrantes del 
 
 | Nombre completo          | Rol asignado en esta entrega | Usuario GitHub      |
 |--------------------------|------------------------------|---------------------|
-| Sebasthian Harika    | Coordinador/DevOps | @Harika-sebasthian |
-| Victoria Imoberdorff | Desarrollador Frontend / CSS | @victoriaimo |
-| Ramiro Nicolas Renterías | Especialista en Responsive | @ramire-uces  |
-| Ramiro Marcos Morales | Documentador / QA Tester | @ramiromarcosmorales |
+| Ramiro Marcos Morales    | Coordinador/DevOps + Tester QA | @ramiromarcosmorales |
+| Sebasthian Harika | Desarrollador JS Eventos + DOM | @Harika-sebasthian |
+| Ramiro Nicolas Renterías | Desarrollador JS POO | @ramire-uces  |
+| Victoria Imoberdorff | Desarrollador JS Local y Session Storage | @victoriaimo |
 
 ---
 
@@ -53,7 +53,7 @@ Incluye la integración de todos los aportes realizados por los integrantes del 
 
 Una vez creada esta Pull Request, notificamos en el canal:
 
-[Actividad Obligatoria N°1][GRUPO X](enlace a esta Pull Request)
+[Actividad Obligatoria N°4][GRUPO X](enlace a esta Pull Request)
 
 
 Luego iniciamos un hilo mencionando a **@Matías Velasquez** indicando el contenido general de la entrega.  

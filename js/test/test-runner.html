@@ -8,22 +8,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/5.10.0/jasmine.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/5.10.0/jasmine-html.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/5.10.0/boot0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/5.10.0/boot1.min.js"></script>
 </head>
 <body>
+    <script type="module" src="script.spec.js"></script>
+    <script type="module" src="models.spec.js"></script>
+    <script type="module" src="storage.spec.js"></script>
 
-    <script>
-        // Flag para que script.js NO ejecute mostrarMenuPrincipal() durante los tests
-        window.__TEST__ = true;
-    </script>
-
-
-
-
-    <!-- Código fuente -->
-    <script src="../script.js"></script>
-
-    <!-- Tests -->
-    <script src="script.spec.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/5.10.0/boot1.min.js"></script>
 </body>
 </html>

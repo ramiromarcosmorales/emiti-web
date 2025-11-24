@@ -1,0 +1,115 @@
+@startuml name Diagrama de Clases Emití
+hide empty members
+skinparam classAttributeIconSize 0
+skinparam Shadowing false
+skinparam classBackgroundColor white
+skinparam classBorderColor black
+skinparam classFontSize 14
+
+'======================
+' CLASES DE DOMINIO
+'======================
+
+class Cliente {
+  +nombre: string
+  +cuit: string
+  +direccion: string
+  +email: string
+  +telefono: string
+  --
+  -_validarTexto(valor, campo): string
+  -_validarCUIT(cuit): string
+  -_validarEmail(email): string
+  -_validarTelefono(t): string
+  +toJSON(): Object
+  +{static} fromJSON(data): Cliente
+}
+
+class ItemFactura {
+  +producto: string
+  +precio: number
+  +cantidad: number
+  --
+  -_validarPrecio(valor): number
+  +subtotal(): number
+  +toJSON(): Object
+  +{static} fromJSON(data): ItemFactura
+}
+
+class Impuesto {
+  +id: number
+  +nombre: string
+  +porcentaje: number
+  +activo: boolean
+  --
+  +setActivo(estado): void
+  +setPorcentaje(nuevoPorcentaje): void
+  +toJSON(): Object
+  +{static} fromJSON(data): Impuesto
+}
+
+class Factura {
+  +id: number
+  +numero: string
+  +cliente: Cliente
+  +tipo: string
+  +fecha: Date
+  +descripcion: string
+  +items: List<ItemFactura>
+  +tasaIVA: number
+  +estado: string
+  +total: number
+  --
+  +calcularSubtotal(): number
+  +calcularIVA(): number
+  +calcularTotal(): number
+  +marcarPagada(): void
+  +toJSON(): Object
+  +{static} fromJSON(data): Factura
+}
+
+class SistemaFacturacion {
+  +facturas: List<Factura>
+  +impuestos: List<Impuesto>
+  +config: Object
+  --
+  +suscribir(observer): void
+  +notificar(): void
+  +setConfig(config): void
+  +agregarImpuesto(imp): void
+  +eliminarImpuesto(id): void
+  +tasaIVA(): number
+  +generarNumero(): string
+  +crearFactura(data): Factura
+  +eliminarFactura(id): void
+  +marcarPagadaPorId(id): void
+  +marcarPagada(numero): void
+  +getFacturaById(id): Factura
+  +getFacturaByNumero(numero): Factura
+  +getImpuestoById(id): Impuesto
+  +getImpuestoByNombre(nombre): Impuesto
+  +buscar(criterio): List<Factura>
+  +listar(): List<Factura>
+  +guardarEnStorage(): void
+  +cargarDesdeStorage(): void
+  +limpiarTodo(): void
+  +toJSON(): Object
+  +{static} fromJSON(data): SistemaFacturacion
+  +getMetrics(): Object
+}
+
+class StorageObserver {
+  -sistema: SistemaFacturacion
+  +actualizar(): void
+}
+
+SistemaFacturacion "1" o--> "*" StorageObserver : notifica
+StorageObserver --> SistemaFacturacion : observa
+
+Factura "1" *-- "*" ItemFactura
+Factura "1" --> "1" Cliente
+
+SistemaFacturacion "1" o-- "*" Factura
+SistemaFacturacion "1" o-- "*" Impuesto
+
+@enduml
