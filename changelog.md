@@ -7,6 +7,9 @@
 
 - [feature/tester-qa-js-testing-suite] Test Case 11 "Auditoría Lighthouse - Baseline Inicial" documentado.  
   PR: [#131](https://github.com/ramiromarcosmorales/emiti-web/pull/131) - @victoriaimo (Tester QA/JS)
+  
+- [feature/dev-async-fetch-api] Incorporación de API y actualización de script.js, nueva-factura.html, facturas.html e index.html.
+  PR: [#132](https://github.com/ramiromarcosmorales/emiti-web/pull/132) - @ramire-uces (Desarrollador JS Asíncrono - Fetch & APIs)
 
 ### Changed
 
