@@ -14,36 +14,43 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 
 ---
 
-## 🎯 Objetivos del entregable actual (Actividad Obligatoria 4)
+## 🎯 Objetivos del entregable actual (Segundo Parcial)
 
-- Implementar Programación Orientada a Objetos
-- Persistencia mediante Local y Session Storage
-- Interacción dinámica con DOM y Eventos
-- Testing automatizado con Jasmine
+- Corrección e integración final de Actividades Obligatorias N°3 y N°4
+- Consumo asíncrono de datos con `fetch` y promesas
+- Integración de librería externa para mejorar la experiencia del usuario
+- Testing automatizado con Jasmine para funciones asíncronas y librerías
+- Auditorías de calidad (performance, accesibilidad, SEO) con Lighthouse
+- Coordinación colaborativa vía GitHub (ramas, PRs, issues, changelog, releases)
 
 ---
 
 ## 💻 Tecnologías utilizadas
 
-- HTML5.
-- CSS3.
-- Bootstrap 5.
-- JavaScript.
-- Jasmine.
-- PlantUML.
-- Figma.
-- Git y GitHub.
-- Visual Studio Code.
-- Herramientas Principales Testing: BrowserStack, PageSpeed Insights, WAVE, GTMetrix, ResponsivelyApp, SauceLabs.
+- HTML5
+- CSS3
+- Bootstrap 5
+- JavaScript ES6+
+- Librerías externas (ej: SweetAlert2, Toastify, Chart.js)
+- Jasmine
+- Lighthouse
+- PlantUML
+- Figma
+- Git y GitHub (con ramas protegidas y gestión de PRs)
+- Visual Studio Code
+- Herramientas de QA: BrowserStack, PageSpeed Insights, WAVE, GTMetrix, ResponsivelyApp, SauceLabs
 
 ---
 
-## 🔧 Funcionalidades previstas
+## 🔧 Funcionalidades actuales
 
 - Gestión POO
-- Persistencia de datos mediante Storage
-- Renderizado dinámico de los datos mediante DOM
-- Testing automatizado por módulos
+- Persistencia con Local y Session Storage
+- Renderizado dinámico desde datos asincrónicos (fetch/API)
+- Interacción DOM con eventos
+- Testing modular con Jasmine
+- Auditorías Lighthouse con seguimiento de resultados
+- Librería externa integrada para mejorar UI/UX
 
 ---
 
@@ -57,18 +64,22 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 - 📘 [Diagrama POO - UML](docs/04-diagramas/02-diagrama-de-clases/diagrama-clases-doc.md)
 - 📄 [Documento de testing JavaScript](js/test/testing-doc.md) 
 - 🗄️ [Documento de Storage](docs/05-storage/storage-doc.md)
+- 📦 [Documentación de Librerías Externas](docs/06-librerias/libreria-doc.md)
+- 🔄 [Datos mock JSON (API)](api/data.json)
 - ♼ [Changelog](/changelog.md)
+
 
 ---
 
 ## 👥 Carátula del Proyecto
 
-| Nombre completo           | Usuario GitHub              | Matrícula | Rol                            |
-|---------------------------|-----------------------------|-----------|--------------------------------|
-| Victoria Imoberdorff      | @victoriaimo                | 119707    | Desarrollador JS Local y Session Storage           | 
-| Ramiro Nicolás Renterías  | @ramire-uces                | 143709    | Desarrollador JS POO |
-| Sebasthian Harika         | @Harika-sebasthian          | 148722    | Desarrollador JS Eventos + DOM              |
-| Ramiro Marcos Morales     | @ramiromarcosmorales        | 149386    | Coordinador/DevOps + Tester QA       |
+| Nombre completo           | Usuario GitHub              | Matrícula | Rol                                  |
+|---------------------------|-----------------------------|-----------|---------------------------------------|
+| Sebasthian Harika         | @Harika-sebasthian          | 148722    | Coordinador / DevOps                 |
+| Ramiro Nicolás Renterías  | @ramire-uces                | 143709    | Desarrollador JS Asíncrono (Fetch/API) |
+| Ramiro Marcos Morales     | @ramiromarcosmorales        | 149386    | Desarrollador JS Librerías Externas  |
+| Victoria Imoberdorff      | @victoriaimo                | 119707    | Tester QA / JavaScript               |
+
 ---
 
 ## 📌 Enlace del sitio (GitHub Pages)
@@ -76,3 +87,5 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 ➡️ [Versión en línea del sitio](https://ramiromarcosmorales.github.io/emiti-web/)
 
 ---
+
+
