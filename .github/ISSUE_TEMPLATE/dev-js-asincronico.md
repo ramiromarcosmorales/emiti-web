@@ -1,8 +1,8 @@
-name: "Issue Dev JS Asíncrono - Segundo Parcial"
-about: "Implementar consumo asíncrono con Fetch/API y procesamiento de datos"
-title: "[Dev JS Async] - "
-labels: [javascript, fetch, segundo-parcial]
-assignees: [ramire-uces]
+- name: "Issue Dev JS Asíncrono - Segundo Parcial"
+- about: "Implementar consumo asíncrono con Fetch/API y procesamiento de datos"
+- title: "[Dev JS Async] - "
+- labels: [javascript, fetch, segundo-parcial]
+- assignees: [ramire-uces]
 
 ---
 

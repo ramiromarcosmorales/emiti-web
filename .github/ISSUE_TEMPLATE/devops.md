@@ -1,8 +1,8 @@
-name: "Issue Coordinador/DevOps - Segundo Parcial"
-about: "Gestionar entregables, estructura del repositorio y documentación oficial del grupo"
-title: "[Coordinador/DevOps] - "
-labels: [devops, coordinación, segundo-parcial]
-assignees: [Harika-sebasthian]
+- name: "Issue Coordinador/DevOps - Segundo Parcial"
+- about: "Gestionar entregables, estructura del repositorio y documentación oficial del grupo"
+- title: "[Coordinador/DevOps] - "
+- labels: [devops, coordinación, segundo-parcial]
+- assignees: [Harika-sebasthian]
 
 ---
 

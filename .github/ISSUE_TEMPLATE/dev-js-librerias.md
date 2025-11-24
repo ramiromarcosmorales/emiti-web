@@ -1,8 +1,8 @@
-name: "Issue Dev JS Librerías - Segundo Parcial"
-about: "Integrar librería externa mediante CDN y mejorar experiencia del usuario"
-title: "[Dev JS Librería] - "
-labels: [javascript, librería, segundo-parcial]
-assignees: [ramiromarcosmorales]
+- name: "Issue Dev JS Librerías - Segundo Parcial"
+- about: "Integrar librería externa mediante CDN y mejorar experiencia del usuario"
+- title: "[Dev JS Librería] - "
+- labels: [javascript, librería, segundo-parcial]
+- assignees: [ramiromarcosmorales]
 
 ---
 

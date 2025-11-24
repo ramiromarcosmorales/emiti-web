@@ -1,8 +1,8 @@
-name: "Issue Tester QA - Segundo Parcial"
-about: "Tareas del rol Tester QA: testing asincrónico, librerías externas y auditoría del sistema"
-title: "[Tester QA] - "
-labels: [testing, segundo-parcial]
-assignees: [victoriaimo]
+- name: "Issue Tester QA/JS - Segundo Parcial"
+- about: "Tareas del rol Tester QA: testing asincrónico, librerías externas y auditoría del sistema"
+- title: "[Tester QA] - "
+- labels: [testing, segundo-parcial]
+- assignees: [victoriaimo]
 ---
 
 ### 🧪 Descripción general
