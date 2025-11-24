@@ -59,16 +59,15 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 - 🎨 [Mockup actualizado](docs/01-mockup/disenio-bootstrap.png)
 - 🔗 [Versión online en Figma](https://www.figma.com/proto/h9mE1D1OyWJGGGXtMpGQ6E/Emit%C3%AD-Web?node-id=18-133&p=f&t=fH3ojOpydZFQDtel-0&scaling=min-zoom&content-scaling=fixed&page-id=18%3A132)
 - 📁 [Índice de prompts](docs/02-prompts/prompts.md)
-- 🧪 [Índice de testing](docs/03-testing/testing-doc.md)
-- 📊 [Lighthouse Baseline](docs/03-testing/test-case-11-lighthouse-baseline.md)
-- 📊 [Lighthouse Post-Fetch](docs/03-testing/test-case-12-lighthouse-post-fetch.md)
-- 📊 [Lighthouse Post-Librería](docs/03-testing/test-case-13-lighthouse-post-library.md)
+- 🧪 [Índice de testing (test-case)](docs/03-testing/testing-doc.md)
 - 📘 [Diagramas de actividades UML](docs/04-diagramas/01-diagramas-de-actividades/diagramas-doc.md)  
 - 📘 [Diagrama POO - UML](docs/04-diagramas/02-diagrama-de-clases/diagrama-clases-doc.md)
 - 📄 [Documento de testing JavaScript](js/test/testing-doc.md) 
 - 🗄️ [Documento de Storage](docs/05-storage/storage-doc.md)
-- 📦 [Librería externa](docs/06-librerias/libreria-doc.md)
+- 📦 [Documentación de Librerías Externas](docs/06-librerias/libreria-doc.md)
+- 🔄 [Datos mock JSON (API)](api/data.json)
 - ♼ [Changelog](/changelog.md)
+
 
 ---
 
