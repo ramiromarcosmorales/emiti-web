@@ -4,9 +4,9 @@
 // ----------------------------------------------------------
 
 // Credenciales de EmailJS
-const EMAILJS_PUBLIC_KEY = "ZG0bwtkRkJ9TiqOPH";
-const EMAILJS_SERVICE_ID = "service_xdaswcx";
-const EMAILJS_TEMPLATE_ID = "template_k12jp2e";
+const EMAILJS_PUBLIC_KEY = "iF4Z8fx4piITsYRqT";
+const EMAILJS_SERVICE_ID = "service_fuk92qg";
+const EMAILJS_TEMPLATE_ID = "template_3r0z5ac";
 
 /**
  * Inicializa el SDK de EmailJS.
@@ -20,24 +20,34 @@ export function initEmailAPI() {
 }
 
 /**
+ * Formatea fecha estilo AFIP (solo DD/MM/YYYY) usando zona horaria AR
+ */
+function formatFecha(fecha) {
+  try {
+    return new Date(fecha).toLocaleDateString("es-AR", {
+      timeZone: "America/Argentina/Buenos_Aires",
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
+  } catch {
+    return String(fecha);
+  }
+}
+
+/**
  * Sanitiza un texto
- * @param {any} value
- * @param {number} maxLen
- * @returns {string}
  */
 function sanitizeText(value, maxLen = 255) {
   return String(value ?? "")
-    .replace(/[\r\n]+/g, " ") // quita saltos
-    .replace(/[<>]/g, "")     // quita < >
+    .replace(/[\r\n]+/g, " ")
+    .replace(/[<>]/g, "")
     .slice(0, maxLen)
     .trim();
 }
 
 /**
  * Construye el payload para EmailJS a partir de una factura del dominio.
- * Aplica map / filter / reduce sobre los items.
- * @param {Factura} factura
- * @returns {Object}
  */
 export function buildInvoiceEmailPayload(factura) {
   if (!factura || !factura.cliente) {
@@ -51,7 +61,7 @@ export function buildInvoiceEmailPayload(factura) {
     throw new Error("La factura no tiene nombre o email de cliente válidos.");
   }
 
-  // map
+  // map → normaliza items
   const itemsNormalizados = (factura.items ?? [])
     .map((item) => {
       const cantidad = Number(item.cantidad ?? 1) || 1;
@@ -68,35 +78,55 @@ export function buildInvoiceEmailPayload(factura) {
         subtotal,
       };
     })
-    // filter
     .filter((i) => i.producto && i.precio >= 0);
 
-  // reduce
+  // reduce → calcula total
   const totalCalculado = itemsNormalizados.reduce(
     (acc, item) => acc + item.subtotal,
     0
   );
 
-  const totalItems = itemsNormalizados.length;
-
-  const itemsDescripcion = itemsNormalizados
-    .map(
-      (item) =>
-        `- ${item.producto} x${item.cantidad} - $${item.subtotal.toFixed(2)}`
-    )
-    .join("\n");
+  // tabla HTML final
+  const itemsTableHTML = itemsNormalizados
+    .map((item) => {
+      return `
+        <tr>
+          <td style="padding:6px 10px; border-top:1px solid #e2e8f0;">
+            ${item.producto}
+          </td>
+          <td style="padding:6px; border-top:1px solid #e2e8f0; text-align:center;">
+            ${item.cantidad}
+          </td>
+          <td style="padding:6px; border-top:1px solid #e2e8f0; text-align:right;">
+            $${item.precio.toFixed(2)}
+          </td>
+          <td style="padding:6px 10px; border-top:1px solid #e2e8f0; text-align:right;">
+            $${item.subtotal.toFixed(2)}
+          </td>
+        </tr>
+      `;
+    })
+    .join("");
 
   return {
     to_name: clienteNombre,
     to_email: clienteEmail,
 
     factura_numero: factura.numero,
-    factura_fecha: factura.fecha,
-    factura_descripcion: sanitizeText(factura.descripcion, 500),
 
+    // 🚀 Ahora SOLO fecha, no hora
+    factura_fecha: formatFecha(factura.fecha),
+
+    factura_descripcion: sanitizeText(factura.descripcion, 500),
     factura_total: totalCalculado.toFixed(2),
-    factura_items_count: totalItems.toString(),
-    factura_items_list: itemsDescripcion || "Sin ítems",
+
+    factura_items_table:
+      itemsTableHTML ||
+      `<tr>
+         <td colspan="4" style="padding:8px; font-style:italic; color:#718096;">
+           Sin ítems
+         </td>
+       </tr>`,
 
     factura_estado: factura.estado ?? "pendiente",
   };
@@ -104,8 +134,6 @@ export function buildInvoiceEmailPayload(factura) {
 
 /**
  * Envía un email de factura usando EmailJS.
- * @param {Object} templateParams
- * @returns {Promise<{status: "success", data: any}>}
  */
 export async function sendInvoiceEmail(templateParams) {
   if (!window.emailjs) {
@@ -133,9 +161,7 @@ export async function sendInvoiceEmail(templateParams) {
       };
     } catch (error) {
       intentos++;
-      const esUltimoIntento = intentos >= maxIntentos;
-
-      if (esUltimoIntento) {
+      if (intentos >= maxIntentos) {
         console.error("[EmailAPI] Error al enviar email:", error);
         throw new Error(
           "No se pudo enviar el email de la factura. Intentá nuevamente más tarde."
