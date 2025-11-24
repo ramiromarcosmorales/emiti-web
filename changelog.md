@@ -5,7 +5,7 @@
 - [feature/coord-devops-segundo-parcial] Actualización README, changelog, feature template y issue templates.  
   PR: [#126](https://github.com/ramiromarcosmorales/emiti-web/pull/126) - @Harika-sebasthian (Coordinador/DevOps + Documentación)
 
-- [feature/tester-qa-js-testing-suite] Test Case 11 documentado, plantillas de Test 12 y 13 y corrección de accesibilidad.  
+- [feature/tester-qa-js-testing-suite] Test Case 11 "Auditoría Lighthouse - Baseline Inicial" documentado.  
   PR: [#131](https://github.com/ramiromarcosmorales/emiti-web/pull/131) - @victoriaimo (Tester QA/JS)
 
 ### Changed
