@@ -153,3 +153,24 @@ footer{
   color: var(--color-text);
   font-family: var(--font-heading);
 }
+
+/* Accesibilidad: mejorar contraste del botón principal */
+.btn.btn-success {
+  background-color: var(--color-primary); 
+  border-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.btn.btn-success:hover,
+.btn.btn-success:focus {
+  background-color: #1B5E20;   
+  border-color: #1B5E20;
+}
+
+
+/* Accesibilidad: aumentar área clickeable de enlaces pequeños */
+a.text-reset.text-decoration-none {
+  display: inline-block;
+  padding: 6px 8px;   
+  min-height: 40px;      
+}
