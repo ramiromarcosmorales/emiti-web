@@ -2,6 +2,9 @@
 
 ### Added
 
+- [feature/dev-libreria-externa-jspdf] Implementación de la librería jsPDF para generar PDF de las facturas.  
+  PR: [#133](https://github.com/ramiromarcosmorales/emiti-web/pull/133) - @ramiromarcosmorales (Desarrollador JS Libreria Externa)
+
 ### Changed
 
 ### Fixed
