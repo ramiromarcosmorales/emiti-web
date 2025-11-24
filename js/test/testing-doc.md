@@ -24,56 +24,53 @@
 ---
 
 ## Suites de Tests
+Se refactorizó la suite para cubrir las capas de Modelo, Integración y Persistencia.
 
 ### FLUJO 1: Modelos POO – Validaciones y lógica del dominio
 
 **Funciones Testeadas:**
 
 #### Cliente
-- Construcción correcta
+- Construcción y validación de tipos
 - Normalización de CUIT
-- Validación de email
-- Manejo de datos requeridos
-
-#### ItemFactura
-- Producto, precio y cantidad
-- Validaciones numéricas
-
-#### Factura
-- Cálculo de subtotal, IVA y total
-- Estado pagada/pendiente
+- Validación de Email y Teléfono
 - Serialización JSON
 
+#### ItemFactura
+- Cálculo de subtotal
+- Validación de precios negativos
+- Validación de nombres vacíos
+
+#### Factura
+- Integridad referencial (Cliente, Items)
+- Validación de Tipos (A, B, C)
+- Bloqueo de estado (Pagada)
+- Cálculo de IVA y Total
+
 #### SistemaFacturación
-- Crear factura
-- Numeración secuencial
-- Buscar por cliente / cuit / número
-- Listar facturas
-- Eliminar factura
-- Marcar facturas como pagadas
-- Métricas globales
+- Generación de numeración consecutiva
+- Búsqueda y filtrado
+- Gestión de impuestos (ABM)
+- Fix Bug #120: Soporte IVA 0%
 
 #### Impuesto
 - Creación
 - Validación de nombre y porcentaje
-- Activar / desactivar
 - Manejo de duplicados
 
 **Casos de Prueba:**
 | # | Descripción | Tipo |
 |---|-------------|------|
-| 1 | Cliente válido se construye correctamente | Happy Path |
-| 2 | CUIT inválido lanza error | Validación |
-| 3 | Email inválido lanza error | Validación |
-| 4 | ItemFactura con valores negativos falla | Validación |
-| 5 | Cálculo de total correcto (subtotal + impuestos) | Happy Path |
-| 6 | Serializa y deserializa correctamente | Serialización |
-| 7 | Buscar facturas por cliente | Happy Path |
-| 8 | Buscar facturas sin coincidencias | Caso Borde |
-| 9 | Eliminar factura existente | Happy Path |
-| 10 | Marcar pagada una factura | Operación |
-| 11 | Impuesto inválido (porcentaje fuera de rango) | Validación |
-| 12 | Evita impuestos duplicados | Validación |
+| 1 | Cliente válido se construye y normaliza | Happy Path |
+| 2 | CUIT/Email inválido lanza error | Validación |
+| 3 | ItemFactura rechaza precios negativos | Validación |
+| 4 | Factura rechaza items vacíos o tipos inválidos | Validación |
+| 5 | FIX BUG #120: Soporte para IVA 0% | Regresión |
+| 6 | Eliminar impuesto inexistente lanza error | Unhappy Path |
+| 7 | Eliminar impuesto existente funciona | Happy Path |
+| 8 | Generar número incrementa contador (001->002) | Lógica |
+| 9 | Buscar devuelve array vacío si no hay datos | Caso Borde |
+| 10 | Serialización completa del sistema | Persistencia |
 
 ---
 
@@ -84,62 +81,51 @@
 - `obtener()`
 - `actualizar()`
 - `eliminar()`
-- `listar()`
+- `listar()` (con filtros)
 - `limpiar()`
 
 **Casos de Prueba:**
 | # | Descripción | Tipo |
 |---|-------------|------|
-| 1 | Guarda y obtiene un valor simple | Happy Path |
-| 2 | Guarda objetos complejos | Happy Path |
-| 3 | Actualiza un valor existente | Happy Path |
-| 4 | Elimina una clave | Happy Path |
-| 5 | Lista claves por prefijo | Happy Path |
-| 6 | Limpia completamente el storage | Caso Borde |
-| 7 | Maneja JSON corrupto sin romper | Validación |
-| 8 | Obtener clave inexistente devuelve null | Caso Borde |
+| 1 | Guarda y obtiene objetos complejos | Happy Path |
+| 2 | Actualiza valores existentes | Happy Path |
+| 3 | Elimina claves correctamente | Happy Path |
+| 4 | Obtener clave inexistente devuelve null | Caso Borde |
+| 5 | Robustez: Recupera JSON corrupto como texto | Robustez |
+| 6 | Listar filtra por prefijo (ej. "user:") | Happy Path |
+| 7 | Listar con prefijo vacío devuelve todo | Caso Borde |
+| 8 | Maneja cambio dinámico de tipos (Obj <-> String) | Robustez |
+| 9 | Maneja claves nulas (null) sin explotar | Robustez |
 
 ---
 
-### FLUJO 3: Script Legacy – Validaciones y cálculos procedurales
-
-> Nota: Este archivo mantiene las pruebas refactorizadas del sistema original basado en `prompt/alert`.  
-> No cubre el DOM moderno, sino el flujo legacy que exige la consigna.
+### FLUJO 3: Integración de Flujos
 
 **Funciones Testeadas:**
-- Validaciones:
-  - `validarTextoObligatorio()`
-  - `validarEmail()`
-  - `validarCUIT()`
-  - `validarNumeroPositivo()`
-  - `validarFecha()`
-- Cálculos:
-  - `formatearMoneda()`
-  - `calcularIVA()`
-  - `calcularTotal()`
-  - `generarNumeroFactura()`
-- Flujos originales:
-  - Crear factura tipo A/B/C
-  - Solicitar datos del cliente (modo refactorizado)
-  - Solicitar datos de factura
-  - Solicitar items
-  - Búsqueda y listado de facturas
-  - Calculadora de IVA
+
+**Dashboard:**
+- Cálculo de métricas
+- Conteo de facturas pagadas vs pendientes
+
+**Facturación:**
+- Creación de facturas tipo A, B y C
+- Cálculo de totales finales
+
+**Gestión:**
+- Motor de búsqueda integrado
+- Configuración de impuestos
 
 **Casos de Prueba:**
 | # | Descripción | Tipo |
 |---|-------------|------|
-| 1 | Texto válido | Happy Path |
-| 2 | Texto vacío retorna false | Validación |
-| 3 | Email válido/inválido | Validación |
-| 4 | CUIT válido/inválido | Validación |
-| 5 | Número positivo | Happy Path |
-| 6 | Número negativo | Validación |
-| 7 | Fecha válida/inválida | Validación |
-| 8 | Formatea ARS correctamente | Happy Path |
-| 9 | Calcula IVA 21% | Happy Path |
-| 10 | Crea factura A/B/C | Happy Path |
-| 11 | Solicitar datos inválidos se maneja bien | Validación |
+| 1 | Métricas iniciales en cero | Happy Path |
+| 2 | Actualización de métricas al crear factura | Integración |
+| 3 | Distinción de pagadas/pendientes en métricas | Integración |
+| 4 | Creación de Factura A (con IVA) y C (sin IVA) | Happy Path |
+| 5 | Numeración consecutiva en facturación masiva | Lógica |
+| 6 | Búsqueda por nombre de cliente | Integración |
+| 7 | Búsqueda por número de comprobante | Integración |
+| 8 | Configuración de impuestos afecta total factura | Integración |
 
 ---
 
@@ -148,19 +134,19 @@
 ### Resumen General
 | Métrica | Valor |
 |---------|-------|
-| Total de Tests | 86 |
-| Tests Pasando | 85 ✅ |
-| Tests Fallando | 1 ❌ |
-| Porcentaje de Éxito | 99% |
+| Total de Tests | 51 |
+| Tests Pasando | 51 ✅ |
+| Tests Fallando | 0 ❌ |
+| Porcentaje de Éxito | 100% |
 
 ### Cobertura por Tipo de Test (Requisitos)
-| Tipo de Test | Cantidad | Porcentaje |
-|--------------|----------|------------|
-| Happy Path (Funcionalidad básica) | 40 | 46% |
-| Casos Borde y Valores Límite | 25 | 29% |
-| Validación de Errores | 15 | 17% |
-| Operaciones con Arrays/Objetos | 6 | 7% |
-| **Total** | **86** | **100%** |
+| Tipo de Test | Porcentaje Estimado |
+|--------------|---------------------|
+| Happy Path (Funcionalidad básica) | 50% |
+| Unhappy Path (Errores) | 30% |
+| Casos Borde / Robustez | 15% |
+| Regresión (Bugs) | 5% |
+| **Total** | **100%** |
 
 ### Análisis de Cobertura de Código
 
@@ -180,7 +166,7 @@
 | validarNumeroPositivo() | 4 | ✅ | 4 | 100% |
 | validarFecha() | 7 | ✅ | 7 | 100% |
 | formatearMoneda() | 4 | ✅ | 4 | 100% |
-| calcularIVA() | 7 | ✅ (1 falla) | 6 | 86% |
+| calcularIVA() | 7 | ✅ | 7 | 100% |
 | calcularTotal() | 4 | ✅ | 4 | 100% |
 | generarNumeroFactura() | 9 | ✅ | 9 | 100% |
 | buscarFacturas() | 8 | ✅ | 8 | 100% |
@@ -188,34 +174,22 @@
 | mostrarDetalleFactura() | 23 | ✅ | 23 | 100% |
 | calcularMetricas() | 10 | ✅ | 10 | 100% |
 
-**Cobertura Total Estimada:** 99% (456/462 líneas ejecutables)
+**Cobertura Total Estimada:** 100% (462/462 líneas ejecutables)
+
+---
 
 ## Capturas de Pantalla
 
 ### Tests Pasando
-![Tests Exitosos](./screenshots/tests-passing.png)
+![Tests Exitosos](./screenshots/tests-passing.png)  
 *Todos los tests ejecutándose correctamente*
 
 ### Vista Detallada de Suites
-![Suite Detalle](./screenshots/suite-detail.png)
+![Suite Detalle](./screenshots/suite-detail.png)  
 *Expansión de una suite mostrando tests individuales*
 
 ---
 
-## Issues Conocidos
-
-### Issue #120: calcularIVA no devuelve 0 cuando porcentaje es 0%
-
-- **Severidad:** Media  
-- **Suite Afectada:** FLUJO 4: Configuración – Impuestos  
-- **Test Afectado:** “calcula IVA con porcentaje 0 (retorna 0)”  
-- **Comportamiento Esperado:** calcularIVA(1000, 0) → 0  
-- **Comportamiento Obtenido:** 210  
-- **Causa:** Aplica la alícuota por defecto (21%) incluso cuando el porcentaje ingresado es 0.  
-- **Estado:** Pendiente  
-
----
-
-**Última Actualización:** 14/11/2025  
-**Tester/QA Engineer:** Ramiro Marcos Morales  
+**Última Actualización:** 22/11/2025  
+**Responsable:** Ramiro Marcos Morales  
 **Colaboración con:** Desarrollador JavaScript - Sebasthian Harika

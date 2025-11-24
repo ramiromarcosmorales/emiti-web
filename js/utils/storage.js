@@ -11,10 +11,29 @@ const StorageUtil = {
    */
   guardar(clave, valor, tipo = "local") {
     try {
+      //Validacion de clave
+      if(typeof clave !== "string" || !clave.trim()){
+        console.error("[StorageUtil.guardar] Clave invalida");
+        return false;
+      }
+
+       // Validacion de dato (no guardar undefined)
+      if (valor === undefined){
+        console.error("[StorageUtil.guardar] Valor indefinido");
+        return false;
+      }
+
       const store = tipo === "local" ? localStorage : sessionStorage;
       const data =
         typeof valor === "object" ? JSON.stringify(valor) : String(valor);
-      store.setItem(clave, data);
+      
+       // Control de tamaño (~5MB aproximadamrnte por storage)
+      if (data.length > 5 * 1024 * 1024) {
+        console.error("[StorageUtil.guardar] El dato excede el limite de almacenamiento");
+        return false;
+      }
+      
+        store.setItem(clave, data);
       return true;
     } catch (error) {
       console.error("[StorageUtil.guardar] Error:", error);
@@ -83,14 +102,15 @@ const StorageUtil = {
   listar(prefijo = "", tipo = "local") {
     try {
       const store = tipo === "local" ? localStorage : sessionStorage;
-      const claves = [];
-      for (let i = 0; i < store.length; i++) {
-        const k = store.key(i);
-        if (!prefijo || k.startsWith(prefijo)) {
-          claves.push(k);
-        }
-      }
-      return claves;
+
+      //Conversion de claves del storage a un array REAL
+      const keys = Object.keys(store);
+
+      // Filtro por prefijo si corresponde
+        return prefijo
+        ? keys.filter(k => k.startsWith(prefijo))
+        : keys;
+
     } catch (error) {
       console.error("[StorageUtil.listar] Error:", error);
       return [];

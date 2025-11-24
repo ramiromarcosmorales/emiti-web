@@ -2,6 +2,14 @@
 
 ### Added
 
+### Changed
+
+### Fixed
+
+## [Release Actividad Obligatoria 4] - 2025-11-14
+
+### Added
+
 - [feature/coord-devops-cuarta-entrega] Actualización base y agregado issue templates.  
   PR: [#108](https://github.com/ramiromarcosmorales/emiti-web/pull/108) - @ramiromarcosmorales (Coordinador/DevOps + Tester QA)
 
@@ -25,9 +33,6 @@
 
 - [feature/feature/coord-devops-cuarta-entrega] Actualización del README.  
   PR: [#122](https://github.com/ramiromarcosmorales/emiti-web/pull/122) - @ramiromarcosmorales (Coordinador/DevOps + Tester QA)
-
-### Fixed
-
 
 ## [Release Actividad Obligatoria 3] - 2025-10-24
 

@@ -17,12 +17,12 @@ class Cliente {
   +email: string
   +telefono: string
   --
-  -_validarTexto(valor, campo)
-  -_validarCUIT(cuit)
-  -_validarEmail(email)
-  -_validarTelefono(t)
-  +toJSON()
-  +{static} fromJSON(data)
+  -_validarTexto(valor, campo): string
+  -_validarCUIT(cuit): string
+  -_validarEmail(email): string
+  -_validarTelefono(t): string
+  +toJSON(): Object
+  +{static} fromJSON(data): Cliente
 }
 
 class ItemFactura {
@@ -30,10 +30,10 @@ class ItemFactura {
   +precio: number
   +cantidad: number
   --
-  -_validarPrecio(valor)
-  +subtotal()
-  +toJSON()
-  +{static} fromJSON(data)
+  -_validarPrecio(valor): number
+  +subtotal(): number
+  +toJSON(): Object
+  +{static} fromJSON(data): ItemFactura
 }
 
 class Impuesto {
@@ -42,10 +42,10 @@ class Impuesto {
   +porcentaje: number
   +activo: boolean
   --
-  +setActivo(estado)
-  +setPorcentaje(nuevoPorcentaje)
-  +toJSON()
-  +{static} fromJSON(data)
+  +setActivo(estado): void
+  +setPorcentaje(nuevoPorcentaje): void
+  +toJSON(): Object
+  +{static} fromJSON(data): Impuesto
 }
 
 class Factura {
@@ -60,12 +60,12 @@ class Factura {
   +estado: string
   +total: number
   --
-  +calcularSubtotal()
-  +calcularIVA()
-  +calcularTotal()
-  +marcarPagada()
-  +toJSON()
-  +{static} fromJSON(data)
+  +calcularSubtotal(): number
+  +calcularIVA(): number
+  +calcularTotal(): number
+  +marcarPagada(): void
+  +toJSON(): Object
+  +{static} fromJSON(data): Factura
 }
 
 class SistemaFacturacion {
@@ -73,44 +73,43 @@ class SistemaFacturacion {
   +impuestos: List<Impuesto>
   +config: Object
   --
-  +setConfig(config)
-  +agregarImpuesto(imp)
-  +eliminarImpuesto(id)
-  +tasaIVA()
-  +generarNumero()
-  +crearFactura(data)
-  +eliminarFactura(id)
-  +getFacturaById(id)
-  +getFacturaByNumero(numero)
-  +getImpuestoById(id)
-  +getImpuestoByNombre(nombre)
-  +marcarPagadaPorId(id)
-  +marcarPagada(numero)
-  +buscar(criterio)
-  +listar()
-  +guardarEnStorage()
-  +cargarDesdeStorage()
-  +limpiarTodo()
-  +toJSON()
-  +{static} fromJSON(data)
-  +getMetrics()
+  +suscribir(observer): void
+  +notificar(): void
+  +setConfig(config): void
+  +agregarImpuesto(imp): void
+  +eliminarImpuesto(id): void
+  +tasaIVA(): number
+  +generarNumero(): string
+  +crearFactura(data): Factura
+  +eliminarFactura(id): void
+  +marcarPagadaPorId(id): void
+  +marcarPagada(numero): void
+  +getFacturaById(id): Factura
+  +getFacturaByNumero(numero): Factura
+  +getImpuestoById(id): Impuesto
+  +getImpuestoByNombre(nombre): Impuesto
+  +buscar(criterio): List<Factura>
+  +listar(): List<Factura>
+  +guardarEnStorage(): void
+  +cargarDesdeStorage(): void
+  +limpiarTodo(): void
+  +toJSON(): Object
+  +{static} fromJSON(data): SistemaFacturacion
+  +getMetrics(): Object
 }
 
-'======================
-' RELACIONES
-'======================
+class StorageObserver {
+  -sistema: SistemaFacturacion
+  +actualizar(): void
+}
 
-Factura "1" *-- "*" ItemFactura : contiene
-Factura "1" --> "1" Cliente : referencia
+SistemaFacturacion "1" o--> "*" StorageObserver : notifica
+StorageObserver --> SistemaFacturacion : observa
 
-SistemaFacturacion "1" o-- "*" Factura : gestiona
-SistemaFacturacion "1" o-- "*" Impuesto : administra
+Factura "1" *-- "*" ItemFactura
+Factura "1" --> "1" Cliente
 
-note right of Factura
-Regla de IVA:
-A → subtotal * (IVA/100)
-B → subtotal * (IVA/200)
-C → 0
-end note
+SistemaFacturacion "1" o-- "*" Factura
+SistemaFacturacion "1" o-- "*" Impuesto
 
 @enduml
