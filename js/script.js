@@ -5,6 +5,7 @@ import { SistemaFacturacion } from "./models/SistemaFacturacion.js";
 import { Cliente } from "./models/Cliente.js";
 import { ItemFactura } from "./models/ItemFactura.js";
 import { Impuesto } from "./models/Impuesto.js";
+import { StorageObserver} from "./models/StorageObserver.js";
 
 const sistema = new SistemaFacturacion();
 sistema.suscribir(new StorageObserver(sistema)); 
