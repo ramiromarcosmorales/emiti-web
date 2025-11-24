@@ -31,7 +31,7 @@ export async function generarPDF(factura) {
   doc.setFillColor(...COLOR_FONDO_HEADER);
   doc.rect(0, 0, ANCHO_PAGINA, 40, 'F');
 
-  const logo = await getBase64ImageFromURL('assets/logo.png');
+  const logo = await getBase64ImageFromURL('assets/logo-pdf.png');
   doc.addImage(logo, 'PNG', MARGEN_IZQ, 5, 30, 30);
   
 
