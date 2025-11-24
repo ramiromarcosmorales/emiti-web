@@ -1,18 +1,26 @@
----
-name: "Issue Coordinador / DevOps"
-about: "Tareas del rol Coordinador/DevOps: organización del flujo, CI/CD y releases"
-title: "[Coordinador] - "
-labels: [devops]
-assignees: [ramiromarcosmorales]
+name: "Issue Coordinador/DevOps - Segundo Parcial"
+about: "Gestionar entregables, estructura del repositorio y documentación oficial del grupo"
+title: "[Coordinador/DevOps] - "
+labels: [devops, coordinación, segundo-parcial]
+assignees: [Harika-sebasthian]
+
 ---
 
-### Descripción
-Coordinar la ejecución de AO4 asegurando control de ramas, PRs, changelog, issues, releases y cumplimiento de deadlines.
+### 🛠 Descripción general
 
-### Criterios de aceptación
-- [ ] Ramas feature creadas y PRs organizadas.
-- [ ] Tablero Kanban configurado con issues por rol.
-- [ ] Changelog actualizado en cada merge.
-- [ ] Validación de PRs con revisión cruzada.
-- [ ] Preparación de `release/cuarta-entrega` y PR final a `master`.
-- [ ] Coordinación con QA para validación antes del freeze funcional.
+Actualizar la estructura del repositorio, coordinar las tareas del equipo, verificar entregables y publicar la entrega final mediante release y GitHub Pages. Asegurar que todo esté documentado y validado antes de la entrega.
+
+### ✅ Criterios de aceptación
+
+- [ ] Actualizar `README.md` con funcionalidades, tecnologías y autores.
+- [ ] Coordinar integración en rama `develop` y preparar `release/segundo-parcial`.
+- [ ] Verificar estructura del repositorio y carpetas.
+- [ ] Crear release con tag `v2.0-segundo-parcial`.
+- [ ] Configurar y validar GitHub Pages desde rama release.
+- [ ] Revisar y aprobar PRs de todos los integrantes.
+- [ ] Asegurar que `changelog.md` y `testing-doc.md` estén actualizados.
+
+### Responsable
+- **Nombre:** Sebasthian Harika  
+- **Rol:** Coordinador / DevOps  
+- **Rama:** `feature/coord-devops-segundo-parcial`
