@@ -2,6 +2,9 @@
 
 ### Added
 
+- [feature/coord-devops-segundo-parcial] Actualización README, changelog, feature template y issue templates.  
+  PR: [#126](https://github.com/ramiromarcosmorales/emiti-web/pull/126) - @Harika-sebasthian (Coordinador/DevOps + Documentación)
+
 ### Changed
 
 ### Fixed
