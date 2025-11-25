@@ -5,6 +5,7 @@ import { Cliente } from "./models/Cliente.js";
 import { ItemFactura } from "./models/ItemFactura.js";
 import { Impuesto } from "./models/Impuesto.js";
 import { StorageObserver } from "./models/StorageObserver.js";
+import { generarPDF } from "./utils/pdf.js";
 import { fetchFakeStoreProducts } from "./api/apiService.js";
 
 
@@ -1093,11 +1094,18 @@ function initFacturas() {
 
     if (!factura) return;
 
-    if (e.target.classList.contains("btn-ver-detalles")) {
+    const btn = e.target.closest("button");
+    if (!btn) return;
+
+    if (btn.classList.contains("btn-ver-detalles")) {
       mostrarDetallesFactura(factura);
     }
 
-    if (e.target.classList.contains("btn-marcar-pagada")) {
+    if (btn.classList.contains("btn-descargar-pdf")) {
+      generarPDF(factura);
+    }
+
+    if (btn.classList.contains("btn-marcar-pagada")) {
       if (
         guardarYActualizar(() => {
           sistema.marcarPagada(numero);
@@ -1108,7 +1116,7 @@ function initFacturas() {
       }
     }
 
-    if (e.target.classList.contains("btn-eliminar")) {
+    if (btn.classList.contains("btn-eliminar")) {
       mostrarModalConfirmarEliminar(factura);
     }
   });
@@ -1344,8 +1352,21 @@ function initFacturas() {
     row.appendChild(colEstado);
 
     modalBody.appendChild(row);
+    
+    const modalFooter = modalEl.querySelector(".modal-footer");
+    if (modalFooter) {
+      const btnPDF = modalFooter.querySelector(".btn-descargar-pdf-modal");
+      if (btnPDF) {
+        btnPDF.onclick = () => generarPDF(factura);
+      }
+    }
+    
     modal.show();
   }
+
+  sistema.suscribir({
+    actualizar: () => render()
+  });
 
   // Llamar a render() inicialmente para mostrar las facturas
   render();
