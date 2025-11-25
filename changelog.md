@@ -26,6 +26,9 @@
 - [feature/coord-devops-segundo-parcial] Correción enlace README, registro en changelog.  
   PR: [#138](https://github.com/ramiromarcosmorales/emiti-web/pull/138) - @Harika-sebasthian (Coordinador/DevOps + Documentación)
 
+- [feature/coord-devops-segundo-parcial] Correción enlace README js/test, registro en changelog.  
+  PR: [#139](https://github.com/ramiromarcosmorales/emiti-web/pull/139) - @Harika-sebasthian (Coordinador/DevOps + Documentación)
+
 ## [Release Actividad Obligatoria 4] - 2025-11-14
 
 ### Added
