@@ -17,7 +17,8 @@
 - [feature/dev-libreria-externa-jspdf] Implementación de la librería jsPDF para generar PDF de las facturas.  
   PR: [#133](https://github.com/ramiromarcosmorales/emiti-web/pull/133) - @ramiromarcosmorales (Desarrollador JS Libreria Externa)
 
-
+- [feature/tester-qa-js-testing-suite] Agregacion de api.spec.js y library.spec.js, documentacion de Test Case 12 y 13.  
+  PR: [#140](https://github.com/ramiromarcosmorales/emiti-web/pull/140) - @victoriaimo (Tester QA/JS)
 
 ### Changed
 
