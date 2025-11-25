@@ -127,6 +127,42 @@ Se refactorizó la suite para cubrir las capas de Modelo, Integración y Persist
 | 7 | Búsqueda por número de comprobante | Integración |
 | 8 | Configuración de impuestos afecta total factura | Integración |
 
+### FLUJO 4: API / Fetch – Integración con Servicios Externos
+
+**Funciones Testeadas (api.spec.js):**
+- Validación de existencia de funciones públicas.
+- Manejo de errores del fetch (API caída, payload inválido).
+- Normalización de productos de FakeStoreAPI.
+- Correcto uso de async/await.
+- Respuesta estructurada en objetos del dominio.
+
+**Casos de Prueba:**
+| # | Descripción | Tipo |
+|---|-------------|------|
+| 1 | La función fetchFakeStoreProducts existe | Estructura |
+| 2 | Debe devolver un array de productos normalizados | Happy Path |
+| 3 | Debe lanzar error si la API responde con código no-OK | Error |
+| 4 | Debe lanzar error si la API está caída | Error |
+| 5 | Los campos normalizados mantienen su tipo correcto | Integración |
+
+### FLUJO 5: Librería Externa – jsPDF
+
+**Funciones Testeadas (library.spec.js):**
+- Inicialización de la librería jsPDF desde CDN.
+- Creación de instancia jsPDF.
+- Generación mínima de un PDF (addPage, text).
+- Integración con la función generarPDF().
+- Manejo de errores cuando jsPDF no está cargada.
+
+**Casos de Prueba:**
+| # | Descripción | Tipo |
+|---|-------------|------|
+| 1 | jsPDF está disponible en window.jspdf | Inicialización |
+| 2 | new jsPDF() crea un documento válido | Happy Path |
+| 3 | generarPDF() invoca jsPDF correctamente | Integración |
+| 4 | Si jsPDF no existe → generarPDF lanza error | Error |
+| 5 | La función genera al menos 1 página | Validación |
+
 ---
 
 ## Métricas de Cobertura
@@ -134,8 +170,8 @@ Se refactorizó la suite para cubrir las capas de Modelo, Integración y Persist
 ### Resumen General
 | Métrica | Valor |
 |---------|-------|
-| Total de Tests | 51 |
-| Tests Pasando | 51 ✅ |
+| Total de Tests | 54 |
+| Tests Pasando | 54 ✅ |
 | Tests Fallando | 0 ❌ |
 | Porcentaje de Éxito | 100% |
 
@@ -188,8 +224,28 @@ Se refactorizó la suite para cubrir las capas de Modelo, Integración y Persist
 ![Suite Detalle](./screenshots/suite-detail.png)  
 *Expansión de una suite mostrando tests individuales*
 
+### Test API (fetchFakeStoreProducts)
+![API Spec](./screenshots/api.spec.png)  
+*Resultados de api.spec.js*
+
+### Test Librería Externa (jsPDF)
+![Library Spec](./screenshots/library-spec.png)  
+*Resultados de library.spec.js*
+
 ---
+
+## Issues Conocidos
+
+- **#136 – StorageUtil no maneja claves null/undefined:**  
+  Detectado cuando se ejecutó el test de API (fetchFakeStoreProducts).  
+  Ocurre porque `StorageUtil.guardar(null, valor)` retorna `false` en lugar de permitir guardar el valor para claves nulas según lo esperado en el test. 
+
+---
+
 
 **Última Actualización:** 22/11/2025  
 **Responsable:** Ramiro Marcos Morales  
 **Colaboración con:** Desarrollador JavaScript - Sebasthian Harika
+
+**Última Actualización:** 25/11/2025  
+**Responsable:** Silvia Victoria Imoberdorff  
