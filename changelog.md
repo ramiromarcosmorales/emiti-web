@@ -14,6 +14,9 @@
 - [feature/dev-async-fetch-api] Incorporación de API y actualización de script.js, nueva-factura.html, facturas.html e index.html.
   PR: [#132](https://github.com/ramiromarcosmorales/emiti-web/pull/132) - @ramire-uces (Desarrollador JS Asíncrono - Fetch & APIs)
 
+- [feature/dev-async-fetch-api] Incorporación de FakeStoreAPI, actualización de script.js y nueva-factura.html.
+  PR: [#135](https://github.com/ramiromarcosmorales/emiti-web/pull/135) - @ramire-uces (Desarrollador JS Asíncrono - Fetch & APIs)
+
 ### Changed
 
 ### Fixed
