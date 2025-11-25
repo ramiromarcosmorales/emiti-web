@@ -2,9 +2,6 @@
 
 ### Added
 
-- [feature/dev-libreria-externa-jspdf] Implementación de la librería jsPDF para generar PDF de las facturas.  
-  PR: [#133](https://github.com/ramiromarcosmorales/emiti-web/pull/133) - @ramiromarcosmorales (Desarrollador JS Libreria Externa)
-
 - [feature/coord-devops-segundo-parcial] Actualización README, changelog, feature template y issue templates.  
   PR: [#126](https://github.com/ramiromarcosmorales/emiti-web/pull/126) - @Harika-sebasthian (Coordinador/DevOps + Documentación)
 
@@ -17,9 +14,17 @@
 - [feature/dev-async-fetch-api] Incorporación de FakeStoreAPI, actualización de script.js y nueva-factura.html.
   PR: [#135](https://github.com/ramiromarcosmorales/emiti-web/pull/135) - @ramire-uces (Desarrollador JS Asíncrono - Fetch & APIs)
 
+- [feature/dev-libreria-externa-jspdf] Implementación de la librería jsPDF para generar PDF de las facturas.  
+  PR: [#133](https://github.com/ramiromarcosmorales/emiti-web/pull/133) - @ramiromarcosmorales (Desarrollador JS Libreria Externa)
+
+
+
 ### Changed
 
 ### Fixed
+
+- [feature/coord-devops-segundo-parcial] Correción enlace README, registro en changelog.  
+  PR: [#138](https://github.com/ramiromarcosmorales/emiti-web/pull/138) - @Harika-sebasthian (Coordinador/DevOps + Documentación)
 
 ## [Release Actividad Obligatoria 4] - 2025-11-14
 
