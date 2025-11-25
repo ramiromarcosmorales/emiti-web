@@ -120,6 +120,11 @@ footer{
     border-top: 1px solid var(--color-border);
 }
 
+footer a {
+    display: inline-block;
+    padding: 10px 8px;
+}
+
 
 /* Elementos solo para lectores de pantalla */
 .sr-only{
