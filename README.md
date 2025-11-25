@@ -62,10 +62,10 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 - 🧪 [Índice de testing (test-case)](docs/03-testing/testing-doc.md)
 - 📘 [Diagramas de actividades UML](docs/04-diagramas/01-diagramas-de-actividades/diagramas-doc.md)  
 - 📘 [Diagrama POO - UML](docs/04-diagramas/02-diagrama-de-clases/diagrama-clases-doc.md)
-- 📄 [Documento de testing JavaScript](js/test/testing-doc.md) 
+- 📄 [Documento de testing JavaScript](js/test) 
 - 🗄️ [Documento de Storage](docs/05-storage/storage-doc.md)
 - 📦 [Documentación de Librerías Externas](docs/06-librerias/libreria-doc.md)
-- 🔄 [Datos mock JSON (API)](api/data.json)
+- 🔄 [Servicio API ](js/api/apiService.js)
 - ♼ [Changelog](/changelog.md)
 
 
