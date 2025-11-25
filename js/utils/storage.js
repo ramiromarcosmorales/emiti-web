@@ -11,6 +11,9 @@ const StorageUtil = {
    */
   guardar(clave, valor, tipo = "local") {
     try {
+      if (clave === null) clave = "null";
+      if (clave === undefined) clave = "undefined";
+
       //Validacion de clave
       if(typeof clave !== "string" || !clave.trim()){
         console.error("[StorageUtil.guardar] Clave invalida");
@@ -50,6 +53,9 @@ const StorageUtil = {
  
   obtener(clave, tipo = "local") {
     try {
+      if (clave === null) clave = "null";
+      if (clave === undefined) clave = "undefined";
+
       const store = tipo === "local" ? localStorage : sessionStorage;
       const data = store.getItem(clave);
       if (data === null) return null;
