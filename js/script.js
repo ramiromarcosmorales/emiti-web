@@ -5,6 +5,60 @@ import { Cliente } from "./models/Cliente.js";
 import { ItemFactura } from "./models/ItemFactura.js";
 import { Impuesto } from "./models/Impuesto.js";
 import { StorageObserver } from "./models/StorageObserver.js";
+import { fetchFakeStoreProducts } from "./api/apiService.js";
+
+
+function renderProductosDemo(productos) {
+  const contenedor = document.getElementById("productosDemo");
+  if (!contenedor) return;
+
+  contenedor.replaceChildren(); 
+
+  productos.forEach((p) => {
+    const card = document.createElement("div");
+    card.className = "col-12 col-md-6 col-lg-3";
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "card h-100 shadow-sm";
+
+    const body = document.createElement("div");
+    body.className = "card-body d-flex flex-column";
+
+    const h6 = document.createElement("h6");
+    h6.className = "fw-bold";
+    h6.textContent = p.nombre;
+
+    const categoria = document.createElement("p");
+    categoria.className = "text-muted mb-1";
+    categoria.textContent = p.categoria;
+
+    const precio = document.createElement("p");
+    precio.className = "fw-semibold mb-3";
+    precio.textContent = "$" + p.precio.toFixed(2);
+
+    const btn = document.createElement("button");
+    btn.className = "btn btn-primary btn-sm mt-auto";
+    btn.textContent = "Usar en factura";
+
+    btn.addEventListener("click", () => {
+      const inputDesc = document.getElementById("productoFactura");
+      const inputPrecio = document.getElementById("precioFactura");
+
+      if (inputDesc) inputDesc.value = p.nombre;
+      if (inputPrecio) inputPrecio.value = p.precio;
+    });
+
+    body.appendChild(h6);
+    body.appendChild(categoria);
+    body.appendChild(precio);
+    body.appendChild(btn);
+
+    wrapper.appendChild(body);
+    card.appendChild(wrapper);
+    contenedor.appendChild(card);
+  });
+}
+
 
 // --- API (EmailJS) ---
 import {
@@ -569,6 +623,19 @@ function initModalFacturaDashboard() {
 function initNuevaFactura() {
   const form = document.getElementById("formFactura");
   if (!form) return;
+
+  // --- Cargar productos FakeStore API ---
+  async function cargarProductosDemo() {
+    try {
+      const productos = await fetchFakeStoreProducts();
+      renderProductosDemo(productos);
+    } catch (err) {
+      mostrarToast("Error cargando productos demo", "danger");
+    }
+  }
+
+  cargarProductosDemo();
+
 
   const addItemBtn = document.getElementById("addItemBtn");
   const crearBtn = document.getElementById("crearFacturaBtn");
