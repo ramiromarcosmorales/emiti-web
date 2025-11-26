@@ -47,6 +47,9 @@ function renderProductosDemo(productos) {
 
       if (inputDesc) inputDesc.value = p.nombre;
       if (inputPrecio) inputPrecio.value = p.precio;
+
+      // ✅ Feedback visual: el usuario ve que algo pasó
+      mostrarToast("Producto demo cargado en la factura.", "info");
     });
 
     body.appendChild(h6);
@@ -60,13 +63,12 @@ function renderProductosDemo(productos) {
   });
 }
 
-
 // --- API (EmailJS) ---
 import {
   initEmailAPI,
   buildInvoiceEmailPayload,
   sendInvoiceEmail,
-} from "./api/apiService.js";
+} from "./api/email.js";
 
 const sistema = new SistemaFacturacion();
 sistema.suscribir(new StorageObserver(sistema));
@@ -625,13 +627,57 @@ function initNuevaFactura() {
   const form = document.getElementById("formFactura");
   if (!form) return;
 
-  // --- Cargar productos FakeStore API ---
+  // --- Cargar productos FakeStore API con estados de carga ---
   async function cargarProductosDemo() {
+    const cont = document.getElementById("productosDemo");
+    if (!cont) return;
+
+    // Estado LOADING
+    cont.replaceChildren();
+    const loadingWrapper = document.createElement("div");
+    loadingWrapper.className =
+      "text-center py-3 d-flex justify-content-center align-items-center gap-2";
+
+    const spinner = document.createElement("div");
+    spinner.className = "spinner-border spinner-border-sm";
+    spinner.setAttribute("role", "status");
+
+    const loadingText = document.createElement("span");
+    loadingText.textContent = "Cargando productos demo...";
+
+    loadingWrapper.appendChild(spinner);
+    loadingWrapper.appendChild(loadingText);
+    cont.appendChild(loadingWrapper);
+
     try {
       const productos = await fetchFakeStoreProducts();
+
+      // Success vacío
+      if (!productos || productos.length === 0) {
+        cont.replaceChildren();
+        const p = document.createElement("p");
+        p.className = "text-muted small mb-0";
+        p.textContent = "No se encontraron productos demo.";
+        cont.appendChild(p);
+
+        mostrarToast("No se encontraron productos demo", "info");
+        return;
+      }
+
+      // Success normal
+      cont.replaceChildren();
       renderProductosDemo(productos);
+      mostrarToast("✔ Productos demo cargados", "success");
     } catch (err) {
-      mostrarToast("Error cargando productos demo", "danger");
+      // Estado ERROR
+      cont.replaceChildren();
+
+      const errorMsg = document.createElement("p");
+      errorMsg.className = "text-danger small mb-0";
+      errorMsg.textContent = "No se pudieron cargar los productos demo.";
+
+      cont.appendChild(errorMsg);
+      mostrarToast(err.message || "Error cargando productos demo", "danger");
     }
   }
 
