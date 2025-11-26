@@ -1,4 +1,4 @@
-## [Release Segundo Parcial]- 2025-11-25
+## [Release Segundo Parcial] - 2025-11-25
 
 ### Added
 
