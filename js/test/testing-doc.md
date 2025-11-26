@@ -135,6 +135,7 @@ Se refactorizó la suite para cubrir las capas de Modelo, Integración y Persist
 - Normalización de productos de FakeStoreAPI.
 - Correcto uso de async/await.
 - Respuesta estructurada en objetos del dominio.
+- Procesamiento funcional local (map, filter,reduce)
 
 **Casos de Prueba:**
 | # | Descripción | Tipo |
@@ -144,15 +145,17 @@ Se refactorizó la suite para cubrir las capas de Modelo, Integración y Persist
 | 3 | Debe lanzar error si la API responde con código no-OK | Error |
 | 4 | Debe lanzar error si la API está caída | Error |
 | 5 | Los campos normalizados mantienen su tipo correcto | Integración |
+| 6 | Procesa productos usando map, filter y reduce | Logica |
 
 ### FLUJO 5: Librería Externa – jsPDF
 
 **Funciones Testeadas (library.spec.js):**
 - Inicialización de la librería jsPDF desde CDN.
 - Creación de instancia jsPDF.
-- Generación mínima de un PDF (addPage, text).
-- Integración con la función generarPDF().
-- Manejo de errores cuando jsPDF no está cargada.
+- Mock del constructo jsPDF para inspeccionar llamadas
+- Generación mínima de un PDF usando funcion auxiliar generarPDF()(mock).
+- Validacion de llamadas a text() y save() en la instancia mock.
+- Manejo de errores cuando jsPDF lanza expeciones.
 
 **Casos de Prueba:**
 | # | Descripción | Tipo |
@@ -160,8 +163,27 @@ Se refactorizó la suite para cubrir las capas de Modelo, Integración y Persist
 | 1 | jsPDF está disponible en window.jspdf | Inicialización |
 | 2 | new jsPDF() crea un documento válido | Happy Path |
 | 3 | generarPDF() invoca jsPDF correctamente | Integración |
-| 4 | Si jsPDF no existe → generarPDF lanza error | Error |
-| 5 | La función genera al menos 1 página | Validación |
+| 4 | Si jsPDF falla, generarPDF captura el error sin romper | Robustez |
+| 5 | generarPDF recibe una factura valida y no explota | Integracion |
+
+### FLUJO 6: Librería Externa – EmailJS  
+
+**Funciones Testeadas (library.spec.js):**
+- Inicialización de la librería EmailJS mediante mock del objeto emailjs.
+- Creación de un cliente EmailJS con métodos init() y send().
+- Mock de emailjs.send() para inspeccionar argumentos enviados.
+- Envío simulado de una factura usando parámetros reales (serviceId, templateId, payload).
+-Manejo de errores cuando EmailJS rechaza la promesa (falla de envío).
+
+**Casos de Prueba:**
+
+| # | Descripción | Tipo |
+|---|-------------|------|
+| 1 | EmailJS está disponible mediante mock en window.emailjs | Inicialización |
+| 2 | emailjs.init() recibe correctamente la public key | Inicializacion |
+| 3 | emailjs.send() se invoca con serviceId, templateId y payload válidos | Integración |
+| 4 | Si EmailJS falla, la promesa rechazada es manejada correctamente | Error |
+| 5 | El envío simulado retorna un resultado válido en el Happy Path | Happy Path |
 
 ---
 
@@ -170,8 +192,8 @@ Se refactorizó la suite para cubrir las capas de Modelo, Integración y Persist
 ### Resumen General
 | Métrica | Valor |
 |---------|-------|
-| Total de Tests | 54 |
-| Tests Pasando | 54 ✅ |
+| Total de Tests | 63 |
+| Tests Pasando | 63 ✅ |
 | Tests Fallando | 0 ❌ |
 | Porcentaje de Éxito | 100% |
 
@@ -209,8 +231,9 @@ Se refactorizó la suite para cubrir las capas de Modelo, Integración y Persist
 | listarFacturas() | 14 | ✅ | 14 | 100% |
 | mostrarDetalleFactura() | 23 | ✅ | 23 | 100% |
 | calcularMetricas() | 10 | ✅ | 10 | 100% |
+| generarPDF() | 12 | ✅ | 12 | 100% |
 
-**Cobertura Total Estimada:** 100% (462/462 líneas ejecutables)
+**Cobertura Total Estimada:** 100% (474/474 líneas ejecutables)
 
 ---
 
@@ -247,5 +270,5 @@ Se refactorizó la suite para cubrir las capas de Modelo, Integración y Persist
 **Responsable:** Ramiro Marcos Morales  
 **Colaboración con:** Desarrollador JavaScript - Sebasthian Harika
 
-**Última Actualización:** 25/11/2025  
+**Última Actualización:** 26/11/2025  
 **Responsable:** Silvia Victoria Imoberdorff  
