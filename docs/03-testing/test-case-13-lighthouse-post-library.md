@@ -210,4 +210,7 @@
 - Asimismo, se relevaron oportunidades de mejora en accesibilidad y legibilidad provenientes principalmente de estilos de Bootstrap, no de la librería integrada.
 - La integración de jsPDF está correctamente realizada y el sistema continúa operando con estándares óptimos para una aplicación web liviana.
 
-Asimismo, se menciona que se optimizo la carga de la librería jsPDF en index.html, se implemento defer o carga diferida para evitar bloqueos de red en mobile.
+Asimismo, se menciona que se optimizo la carga de la librería jsPDF en index.html, se implemento defer o carga diferida para evitar bloqueos de red en mobile.  
+Con las correcciones mencionadas se optimizo Performance de la pagina index.html en mobile
+
+![Captura Performance – Mobile](../screenshots/lighthouse-Post-Integración-Librería-performance-mobile-index.png)
