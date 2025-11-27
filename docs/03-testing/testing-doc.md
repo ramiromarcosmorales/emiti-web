@@ -10,3 +10,6 @@
 * [Test Case 8 - Componente avanzado Bootstrap 2](./test-case-8.md)
 * [Test Case 9 - Componente avanzado HTML 1](./test-case-9.md)
 * [Test Case 10 - Componente avanzado HTML 2](./test-case-10.md)
+* [Test Case 11 - Baseline Inicial](test-case-11-lighthouse-baseline.md)
+* [Test Case 12 - Post Integracion de Fetch](test-case-12-lighthouse-post-fetch.md)
+* [Test Case 13 - Post Integracion Libreria Externa](test-case-13-lighthouse-post-library.md)

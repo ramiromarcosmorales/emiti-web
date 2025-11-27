@@ -1,4 +1,4 @@
-# 📦 [GRUPO N°X][Actividad Obligatoria N°1] Entrega Final – Release a master
+# 📦 [GRUPO N°1][Segundo Parcial] Entrega Final – Release a master
 
 > ⚠️ GitHub permite usar diferentes plantillas de Pull Request según la rama.
 > Por ejemplo:
@@ -18,12 +18,12 @@ Incluye la integración de todos los aportes realizados por los integrantes del 
 
 ## 👥 Integrantes del Grupo
 
-| Nombre completo          | Rol asignado en esta entrega | Usuario GitHub      |
-|--------------------------|------------------------------|---------------------|
-| Ramiro Marcos Morales    | Coordinador/DevOps + Tester QA | @ramiromarcosmorales |
-| Sebasthian Harika | Desarrollador JS Eventos + DOM | @Harika-sebasthian |
-| Ramiro Nicolas Renterías | Desarrollador JS POO | @ramire-uces  |
-| Victoria Imoberdorff | Desarrollador JS Local y Session Storage | @victoriaimo |
+| Nombre completo           | Usuario GitHub              | Matrícula | Rol                                  |
+|---------------------------|-----------------------------|-----------|---------------------------------------|
+| Sebasthian Harika         | @Harika-sebasthian          | 148722    | Coordinador / DevOps                 |
+| Ramiro Nicolás Renterías  | @ramire-uces                | 143709    | Desarrollador JS Asíncrono (Fetch/API) |
+| Ramiro Marcos Morales     | @ramiromarcosmorales        | 149386    | Desarrollador JS Librerías Externas  |
+| Victoria Imoberdorff      | @victoriaimo                | 119707    | Tester QA / JavaScript               |
 
 ---
 
@@ -44,7 +44,7 @@ Incluye la integración de todos los aportes realizados por los integrantes del 
 - [ ] La estructura de carpetas y archivos sigue el formato solicitado
 - [ ] Se completó correctamente el archivo `changelog.md`
 - [ ] Se revisaron los comentarios de revisión en cada PR individual
-- [ ] Esta Pull Request se realiza desde `release/actividad-obligatoria-1` hacia `master`
+- [ ] Esta Pull Request se realiza desde `release/segundo-parcial` hacia `master`
 - [ ] Se notificó en el canal de comunicación del curso con el formato correcto
 
 ---
