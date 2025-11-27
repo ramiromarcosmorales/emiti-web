@@ -1,10 +1,34 @@
-## [Unreleased]
+## [Release Segundo Parcial]- 2025-11-25
 
 ### Added
+
+- [feature/coord-devops-segundo-parcial] Actualización README, changelog, feature template y issue templates.  
+  PR: [#126](https://github.com/ramiromarcosmorales/emiti-web/pull/126) - @Harika-sebasthian (Coordinador/DevOps + Documentación)
+
+- [feature/tester-qa-js-testing-suite] Test Case 11 "Auditoría Lighthouse - Baseline Inicial" documentado.  
+  PR: [#131](https://github.com/ramiromarcosmorales/emiti-web/pull/131) - @victoriaimo (Tester QA/JS)
+  
+- [feature/dev-async-fetch-api] Incorporación de API y actualización de script.js, nueva-factura.html, facturas.html e index.html.
+  PR: [#132](https://github.com/ramiromarcosmorales/emiti-web/pull/132) - @ramire-uces (Desarrollador JS Asíncrono - Fetch & APIs)
+
+- [feature/dev-async-fetch-api] Incorporación de FakeStoreAPI, actualización de script.js y nueva-factura.html.
+  PR: [#135](https://github.com/ramiromarcosmorales/emiti-web/pull/135) - @ramire-uces (Desarrollador JS Asíncrono - Fetch & APIs)
+
+- [feature/dev-libreria-externa-jspdf] Implementación de la librería jsPDF para generar PDF de las facturas.  
+  PR: [#133](https://github.com/ramiromarcosmorales/emiti-web/pull/133) - @ramiromarcosmorales (Desarrollador JS Libreria Externa)
+
+- [feature/tester-qa-js-testing-suite] Agregacion de api.spec.js y library.spec.js, documentacion de Test Case 12 y 13.  
+  PR: [#140](https://github.com/ramiromarcosmorales/emiti-web/pull/140) - @victoriaimo (Tester QA/JS)
 
 ### Changed
 
 ### Fixed
+
+- [feature/coord-devops-segundo-parcial] Correción enlace README, registro en changelog.  
+  PR: [#138](https://github.com/ramiromarcosmorales/emiti-web/pull/138) - @Harika-sebasthian (Coordinador/DevOps + Documentación)
+
+- [feature/coord-devops-segundo-parcial] Correción enlace README js/test, registro en changelog.  
+  PR: [#139](https://github.com/ramiromarcosmorales/emiti-web/pull/139) - @Harika-sebasthian (Coordinador/DevOps + Documentación)
 
 ## [Release Actividad Obligatoria 4] - 2025-11-14
 
