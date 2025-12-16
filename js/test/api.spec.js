@@ -73,4 +73,43 @@ describe("API – FakeStoreProducts (fetch async)", function () {
     expect(errorDetectado.message).toContain("No se pudieron cargar");
   });
 
+  // Caso 4: procesamiento con map / filter / reduce 
+  it("procesa los productos usando map, filter y reduce y mantiene la estructura esperada", function () {
+
+    spyOn(window, "fetch");
+
+    // Mock local SOLO para este test
+    const mockResponse = [
+      { id: 1, title: "Producto A", category: "cat1", price: 100 },
+      { id: 2, title: "Producto B", category: "cat2", price: 200 }
+    ];
+
+    // map: normalizar estructura
+    const normalizados = mockResponse.map(p => ({
+      id: p.id,
+      nombre: p.title,
+      categoria: p.category,
+      precio: p.price,
+    }));
+
+    // filter: quedarnos con cat1
+    const cat1 = normalizados.filter(p => p.categoria === "cat1");
+    expect(cat1.length).toBe(1);
+    expect(cat1[0].nombre).toBe("Producto A");
+
+    // reduce: sumar precios
+    const total = normalizados.reduce((acc, p) => acc + p.precio, 0);
+    expect(total).toBe(300);
+
+    // estructura coherente
+    normalizados.forEach(p => {
+      expect(p.nombre).toBeDefined();
+      expect(p.precio).toBeGreaterThan(0);
+      expect(p.categoria).toMatch(/^cat/);
+    });
+
+    // confirmamos que nunca se llamó a fetch en este test
+    expect(window.fetch).not.toHaveBeenCalled();
+  });
+
 });

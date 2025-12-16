@@ -31,7 +31,7 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 - CSS3
 - Bootstrap 5
 - JavaScript ES6+
-- Librerías externas (ej: SweetAlert2, Toastify, Chart.js)
+- Librerías externas: emails.js
 - Jasmine
 - Lighthouse
 - PlantUML

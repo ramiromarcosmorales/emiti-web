@@ -1,4 +1,4 @@
-## [Release Segundo Parcial]- 2025-11-25
+## [Release Segundo Parcial] - 2025-11-25
 
 ### Added
 
@@ -19,8 +19,6 @@
 
 - [feature/tester-qa-js-testing-suite] Agregacion de api.spec.js y library.spec.js, documentacion de Test Case 12 y 13.  
   PR: [#140](https://github.com/ramiromarcosmorales/emiti-web/pull/140) - @victoriaimo (Tester QA/JS)
-
-### Changed
 
 ### Fixed
 
