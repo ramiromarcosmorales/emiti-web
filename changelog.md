@@ -1,3 +1,13 @@
+## [Unrelease]
+
+### Added
+- [feature/anexo-frameworks-node-js] Documentación de Anexos Frameworks.  
+  PR: [#154](https://github.com/ramiromarcosmorales/emiti-web/pull/154) - @ramiromarcosmorales
+
+### Changed
+
+### Fixed
+
 ## [Release Segundo Parcial] - 2025-11-25
 
 ### Added
