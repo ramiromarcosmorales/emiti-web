@@ -23,6 +23,7 @@ Elegí React para Emití ya que soluciona el principal problema de escalabilidad
 Para mostrar los ítems en el modal, hoy creamos elementos DOM manualmente e iteramos un array temporal:
 
 ```javascript
+// Archivo: js/script.js
 itemsTemp.forEach((item, index) => {
     const itemEl = document.createElement("div");
     itemEl.className = "list-group-item d-flex justify-content-between";

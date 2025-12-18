@@ -24,6 +24,7 @@ Actualmente, Emití posee toda la lógica en el navegador del usuario y los dato
 La creación de factura es síncrona, insegura y local:
 
 ```javascript
+// Archivo: js/models/SistemaFacturacion.js
 crearFactura({ cliente, items, ...otros }) {
     const numero = this.generarNumero();
     
