@@ -4,6 +4,9 @@
 - [feature/anexo-frameworks-node-js] Documentación de Anexos Frameworks.  
   PR: [#154](https://github.com/ramiromarcosmorales/emiti-web/pull/154) - @ramiromarcosmorales
 
+- [feature/anexo-frameworks-node-js] Incorporación de documentación de Frameworks
+  PR: [#155](https://github.com/ramiromarcosmorales/emiti-web/pull/155) - @victoriaimo
+
 ### Changed
 
 ### Fixed
