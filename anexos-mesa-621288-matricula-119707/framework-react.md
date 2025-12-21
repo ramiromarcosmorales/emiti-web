@@ -6,36 +6,36 @@ React propone un modelo declarativo: el desarrollador define qué se debe mostra
 
 ### Motivación y justificación para Emití
 
-En el proyecto Emití, gran parte de la interacción con el usuario se gestiona actualmente desde el archivo script.js, donde se combinan manejo de eventos, validaciones, alertas y actualización manual del DOM.
+En el proyecto Emití, gran parte de la interacción con el usuario se gestiona actualmente desde el archivo script.js, donde se combinan manejo de eventos, validaciones, mensajes visuales y actualización manual del DOM.
 Este enfoque funciona, pero a medida que el sistema crece se vuelve difícil de mantener y escalar, por lo tanto React permitiría centralizar y ordenar el manejo del estado visual, mejorando especialmente la experiencia del usuario, la claridad del flujo de acciones y el control de errores y validaciones.
 
 ### Nivel de dificultad de adaptación
 
 * Esfuerzo: Medio–Alto. La adaptación implicaría reorganizar la lógica de la interfaz actual, trasladando el control del estado visual a componentes React.
 * Curva de aprendizaje: Moderada. Se requiere aprender conceptos como componentes, estado (useState), manejo de eventos y flujo unidireccional de datos.
-* Cambios requeridos: Reemplazar alertas y validaciones dispersas por estado controlado, separar claramente la lógica visual de la lógica del sistema y mejorar el mantenimiento de la interfaz a largo plazo
+* Cambios requeridos: Reemplazar validaciones y mensajes visuales dispersos por estado controlado, separar claramente la lógica visual de la lógica del sistema y mejorar el mantenimiento de la interfaz a largo plazo
 
 ### Ejemplo de código – “Antes y Después”
 * Antes (Vanilla JavaScript – manejo de la interfaz en el navegador)
 
-En la versión actual de Emití, el agregado de ítems a una factura se maneja mediante eventos y validaciones directas, utilizando alertas (scrip.js):
+En la versión actual de Emití, el agregado de ítems a una factura se maneja mediante eventos y validaciones directas, utilizando validaciones y mensajes visuales directamente en el navegador:
+
+<!--Extracto tomado del archivo js/script.js, línea 876-->
 
 ```javascript
-btnAgregarItem.addEventListener("click", () => {
-  const producto = inputProducto.value.trim();
-  const precio = Number(inputPrecio.value);
+if (!prodOk || !precOk) {
+  mostrarToast(
+    "Completá un producto y un precio válido (> 0) antes de agregar.",
+    "danger"
+  );
+  return;
+}
 
-  if (!producto || precio <= 0) {
-    alert("Debe completar correctamente el producto y el precio");
-    return;
-  }
-
-  itemsTemp.push({ producto, precio });
-  renderItemsList();
-});
+itemsTemp.push(new ItemFactura({ producto, precio: precioNum }));
+renderItemsList();
 ```
 
-Este enfoque mezcla validación, lógica y presentación, utiliza alertas poco amigables y dificulta extender el flujo (mensajes persistentes, estados intermedios)
+Este enfoque mezcla validación, lógica y presentación, maneja el estado visual mediante manipulación manual del DOM y dificulta extender el flujo (mensajes persistentes, estados intermedios)
 
 * Después (Implementación con React)
 
@@ -81,7 +81,7 @@ function AgregarItem({ onAgregar }) {
 }
 ```
 
-En este enfoque el error forma parte del estado, se elimina el uso de alertas, la interfaz refleja claramente la situación actual y el flujo es más claro y mantenible
+En este enfoque el error forma parte del estado del componente, se elimina el manejo manual del estado visual y la interfaz refleja claramente la situación actual y el flujo es más claro y mantenible
 
 * Conclusión
 

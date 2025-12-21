@@ -20,7 +20,9 @@ En lugar de enfocarse únicamente en persistencia, Express aportaría además va
 ### Ejemplo de código – “Antes y Después”
 * Antes (Vanilla JavaScript – validaciones en el navegador)
 
-En la versión actual de Emití, la validación del producto y el precio se realiza directamente en el navegador, dentro del controlador principal del DOM (script.js):
+En la versión actual de Emití, la validación del producto y el precio se realiza directamente en el navegador, dentro del controlador principal del DOM:
+
+<!--Extracto tomado del archivo js/script.js, línea 876-->
 
 ```javascript
 if (!prodOk || !precOk) {
