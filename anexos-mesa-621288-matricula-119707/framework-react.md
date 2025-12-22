@@ -20,9 +20,8 @@ Este enfoque funciona, pero a medida que el sistema crece se vuelve difícil de 
 
 En la versión actual de Emití, el agregado de ítems a una factura se maneja mediante eventos y validaciones directas, utilizando validaciones y mensajes visuales directamente en el navegador:
 
-<!--Extracto tomado del archivo js/script.js, línea 876-->
-
 ```javascript
+// Extracto tomado del archivo js/script.js, línea 876
 if (!prodOk || !precOk) {
   mostrarToast(
     "Completá un producto y un precio válido (> 0) antes de agregar.",

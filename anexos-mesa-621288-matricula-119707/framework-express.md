@@ -22,9 +22,8 @@ En lugar de enfocarse únicamente en persistencia, Express aportaría además va
 
 En la versión actual de Emití, la validación del producto y el precio se realiza directamente en el navegador, dentro del controlador principal del DOM:
 
-<!--Extracto tomado del archivo js/script.js, línea 876-->
-
 ```javascript
+// Extracto tomado del archivo js/script.js, línea 876
 if (!prodOk || !precOk) {
   mostrarToast(
     "Completá un producto y un precio válido (> 0) antes de agregar.",
