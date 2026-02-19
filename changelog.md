@@ -7,6 +7,9 @@
 - [feature/anexo-frameworks-node-js] Incorporación de documentación de Frameworks
   PR: [#155](https://github.com/ramiromarcosmorales/emiti-web/pull/155) - @victoriaimo
 
+- [feature/anexo-frameworks-node-js-matricula-143709] Documentación de Frameworks.
+  PR: [#155](https://github.com/ramiromarcosmorales/emiti-web/pull/156) - @ramire-uces
+
 ### Changed
 
 ### Fixed
