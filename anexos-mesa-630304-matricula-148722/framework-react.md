@@ -48,8 +48,11 @@ btn.addEventListener("click", () => {
 
   mostrarToast("Producto demo cargado en la factura.", "info");
 });
-
+```
+--- 
 **Fragmento 2  (estado LOADING + success/error)
+---
+```js
 
 cont.replaceChildren();
 const loadingWrapper = document.createElement("div");
@@ -83,6 +86,8 @@ try {
   cont.replaceChildren();
   mostrarToast(err.message || "Error cargando productos demo", "danger");
 }
+```
+
 
 ## Se observa en Vanilla:
 
@@ -94,6 +99,7 @@ try {
 
  ### Después  (React - UI declarativa + estado)
 
+```js
  import { useEffect, useState } from "react";
 
 export function ProductosDemo({ onUsarProducto }) {
@@ -139,6 +145,7 @@ export function ProductosDemo({ onUsarProducto }) {
     </div>
   );
 }
+```
 ### Conclusión
  React es especialmente útil para interfaces dinámicas con estados visuales, listas y muchos  eventos.
  El módulo de “productos demo” en EMITÍ WEB es un candidato directo para migración incremental.

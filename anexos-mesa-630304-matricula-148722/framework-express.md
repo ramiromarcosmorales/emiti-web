@@ -73,9 +73,12 @@ async function cargarProductosDemo() {
     cont.replaceChildren();
   }
 }
+```
+---
 
 ### Después (Implementación con Express.js como API intermedia / API propia)
-
+---
+```js
 import express from "express";
 
 const app = express();
@@ -101,14 +104,15 @@ app.get("/api/productos-demo", async (req, res) => {
 });
 
 app.listen(3000, () => console.log("API lista en http://localhost:3000"));
+```
 
 ### Frontend consumiendo enpoint
-
+```js
 const res = await fetch("http://localhost:3000/api/productos-demo");
 if (!res.ok) throw new Error("No se pudieron cargar productos demo");
 const productos = await res.json();
 renderProductosDemo(productos);
-
+```
 ###  Conclusión  
 
 ## Express agrega la separación correcta:
