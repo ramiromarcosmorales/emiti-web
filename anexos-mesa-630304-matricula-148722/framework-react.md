@@ -50,7 +50,7 @@ btn.addEventListener("click", () => {
 });
 ```
 --- 
-**Fragmento 2  (estado LOADING + success/error)
+**Fragmento 2  (estado LOADING + success/error)**
 ---
 ```js
 
