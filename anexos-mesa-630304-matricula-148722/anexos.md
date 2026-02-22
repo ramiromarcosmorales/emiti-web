@@ -1,9 +1,9 @@
 # EMITI WEB
 
-**Apellido Nombre** Harika Varela Sebasthian Ezequiel 
-**Materia - Carrera**  Programación WEB I - Tecnicatura en Programación de Sistemas
-**Profesor**  Matias Velasquez
-**Año** 2026
+- **Apellido Nombre** Harika Varela Sebasthian Ezequiel 
+- **Materia - Carrera**  Programación WEB I - Tecnicatura en Programación de Sistemas
+- **Profesor**  Matias Velasquez
+- **Año** 2026
 
 ---
 
@@ -18,20 +18,20 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 
 ## Stack tecnológico
 
-Descripción del stack utilizado en la aplicación.
+**Descripción del stack utilizado en la aplicación**
 
-HTML5
-CSS3
-Bootstrap 5
-JavaScript ES6+
-Librerías externas: emails.js
-Jasmine
-Lighthouse
-PlantUML
-Figma
-Git y GitHub (con ramas protegidas y gestión de PRs)
-Visual Studio Code
-Herramientas de QA: BrowserStack, PageSpeed Insights, WAVE, GTMetrix, ResponsivelyApp, SauceLabs
+- HTML5
+- CSS3
+- Bootstrap 5
+- JavaScript ES6+
+- Librerías externas: emails.js
+- Jasmine
+- Lighthouse
+- PlantUML
+- Figma
+- Git y GitHub (con ramas protegidas y gestión de PRs)
+- Visual Studio Code
+- Herramientas de QA: BrowserStack, PageSpeed Insights, WAVE, GTMetrix, ResponsivelyApp, - - -  SauceLabs
 ---
 
 ## Anexos
