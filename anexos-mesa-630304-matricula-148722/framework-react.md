@@ -35,7 +35,8 @@ Cambios típicos:
 ###  Antes (Vanilla JS - DOM imperativo)
 **Referencia**
 - Ruta: `js/script.js`
-- Líneas exactas: `L-41 - L-52` `L-640 - L-687`
+- Líneas: [41–52](https://github.com/ramiromarcosmorales/emiti-web/blob/develop/js/script.js#L41-L52)
+- Líneas: [640–687](https://github.com/ramiromarcosmorales/emiti-web/blob/develop/js/script.js#L640-L687)
 
 **Fragmento real (evento + side effects sobre inputs):**
 ```js
@@ -89,7 +90,7 @@ try {
 ```
 
 
-## Se observa en Vanilla:
+#### Se observa en Vanilla:
 
  - Render y estados UI controlados con manipulación manual del DOM.
 

@@ -43,7 +43,7 @@ Frontend pasa de “datos locales / API externa directa” a “consumir endpoin
 
 **Referencia REAL en el repo (OBLIGATORIO):**
 - Ruta: `script.js`
-- Líneas: `L-631 - L-687`
+- Líneas: [631–687](https://github.com/ramiromarcosmorales/emiti-web/blob/develop/js/script.js#L631-L687)
 
 **Fragmento real (controlador):**
 ```js
@@ -74,10 +74,10 @@ async function cargarProductosDemo() {
   }
 }
 ```
----
+
 
 ### Después (Implementación con Express.js como API intermedia / API propia)
----
+
 ```js
 import express from "express";
 
@@ -113,11 +113,13 @@ if (!res.ok) throw new Error("No se pudieron cargar productos demo");
 const productos = await res.json();
 renderProductosDemo(productos);
 ```
+--- 
 ###  Conclusión  
 
-## Express agrega la separación correcta:
+#### Express agrega la separación correcta:
 
 - Frontend: UI y experiencia
 
 - Backend: datos, normalización, reglas, endpoints
 Esto hace que EMITÍ WEB sea escalable y alineado a MERN/MEAN.
+---
