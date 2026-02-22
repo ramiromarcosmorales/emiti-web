@@ -10,6 +10,9 @@
 - [feature/anexo-frameworks-node-js-matricula-143709] Documentación de Frameworks.
   PR: [#155](https://github.com/ramiromarcosmorales/emiti-web/pull/156) - @ramire-uces
 
+- [feature/anexo-frameworks-node-js-matricula-148722] Documentación de Anexos - Frameworks.
+  PR: [#157](https://github.com/ramiromarcosmorales/emiti-web/pull/157) - @Harika-sebasthian
+
 ### Changed
 
 ### Fixed
