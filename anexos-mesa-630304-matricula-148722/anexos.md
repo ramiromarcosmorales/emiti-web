@@ -1,3 +1,43 @@
+# EMITI WEB
+
+**Apellido Nombre** Harika Varela Sebasthian Ezequiel 
+**Materia - Carrera**  Programación WEB I - Tecnicatura en Programación de Sistemas
+**Profesor**  Matias Velasquez
+**Año** 2026
+
+---
+
+## Introducción
+
+Emití es una herramienta web diseñada para la gestión eficiente de comprobantes y facturas.
+Ofrece una interfaz clara e intuitiva que facilita la emisión, visualización y organización de documentos fiscales,
+optimizando la experiencia del usuario a través de un diseño moderno y responsive.
+
+
+---
+
+## Stack tecnológico
+
+Descripción del stack utilizado en la aplicación.
+
+HTML5
+CSS3
+Bootstrap 5
+JavaScript ES6+
+Librerías externas: emails.js
+Jasmine
+Lighthouse
+PlantUML
+Figma
+Git y GitHub (con ramas protegidas y gestión de PRs)
+Visual Studio Code
+Herramientas de QA: BrowserStack, PageSpeed Insights, WAVE, GTMetrix, ResponsivelyApp, SauceLabs
+---
+
+## Anexos
+
+- Mesa N° 630304 - N° Matrícula 148722 - Anexo - **"Frameworks y Node JS"**
+
 # Anexo - “Frameworks & NodeJS”
 
 ## Contexto: frameworks, tooling y ecosistema JavaScript
