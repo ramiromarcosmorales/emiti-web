@@ -99,3 +99,5 @@ optimizando la experiencia del usuario a través de un diseño moderno y respons
 * **Mesa N° 630303 - N° Matricula 143709 - Anexo - "Framework y Node.JS"**
     - [Anexo Framework y Node.JS](./anexos-mesa-630303-matricula-143709/anexos.md)
 
+- **Mesa N° 645008 - N° Matricula 148722 - Anexo - "Framework y Node.JS"**
+  * [Anexo Framework y Node.JS](./anexos-mesa-645008-matricula-148722/anexos.md)
